@@ -56,45 +56,54 @@ Non \`e quindi necessario dimostrare che un particolare schema crittografico sia
  \item in tempi ragionevoli lo si pu\`o violare solo con scarsissima probabilit\`a
  \item lo si pu\`o violare con alta probabilit\`a ma solo in tempi non ragionevoli
 \end{itemize}
+\section{Funzioni trascurabili e non $\dots$}
 In crittografia i concetti di \emph{scarsa probabilit\`a} e di evento \emph{raro} vengono formalizzati attraverso la nozione di funzione trascurabile.
 \begin{definizione}{Funzione Trascurabile (negligible).}
-Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e trascurabile se e solo se per ogni polinomio $p$ esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) < \frac{1}{p(n)}$.  
+Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e trascurabile se e solo se per ogni polinomio $p$, esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) < \frac{1}{p(n)}$.  
 \end{definizione}
 Un'altra definizione utile \`e la seguente:
-\begin{definizione}{Funzione Notevole (noticeble).}
-Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e notevole se e solo se esiste un polinomio $p$ tale per cui esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) > \frac{1}{p(n)}$.  
+\begin{definizione}{Funzione Distinguibile (noticeable).}
+Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e distinguibile se e solo se esiste un polinomio $p$, tale per cui esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) > \frac{1}{p(n)}$.  
 \end{definizione}
 Per esempio la funzione $n \rightarrow 2^{-\sqrt{n}}$ \`e una funzione trascurabile, mentre la funzione $n \rightarrow \frac{1}{n^2}$ non lo \`e. 
-Ovviamente esistono anche funzioni che non sono n\'e trascurabili ne notevoli. Per esempio la seguente funzione definita per casi:
-$f(n) = \begin{cases} n/2, & \mbox{se } n\mbox{ \`e pari} \\ 3n+1, & \mbox{se } n\mbox{ \`e dispari} \end{cases}$\\
-non \`e n\'e trascurabile n\'e notevole.
+Ovviamente esistono anche funzioni che non sono n\'e trascurabili ne distinguibili. Per esempio, la seguente funzione definita per casi:
+$f(n) = \begin{cases} 1, & \mbox{se } n\mbox{ \`e pari} \\ 0, & \mbox{se } n\mbox{ \`e dispari} \end{cases}$\\
+non \`e n\'e trascurabile n\'e distinguibile. Questo perch\`e le definizioni precedenti, pur essendo molto legate, non sono l'una la negazione dell'altra.
 
-Se in un ipotetico esperimento ci si aspetta che un evento avvenga con una probabilt`a trascurabile,
-quest'evento dovrebbe verificarsi con una probabilit\`a trascurabile anche se l'eseprimento \`e ripetututo molte volte, e quindi per la legge dei grandi numeri, 
+Se in un ipotetico esperimento ci si aspetta che un evento avvenga con una probabilt\`a trascurabile,
+quest'evento dovrebbe verificarsi con una probabilit\`a trascurabile anche se l'esperimento viene ripetututo molte volte, e quindi per la legge dei grandi numeri, 
 con una frequenza altrettanto trascurabile
 \footnote{In modo informale, la legge debole dei grandi numeri afferma che: per un numero grande di prove, 
 la frequenza approssima la probabilit\`a di un evento}. 
-In un modo pi\`rigoroso si danno le seguneti definizioni:
+In un modo pi\`u rigoroso si danno le seguenti definizioni:
 \begin{proposizione}
-Siano $\mu_1, \mu_2$ due funzioni trascurabili e sia $p(\cdot)$ un qualsiasi polinomio. Se $\mu_3 = \mu_1 + \mu_2$, e $\mu_4= p(\cdot)\cdot \mu_1$, allora $\mu_3, \mu_4$ sono funzioni trascurabili.  
+Siano $\mu_1, \mu_2$ due funzioni trascurabili e sia $p$ un polinomio. Se $\mu_3 = \mu_1 + \mu_2$, e $\mu_4= p\cdot \mu_1$, allora $\mu_3, \mu_4$ sono funzioni trascurabili.  
 \end{proposizione} 
 
-Se quindi un evento avviene solo con una probabilit\`a trascurabile in un esperimento, ci aspettiamo che ance se ripetiamo l'esperimento un numero polinomiale di volte la probabilit\`a che l'evento avvenga 
+Se quindi, in un esperimento, un evento avviene solo con probabilit\`a trascurabile, ci aspettiamo che, anche se ripetiamo l'esperimento un numero polinomiale di volte, questa probabilit\`a
 rimanga comunque trascurabile. 
-Supponiamo di avere un dado truccato in modo che la probabilit\`a che, se lanciato, restituisca 1 \`e trascurabile. Allora se ripetiamo un numero polinomiale di volte quest'eseprimento, la probabilit\`a
-che esca 1 in uno di questi esperimenti rimane comunque trascurabile.
-Gli eventi che avvengono con una probabilit\`a trascurabile possono essere ignorati per fini pratici.
+Per esempio: se supponiamo di avere un dado truccato in modo che la probabilit\`a di ottenere 1 sia trascurabile. Allora se lanciamo il dado un numero polinomiale di volte, la probabilit\`a
+che esca 1 rimane comunque trascurabile.
+\textbf{Gli eventi che avvengono con una probabilit\`a trascurabile possono essere ignorati per fini pratici}.
 In \cite{1206501} infatti leggiamo:
 \begin{quotation}
 \emph{Events that occur with negligible probability are so unlikely to occur that can be ignored for all practical purposes. Therefore,
 a break of a cryptographic scheme that occurs whit negligible probability is not significant.}
 \end{quotation}
+
+Finora abbiamo parlato sempre di funzioni che prendono in input un argomento non meglio specificato, e al crescere di questo le funzioni si comportano in modo diverso a seconda che siano trascurabili, oppure no.
+Ma cosa rappresenta nella realt\`a questo input?
+In genere questo valore rappresenta un generico parametro di sicurezza, indipendente dal segreto. Di solito lo si pensa come la lunghezza in bit delle chiavi.
+
+
 \newpage
+
 \section{Indistinguibilit\`a Computazionale}
-\section{Dimostrazioni Basate su Games}
+Se due oggetti, sebbene profondamente diversi fra loro, non possono essere, allora sono da un certo punto di vista uguali.
+
 \section{Pseudocasualit\`a}
 
-
+\section{Dimostrazioni Basate su Games}
 
 \chapter{CryptoVerif}
 

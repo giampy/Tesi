@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.4.12)  12 MAY 2010 18:22
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.4.12)  12 MAY 2010 19:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -404,7 +404,16 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 56.
- [4] [5] [6]
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 60.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 60.
+
+[4] [5] [6]
 Capitolo 2.
 [7
 
@@ -416,12 +425,12 @@ Capitolo 3.
 
 ]) [11] (./Tesi.aux) ) 
 Here is how much of TeX's memory you used:
- 6911 strings out of 495062
- 98152 string characters out of 1182644
+ 6916 strings out of 495062
+ 98241 string characters out of 1182644
  170276 words of memory out of 3000000
- 9964 multiletter control sequences out of 15000+50000
- 11850 words of font info for 46 fonts, out of 3000000 for 9000
+ 9969 multiletter control sequences out of 15000+50000
+ 13097 words of font info for 51 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,9n,43p,331b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (11 pages, 22400 bytes).
+Output written on Tesi.dvi (11 pages, 24096 bytes).
