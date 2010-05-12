@@ -91,7 +91,7 @@ Siano $\mu_1, \mu_2$ due funzioni trascurabili e sia $p$ un polinomio. Se $\mu_3
 \end{proposizione} 
 
 Se quindi, in un esperimento, un evento avviene solo con probabilit\`a trascurabile, ci aspettiamo che, anche se ripetiamo l'esperimento un numero polinomiale di volte, questa probabilit\`a
-rimanga comunque trascurabile. 
+rimanga comunque trascurabile.\\
 Per esempio: supponiamo di avere un dado truccato in modo che la probabilit\`a di ottenere 1 sia trascurabile. Allora se lanciamo il dado un numero polinomiale di volte, la probabilit\`a
 che esca 1 rimane comunque trascurabile.\\
 \`E ora importantissimo notare che:

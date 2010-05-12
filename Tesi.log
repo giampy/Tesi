@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.4.12)  12 MAY 2010 23:43
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.4.12)  12 MAY 2010 23:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -425,16 +425,20 @@ Capitolo 2.
 
 ]
 Capitolo 3.
-(./Tesi.bbl [11] [12
+[11] [12
 
-]) [13] (./Tesi.aux) ) 
+]
+Capitolo 4.
+(./Tesi.bbl [13] [14
+
+]) [15] (./Tesi.aux) ) 
 Here is how much of TeX's memory you used:
- 6916 strings out of 495062
- 98241 string characters out of 1182644
+ 6917 strings out of 495062
+ 98252 string characters out of 1182644
  169276 words of memory out of 3000000
- 9969 multiletter control sequences out of 15000+50000
+ 9970 multiletter control sequences out of 15000+50000
  13097 words of font info for 51 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,9n,43p,331b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (13 pages, 27596 bytes).
+Output written on Tesi.dvi (15 pages, 29016 bytes).

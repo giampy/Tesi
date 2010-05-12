@@ -18,10 +18,10 @@ QuickBuild=
 
 [item:Tesi.tex]
 archive=true
-column=39
+column=20
 encoding=UTF-8
 highlight=LaTeX
-line=58
+line=125
 mode=LaTeX
 open=true
 order=0
@@ -37,5 +37,5 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Tesi.tex]
-CursorColumn=39
-CursorLine=58
+CursorColumn=20
+CursorLine=125
