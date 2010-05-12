@@ -1,0 +1,109 @@
+\documentclass[a4paper,openright,twoside,12pt]{report}
+\usepackage[utf8x]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{fancyhdr}
+\usepackage{amssymb}
+\usepackage{amsmath}    % need for subequations
+\usepackage{graphicx}   % need for figures
+\usepackage{verbatim}   % useful for program listings
+\usepackage{color}      % use if color is used in text
+\usepackage{subfigure}  % use for side-by-side figures
+\usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs
+\author{Gian Pietro Farina}
+
+
+\newtheorem{definizione}{Definizione}[chapter]
+\newtheorem{proposizione}{Proposizione}[chapter]
+\pagenumbering{arabic}
+\begin{document}
+\chapter*{Introduzione}
+\rhead[\fancyplain{}{\bfseries INTRODUZIONE}]{\fancyplain{}{\bfseries\thepage}}
+\addcontentsline{toc}{chapter}{Introduzione}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+%Nel capitolo intoduttivo si introdurranno il modello formale Vs quello computazionale,
+%il concetto di sicurezza perfetta e quella computazionale per poi riprendere quest'ultima nel
+%capitolo 1
+\chapter{Il Modello Computazionale}
+\section{L'avversario}
+Il tipico avversario con cui si ha a che fare quando si studiano cifrari o protocolli crittografici nel modello computazionale,
+è un avversario con risorse di calcolo \emph{limitate}. Limitate nel senso che si sceglie di porre un limite alla potenza dell'avversario.
+Questo significa che: non avremo a che fare con un avversario che ha una potenza computazionale infinita o un tempo illimitato a disposizione.
+Sebbene siano stati ideati cifrari sicuri anche rispetto ad avversari non limitati\footnote{one-time pad ne \`e un esempio lampante.}, questi soffrono di vari difetti: come per esempio
+il fatto che \`e necessario che la chiave sia lunga quanto il messaggio e che sia utilizzabile una sola volta.
+Per rappresentare in modo formale un avversario con risorse di calcolo limitate, lo si può pensare come un algoritmo appartenente ad una 
+particolare classe di complessit\`a computazionale\footnote{un avversario \`e alla fine dei conti una macchina di Turing che esegue un algoritmo.}. 
+Da sempre si considerano efficienti gli algoritmi che terminano in un numero di passi polinomiale nella lunghezza dell'input, mentre si considerano inefficienti 
+quelli che hanno una complessit\`a computazionale maggiore. Pu\`o sembrare quindi naturale immaginare gli avversari come degli algoritmi che terminano in un numero polinomiale di passi
+rispetto alla lunghezza dell'input.
+Non bisogna per\`o dimenticare che un avversario può sempre \emph{indovinare} il segreto che cerchiamo di nascondere, o che cifriamo. 
+Per esempio: se il segreto che si cerca di nascondere ha una lunghezza di $n$ bit, l'avversario può sempre
+lanciare una moneta $n$ volte e associare, via via, la testa della moneta al valore 1 e la croce al valore 0.
+La probabilit\`a che l'avversario ottenga una stringa uguale al segreto \`e ovviamente di $\frac{1}{2^n}$. 
+Questa probabilit\`a tende a 0 in modo esponenziale al crescere della lunghezza del segreto. Ma per valori finiti di $n$ questa probabilit\`a non sar\`a mai 0.
+\`E quindi pi\`u realistico cercare di rappresentare l'avversario come un'algoritmo che oltre a terminare in tempo polinomiale, abbia
+anche la possibilit\`a di effettuare scelte random.
+Ecco quindi che il nostro tipico avversario \`e un algoritmo Polinomiale Probabilistico.
+\`E inoltre giustificato cercare di rendere sicuri\footnote{In qualsiasi modo si possa intendere il concetto di sicurezza. 
+Vedremo che in seguito si daranno delle definizioni rigorose di questo concetto.} gli schemi crittografici, rispetto principalmente, a questo tipo di avversario.
+Con questa scelta si cerca di rispettare il pi\`u possibile un famoso principio di Kerckhoffs\footnote{Auguste Kerckhoffs (19 Gennaio 1835 – 9 Agosto 1903) 
+fu un linguista Olandese e un famoso crittografo} che afferma: 
+\begin{quotation}
+\em
+Un cifrario deve essere, se non matematicamente, almeno praticamente indecifrabile.
+\end{quotation}
+Non \`e quindi necessario dimostrare che un particolare schema crittografico sia inviolabile, ma basta dimostrare che:
+\begin{itemize}
+ \item in tempi ragionevoli lo si pu\`o violare solo con scarsissima probabilit\`a
+ \item lo si pu\`o violare con alta probabilit\`a ma solo in tempi non ragionevoli
+\end{itemize}
+In crittografia i concetti di \emph{scarsa probabilit\`a} e di evento \emph{raro} vengono formalizzati attraverso la nozione di funzione trascurabile.
+\begin{definizione}{Funzione Trascurabile (negligible).}
+Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e trascurabile se e solo se per ogni polinomio $p$ esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) < \frac{1}{p(n)}$.  
+\end{definizione}
+Un'altra definizione utile \`e la seguente:
+\begin{definizione}{Funzione Notevole (noticeble).}
+Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e notevole se e solo se esiste un polinomio $p$ tale per cui esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) > \frac{1}{p(n)}$.  
+\end{definizione}
+Per esempio la funzione $n \rightarrow 2^{-\sqrt{n}}$ \`e una funzione trascurabile, mentre la funzione $n \rightarrow \frac{1}{n^2}$ non lo \`e. 
+Ovviamente esistono anche funzioni che non sono n\'e trascurabili ne notevoli. Per esempio la seguente funzione definita per casi:
+$f(n) = \begin{cases} n/2, & \mbox{se } n\mbox{ \`e pari} \\ 3n+1, & \mbox{se } n\mbox{ \`e dispari} \end{cases}$\\
+non \`e n\'e trascurabile n\'e notevole.
+
+Se in un ipotetico esperimento ci si aspetta che un evento avvenga con una probabilt`a trascurabile,
+quest'evento dovrebbe verificarsi con una probabilit\`a trascurabile anche se l'eseprimento \`e ripetututo molte volte, e quindi per la legge dei grandi numeri, 
+con una frequenza altrettanto trascurabile
+\footnote{In modo informale, la legge debole dei grandi numeri afferma che: per un numero grande di prove, 
+la frequenza approssima la probabilit\`a di un evento}. 
+In un modo pi\`rigoroso si danno le seguneti definizioni:
+\begin{proposizione}
+Siano $\mu_1, \mu_2$ due funzioni trascurabili e sia $p(\cdot)$ un qualsiasi polinomio. Se $\mu_3 = \mu_1 + \mu_2$, e $\mu_4= p(\cdot)\cdot \mu_1$, allora $\mu_3, \mu_4$ sono funzioni trascurabili.  
+\end{proposizione} 
+
+Se quindi un evento avviene solo con una probabilit\`a trascurabile in un esperimento, ci aspettiamo che ance se ripetiamo l'esperimento un numero polinomiale di volte la probabilit\`a che l'evento avvenga 
+rimanga comunque trascurabile. 
+Supponiamo di avere un dado truccato in modo che la probabilit\`a che, se lanciato, restituisca 1 \`e trascurabile. Allora se ripetiamo un numero polinomiale di volte quest'eseprimento, la probabilit\`a
+che esca 1 in uno di questi esperimenti rimane comunque trascurabile.
+Gli eventi che avvengono con una probabilit\`a trascurabile possono essere ignorati per fini pratici.
+In \cite{1206501} infatti leggiamo:
+\begin{quotation}
+\emph{Events that occur with negligible probability are so unlikely to occur that can be ignored for all practical purposes. Therefore,
+a break of a cryptographic scheme that occurs whit negligible probability is not significant.}
+\end{quotation}
+\newpage
+
+
+\section{Indistinguibilit\`a Computazionale}
+Se due oggetti, sebbene profondamente diversi fra loro, non possono essere, allora sono da un certo punto di vista uguali.
+
+\section{Pseudocasualit\`a}
+
+\section{Dimostrazioni Basate su Games}
+
+\chapter{CryptoVerif}
+
+\chapter{Risultati Raggiunti}
+
+\lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
+\bibliographystyle{alpha}	
+\bibliography{myrefs}		
+\end{document}          
