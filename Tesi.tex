@@ -26,25 +26,34 @@
 \chapter{Il Modello Computazionale}
 \section{L'avversario}
 Il tipico avversario con cui si ha a che fare quando si studiano cifrari o protocolli crittografici nel modello computazionale,
-è un avversario con risorse di calcolo \emph{limitate}. Limitate nel senso che si sceglie di porre un limite alla potenza dell'avversario.
+è un avversario con risorse di calcolo \emph{limitate}. Limitate nel senso che si sceglie di porre un limite alla potenza di calcolo dell'avversario.
 Questo significa che: non avremo a che fare con un avversario che ha una potenza computazionale infinita o un tempo illimitato a disposizione.
-Sebbene siano stati ideati cifrari sicuri anche rispetto ad avversari non limitati\footnote{one-time pad ne \`e un esempio lampante.}, questi soffrono di vari difetti: come per esempio
-il fatto che \`e necessario che la chiave sia lunga quanto il messaggio e che sia utilizzabile una sola volta.
+Sebbene siano stati ideati cifrari sicuri anche rispetto ad avversari non limitati\footnote{one-time pad ne \`e un esempio lampante.}, questi hanno alcuni difetti: come per esempio
+il fatto che la chiave debba essere lunga quanto il messaggio o che questa sia utilizzabile una sola volta.
 Per rappresentare in modo formale un avversario con risorse di calcolo limitate, lo si può pensare come un algoritmo appartenente ad una 
-particolare classe di complessit\`a computazionale\footnote{un avversario \`e alla fine dei conti una macchina di Turing che esegue un algoritmo.}. 
+particolare classe di complessit\`a computazionale\footnote{un avversario \`e alla fine dei conti una macchina di Turing che esegue un algoritmo.}. \\
 Da sempre si considerano efficienti gli algoritmi che terminano in un numero di passi polinomiale nella lunghezza dell'input, mentre si considerano inefficienti 
 quelli che hanno una complessit\`a computazionale maggiore. Pu\`o sembrare quindi naturale immaginare gli avversari come degli algoritmi che terminano in un numero polinomiale di passi
-rispetto alla lunghezza dell'input.
+rispetto alla lunghezza dell'input. Come si pu\`o notare non si fa nessuna assunzione sul comportamento dell'avversario. L'unica cosa che sappiamo \`e che questo avversario vuole essere efficiente, ovvero polinomiale. Non si fanno ipotesi sull'algoritmo che questo andr\`a ad eseguire.
+Per esempio dato un messaggio cifrato $c=E_k(m)$, non ci aspettiamo che l'avversario non decida di decifrarlo mediante
+una chiave diversa da quella utilizzata per cifrarlo. Ovvero sarebbe sbagliato supporre che l'avversario non cerchi di utilizzare la stringa $c'$ tale che:  $c'=D_{k'}(E_k(m))$ con $k\neq k'$.
+Nel modello computazionale i messaggi sono stringhe di bit e l'avversario pu\`o effettuare qualsiasi operazione su queste. Questa visione \`e, a differenza di quella 
+che si ha nel modello formale, sicuramente molto pi\`u realistica.\\
+
 Non bisogna per\`o dimenticare che un avversario può sempre \emph{indovinare} il segreto che cerchiamo di nascondere, o che cifriamo. 
 Per esempio: se il segreto che si cerca di nascondere ha una lunghezza di $n$ bit, l'avversario può sempre
 lanciare una moneta $n$ volte e associare, via via, la testa della moneta al valore 1 e la croce al valore 0.
 La probabilit\`a che l'avversario ottenga una stringa uguale al segreto \`e ovviamente di $\frac{1}{2^n}$. 
 Questa probabilit\`a tende a 0 in modo esponenziale al crescere della lunghezza del segreto. Ma per valori finiti di $n$ questa probabilit\`a non sar\`a mai 0.
-\`E quindi pi\`u realistico cercare di rappresentare l'avversario come un'algoritmo che oltre a terminare in tempo polinomiale, abbia
+\`E quindi pi\`u realistico cercare di rappresentare l'avversario come un'algoritmo che, oltre a terminare in tempo polinomiale, ha
 anche la possibilit\`a di effettuare scelte random.
-Ecco quindi che il nostro tipico avversario \`e un algoritmo Polinomiale Probabilistico.
+La classe dei problemi risolti da questo tipo di algoritmi \`e indicata con la
+sigla \emph{BPP} (i.e. \emph{Bounded-Probability Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
+esegue l'algoritmo, oltre a ricevere l'input, diciamo x, riceve un input ausiliario r. Questo stringa di bit r, rappresenta una possibile sequenza di lanci di moneta.
+Quando la macchina dovr\`a effettuare una scelta random, non dovr\`a far altro che prendere il successivo bit dalla stringa r, e prendere una decisione in base ad esso
+(\`e, in effetti, come se avesse preso una decisione lanciando una moneta). Ecco quindi che il nostro tipico avversario si configura come un algoritmo polinomiale probabilistico.
 \`E inoltre giustificato cercare di rendere sicuri\footnote{In qualsiasi modo si possa intendere il concetto di sicurezza. 
-Vedremo che in seguito si daranno delle definizioni rigorose di questo concetto.} gli schemi crittografici, rispetto principalmente, a questo tipo di avversario.
+Vedremo che in seguito si daranno delle definizioni rigorose di questo concetto.} gli schemi crittografici rispetto, principalmente, a questo tipo di avversario.
 Con questa scelta si cerca di rispettare il pi\`u possibile un famoso principio di Kerckhoffs\footnote{Auguste Kerckhoffs (19 Gennaio 1835 – 9 Agosto 1903) 
 fu un linguista Olandese e un famoso crittografo} che afferma: 
 \begin{quotation}
@@ -56,7 +65,7 @@ Non \`e quindi necessario dimostrare che un particolare schema crittografico sia
  \item in tempi ragionevoli lo si pu\`o violare solo con scarsissima probabilit\`a
  \item lo si pu\`o violare con alta probabilit\`a ma solo in tempi non ragionevoli
 \end{itemize}
-Vedremo ora di catturare il concetto di \emph{scarsa probabilit\`a}.
+Sappiamo che il concetto di \emph{tempo ragionevole} \`e catturato dalla classe degli algoritmi polinomiali probabilistici. Vediamo ora di catturare il concetto di \emph{scarsa probabilit\`a}.
 \section{Funzioni trascurabili e non $\dots$}
 In crittografia i concetti di \emph{scarsa probabilit\`a} e di evento \emph{raro} vengono formalizzati attraverso la nozione di funzione trascurabile.
 \begin{definizione}{Funzione Trascurabile (negligible).}
@@ -67,33 +76,34 @@ Un'altra definizione utile \`e la seguente:
 Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e distinguibile se e solo se esiste un polinomio $p$, tale per cui esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) > \frac{1}{p(n)}$.  
 \end{definizione}
 Per esempio la funzione $n \rightarrow 2^{-\sqrt{n}}$ \`e una funzione trascurabile, mentre la funzione $n \rightarrow \frac{1}{n^2}$ non lo \`e. 
-Ovviamente esistono anche funzioni che non sono n\'e trascurabili ne distinguibili. Per esempio, la seguente funzione definita per casi:
+Ovviamente esistono anche funzioni che non sono n\'e trascurabili n\'e distinguibili. Per esempio, la seguente funzione definita per casi:
 $f(n) = \begin{cases} 1, & \mbox{se } n\mbox{ \`e pari} \\ 0, & \mbox{se } n\mbox{ \`e dispari} \end{cases}$\\
 non \`e n\'e trascurabile n\'e distinguibile. Questo perch\`e le definizioni precedenti, pur essendo molto legate, non sono l'una la negazione dell'altra.
 
-Se in un ipotetico esperimento ci si aspetta che un evento avvenga con una probabilt\`a trascurabile,
-quest'evento dovrebbe verificarsi con una probabilit\`a trascurabile anche se l'esperimento viene ripetututo molte volte, e quindi per la legge dei grandi numeri, 
+Se sappiamo che in un esperimento un evento avviene con una probabilt\`a trascurabile,
+quest'evento si verificher\`a con una probabilit\`a trascurabile anche se l'esperimento viene ripetututo molte volte (ma sempre in numero polinomiale), e quindi per la legge dei grandi numeri, 
 con una frequenza altrettanto trascurabile
 \footnote{In modo informale, la legge debole dei grandi numeri afferma che: per un numero grande di prove, 
 la frequenza approssima la probabilit\`a di un evento}. 
-In un modo pi\`u rigoroso si danno le seguenti definizioni:
+Le funzioni trascurabili infatti, godono di due particolari propriet\`a, enunciate nella seguente:
 \begin{proposizione}
 Siano $\mu_1, \mu_2$ due funzioni trascurabili e sia $p$ un polinomio. Se $\mu_3 = \mu_1 + \mu_2$, e $\mu_4= p\cdot \mu_1$, allora $\mu_3, \mu_4$ sono funzioni trascurabili.  
 \end{proposizione} 
 
 Se quindi, in un esperimento, un evento avviene solo con probabilit\`a trascurabile, ci aspettiamo che, anche se ripetiamo l'esperimento un numero polinomiale di volte, questa probabilit\`a
-rimanga comunque trascurabile. 
-Per esempio: se supponiamo di avere un dado truccato in modo che la probabilit\`a di ottenere 1 sia trascurabile. Allora se lanciamo il dado un numero polinomiale di volte, la probabilit\`a
+rimanga comunque trascurabile.\\
+Per esempio: supponiamo di avere un dado truccato in modo che la probabilit\`a di ottenere 1 sia trascurabile. Allora se lanciamo il dado un numero polinomiale di volte, la probabilit\`a
 che esca 1 rimane comunque trascurabile.\\
 \`E ora importantissimo notare che:
-\textbf{Gli eventi che avvengono con una probabilit\`a trascurabile possono essere ignorati per fini pratici}.
+\textbf{gli eventi che avvengono con una probabilit\`a trascurabile possono essere ignorati per fini pratici}.
 In \cite{1206501} infatti leggiamo:
 \begin{quotation}
 \emph{Events that occur with negligible probability are so unlikely to occur that can be ignored for all practical purposes. Therefore,
 a break of a cryptographic scheme that occurs whit negligible probability is not significant.}
 \end{quotation}
 Potrebbe sembrare pericoloso utilizzare degli schemi crittografici che ammettono di essere violati con probabilit\`a trascurabile. 
-Ma questa possiblit\`a \`e cosi remota che se ci preoccupassimo, allora dovremmo anche essere ragionevolmente sicuri di fare sei all'enalotto giocando una schedina semplice.
+Ma questa possiblit\`a \`e cosi remota che se ci preoccupassimo, allora per amor di coerenza, dovremmo anche essere ragionevolmente sicuri di 
+fare sei all'enalotto giocando una schedina semplice.
 
 
 
