@@ -1,4 +1,11 @@
-\begin{thebibliography}{KL07}
+\begin{thebibliography}{Dwo06}
+
+\bibitem[Dwo06]{DBLP:conf/crypto/2006}
+Cynthia Dwork, editor.
+\newblock {\em Advances in Cryptology - CRYPTO 2006, 26th Annual International
+  Cryptology Conference, Santa Barbara, California, USA, August 20-24, 2006,
+  Proceedings}, volume 4117 of {\em Lecture Notes in Computer Science}.
+  Springer, 2006.
 
 \bibitem[KL07]{1206501}
 Jonathan Katz and Yehuda Lindell.
