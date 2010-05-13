@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.4.12)  13 MAY 2010 12:53
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.13)  13 MAY 2010 20:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -417,7 +417,14 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 78.
 
-[5] [6] [7] [8
+[5] [6]
+Overfull \hbox (2.73685pt too wide) in paragraph at lines 152--155
+[]\OT1/cmr/m/it/12 Indistinguibilit^^Ra com-putazionale. Due en-sem-ble $\OML/c
+mm/m/it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/cmsy/
+m/n/12 g$\OT1/cmr/m/it/12 ,
+ []
+
+[7] [8
 
 ]
 Capitolo 2.
@@ -433,12 +440,12 @@ Capitolo 4.
 
 ]) [15] (./Tesi.aux) ) 
 Here is how much of TeX's memory you used:
- 6922 strings out of 495062
- 98320 string characters out of 1182644
+ 6920 strings out of 495062
+ 98299 string characters out of 1182644
  169276 words of memory out of 3000000
- 9973 multiletter control sequences out of 15000+50000
- 13802 words of font info for 53 fonts, out of 3000000 for 9000
+ 9972 multiletter control sequences out of 15000+50000
+ 13456 words of font info for 52 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,9n,43p,331b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (15 pages, 32780 bytes).
+Output written on Tesi.dvi (15 pages, 35528 bytes).

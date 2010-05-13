@@ -29,7 +29,7 @@ Il tipico avversario con cui si ha a che fare quando si studiano cifrari o proto
 è un avversario con risorse di calcolo \emph{limitate}. Limitate nel senso che si sceglie di porre un limite alla potenza di calcolo dell'avversario.
 Questo significa che: non avremo a che fare con un avversario che ha una potenza computazionale infinita o un tempo illimitato a disposizione.
 Sebbene siano stati ideati cifrari sicuri anche rispetto ad avversari non limitati\footnote{one-time pad ne \`e un esempio lampante.}, questi hanno alcuni difetti: come per esempio
-il fatto che la chiave debba essere lunga quanto il messaggio o che questa sia utilizzabile una sola volta.
+il fatto che la chiave debba essere lunga quanto il messaggio o che sia utilizzabile una sola volta.
 Per rappresentare in modo formale un avversario con risorse di calcolo limitate, lo si può pensare come un algoritmo appartenente ad una 
 particolare classe di complessit\`a computazionale\footnote{un avversario \`e alla fine dei conti una macchina di Turing che esegue un algoritmo.}. \\
 Da sempre si considerano efficienti gli algoritmi che terminano in un numero di passi polinomiale nella lunghezza dell'input, mentre si considerano inefficienti 
@@ -37,7 +37,7 @@ quelli che hanno una complessit\`a computazionale maggiore. Pu\`o sembrare quind
 rispetto alla lunghezza dell'input. Come si pu\`o notare non si fa nessuna assunzione particolare sul comportamento dell'avversario. Le uniche cose che sappiamo, sono che:
 \begin{itemize}
  \item l'avversario non conosce la chiave, ma conosce l'algoritmo di cifratura utilizzato  e i parametri di sicurezza, come per esempio la lunghezza della chiave\footnote{Un famoso principio della crittografia afferma infatti che
-l'algoritmo di cifratura non deve essere segreto, dev'essere in grado di cadere nelle mani del nemico senza inconvenienti}. 
+l'algoritmo di cifratura non deve essere segreto e deve poter cadere nelle mani del nemico senza inconvenienti.}. 
  \item l'avversario vuole essere efficiente, ovvero polinomiale.
 \end{itemize}
 
@@ -57,7 +57,7 @@ Questa probabilit\`a tende a 0 in modo esponenziale al crescere della lunghezza 
 anche la possibilit\`a di effettuare scelte random.
 La classe dei problemi risolti da questo tipo di algoritmi \`e indicata con la
 sigla \emph{BPP} (i.e. \emph{Bounded-Probability Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
-esegue l'algoritmo, oltre a ricevere l'input, diciamo x, riceve un input ausiliario r. Questo stringa di bit r, rappresenta una possibile sequenza di lanci di moneta.
+esegue l'algoritmo, oltre a ricevere l'input, diciamo x, riceve un input ausiliario r. Questa stringa di bit r, rappresenta una possibile sequenza di lanci di moneta.
 Quando la macchina dovr\`a effettuare una scelta random, non dovr\`a far altro che prendere il successivo bit dalla stringa r, e prendere una decisione in base ad esso
 (\`e, in effetti, come se avesse preso una decisione lanciando una moneta). Ecco quindi che il nostro tipico avversario si configura come un algoritmo polinomiale probabilistico.
 \`E inoltre giustificato cercare di rendere sicuri\footnote{In qualsiasi modo si possa intendere il concetto di sicurezza. 
@@ -91,7 +91,7 @@ $f(n) = \begin{cases} 1, & \mbox{se } n\mbox{ \`e pari} \\ 0, & \mbox{se } n\mbo
 non \`e n\'e trascurabile n\'e distinguibile. Questo perch\`e le definizioni precedenti, pur essendo molto legate, non sono l'una la negazione dell'altra.
 
 Se sappiamo che in un esperimento un evento avviene con una probabilt\`a trascurabile,
-quest'evento si verificher\`a con una probabilit\`a trascurabile anche se l'esperimento viene ripetuto molte volte (ma sempre in numero polinomiale), e quindi per la legge dei grandi numeri, 
+quest'evento si verificher\`a con una probabilit\`a trascurabile anche se l'esperimento viene ripetuto molte volte (ma sempre un numero polinomiale di volte), e quindi per la legge dei grandi numeri, 
 con una frequenza altrettanto trascurabile\footnote{In modo informale, la legge debole dei grandi numeri afferma che: per un numero grande di prove, 
 la frequenza approssima la probabilit\`a di un evento.}. 
 Le funzioni trascurabili infatti, godono di due particolari propriet\`a, enunciate nella seguente:
@@ -123,13 +123,37 @@ Un template di definizione di sicurezza è il seguente \cite{1206501}:
 \emph{A scheme is secure if for every probablistic polynomial-time adversary \textbf{A} [...], the probability that \textbf{A} succeds in this attack [...]
 is negligible}
 \end{quotation}
-Essendo questo schema di definizione asintotico\footnote{nel parametro di sicurezza, che indicheremo con \emph{n} d'ora in poi.}, \`e ovvio che non considera valori piccoli di \emph{n}.
+Essendo questo schema di definizione asintotico (nel parametro di sicurezza, che indicheremo con \emph{n} d'ora in poi), \`e ovvio che non considera valori piccoli di \emph{n}.
 Quindi: se si dimostra che un particolare schema crittografico \`e sicuro secondo una definizione di questo tipo, pu\`o benissimo capitare che per valori piccoli di \emph{n} lo schema
 sia violabile con alta probablit\`a e in tempi ragionevoli.
 \newpage
 
 \section{Indistinguibilit\`a Computazionale}
-Se due oggetti, sebbene profondamente diversi fra loro, non possono essere, allora sono da un certo punto di vista uguali.
+Se due oggetti, sebbene profondamente diversi fra loro, non possono essere distinti, allora sono da un certo punto di vista equivalenti.
+Nel caso della crittografia computazionale due oggetti sono computazionalmente equivalenti se nessuna algoritmo efficiente li pu\`o distinguere.
+Possiamo immaginare che un algoritmo riesca a distinguere due oggetti, se quando gli si da in input il primo, lui da in output una costante \emph{c}, mentre se gli si 
+fornisce come input il secondo da in output una costante \emph{$c'$} e ovviamente $c \neq c'$.
+La definizione tipica di indistinguibilit\`a computazionale \`e data prendendo come oggetti da distinguere delle particolari distribuzioni statistiche detti \emph{ensembles}.
+
+\begin{definizione}{Ensemble.}
+Sia $I$ un insieme numerabile infinito.\\ $X=\{X_i\}_{i \in I}$ \`e un ensemble su $I$ se e solo se \`e una sequenza di variabili statistiche,
+ognuna con una distribuzione di probabilit\`a uniforme.
+\end{definizione}
+Un ensemble \`e quindi una sequenza infinita di distribuzioni di probabilit\`a finite. Tipicamente le variabili dell'ensemble sono stringhe di lunghezza $i$.
+$X_i$ \`e quindi la distribuzione di probabilit\`a uniforme su stringhe di lunghezza $i$.
+
+Ora supponiamo di avere due ensemble $X$ e $Y$. Intuitivamente queste distribuzioni sono indistinguibili se nessun algoritmo (efficiente) pu\`o accettare infiniti elementi di $X_n$
+(ovvero stampando $1$ su input preso da $X_n$) e scartare infiniti elementi di $Y_n$ (ovvero stampare $0$ su input preso da $Y_n$). \`E importante notare che sarebbe facile 
+distinguere due singole distribuzioni fra loro usando un approccio esaustivo.
+In poche parole questi ensemble sono indistinguibile se ogni algoritmo accetta $x \in X_n$ se e solo se accetta $y \in Y_n$. Ovviamente il \emph{se e solo se} non pu\`o e non deve
+essere inteso in senso \emph{classico} ma deve essere inteso in senso statistico.
+Dopo questa breve introduzione all'indistinguibilit\`a siamo pronti per dare una definizione rigorosa:
+
+\begin{definizione}{Indistinguibilit\`a computazionale.}
+Due ensemble $X=\{X_n\}$, $Y=\{Y_n\}$ sono computazionalmente indistinguibili se e solo se per ogni algoritmo $D \in BPP$ (detto distinguitore) esiste $\mu$ trascurabile tale che: $\lvert Pr[D(1^n, X_n = 1)] - Pr(D(1^n, Y_n)) \rvert \leq \mu(n)$.
+\end{definizione}
+
+
 
 \section{Pseudocasualit\`a}
 
