@@ -7,6 +7,11 @@ Cynthia Dwork, editor.
   Proceedings}, volume 4117 of {\em Lecture Notes in Computer Science}.
   Springer, 2006.
 
+\bibitem[Gol00]{519078}
+Oded Goldreich.
+\newblock {\em Foundations of Cryptography: Basic Tools}.
+\newblock Cambridge University Press, New York, NY, USA, 2000.
+
 \bibitem[KL07]{1206501}
 Jonathan Katz and Yehuda Lindell.
 \newblock {\em Introduction to Modern Cryptography (Chapman \& Hall/Crc

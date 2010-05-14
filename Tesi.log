@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.13)  13 MAY 2010 20:08
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.14)  14 MAY 2010 21:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,7 +6,7 @@ entering extended mode
 (./Tesi.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, loaded.
+yphenation, italian, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size12.clo
@@ -55,14 +55,9 @@ File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count89
 \U@D=\dimen103
 )
-
-Package babel Warning: No hyphenation patterns were loaded for
-(babel)                the language `Italian'
-(babel)                I will use the patterns loaded for \language=0 instead.
-
-\l@italian = a dialect from \language0
 Package babel Info: Making " an active character on input line 94.
-)) (/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
+))
+(/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip43
 \f@ncyO@elh=\skip44
 \f@ncyO@erh=\skip45
@@ -418,34 +413,37 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 78.
 
 [5] [6]
-Overfull \hbox (2.73685pt too wide) in paragraph at lines 152--155
-[]\OT1/cmr/m/it/12 Indistinguibilit^^Ra com-putazionale. Due en-sem-ble $\OML/c
-mm/m/it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/cmsy/
-m/n/12 g$\OT1/cmr/m/it/12 ,
+Overfull \hbox (2.73685pt too wide) in paragraph at lines 153--156
+[]\OT1/cmr/m/it/12 Indistinguibilit^^Ra com-pu-ta-zio-na-le. Due en-sem-ble $\O
+ML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/c
+msy/m/n/12 g$\OT1/cmr/m/it/12 ,
  []
 
-[7] [8
+[7] [8]
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 197.
+ [9] [10
 
 ]
 Capitolo 2.
-[9] [10
-
-]
-Capitolo 3.
 [11] [12
 
 ]
-Capitolo 4.
-(./Tesi.bbl [13] [14
+Capitolo 3.
+[13] [14
 
-]) [15] (./Tesi.aux) ) 
+]
+Capitolo 4.
+(./Tesi.bbl [15] [16
+
+]) [17] (./Tesi.aux) ) 
 Here is how much of TeX's memory you used:
- 6920 strings out of 495062
- 98299 string characters out of 1182644
- 169276 words of memory out of 3000000
- 9972 multiletter control sequences out of 15000+50000
+ 6922 strings out of 495053
+ 98329 string characters out of 1182229
+ 170285 words of memory out of 3000000
+ 9975 multiletter control sequences out of 15000+50000
  13456 words of font info for 52 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  38i,9n,43p,331b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (15 pages, 35528 bytes).
+Output written on Tesi.dvi (17 pages, 44768 bytes).
