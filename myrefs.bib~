@@ -1,0 +1,20 @@
+@book{1206501,
+ author = {Katz, Jonathan and Lindell, Yehuda},
+ title = {Introduction to Modern Cryptography (Chapman \& Hall/Crc Cryptography and Network Security Series)},
+ year = {2007},
+ isbn = {1584885513},
+ publisher = {Chapman \& Hall/CRC},
+ }
+@proceedings{DBLP:conf/crypto/2006,
+  editor    = {Cynthia Dwork},
+  title     = {Advances in Cryptology - CRYPTO 2006, 26th Annual International
+               Cryptology Conference, Santa Barbara, California, USA, August
+               20-24, 2006, Proceedings},
+  booktitle = {CRYPTO},
+  publisher = {Springer},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {4117},
+  year      = {2006},
+  isbn      = {3-540-37432-9},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
