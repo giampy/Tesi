@@ -1,4 +1,4 @@
-\documentclass[a4paper,openright,twoside,12pt]{report}
+\documentclass[a4paper,openright,twoside,20pt]{report}
 \usepackage[utf8x]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{fancyhdr}
@@ -16,10 +16,7 @@
 \newtheorem{proposizione}{Proposizione}[chapter]
 \pagenumbering{arabic}
 \begin{document}
-\chapter*{Introduzione}
-\rhead[\fancyplain{}{\bfseries INTRODUZIONE}]{\fancyplain{}{\bfseries\thepage}}
-\addcontentsline{toc}{chapter}{Introduzione}
-\clearpage{\pagestyle{empty}\cleardoublepage}
+\chapter{Introduzione}
 %Nel capitolo intoduttivo si introdurranno il modello formale Vs quello computazionale,
 %il concetto di sicurezza perfetta e quella computazionale per poi riprendere quest'ultima nel
 %capitolo 1
@@ -186,7 +183,7 @@ che l'utente ha con la macchina: velocit\`a con cui preme i tasti della tastiera
 Il concetto di pseudorandomness \`e un caso particolare di indistinuguibilit\`a, infatti una distribuzione \`e \emph{pseudorandom} se nessuna procedura efficiente, pu\`o distinguerla dalla distribuzione uniforme.
 \begin{definizione}{Pseudoarandomness.}
 Sia $U=\{U_{l(n)}\}_{n\in \mathbb{N}}$ la distribuzione uniforme sull'insieme di stringhe $\{0, 1\}^{l(n)}$.  L'ensemble $X=\{X_n\}_{n \in \mathbb{N}}$ \`e detto pseudorandom se e solo se
-\`e computazionalmente indistinguibile da dall'ensemble $U$\footnote{Con la notazione $A^k$ dove A \`e un insieme di simboli e $k$ un numero, si intende l'insieme di tutte le stringhe 
+\`e computazionalmente indistinguibile dall'ensemble $U$\footnote{Con la notazione $A^k$ dove A \`e un insieme di simboli e $k$ un numero, si intende l'insieme di tutte le stringhe 
 di lunghezza $k$ ottenibili con simboli di $A$.}.
 \end{definizione}
 Data questa definizione, possiamo finalmente definire formalmente cosa sia un generatore pseudorandom.
@@ -194,12 +191,12 @@ Data questa definizione, possiamo finalmente definire formalmente cosa sia un ge
 Sia $l:$ $\mathbb{N}\rightarrow\mathbb{N}$ un polinomio. Sia G un algoritmo polinomiale deterministico tale che $\forall s \in \{0, 1\}^{n}$ $G(s) \in \{0, 1\}^{l(n)}.$
 Allora $G$ \`e un generatore pseudorandom se e solo se valgono le seguenti condizioni:
 \begin{itemize}
- \item (Espansione) $\forall n: l(n) > n$
- \item (Pseudocasualit\`a) $\forall D \in BPP, \exists \mu$ trascurabile tale che \\$\lvert Pr[D(1^{l(n)}, r) = 1] - Pr[D(1^{l(n)}, G(s)) = 1] \rvert \leq \mu(n)$\\con $r \in U_{l(n)}$ e $s \in U_{n}$
+ \item Espansione: $\forall n: l(n) > n$
+ \item Pseudocasualit\`a: $\forall D \in BPP, \exists \mu$ trascurabile tale che \\$\lvert Pr[D(1^{l(n)}, r) = 1] - Pr[D(1^{l(n)}, G(s)) = 1] \rvert \leq \mu(n)$\\con $r \in U_{l(n)}$ e $s \in U_{n}$
 \end{itemize}
 \end{definizione}
 
-
+\newpage
 \section{Dimostrazioni Basate su Games}
 
 
