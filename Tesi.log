@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.14)  14 MAY 2010 21:27
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.14)  15 MAY 2010 16:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -322,34 +322,34 @@ File: pdfmark.def 2009/10/09 v6.79a Hyperref definitions for pdfmark specials
  (./Tesi.aux)
 \openout1 = `Tesi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 18.
-LaTeX Font Info:    Try loading font information for LGR+cmr on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 36.
+LaTeX Font Info:    Try loading font information for LGR+cmr on input line 36.
 
 (/usr/share/texmf-texlive/tex/generic/babel/lgrcmr.fd
 File: lgrcmr.fd 2008/06/17 v2.3 Greek Computer Modern
 )
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 
 fontencoding LGR patched
 )
-Package hyperref Info: Link coloring OFF on input line 18.
+Package hyperref Info: Link coloring OFF on input line 36.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
@@ -358,8 +358,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count115
 )
-LaTeX Info: Redefining \ref on input line 18.
-LaTeX Info: Redefining \pageref on input line 18.
+LaTeX Info: Redefining \ref on input line 36.
+LaTeX Info: Redefining \pageref on input line 36.
  (./Tesi.out)
 (./Tesi.out)
 \@outlinefile=\write3
@@ -371,32 +371,39 @@ Capitolo 1.
 [1
 
 
-] [2
+]
+
+Package Fancyhdr Warning: \headheight is too small (12.5pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[2
 
 ]
 Capitolo 2.
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 28.
+LaTeX Font Info:    Try loading font information for U+msa on input line 55.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 28.
+LaTeX Font Info:    Try loading font information for U+msb on input line 55.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 36.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 63.
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 36.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 63.
  [3]
-Underfull \hbox (badness 10000) in paragraph at lines 41--47
+Underfull \hbox (badness 10000) in paragraph at lines 68--74
 
  []
 
@@ -405,14 +412,14 @@ File: uni-32.def 2004/10/17 UCS: Unicode data U+2000..U+20FF
 ) [4]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 75.
+(hyperref)                removing `math shift' on input line 102.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 75.
+(hyperref)                removing `math shift' on input line 102.
 
 [5] [6]
-Overfull \hbox (2.73685pt too wide) in paragraph at lines 150--153
+Overfull \hbox (2.73685pt too wide) in paragraph at lines 177--180
 []\OT1/cmr/m/it/12 Indistinguibilit^^Ra com-pu-ta-zio-na-le. Due en-sem-ble $\O
 ML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/c
 msy/m/n/12 g$\OT1/cmr/m/it/12 ,
@@ -420,29 +427,29 @@ msy/m/n/12 g$\OT1/cmr/m/it/12 ,
 
 [7] [8]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 194.
- [9] [10]
-Capitolo 3.
-[11
-
-] [12
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 220.
+ [9] [10] [11] [12
 
 ]
-Capitolo 4.
+Capitolo 3.
 [13] [14
 
 ]
-Capitolo 5.
-(./Tesi.bbl [15] [16
+Capitolo 4.
+[15] [16
 
-]) [17] (./Tesi.aux) ) 
+]
+Capitolo 5.
+(./Tesi.bbl [17] [18
+
+]) [19] (./Tesi.aux) ) 
 Here is how much of TeX's memory you used:
- 6922 strings out of 495053
- 98328 string characters out of 1182229
- 170285 words of memory out of 3000000
- 9975 multiletter control sequences out of 15000+50000
+ 6931 strings out of 495053
+ 98439 string characters out of 1182229
+ 174285 words of memory out of 3000000
+ 9984 multiletter control sequences out of 15000+50000
  13456 words of font info for 52 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
- 38i,9n,43p,331b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,14n,43p,331b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (17 pages, 44788 bytes).
+Output written on Tesi.dvi (19 pages, 55192 bytes).

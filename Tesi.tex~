@@ -1,4 +1,4 @@
-\documentclass[a4paper,openright,twoside,20pt]{report}
+\documentclass[a4paper,openright,twoside,12pt]{report}
 \usepackage[utf8x]{inputenc}
 \usepackage[italian]{babel}
 \usepackage{fancyhdr}
@@ -15,11 +15,38 @@
 \newtheorem{definizione}{Definizione}[chapter]
 \newtheorem{proposizione}{Proposizione}[chapter]
 \pagenumbering{arabic}
+\pagestyle{fancy}
+% i comandi seguenti impediscono la scrittura in maiuscolo
+% dei nomi dei capitoli e dei paragrafi nelle intestazioni
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{} % rimuove l’attuale contenuto dell’intestazione
+            % e del pi\‘e di pagina
+\fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\addtolength{\headheight}{0.5pt} % riserva spazio per la linea
+\fancypagestyle{plain}{%
+   \fancyhead{} % ignora, nello stile plain, le intestazioni
+   \renewcommand{\headrulewidth}{0pt} % e la linea
+}
+
 \begin{document}
 \chapter{Introduzione}
 %Nel capitolo intoduttivo si introdurranno il modello formale Vs quello computazionale,
 %il concetto di sicurezza perfetta e quella computazionale per poi riprendere quest'ultima nel
 %capitolo 1
+
+Da quando la crittografia ha cessato di essere un'arte per assurgere allo stato di scienza\cite{diffiehelmann77}, sono nati almeno due modi profondamente diversi fra loro di
+vedere la crittografia.\\In uno di questi, il modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
+Nell'altro, il modello \emph{computazionale} le operazioni crittografiche sono viste come funzioni su stringhe di bit; le operazioni hanno una semantica probabilistica.
+Il primo modello \`e stato teorizzato in \cite{}...
+Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cite{}
+
+In \cite{DBLP:journals/joc/AbadiR07} gli autori cercano per la primavolta di porre le basi per iniziare a collegare questi due modelli.
+
 \chapter{Il Modello Computazionale}
 \section{L'avversario}
 Il tipico avversario con cui si ha a che fare quando si studiano cifrari o protocolli crittografici nel modello computazionale,
@@ -54,8 +81,8 @@ Questa probabilit\`a tende a 0 in modo esponenziale al crescere della lunghezza 
 anche la possibilit\`a di effettuare scelte random.
 La classe dei problemi risolti da questo tipo di algoritmi \`e indicata con la
 sigla \emph{BPP} (i.e. \emph{Bounded-Probability Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
-esegue l'algoritmo, oltre a ricevere l'input, diciamo x, riceve un input ausiliario r. Questa stringa di bit r, rappresenta una possibile sequenza di lanci di moneta.
-Quando la macchina dovr\`a effettuare una scelta random, non dovr\`a far altro che prendere il successivo bit dalla stringa r, e prendere una decisione in base ad esso
+esegue l'algoritmo, oltre a ricevere l'input, diciamo $x$, riceve un input ausiliario $r$. Questa stringa di bit $r$, rappresenta una possibile sequenza di lanci di moneta.
+Quando la macchina dovr\`a effettuare una scelta random, non dovr\`a far altro che prendere il successivo bit dalla stringa $r$, e prendere una decisione in base ad esso
 (\`e, in effetti, come se avesse preso una decisione lanciando una moneta). Ecco quindi che il nostro tipico avversario si configura come un algoritmo polinomiale probabilistico.
 \`E inoltre giustificato cercare di rendere sicuri\footnote{In qualsiasi modo si possa intendere il concetto di sicurezza. 
 Vedremo che in seguito si daranno delle definizioni rigorose di questo concetto.} gli schemi crittografici rispetto, principalmente, a questo tipo di avversario.
@@ -141,20 +168,22 @@ in crittografia computazionale si considerano ensemble che sono una sequenza ini
 $X_i$ \`e quindi la distribuzione di probabilit\`a uniforme su stringhe di lunghezza $i$.
 
 Ora supponiamo di avere due ensemble $X$ e $Y$. Intuitivamente queste distribuzioni sono indistinguibili se nessun algoritmo (efficiente) pu\`o accettare infiniti elementi di $X_n$
-(ovvero stampando $1$ su input preso da $X_n$) e scartare infiniti elementi di $Y_n$ (ovvero stampare $0$ su input preso da $Y_n$). \`E importante notare che sarebbe facile 
+(per esempio stampando $1$ su input preso da $X_n$) e scartare infiniti elementi di $Y_n$ (per esempio stampare $0$ su input preso da $Y_n$). \`E importante notare che: sarebbe facile 
 distinguere due \emph{singole} distribuzioni usando un approccio esaustivo, ecco perch\`e si considerano sequenze infinite di ditribuzioni finite.
 In poche parole questi ensemble sono indistinguibile se ogni algoritmo accetta $x \in X_n$ se e solo se accetta $y \in Y_n$. Ovviamente il \emph{se e solo se} non pu\`o e non deve
-essere inteso in senso \emph{classico} ma deve essere inteso in senso statistico.
+essere inteso in senso \emph{classico}, ma deve essere inteso in senso statistico.
 Dopo questa breve introduzione all'indistinguibilit\`a siamo pronti per dare una definizione rigorosa:
 
 \begin{definizione}{Indistinguibilit\`a computazionale.}
 Due ensemble $X=\{X_n\}$, $Y=\{Y_n\}$ sono computazionalmente indistinguibili se e solo se per ogni algoritmo $D \in BPP$ (detto distinguitore) esiste $\mu$ trascurabile tale che:
  $\lvert Pr[D(1^n, X_n) = 1] - Pr[D(1^n, Y_n) = 1] \rvert \leq \mu(n)$.
 \end{definizione}
-
-Dove $Pr[D(1^n, X_n) = 1]$ \`e la probabilit\`a che, scegliendo $x$ secondo la distribuzione $X_n$ e fornendo questo valore al distinguitore insieme al valore $1^n$, il distinguitore stampi $1$.
-Il fatto che al distinguitore si fornisca anche il valore del parametro di sicurezza in base unaria, serve ad esser sicuri che in ogni caso il distinguitore impieghi un tempo polinomiale nel parametro di sicurezza.
-Infatti il distinguitore quando si trover\`a a dover leggere il primo parametro, necessariamente impiegher\`a un tempo polinomiale nel parametro di sicurezza, visto che questo \`e stato fornito in base unaria.
+\newpage
+Nella definizione precedente: $Pr[D(1^n, X_n) = 1]$ \`e la probabilit\`a che, scegliendo $x$ secondo la distribuzione $X_n$ e fornendo questo valore al distinguitore insieme al valore $1^n$, il distinguitore stampi $1$.
+Il fatto che al distinguitore si fornisca anche il valore del parametro di sicurezza in base unaria, serve ad esser sicuri che in ogni caso il distinguitore impieghi un tempo polinomiale 
+nel parametro di sicurezza.
+Infatti il distinguitore quando si trover\`a a dover leggere il primo parametro, necessariamente impiegher\`a un tempo polinomiale nel parametro di sicurezza, visto che questo \`e stato 
+fornito in base unaria\footnote{ignoreremo, d'ora in poi, questo cavillo formale.}.
 
 La definizione di indistinguibilit\`a computazionale cattura quindi il seguente concetto: se due ensemble sono computazionalmente indistinguibili, 
 allora la probababilit\`a che un distinguitore riesca a discernere i valori provenienti da un insieme rispetto all'altro \`e trascurabile; di conseguenza agli occhi del distinguitore 
@@ -162,7 +191,7 @@ gli ensemble non sono differenti e quindi sono per lui equivalenti (o meglio com
 Non \`e raro, nell'ambito scientifico in particolare, basarsi sul concetto generale di indistinguibilit\`a al fine di creare nuove classi di equivalenza di oggetti.
 
 \begin{quotation}
-\emph{The concept of efficient computation leads naturally to a new kind of equivalence netween objects: Objects are considered to be computatinally equivalent if they cannot be
+\emph{The concept of efficient computation leads naturally to a new kind of equivalence between objects: Objects are considered to be computationally equivalent if they cannot be
 differentiated by any efficient procedure.} We note that considering indistinguishable objects as equivalent is one of the basics paradigms of both science and real-life situations. Hence,
 we believe that the notion of computational indistinguishability is a very natural one.\cite{519078}
 \end{quotation}
@@ -172,13 +201,10 @@ we believe that the notion of computational indistinguishability is a very natur
 \section{Pseudocasualit\`a e generatori pseudocasuali}
 Argomento centrale di questa sezione \`e il concetto di \emph{pseudocasualit\`a} (pseudorandomness), applicato a stringhe di bit di lunghezza finita.
 Parlare di pseudocasualit\`a applicata ad una \emph{singola} stringa ha poco senso quanto ne ha poco parlare di singola stringa casuale (random).
-Infatti il concetto di casualit\`a (come quello di pseudocasualit\`a) si applica a distribuzioni di oggetti (stringhe di bit nel nostro caso).
-In crittografia, la nozione di casualit\`a \`e fortemente legata a quella di distribuzione uniforme. Un insieme discreto di oggetti \`e caratterizzato
-da una distribuzione uniforme se la probabilit\`a \`e equamente distribuita su tutti gli oggetti e quindi \emph{l'estrazione} di un elemento \`e del tutto casuale, 
+Il concetto di casualit\`a (come quello di pseudocasualit\`a) si applica, infatti, a distribuzioni di oggetti (stringhe di bit nel nostro caso) e non a singoli oggetti.\\
+La nozione di casualit\`a \`e fortemente legata a quella di distribuzione uniforme. Un insieme di oggetti \`e caratterizzato
+da una distribuzione uniforme se la probabilit\`a \`e equamente distribuita su tutti gli oggetti. Quindi \emph{l'estrazione} di un elemento \`e del tutto casuale, 
 perch\`e non ci sono elementi pi\`u probabili di altri.
-In pratica esistono vari modi per ottenere bits random. Per esempio si possono utilizzare dei software basati sulle interazioni, considerate imprevedibili, 
-che l'utente ha con la macchina: velocit\`a con cui preme i tasti della tastiera, movimenti del mouse ecc, ecc \dots 
-
 
 Il concetto di pseudorandomness \`e un caso particolare di indistinuguibilit\`a, infatti una distribuzione \`e \emph{pseudorandom} se nessuna procedura efficiente, pu\`o distinguerla dalla distribuzione uniforme.
 \begin{definizione}{Pseudoarandomness.}
@@ -188,13 +214,47 @@ di lunghezza $k$ ottenibili con simboli di $A$.}.
 \end{definizione}
 Data questa definizione, possiamo finalmente definire formalmente cosa sia un generatore pseudorandom.
 \begin{definizione}{Generatore Pseudorandom.}
-Sia $l:$ $\mathbb{N}\rightarrow\mathbb{N}$ un polinomio. Sia G un algoritmo polinomiale deterministico tale che $\forall s \in \{0, 1\}^{n}$ $G(s) \in \{0, 1\}^{l(n)}.$
+Sia $l:$ $\mathbb{N}\rightarrow\mathbb{N}$ un polinomio detto fattore d'espansione. Sia G un algoritmo polinomiale deterministico tale che: $\forall s \in \{0, 1\}^{n}$ $G(s) \in \{0, 1\}^{l(n)}.$
 Allora $G$ \`e un generatore pseudorandom se e solo se valgono le seguenti condizioni:
 \begin{itemize}
  \item Espansione: $\forall n: l(n) > n$
- \item Pseudocasualit\`a: $\forall D \in BPP, \exists \mu$ trascurabile tale che \\$\lvert Pr[D(1^{l(n)}, r) = 1] - Pr[D(1^{l(n)}, G(s)) = 1] \rvert \leq \mu(n)$\\con $r \in U_{l(n)}$ e $s \in U_{n}$
+ \item Pseudocasualit\`a: $\forall D \in BPP, \exists \mu$ trascurabile tale che \\$\lvert Pr[D(r) = 1] - Pr[D(G(s)) = 1] \rvert \leq \mu(n)$\\con $r \in U_{l(n)}$ e 
+$s \in U_{n}$
 \end{itemize}
 \end{definizione}
+
+Quindi: se data una stringa di bit $s \in U_{n}$, nessun distinguitore efficiente riesce a distinguere (con una probabilit\`a non trascurabile) $G(s)$ da una stringa $r \in U_{l(n)}$, allora 
+$G$ \`e un generatore pseudorandom. Il suo output, infatti, non \`e distinguibile dalla distribuzione effettivamente uniforme.
+
+\`E importante per\`o notare, che la stringa in output di un generatore pseudorandom \`e fortemente differente da una stringa effettivamente random. Per rendere pi\`u chiara questa distinzione procederemo
+con un importante esempio.
+Supponiamo di avere un generatore pseudorandom \emph{G} con fattore d'espansione $l(n)=2n$.
+L'insieme $A=\{0, 1\}^{2n}$ ha, ovviamente, una cardinalit\`a pari a $2^{2n}$. Fissando quindi una certa stringa $x \in A$, 
+questa ha una probabilit\`a di esser scelta in maniera random pari a: $\frac{1}{\lvert A \rvert} = \frac{1}{2^{2n}}$.
+
+Ragioniamo adesso sull'output del generatore $G$. Questo prende un input appartenente al dominio: $B=\{0, 1\}^{n}$. 
+Anche considerando il caso \emph{migliore} di un generatore iniettivo\footnote{una generica funzione $f$ \`e iniettiva se e solo se $\forall x_1, x_2:$ $x_1 \neq x_2 \Rightarrow f(x_1) \neq f(x_2)$.},
+il codominio di $G$ avr\`a una cardinalit\`a pari a quella del dominio ovvero $2^{n}$. La maggior parte degli elementi dell'insieme $A$ non ricadr\`a 
+nell'output di $G$; questo a causa dell'abissale differenza di cardinalit\`a fra gli insiemi $G(B)$ e $A$.
+Quindi la probabilit\`a che una stringa scelta in maniera uniforme dall'insieme $A$ ricada nel codominio di $G$ \`e di $\frac{2^{n}}{2^{2n}}$, cio\`e $2^{-n}$.
+In teoria quindi \`e facile immaginare un distinguitore $D$ che riesca a discernere l'output di $G$ dalla distribuzione uniforme con probabilit\`a non trascurabile.
+Supponiamo che $D$ prenda in input $s \in A$. Tutto ci\`o che $D$ deve fare \`e ricercare in modo esaustivo un $w \in B$ tale che $G(w) = s$.
+Se $w \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $w$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stampera 1 con probabilit\`a $2^{-n}$. 
+Quindi abbiamo che: \\
+$\lvert Pr[D(r)=1] - Pr[D(G(s)=1]\rvert \geq 1 - 2^n$\\
+con $r \xleftarrow{R} A$ e $s \xleftarrow{R} B$\footnote{con la notazione $s \xleftarrow{R} O$, si intende la scelta dell'elemento $s \in O$ in maniera random.}.\\ 
+Il membro a destra della disequazione \`e una funzione notevole. Sembrerebbe quindi che $G$ non sia un generatore pseudorandom.
+C'\`e un importante constatazione da fare per\`o. Il distinguitore $D$ non \`e efficiente! Infatti impiega un tempo esponenziale nel parametro $n$, e non polinomiale.
+La distribuzione generata da $G$ dunque, \`e si ben lontana dall'essere uniforme, ma questo non \`e importante dal momento che nessun distinguitore che viaggia in tempo polinomiale pu\`o 
+accorgersene.
+
+
+Nella pratica lo scopo di $G$ \`e prendere in input un $seed$ random, e da quello generare una variabile pseudocasuale molto pi\`u lunga. Si inutisce da questo la grandissima
+importanza che hanno i generatori pseudorandom in crittografia. Per esempio il seed potrebbe corrispondere alla chiave di un cifrario, mentre l'output di $G$ di lunghezza $k$ potrebbe
+essere il valore con cui viene fatto lo $XOR$ del messaggio (anch'esso di lunghezza $k$); otteniamo cosi una versione del one-time pad basato su una chiave pi\`u corta del messaggio.
+Siccome una stringa pseudorandom appare, ad un distinguitore efficiente $D$, come una stringa random, $D$ non ottiene un vantaggio sensibile nel passaggio dal vero one-time pad
+al one-time pad che usa una chiave pseudorandom.
+
 
 \newpage
 \section{Dimostrazioni Basate su Games}

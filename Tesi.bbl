@@ -1,5 +1,17 @@
 \begin{thebibliography}{Dwo06}
 
+\bibitem[AR07]{DBLP:journals/joc/AbadiR07}
+Mart\'{\i}n Abadi and Phillip Rogaway.
+\newblock Reconciling two views of cryptography (the computational soundness of
+  formal encryption).
+\newblock {\em J. Cryptology}, 20(3):395, 2007.
+
+\bibitem[DH76]{diffiehelmann77}
+Whitfield Diffie and Martin~E. Hellman.
+\newblock New directions in cryptography.
+\newblock {\em IEEE Transactions on Information Theory}, 22(6):644--654,
+  November 1976.
+
 \bibitem[Dwo06]{DBLP:conf/crypto/2006}
 Cynthia Dwork, editor.
 \newblock {\em Advances in Cryptology - CRYPTO 2006, 26th Annual International
