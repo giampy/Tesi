@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.14)  15 MAY 2010 16:42
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.14)  15 MAY 2010 19:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -427,8 +427,18 @@ msy/m/n/12 g$\OT1/cmr/m/it/12 ,
 
 [7] [8]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 220.
- [9] [10] [11] [12
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 221.
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--252
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 236--252
+
+ []
+
+[9] [10] [11] [12
 
 ]
 Capitolo 3.
@@ -452,4 +462,4 @@ Here is how much of TeX's memory you used:
  28 hyphenation exceptions out of 8191
  38i,14n,43p,331b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (19 pages, 55192 bytes).
+Output written on Tesi.dvi (19 pages, 54840 bytes).

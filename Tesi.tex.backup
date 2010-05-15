@@ -241,8 +241,9 @@ In teoria quindi \`e facile immaginare un distinguitore $D$ che riesca a discern
 Supponiamo che $D$ prenda in input $s \in A$. Tutto ci\`o che $D$ deve fare \`e ricercare in modo esaustivo un $w \in B$ tale che $G(w) = s$.
 Se $w \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $w$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stampera 1 con probabilit\`a $2^{-n}$. 
 Quindi abbiamo che: \\
-$\lvert Pr[D(r)=1] - Pr[D(G(s)=1]\rvert \geq 1 - 2^n$\\
-con $r \xleftarrow{R} A$ e $s \xleftarrow{R} B$\footnote{con la notazione $s \xleftarrow{R} O$, si intende la scelta dell'elemento $s \in O$ in maniera random.}.\\ 
+\\
+$\lvert Pr[D(r)=1] - Pr[D(G(s))=1]\rvert \geq 1 - 2^n$\\
+\\con $r \xleftarrow{R} A$ e $s \xleftarrow{R} B$\footnote{con la notazione $s \xleftarrow{R} O$, si intende la scelta dell'elemento $s \in O$ in maniera random.}.\\ 
 Il membro a destra della disequazione \`e una funzione notevole. Sembrerebbe quindi che $G$ non sia un generatore pseudorandom.
 C'\`e un importante constatazione da fare per\`o. Il distinguitore $D$ non \`e efficiente! Infatti impiega un tempo esponenziale nel parametro $n$, e non polinomiale.
 La distribuzione generata da $G$ dunque, \`e si ben lontana dall'essere uniforme, ma questo non \`e importante dal momento che nessun distinguitore che viaggia in tempo polinomiale pu\`o 
@@ -253,7 +254,7 @@ Nella pratica lo scopo di $G$ \`e prendere in input un $seed$ random, e da quell
 importanza che hanno i generatori pseudorandom in crittografia. Per esempio il seed potrebbe corrispondere alla chiave di un cifrario, mentre l'output di $G$ di lunghezza $k$ potrebbe
 essere il valore con cui viene fatto lo $XOR$ del messaggio (anch'esso di lunghezza $k$); otteniamo cosi una versione del one-time pad basato su una chiave pi\`u corta del messaggio.
 Siccome una stringa pseudorandom appare, ad un distinguitore efficiente $D$, come una stringa random, $D$ non ottiene un vantaggio sensibile nel passaggio dal vero one-time pad
-al one-time pad che usa una chiave pseudorandom.
+al one-time pad che usa una chiave pseudorandom. In generale i generatori pseudorandom sono molto utili in crittografia per creare schemi crittografici simmetrici.
 
 
 \newpage
