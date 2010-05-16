@@ -81,7 +81,7 @@ Questa probabilit\`a tende a 0 in modo esponenziale al crescere della lunghezza 
 anche la possibilit\`a di effettuare scelte random.
 La classe dei problemi risolti da questo tipo di algoritmi \`e indicata con la
 sigla \emph{BPP} (i.e. \emph{Bounded-Probability Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
-esegue l'algoritmo, oltre a ricevere l'input, diciamo $x$, riceve un input ausiliario $r$. Questa stringa di bit $r$, rappresenta una possibile sequenza di lanci di moneta.
+esegue l'algoritmo, oltre a ricevere l'input, diciamo $x$, riceva anche un input ausiliario $r$. Questa stringa di bit $r$, rappresenta una possibile sequenza di lanci di moneta.
 Quando la macchina dovr\`a effettuare una scelta random, non dovr\`a far altro che prendere il successivo bit dalla stringa $r$, e prendere una decisione in base ad esso
 (\`e, in effetti, come se avesse preso una decisione lanciando una moneta). Ecco quindi che il nostro tipico avversario si configura come un algoritmo polinomiale probabilistico.
 \`E inoltre giustificato cercare di rendere sicuri\footnote{In qualsiasi modo si possa intendere il concetto di sicurezza. 
@@ -92,11 +92,10 @@ fu un linguista olandese e un famoso crittografo.} che afferma:
 \em
 Un cifrario deve essere, se non matematicamente, almeno praticamente indecifrabile.
 \end{quotation}
-\newpage
 Non \`e quindi necessario dimostrare che un particolare schema crittografico sia inviolabile, ma basta dimostrare che:
 \begin{itemize}
- \item in tempi ragionevoli lo si pu\`o violare solo con scarsissima probabilit\`a
- \item lo si pu\`o violare con alta probabilit\`a ma solo in tempi non ragionevoli
+ \item in tempi ragionevoli lo si pu\`o violare solo con scarsissima probabilit\`a.
+ \item lo si pu\`o violare con alta probabilit\`a, ma solo in tempi non ragionevoli.
 \end{itemize}
 Sappiamo che il concetto di \emph{tempo ragionevole} \`e catturato dalla classe degli algoritmi polinomiali probabilistici. Vediamo ora di catturare il concetto di \emph{scarsa probabilit\`a}.
 \section{Funzioni trascurabili e non $\dots$}
@@ -166,8 +165,8 @@ in crittografia computazionale si considerano ensemble che sono una sequenza ini
 Tipicamente le variabili dell'ensemble sono stringhe di lunghezza $i$. $X_i$ \`e quindi la distribuzione di probabilit\`a uniforme su stringhe di lunghezza $i$.
 
 Ora supponiamo di avere due ensemble $X$ e $Y$. Intuitivamente queste distribuzioni sono indistinguibili se nessun algoritmo (efficiente) pu\`o accettare infiniti elementi di $X_n$
-(per esempio stampando $1$ su input preso da $X_n$) e scartare infiniti elementi di $Y_n$ (per esempio stampare $0$ su input preso da $Y_n$). \`E importante notare che, sarebbe facile 
-distinguere due \emph{singole} distribuzioni usando un approccio esaustivo, ecco perch\`e si considerano sequenze infinite di ditribuzioni finite.
+(per esempio stampando $1$ su input preso da $X_n$) e scartare infiniti elementi di $Y_n$ (per esempio stampare $0$ su input preso da $Y_n$). \`E importante notare che sarebbe facile 
+distinguere due \emph{singole} distribuzioni usando un approccio esaustivo, ecco perch\'e si considerano sequenze infinite di ditribuzioni finite.
 In poche parole questi ensemble sono indistinguibili se ogni algoritmo accetta $x \in X_n$ se e solo se accetta $y \in Y_n$. Ovviamente il \emph{se e solo se} non pu\`o e non deve
 essere inteso in senso \emph{classico}, ma deve essere inteso in senso statistico. Poich\'e in crittografia si \`e soliti indicare con $U_m$ una variabile
 uniformemente distribuita sull'insieme delle stringhe di lunghezza $m$, chiameremo $U=\{U_n\}_{n \in \mathbb{N}}$ l'ensemble uniforme.
@@ -181,7 +180,7 @@ Due ensemble $X=\{X_n\}$, $Y=\{Y_n\}$ sono computazionalmente indistinguibili se
 Nella definizione precedente: $Pr[D(1^n, X_n) = 1]$ \`e la probabilit\`a che, scegliendo $x$ secondo la distribuzione $X_n$ e fornendo questo valore al distinguitore insieme al valore $1^n$, il distinguitore stampi $1$.
 Il fatto che al distinguitore si fornisca anche il valore del parametro di sicurezza in base unaria, serve ad esser sicuri che in ogni caso il distinguitore impieghi un tempo polinomiale 
 nel parametro di sicurezza.
-Infatti il distinguitore quando si trover\`a a dover leggere il primo parametro, necessariamente impiegher\`a un tempo polinomiale nel parametro di sicurezza, visto che questo \`e stato 
+Infatti, il distinguitore quando si trover\`a a dover leggere il primo parametro, necessariamente impiegher\`a un tempo polinomiale nel parametro di sicurezza, visto che questo \`e stato 
 fornito in base unaria\footnote{ignoreremo, d'ora in poi, questo cavillo formale.}.
 
 La definizione di indistinguibilit\`a computazionale cattura quindi il seguente concetto: se due ensemble sono computazionalmente indistinguibili, 
@@ -203,7 +202,7 @@ Parlare di pseudocasualit\`a applicata ad una \emph{singola} stringa ha poco sen
 Il concetto di casualit\`a (come quello di pseudocasualit\`a) si applica, infatti, a distribuzioni di oggetti (stringhe di bit nel nostro caso) e non a singoli oggetti.\\
 La nozione di casualit\`a \`e fortemente legata a quella di distribuzione uniforme. Un insieme di oggetti \`e caratterizzato
 da una distribuzione uniforme se la probabilit\`a \`e equamente distribuita su tutti gli oggetti. Quindi \emph{l'estrazione} di un elemento \`e del tutto casuale, 
-perch\`e non ci sono elementi pi\`u probabili di altri.
+perch\'e non ci sono elementi pi\`u probabili di altri.
 
 Il concetto di pseudorandomness \`e un caso particolare di indistinuguibilit\`a, infatti una distribuzione \`e \emph{pseudorandom} se nessuna procedura efficiente, 
 pu\`o distinguerla dalla distribuzione uniforme.
@@ -237,28 +236,31 @@ Anche considerando il caso \emph{migliore} di un generatore iniettivo\footnote{u
 il codominio di $G$ avr\`a una cardinalit\`a pari a quella del dominio ovvero $2^{n}$. La maggior parte degli elementi dell'insieme $A$ non ricadr\`a 
 nell'output di $G$; questo a causa dell'abissale differenza di cardinalit\`a fra gli insiemi $G(B)$ e $A$.
 Quindi la probabilit\`a che una stringa scelta in maniera uniforme dall'insieme $A$ ricada nel codominio di $G$ \`e di $\frac{2^{n}}{2^{2n}}$, cio\`e $2^{-n}$.
-In teoria quindi \`e facile immaginare un distinguitore $D$ che riesca a discernere l'output di $G$ dalla distribuzione uniforme con probabilit\`a non trascurabile.
+In teoria, quindi, \`e facile immaginare un distinguitore $D$ che riesca a discernere l'output di $G$ dalla distribuzione uniforme con probabilit\`a non trascurabile.
 Supponiamo che $D$ prenda in input $s \in A$. Tutto ci\`o che $D$ deve fare \`e ricercare in modo esaustivo un $w \in B$ tale che $G(w) = s$.
-Se $w \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $w$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stampera 1 con probabilit\`a $2^{-n}$. 
+Se $w \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $w$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stamper\`a 1 con probabilit\`a $2^{-n}$. 
 Quindi abbiamo che: \\
 \\
 $\lvert Pr[D(r)=1] - Pr[D(G(s))=1]\rvert \geq 1 - 2^n$\\
 \\con $r \xleftarrow{R} A$ e $s \xleftarrow{R} B$\footnote{con la notazione $s \xleftarrow{R} O$, si intende la scelta dell'elemento $s \in O$ in maniera random.}.\\ 
 Il membro a destra della disequazione \`e una funzione notevole. Sembrerebbe quindi che $G$ non sia un generatore pseudorandom.
-C'\`e un importante constatazione da fare per\`o. Il distinguitore $D$ non \`e efficiente! Infatti impiega un tempo esponenziale nel parametro $n$, e non polinomiale.
+C'\`e un' importante constatazione da fare per\`o. Il distinguitore $D$ non \`e efficiente! Infatti impiega un tempo esponenziale nel parametro $n$, e non polinomiale.
 La distribuzione generata da $G$ dunque, \`e si ben lontana dall'essere uniforme, ma questo non \`e importante dal momento che nessun distinguitore che viaggia in tempo polinomiale pu\`o 
 accorgersene.
 
 
 Nella pratica lo scopo di $G$ \`e prendere in input un $seed$ random, e da quello generare una variabile pseudocasuale molto pi\`u lunga. Si inutisce da questo la grandissima
 importanza che hanno i generatori pseudorandom in crittografia. Per esempio il seed potrebbe corrispondere alla chiave di un cifrario, mentre l'output di $G$ di lunghezza $k$ potrebbe
-essere il valore con cui viene fatto lo $XOR$ del messaggio (anch'esso di lunghezza $k$); otteniamo cosi una versione del one-time pad basato su una chiave pi\`u corta del messaggio.
+essere il valore con cui viene fatto lo $XOR$ del messaggio (anch'esso di lunghezza $k$); otteniamo cos\`i una versione del one-time pad basato su una chiave pi\`u corta del messaggio.
 Siccome una stringa pseudorandom appare, ad un distinguitore efficiente $D$, come una stringa random, $D$ non ottiene un vantaggio sensibile nel passaggio dal vero one-time pad
 al one-time pad che usa una chiave pseudorandom. In generale i generatori pseudorandom sono molto utili in crittografia per creare schemi crittografici simmetrici.
 
 
 \newpage
 \section{Dimostrazioni Basate su Games}
+Una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche, o di protocolli crittografici \`e basata sul concetto di \emph{game}.
+Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attacante a 
+vincere questo gioco.}.
 
 
 

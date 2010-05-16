@@ -48,7 +48,7 @@ Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cit
 In \cite{DBLP:journals/joc/AbadiR07} gli autori cercano per la primavolta di porre le basi per iniziare a collegare questi due modelli.
 
 \chapter{Il Modello Computazionale}
-\section{L'avversario}
+\section{L'Avversario}
 Il tipico avversario con cui si ha a che fare quando si studiano cifrari o protocolli crittografici nel modello computazionale,
 è un avversario con risorse di calcolo \emph{limitate}. Limitate nel senso che si sceglie di porre un limite alla potenza di calcolo dell'avversario.
 Questo significa che non avremo a che fare con un avversario che ha una potenza computazionale infinita o un tempo illimitato a disposizione.
@@ -98,7 +98,7 @@ Non \`e quindi necessario dimostrare che un particolare schema crittografico sia
  \item lo si pu\`o violare con alta probabilit\`a, ma solo in tempi non ragionevoli.
 \end{itemize}
 Sappiamo che il concetto di \emph{tempo ragionevole} \`e catturato dalla classe degli algoritmi polinomiali probabilistici. Vediamo ora di catturare il concetto di \emph{scarsa probabilit\`a}.
-\section{Funzioni trascurabili e non $\dots$}
+\section{Funzioni Trascurabili e non $\dots$}
 In crittografia i concetti di \emph{scarsa probabilit\`a} e di evento \emph{raro} vengono formalizzati attraverso la nozione di funzione trascurabile.
 \begin{definizione}{Funzione Trascurabile (negligible).}
 Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e trascurabile se e solo se per ogni polinomio $p$, esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) < \frac{1}{p(n)}$.  
@@ -147,7 +147,7 @@ is negligible}
 \end{quotation}
 Essendo questo schema di definizione asintotico (nel parametro di sicurezza, che indicheremo con \emph{n} d'ora in poi), \`e ovvio che non considera valori piccoli di \emph{n}.
 Quindi se si dimostra che un particolare schema crittografico \`e sicuro secondo una definizione di questo tipo, pu\`o benissimo capitare che per valori piccoli di \emph{n} lo schema
-sia violabile con alta probabilit\`a e in tempi ragionevoli.
+sia violabile con alta probabilit\`a bibliografia mostrare urle in tempi ragionevoli.
 \newpage
 
 \section{Indistinguibilit\`a Computazionale}
@@ -196,7 +196,7 @@ we believe that the notion of computational indistinguishability is a very natur
 
 
 
-\section{Pseudocasualit\`a e generatori pseudocasuali}
+\section{Pseudocasualit\`a e Generatori Pseudocasuali}
 Argomento centrale di questa sezione \`e il concetto di \emph{pseudocasualit\`a} (pseudorandomness), applicato a stringhe di bit di lunghezza finita.
 Parlare di pseudocasualit\`a applicata ad una \emph{singola} stringa ha poco senso quanto ne ha poco parlare di singola stringa casuale (random).
 Il concetto di casualit\`a (come quello di pseudocasualit\`a) si applica, infatti, a distribuzioni di oggetti (stringhe di bit nel nostro caso) e non a singoli oggetti.\\
@@ -241,9 +241,9 @@ Supponiamo che $D$ prenda in input $s \in A$. Tutto ci\`o che $D$ deve fare \`e 
 Se $w \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $w$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stamper\`a 1 con probabilit\`a $2^{-n}$. 
 Quindi abbiamo che: \\
 \\
-$\lvert Pr[D(r)=1] - Pr[D(G(s))=1]\rvert \geq 1 - 2^n$\\
+$\lvert Pr[D(r)=1] - Pr[D(G(s))=1]\rvert \geq 1 - 2^{-n}$\\
 \\con $r \xleftarrow{R} A$ e $s \xleftarrow{R} B$\footnote{con la notazione $s \xleftarrow{R} O$, si intende la scelta dell'elemento $s \in O$ in maniera random.}.\\ 
-Il membro a destra della disequazione \`e una funzione notevole. Sembrerebbe quindi che $G$ non sia un generatore pseudorandom.
+Il membro a destra della disequazione \`e una funzione distinguibile. Sembrerebbe quindi che $G$ non sia un generatore pseudorandom.
 C'\`e un' importante constatazione da fare per\`o. Il distinguitore $D$ non \`e efficiente! Infatti impiega un tempo esponenziale nel parametro $n$, e non polinomiale.
 La distribuzione generata da $G$ dunque, \`e si ben lontana dall'essere uniforme, ma questo non \`e importante dal momento che nessun distinguitore che viaggia in tempo polinomiale pu\`o 
 accorgersene.
@@ -258,6 +258,23 @@ al one-time pad che usa una chiave pseudorandom. In generale i generatori pseudo
 
 \newpage
 \section{Dimostrazioni Basate su Games}
+In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della crittografia i \emph{games} e come sono strutturate la maggior parte delle dimostrazioni
+che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutorial di Shoup\cite{shoup} ...
+Una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici \`e basata sul concetto di game.
+Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attaccante a 
+vincere questo gioco.}. Di solito la definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad uan qualche costante come 
+$0$ o $\frac{1}{2}$. Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper} il game \`e il seguente:
+\begin{itemize}
+ \item L'avversario \textbf{A} sceglie due messaggi $m_0, m_1$.
+ \item Lo sfidante \textbf{S} genera una chiave $k$ e un bit $b \xleftarrow{R} \{0,1\}$.
+ \item \textbf{S} crea il messaggio $c$, tale che $c= Enc_k(m_b)$ e lo da in input ad \textbf{A}.
+ \item \textbf{A} stampa un bit $b^{'}$
+\end{itemize}
+
+Sia $E$ l'evento: ``\textbf{A} stampa $b^{'}$ e $b=b^{'}$''.\\ 
+Definiamo sicuro il sistema se $\exists \mu$ trascurabile tale che $Pr[E]\leq \frac{1}{2} + \mu(n)$.
+
+
 
 
 

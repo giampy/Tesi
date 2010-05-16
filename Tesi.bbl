@@ -30,4 +30,9 @@ Jonathan Katz and Yehuda Lindell.
   Cryptography and Network Security Series)}.
 \newblock Chapman \& Hall/CRC, 2007.
 
+\bibitem[Sho08]{shoup}
+Victor Shoup.
+\newblock Sequences of games: A tool for taming complexity in security proofs.
+\newblock 2008.
+
 \end{thebibliography}
