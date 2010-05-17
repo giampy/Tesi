@@ -8,7 +8,9 @@
 \usepackage{verbatim}   % useful for program listings
 \usepackage{color}      % use if color is used in text
 \usepackage{subfigure}  % use for side-by-side figures
-\usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs
+\usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs 
+\usepackage{t1enc}
+
 \author{Gian Pietro Farina}
 
 
@@ -47,18 +49,26 @@ Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cit
 
 In \cite{DBLP:journals/joc/AbadiR07} gli autori cercano per la primavolta di porre le basi per iniziare a collegare questi due modelli.
 
+
+%parlare del concetto di attaccante e di dimostrazioni che sfruttano 
+%il fatto che l'attaccante non può fare delle cose
 \chapter{Il Modello Computazionale}
 \section{L'Avversario}
 Il tipico avversario con cui si ha a che fare quando si studiano cifrari o protocolli crittografici nel modello computazionale,
 è un avversario con risorse di calcolo \emph{limitate}. Limitate nel senso che si sceglie di porre un limite alla potenza di calcolo dell'avversario.
-Questo significa che non avremo a che fare con un avversario che ha una potenza computazionale infinita o un tempo illimitato a disposizione.
+Questo significa che non avremo a che fare con un avversario che ha una potenza computazionale infinita o un tempo illimitato a disposizione.\\
 Sebbene siano stati ideati cifrari sicuri anche rispetto ad avversari non limitati\footnote{one-time pad ne \`e un esempio lampante.}, questi hanno alcuni difetti come per esempio
 il fatto che la chiave debba essere lunga quanto il messaggio o che sia utilizzabile una sola volta.
 Per rappresentare in modo formale un avversario con risorse di calcolo limitate, lo si può pensare come un algoritmo appartenente ad una 
 particolare classe di complessit\`a computazionale\footnote{un avversario \`e, alla fine dei conti, una macchina di Turing che esegue un algoritmo.}. \\
-Da sempre si considerano efficienti gli algoritmi che terminano in un numero di passi polinomiale nella lunghezza dell'input, mentre si considerano inefficienti 
-quelli che hanno una complessit\`a computazionale maggiore. Pu\`o sembrare, quindi, naturale immaginare gli avversari come degli algoritmi che terminano in un numero polinomiale di passi
-rispetto alla lunghezza dell'input. Come si pu\`o notare, non si fa nessuna assunzione particolare sul comportamento dell'avversario. Le uniche cose che sappiamo sono che:
+Una linea di pensiero che accomuna ogni campo dell'informatica, considera efficienti gli algoritmi che terminano in un numero di passi polinomiale nella lunghezza dell'input, e inefficienti 
+quelli che hanno una complessit\`a computazionale maggiore (e.g. esponenziale). 
+La scelta di porre un limite alle risorse di calcolo dell'avversario \`e dettata dal buon senso.
+\`E ragionevole infatti pensare che l'attaccante non sia infinitamente potente; \`e altrettanto ragionevole pensare che un attaccante non sia disposto ad impiegare un tempo \emph{eccessivo} per violare un schema crittografico.\\
+Se un attaccante, infatti, per violare un cifrario, utilizzasse un algoritmo che impega l'et\`a dell'universo (stimata dai fisici intorno ai $10^{13}$ anni), sicuramente non riuscirebbe a sfruttare questa \emph{vittoria}.
+\`E logico, quindi, pensare che gli avversari vogliano essere \emph{efficienti}.
+Pu\`o sembrare, quindi, naturale immaginare gli avversari come degli algoritmi che terminano in un numero polinomiale di passi
+rispetto alla lunghezza dell'input.\\Come si pu\`o notare, non si fa alcuna assunzione particolare sul comportamento dell'avversario. Le uniche cose che sappiamo sono che:
 \begin{itemize}
  \item l'avversario non conosce la chiave, ma conosce l'algoritmo di cifratura utilizzato  e i parametri di sicurezza, come per esempio la lunghezza della chiave\footnote{Un famoso principio della crittografia afferma che
 l'algoritmo di cifratura non deve essere segreto e deve poter cadere nelle mani del nemico senza inconvenienti.}. 
@@ -138,7 +148,8 @@ fare sei all'enalotto giocando una schedina semplice.
 Finora abbiamo parlato sempre di funzioni che prendono in input un argomento non meglio specificato. 
 Al crescere di questo parametro, le funzioni si comportano in modo diverso, a seconda che siano trascurabili, oppure no.
 Ma cosa rappresenta nella realt\`a questo input?
-Di solito, questo valore rappresenta un generico parametro di sicurezza, indipendente dal segreto. Di solito lo si pensa come la lunghezza in bit delle chiavi.\\
+Di solito, questo valore rappresenta un generico parametro di sicurezza, indipendente dal segreto. \`E comune immaginarlo come la lunghezza in bit delle chiavi.\\
+D'ora in poi con affermazioni del tipo \flqq l'algoritmo \`e polinomiale, o esponenziale \frqq, si intenderanno algoritmi polinomiali o esponenziali nella lunghezza (in bit) del parametro di sicurezza (indicato con $n$). Si utilizzer\`a questa assunzione anche quando si faranno affermazioni su funzioni trascurabili o meno. Quelle funzioni saranno trascurabili o meno nel parametro $n$.
 Tutte le definizioni di sicurezza che vengono date nel modello computazionale e che utilizzano le probabilit\`a trascurabili, sono di tipo \emph{asintotico}.
 Un template di definizione di sicurezza è il seguente \cite{1206501}:
 \begin{quotation}
