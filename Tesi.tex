@@ -147,7 +147,7 @@ is negligible}
 \end{quotation}
 Essendo questo schema di definizione asintotico (nel parametro di sicurezza, che indicheremo con \emph{n} d'ora in poi), \`e ovvio che non considera valori piccoli di \emph{n}.
 Quindi se si dimostra che un particolare schema crittografico \`e sicuro secondo una definizione di questo tipo, pu\`o benissimo capitare che per valori piccoli di \emph{n} lo schema
-sia violabile con alta probabilit\`a bibliografia mostrare urle in tempi ragionevoli.
+sia violabile con alta probabilit\`a e in tempi ragionevoli.
 \newpage
 
 \section{Indistinguibilit\`a Computazionale}
@@ -185,7 +185,7 @@ fornito in base unaria\footnote{ignoreremo, d'ora in poi, questo cavillo formale
 
 La definizione di indistinguibilit\`a computazionale cattura quindi il seguente concetto: se due ensemble sono computazionalmente indistinguibili, 
 allora la probababilit\`a che un distinguitore riesca a discernere i valori provenienti da un insieme rispetto all'altro \`e trascurabile; di conseguenza agli occhi del distinguitore 
-gli ensemble non sono differenti e quindi sono per lui equivalenti (o meglio computazionalmente equivalenti). 
+gli ensemble non sono differenti e quindi sono per lui equivalenti (o meglio computazionalmente equivalenti o ancora, indistinguibili in tempo polinomiale). 
 Non \`e raro, nell'ambito scientifico in particolare, basarsi sul concetto generale di indistinguibilit\`a al fine di creare nuove classi di equivalenza di oggetti.
 
 \begin{quotation}
@@ -237,8 +237,8 @@ il codominio di $G$ avr\`a una cardinalit\`a pari a quella del dominio ovvero $2
 nell'output di $G$; questo a causa dell'abissale differenza di cardinalit\`a fra gli insiemi $G(B)$ e $A$.
 Quindi la probabilit\`a che una stringa scelta in maniera uniforme dall'insieme $A$ ricada nel codominio di $G$ \`e di $\frac{2^{n}}{2^{2n}}$, cio\`e $2^{-n}$.
 In teoria, quindi, \`e facile immaginare un distinguitore $D$ che riesca a discernere l'output di $G$ dalla distribuzione uniforme con probabilit\`a non trascurabile.
-Supponiamo che $D$ prenda in input $s \in A$. Tutto ci\`o che $D$ deve fare \`e ricercare in modo esaustivo un $w \in B$ tale che $G(w) = s$.
-Se $w \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $w$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stamper\`a 1 con probabilit\`a $2^{-n}$. 
+Supponiamo che $D$ prenda in input $y \in A$. Tutto ci\`o che $D$ deve fare \`e ricercare in modo esaustivo un $w \in B$ tale che $G(w) = y$.
+Se $y \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $y$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stamper\`a 1 con probabilit\`a $2^{-n}$. 
 Quindi abbiamo che: \\
 \\
 $\lvert Pr[D(r)=1] - Pr[D(G(s))=1]\rvert \geq 1 - 2^{-n}$\\
@@ -258,11 +258,11 @@ al one-time pad che usa una chiave pseudorandom. In generale i generatori pseudo
 
 \newpage
 \section{Dimostrazioni Basate su Games}
-In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della crittografia i \emph{games} e come sono strutturate la maggior parte delle dimostrazioni
-che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutorial di Shoup\cite{shoup} ...
-Una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici \`e basata sul concetto di game.
+In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della crittografia i \emph{games} (tradotti letterlamente con la parola "giochi") e come sono strutturate la maggior parte delle dimostrazioni
+che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutorial di Shoup\cite{shoup}.
+Quella basata sul concetto di game \`e tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
 Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attaccante a 
-vincere questo gioco.}. Di solito la definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad uan qualche costante come 
+vincere questo gioco.}. Di solito la definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad una qualche costante come 
 $0$ o $\frac{1}{2}$. Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper} il game \`e il seguente:
 \begin{itemize}
  \item L'avversario \textbf{A} sceglie due messaggi $m_0, m_1$.
