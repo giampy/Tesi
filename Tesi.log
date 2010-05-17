@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.5.14)  17 MAY 2010 13:16
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.5.14)  17 MAY 2010 15:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -471,12 +471,12 @@ Capitolo 5.
 
 ]) [19] (./Tesi.aux) ) 
 Here is how much of TeX's memory you used:
- 7178 strings out of 495061
- 101111 string characters out of 1182621
- 175852 words of memory out of 3000000
+ 7181 strings out of 495061
+ 101141 string characters out of 1182621
+ 175862 words of memory out of 3000000
  10163 multiletter control sequences out of 15000+50000
  20525 words of font info for 58 fonts, out of 3000000 for 9000
- 28 hyphenation exceptions out of 8191
+ 31 hyphenation exceptions out of 8191
  38i,14n,43p,416b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
  </home/sh0t/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1
 000.600pk> </home/sh0t/.texmf-var/fonts/pk/ljfour/jknappen/ec/ecbi1200.600pk> <
@@ -500,7 +500,7 @@ r8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texm
 f-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Tesi.pdf (19 pages, 308611 bytes).
+Output written on Tesi.pdf (19 pages, 308571 bytes).
 PDF statistics:
  623 PDF objects out of 1000 (max. 8388607)
  55 named destinations out of 1000 (max. 500000)
