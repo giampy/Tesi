@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.5.14)  17 MAY 2010 15:05
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.5.14)  17 MAY 2010 15:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -430,36 +430,36 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 111.
 
 [5] [6] [7]
-Overfull \hbox (2.65315pt too wide) in paragraph at lines 186--189
+Overfull \hbox (2.65315pt too wide) in paragraph at lines 184--187
 []\T1/cmr/m/it/12 Indistinguibilità com-putazionale. Due en-sem-ble $\OML/cmm/m
 /it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/cmsy/m/n/
 12 g$\T1/cmr/m/it/12 ,
  []
 
-[8]
-Overfull \hbox (5.78233pt too wide) in paragraph at lines 197--201
+
+Overfull \hbox (5.78233pt too wide) in paragraph at lines 194--198
 []\T1/cmr/m/n/12 La definizione di in-dis-tin-guibil-ità com-putazionale cat-tu
 ra quin-di il seguente
  []
 
-[9]
+[8]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 230.
-
-Underfull \hbox (badness 10000) in paragraph at lines 245--261
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 245--261
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 227.
+ [9]
+Underfull \hbox (badness 10000) in paragraph at lines 242--258
 
  []
 
-[10] [11] [12]
+
+Underfull \hbox (badness 10000) in paragraph at lines 242--258
+
+ []
+
+[10] [11] [12
+
+]
 Capitolo 3.
-[13
-
-] [14
+[13] [14
 
 ]
 Capitolo 4.
@@ -473,7 +473,7 @@ Capitolo 5.
 Here is how much of TeX's memory you used:
  7181 strings out of 495061
  101141 string characters out of 1182621
- 175862 words of memory out of 3000000
+ 174862 words of memory out of 3000000
  10163 multiletter control sequences out of 15000+50000
  20525 words of font info for 58 fonts, out of 3000000 for 9000
  31 hyphenation exceptions out of 8191
@@ -500,9 +500,9 @@ r8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
 r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texm
 f-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fo
 nts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Tesi.pdf (19 pages, 308571 bytes).
+Output written on Tesi.pdf (19 pages, 308679 bytes).
 PDF statistics:
- 623 PDF objects out of 1000 (max. 8388607)
+ 624 PDF objects out of 1000 (max. 8388607)
  55 named destinations out of 1000 (max. 500000)
  81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

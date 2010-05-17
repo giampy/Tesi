@@ -159,8 +159,6 @@ is negligible}
 Essendo questo schema di definizione asintotico (nel parametro di sicurezza \emph{n}), \`e ovvio che non considera valori piccoli di \emph{n}.
 Quindi se si dimostra che un particolare schema crittografico \`e sicuro secondo una definizione di questo tipo, pu\`o benissimo capitare che per valori piccoli di \emph{n} lo schema
 sia violabile con alta probabilit\`a e in tempi ragionevoli.
-\newpage
-
 \section{Indistinguibilit\`a Computazionale}
 Se due oggetti, sebbene profondamente diversi fra loro, non possono essere distinti, allora sono da un certo punto di vista equivalenti.
 Nel caso della crittografia computazionale, due oggetti sono computazionalmente equivalenti se nessun algoritmo efficiente li pu\`o distinguere.
@@ -187,7 +185,6 @@ Dopo questa breve introduzione all'indistinguibilit\`a siamo pronti per dare una
 Due ensemble $X=\{X_n\}$, $Y=\{Y_n\}$ sono computazionalmente indistinguibili se e solo se per ogni algoritmo $D \in BPP$ (detto distinguitore) esiste $\mu$ trascurabile tale che:
  $\lvert Pr[D(1^n, X_n) = 1] - Pr[D(1^n, Y_n) = 1] \rvert \leq \mu(n)$.
 \end{definizione}
-\newpage
 Nella definizione precedente: $Pr[D(1^n, X_n) = 1]$ \`e la probabilit\`a che, scegliendo $x$ secondo la distribuzione $X_n$ e fornendo questo valore al distinguitore insieme al valore $1^n$, il distinguitore stampi $1$.
 Il fatto che al distinguitore si fornisca anche il valore del parametro di sicurezza in base unaria, serve ad esser sicuri che in ogni caso il distinguitore impieghi un tempo polinomiale 
 nel parametro di sicurezza.
@@ -266,8 +263,6 @@ essere il valore con cui viene fatto lo $XOR$ del messaggio (anch'esso di lunghe
 Siccome una stringa pseudorandom appare, ad un distinguitore efficiente $D$, come una stringa random, $D$ non ottiene un vantaggio sensibile nel passaggio dal vero one-time pad
 al one-time pad che usa una chiave pseudorandom. In generale i generatori pseudorandom sono molto utili in crittografia per creare schemi crittografici simmetrici.
 
-
-\newpage
 \section{Dimostrazioni Basate su Games}
 In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della crittografia i \emph{games} (tradotti letterlamente con la parola "giochi") e come sono strutturate la maggior parte delle dimostrazioni
 che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutorial di Shoup\cite{shoup}.
