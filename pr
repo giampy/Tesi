@@ -1,0 +1,21 @@
+param nK, n1.
+const  mark: biststring.
+type Codominio[fixed, large].
+type seed[fixed, large].  
+
+fun G'(seed) : Codomain.
+equiv 
+
+
+    foreach iK <= nK do r <-R seed; b <-R bool; (
+        Ow() := return(w) |
+         foreach i1 <= n1 do Oeq(b': bool) := return(b' = b) |
+            Ob() := return(b))
+
+    <=(0)=>
+    foreach iK <= nK do r <-R seed; w1<-R Codominio; b <-R bool;(
+        Ow() := return(w) |
+        foreach i1 <= n1 do b1<-R bool; Oeq(b': bool) :=
+               if defined(k) then return(b' = b) else return (b1) |
+               Ob() := let k:bitstring = mark in return(b)). 
+    
