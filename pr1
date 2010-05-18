@@ -1,0 +1,25 @@
+define PseudoRandomness(seed, Codominio, POW, G') {
+param n1, n2.
+const mark: biststring.
+fun G'(seed) : Codominio.
+proba POW.
+equiv
+	foreach i1 <=n1 do
+				w <-R Codominio;
+				Ow():=return(w)|
+	foreach i2 <= n2 do Oeq(b': bool):=return (b'=true)|
+		Ob():=return (true)
+	   
+
+    <=(POW)=> (*da definire*)
+    
+	foreach i1<=n1 do
+			r <-R seed;
+			Ow():=return (G'(r))|
+	foreach i2<=n2 do b1<-R bool;	
+			Oeq(b': bool):= if defined(k)then  return (b')
+							else return (b1)|
+			Ob():=let k:bitstring = mark in return(true)
+										
+}
+

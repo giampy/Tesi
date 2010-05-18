@@ -8,9 +8,11 @@
 \usepackage{verbatim}   % useful for program listings
 \usepackage{color}      % use if color is used in text
 \usepackage{subfigure}  % use for side-by-side figures
-\usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs
-\author{Gian Pietro Farina}
+\usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs 
+\usepackage{t1enc}
 
+\author{Gian Pietro Farina}
+\hyphenation{li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti}
 
 \newtheorem{definizione}{Definizione}[chapter]
 \newtheorem{proposizione}{Proposizione}[chapter]
@@ -47,18 +49,26 @@ Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cit
 
 In \cite{DBLP:journals/joc/AbadiR07} gli autori cercano per la primavolta di porre le basi per iniziare a collegare questi due modelli.
 
+
+%parlare del concetto di attaccante e di dimostrazioni che sfruttano 
+%il fatto che l'attaccante non può fare delle cose
 \chapter{Il Modello Computazionale}
-\section{L'avversario}
+\section{L'Avversario}
 Il tipico avversario con cui si ha a che fare quando si studiano cifrari o protocolli crittografici nel modello computazionale,
 è un avversario con risorse di calcolo \emph{limitate}. Limitate nel senso che si sceglie di porre un limite alla potenza di calcolo dell'avversario.
-Questo significa che non avremo a che fare con un avversario che ha una potenza computazionale infinita o un tempo illimitato a disposizione.
+Questo significa che non avremo a che fare con un avversario che ha una potenza computazionale infinita o un tempo illimitato a disposizione.\\
 Sebbene siano stati ideati cifrari sicuri anche rispetto ad avversari non limitati\footnote{one-time pad ne \`e un esempio lampante.}, questi hanno alcuni difetti come per esempio
 il fatto che la chiave debba essere lunga quanto il messaggio o che sia utilizzabile una sola volta.
 Per rappresentare in modo formale un avversario con risorse di calcolo limitate, lo si può pensare come un algoritmo appartenente ad una 
 particolare classe di complessit\`a computazionale\footnote{un avversario \`e, alla fine dei conti, una macchina di Turing che esegue un algoritmo.}. \\
-Da sempre si considerano efficienti gli algoritmi che terminano in un numero di passi polinomiale nella lunghezza dell'input, mentre si considerano inefficienti 
-quelli che hanno una complessit\`a computazionale maggiore. Pu\`o sembrare, quindi, naturale immaginare gli avversari come degli algoritmi che terminano in un numero polinomiale di passi
-rispetto alla lunghezza dell'input. Come si pu\`o notare, non si fa nessuna assunzione particolare sul comportamento dell'avversario. Le uniche cose che sappiamo sono che:
+Una linea di pensiero che accomuna ogni campo dell'informatica, considera efficienti gli algoritmi che terminano in un numero di passi polinomiale nella lunghezza dell'input, e inefficienti 
+quelli che hanno una complessit\`a computazionale maggiore (e.g. esponenziale). 
+La scelta di porre un limite alle risorse di calcolo dell'avversario \`e dettata dal buon senso.
+\`E ragionevole infatti pensare che l'attaccante non sia infinitamente potente; \`e altrettanto ragionevole pensare che un attaccante non sia disposto ad impiegare un tempo \emph{eccessivo} per violare un schema crittografico.\\
+Se un attaccante, infatti, per violare un cifrario, utilizzasse un algoritmo che impega l'et\`a dell'universo (stimata dai fisici intorno ai $10^{13}$ anni), sicuramente non riuscirebbe a sfruttare questa \emph{vittoria}.
+\`E logico, quindi, pensare che gli avversari vogliano essere \emph{efficienti}.
+Pu\`o sembrare, quindi, naturale immaginare gli avversari come degli algoritmi che terminano in un numero polinomiale di passi
+rispetto alla lunghezza dell'input.\\Come si pu\`o notare, non si fa alcuna assunzione particolare sul comportamento dell'avversario. Le uniche cose che sappiamo sono che:
 \begin{itemize}
  \item l'avversario non conosce la chiave, ma conosce l'algoritmo di cifratura utilizzato  e i parametri di sicurezza, come per esempio la lunghezza della chiave\footnote{Un famoso principio della crittografia afferma che
 l'algoritmo di cifratura non deve essere segreto e deve poter cadere nelle mani del nemico senza inconvenienti.}. 
@@ -98,12 +108,12 @@ Non \`e quindi necessario dimostrare che un particolare schema crittografico sia
  \item lo si pu\`o violare con alta probabilit\`a, ma solo in tempi non ragionevoli.
 \end{itemize}
 Sappiamo che il concetto di \emph{tempo ragionevole} \`e catturato dalla classe degli algoritmi polinomiali probabilistici. Vediamo ora di catturare il concetto di \emph{scarsa probabilit\`a}.
-\section{Funzioni trascurabili e non $\dots$}
+\section{Funzioni Trascurabili e non $\dots$}
 In crittografia i concetti di \emph{scarsa probabilit\`a} e di evento \emph{raro} vengono formalizzati attraverso la nozione di funzione trascurabile.
 \begin{definizione}{Funzione Trascurabile (negligible).}
 Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e trascurabile se e solo se per ogni polinomio $p$, esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) < \frac{1}{p(n)}$.  
 \end{definizione}
-Una funzione trascurabile, quindi, \`e una funzione che tende a 0 in modo pi\`u veloce dell'inverso di qualsiasi polinomio.
+Una funzione trascurabile, quindi, \`e una funzione che tende a 0 pi\`u velocemente dell'inverso di qualsiasi polinomio.
 Un'altra definizione utile \`e la seguente:
 \begin{definizione}{Funzione Distinguibile (noticeable).}
 Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e distinguibile se e solo se esiste un polinomio $p$, tale per cui esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) > \frac{1}{p(n)}$.  
@@ -115,7 +125,7 @@ non \`e n\'e trascurabile n\'e distinguibile. Questo perch\'e le definizioni pre
 
 Se sappiamo che, in un esperimento, un evento avviene con una probabilt\`a trascurabile,
 quest'evento si verificher\`a con una probabilit\`a trascurabile anche se l'esperimento viene ripetuto molte volte (ma sempre un numero polinomiale di volte), e quindi per la legge dei grandi numeri, 
-con una frequenza altrettanto trascurabile\footnote{In modo informale, la legge debole dei grandi numeri afferma che: per un numero grande di prove, 
+con una frequenza anch'essa trascurabile\footnote{In modo informale, la legge debole dei grandi numeri afferma che: per un numero grande di prove, 
 la frequenza approssima la probabilit\`a di un evento.}. 
 Le funzioni trascurabili, infatti, godono di due particolari propriet\`a di chiusura, enunciate nella seguente:
 \begin{proposizione}
@@ -133,23 +143,22 @@ In \cite{1206501}, infatti leggiamo:
 \emph{Events that occur with negligible probability are so unlikely to occur that can be ignored for all practical purposes. Therefore,
 a break of a cryptographic scheme that occurs with negligible probability is not significant.}
 \end{quotation}
-Potrebbe sembrare pericoloso utilizzare degli schemi crittografici che ammettono di essere violati con probabilit\`a trascurabile, ma questa possiblit\`a \`e cosi remota, che se ci preoccupassimo, per amor di coerenza, dovremmo anche essere ragionevolmente sicuri di 
+Potrebbe sembrare pericoloso utilizzare degli schemi crittografici che ammettono di essere violati con probabilit\`a trascurabile, ma questa possibilit\`a \`e cosi remota, che se ci preoccupassimo, per amor di coerenza, dovremmo anche essere ragionevolmente sicuri di 
 fare sei all'enalotto giocando una schedina semplice.
 Finora abbiamo parlato sempre di funzioni che prendono in input un argomento non meglio specificato. 
 Al crescere di questo parametro, le funzioni si comportano in modo diverso, a seconda che siano trascurabili, oppure no.
 Ma cosa rappresenta nella realt\`a questo input?
-Di solito, questo valore rappresenta un generico parametro di sicurezza, indipendente dal segreto. Di solito lo si pensa come la lunghezza in bit delle chiavi.\\
+Di solito, questo valore rappresenta un generico parametro di sicurezza, indipendente dal segreto. \`E comune immaginarlo come la lunghezza in bit delle chiavi.\\
+D'ora in poi con affermazioni del tipo \flqq\l'algoritmo \`e polinomiale, o esponenziale\frqq, si intenderanno algoritmi polinomiali o esponenziali nella lunghezza (in bit) del parametro di sicurezza (indicato con $n$). Si utilizzer\`a questa assunzione anche quando si faranno affermazioni su funzioni trascurabili o meno. Quelle funzioni saranno trascurabili o meno nel parametro $n$.
 Tutte le definizioni di sicurezza che vengono date nel modello computazionale e che utilizzano le probabilit\`a trascurabili, sono di tipo \emph{asintotico}.
 Un template di definizione di sicurezza è il seguente \cite{1206501}:
 \begin{quotation}
 \emph{A scheme is secure if for every probablistic polynomial-time adversary \textbf{A} [...], the probability that \textbf{A} succeds in this attack [...]
 is negligible}
 \end{quotation}
-Essendo questo schema di definizione asintotico (nel parametro di sicurezza, che indicheremo con \emph{n} d'ora in poi), \`e ovvio che non considera valori piccoli di \emph{n}.
+Essendo questo schema di definizione asintotico (nel parametro di sicurezza \emph{n}), \`e ovvio che non considera valori piccoli di \emph{n}.
 Quindi se si dimostra che un particolare schema crittografico \`e sicuro secondo una definizione di questo tipo, pu\`o benissimo capitare che per valori piccoli di \emph{n} lo schema
 sia violabile con alta probabilit\`a e in tempi ragionevoli.
-\newpage
-
 \section{Indistinguibilit\`a Computazionale}
 Se due oggetti, sebbene profondamente diversi fra loro, non possono essere distinti, allora sono da un certo punto di vista equivalenti.
 Nel caso della crittografia computazionale, due oggetti sono computazionalmente equivalenti se nessun algoritmo efficiente li pu\`o distinguere.
@@ -162,12 +171,12 @@ Sia $I$ un insieme numerabile infinito.\\ $X=\{X_i\}_{i \in I}$ \`e un ensemble 
 \end{definizione}
 Un \emph{ensemble} \`e quindi una sequenza infinita di distribuzioni di probabilit\`a\footnote{siccome si parla di distribuzioni su stringhe di bit con lunghezza finita,
 in crittografia computazionale si considerano ensemble che sono una sequenza inifinta di distribuzioni finite di stringhe di bit.}. 
-Tipicamente le variabili dell'ensemble sono stringhe di lunghezza $i$. $X_i$ \`e quindi la distribuzione di probabilit\`a uniforme su stringhe di lunghezza $i$.
+Tipicamente le variabili dell'ensemble sono stringhe di lunghezza $i$. $X_i$ \`e quindi una distribuzione di probabilit\`a su stringhe di lunghezza $i$.
 
 Ora supponiamo di avere due ensemble $X$ e $Y$. Intuitivamente queste distribuzioni sono indistinguibili se nessun algoritmo (efficiente) pu\`o accettare infiniti elementi di $X_n$
 (per esempio stampando $1$ su input preso da $X_n$) e scartare infiniti elementi di $Y_n$ (per esempio stampare $0$ su input preso da $Y_n$). \`E importante notare che sarebbe facile 
 distinguere due \emph{singole} distribuzioni usando un approccio esaustivo, ecco perch\'e si considerano sequenze infinite di ditribuzioni finite.
-In poche parole questi ensemble sono indistinguibili se ogni algoritmo accetta $x \in X_n$ se e solo se accetta $y \in Y_n$. Ovviamente il \emph{se e solo se} non pu\`o e non deve
+In poche parole questi ensemble sono indistinguibili se ogni algoritmo (efficiente) accetta $x \in X_n$ se e solo se accetta $y \in Y_n$. Ovviamente il \emph{se e solo se} non pu\`o e non deve
 essere inteso in senso \emph{classico}, ma deve essere inteso in senso statistico. Poich\'e in crittografia si \`e soliti indicare con $U_m$ una variabile
 uniformemente distribuita sull'insieme delle stringhe di lunghezza $m$, chiameremo $U=\{U_n\}_{n \in \mathbb{N}}$ l'ensemble uniforme.
 Dopo questa breve introduzione all'indistinguibilit\`a siamo pronti per dare una definizione rigorosa:
@@ -176,7 +185,6 @@ Dopo questa breve introduzione all'indistinguibilit\`a siamo pronti per dare una
 Due ensemble $X=\{X_n\}$, $Y=\{Y_n\}$ sono computazionalmente indistinguibili se e solo se per ogni algoritmo $D \in BPP$ (detto distinguitore) esiste $\mu$ trascurabile tale che:
  $\lvert Pr[D(1^n, X_n) = 1] - Pr[D(1^n, Y_n) = 1] \rvert \leq \mu(n)$.
 \end{definizione}
-\newpage
 Nella definizione precedente: $Pr[D(1^n, X_n) = 1]$ \`e la probabilit\`a che, scegliendo $x$ secondo la distribuzione $X_n$ e fornendo questo valore al distinguitore insieme al valore $1^n$, il distinguitore stampi $1$.
 Il fatto che al distinguitore si fornisca anche il valore del parametro di sicurezza in base unaria, serve ad esser sicuri che in ogni caso il distinguitore impieghi un tempo polinomiale 
 nel parametro di sicurezza.
@@ -185,9 +193,9 @@ fornito in base unaria\footnote{ignoreremo, d'ora in poi, questo cavillo formale
 
 La definizione di indistinguibilit\`a computazionale cattura quindi il seguente concetto: se due ensemble sono computazionalmente indistinguibili, 
 allora la probababilit\`a che un distinguitore riesca a discernere i valori provenienti da un insieme rispetto all'altro \`e trascurabile; di conseguenza agli occhi del distinguitore 
-gli ensemble non sono differenti e quindi sono per lui equivalenti (o meglio computazionalmente equivalenti). 
+gli ensemble non sono differenti e quindi sono per lui equivalenti (o meglio computazionalmente equivalenti o ancora, indistinguibili in tempo polinomiale). 
 Non \`e raro, nell'ambito scientifico in particolare, basarsi sul concetto generale di indistinguibilit\`a al fine di creare nuove classi di equivalenza di oggetti.
-
+\newpage
 \begin{quotation}
 \emph{The concept of efficient computation leads naturally to a new kind of equivalence between objects: Objects are considered to be computationally equivalent if they cannot be
 differentiated by any efficient procedure.} We note that considering indistinguishable objects as equivalent is one of the basics paradigms of both science and real-life situations. Hence,
@@ -196,9 +204,9 @@ we believe that the notion of computational indistinguishability is a very natur
 
 
 
-\section{Pseudocasualit\`a e generatori pseudocasuali}
+\section{Pseudocasualit\`a e Generatori Pseudocasuali}
 Argomento centrale di questa sezione \`e il concetto di \emph{pseudocasualit\`a} (pseudorandomness), applicato a stringhe di bit di lunghezza finita.
-Parlare di pseudocasualit\`a applicata ad una \emph{singola} stringa ha poco senso quanto ne ha poco parlare di singola stringa casuale (random).
+Parlare di pseudocasualit\`a applicata ad una \emph{singola} stringa, ha poco senso quanto ne ha poco parlare di singola stringa casuale (random).
 Il concetto di casualit\`a (come quello di pseudocasualit\`a) si applica, infatti, a distribuzioni di oggetti (stringhe di bit nel nostro caso) e non a singoli oggetti.\\
 La nozione di casualit\`a \`e fortemente legata a quella di distribuzione uniforme. Un insieme di oggetti \`e caratterizzato
 da una distribuzione uniforme se la probabilit\`a \`e equamente distribuita su tutti gli oggetti. Quindi \emph{l'estrazione} di un elemento \`e del tutto casuale, 
@@ -237,13 +245,13 @@ il codominio di $G$ avr\`a una cardinalit\`a pari a quella del dominio ovvero $2
 nell'output di $G$; questo a causa dell'abissale differenza di cardinalit\`a fra gli insiemi $G(B)$ e $A$.
 Quindi la probabilit\`a che una stringa scelta in maniera uniforme dall'insieme $A$ ricada nel codominio di $G$ \`e di $\frac{2^{n}}{2^{2n}}$, cio\`e $2^{-n}$.
 In teoria, quindi, \`e facile immaginare un distinguitore $D$ che riesca a discernere l'output di $G$ dalla distribuzione uniforme con probabilit\`a non trascurabile.
-Supponiamo che $D$ prenda in input $s \in A$. Tutto ci\`o che $D$ deve fare \`e ricercare in modo esaustivo un $w \in B$ tale che $G(w) = s$.
-Se $w \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $w$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stamper\`a 1 con probabilit\`a $2^{-n}$. 
+Supponiamo che $D$ prenda in input $y \in A$. Tutto ci\`o che $D$ deve fare \`e ricercare in modo esaustivo un $w \in B$ tale che $G(w) = y$.
+Se $y \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $y$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stamper\`a 1 con probabilit\`a $2^{-n}$. 
 Quindi abbiamo che: \\
 \\
-$\lvert Pr[D(r)=1] - Pr[D(G(s))=1]\rvert \geq 1 - 2^n$\\
+$\lvert Pr[D(r)=1] - Pr[D(G(s))=1]\rvert \geq 1 - 2^{-n}$\\
 \\con $r \xleftarrow{R} A$ e $s \xleftarrow{R} B$\footnote{con la notazione $s \xleftarrow{R} O$, si intende la scelta dell'elemento $s \in O$ in maniera random.}.\\ 
-Il membro a destra della disequazione \`e una funzione notevole. Sembrerebbe quindi che $G$ non sia un generatore pseudorandom.
+Il membro a destra della disequazione \`e una funzione distinguibile. Sembrerebbe quindi che $G$ non sia un generatore pseudorandom.
 C'\`e un' importante constatazione da fare per\`o. Il distinguitore $D$ non \`e efficiente! Infatti impiega un tempo esponenziale nel parametro $n$, e non polinomiale.
 La distribuzione generata da $G$ dunque, \`e si ben lontana dall'essere uniforme, ma questo non \`e importante dal momento che nessun distinguitore che viaggia in tempo polinomiale pu\`o 
 accorgersene.
@@ -255,12 +263,24 @@ essere il valore con cui viene fatto lo $XOR$ del messaggio (anch'esso di lunghe
 Siccome una stringa pseudorandom appare, ad un distinguitore efficiente $D$, come una stringa random, $D$ non ottiene un vantaggio sensibile nel passaggio dal vero one-time pad
 al one-time pad che usa una chiave pseudorandom. In generale i generatori pseudorandom sono molto utili in crittografia per creare schemi crittografici simmetrici.
 
-
-\newpage
 \section{Dimostrazioni Basate su Games}
-Una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche, o di protocolli crittografici \`e basata sul concetto di \emph{game}.
-Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attacante a 
-vincere questo gioco.}.
+In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della crittografia i \emph{games} (tradotti letteralmente con la parola "giochi") e come sono strutturate la maggior parte delle dimostrazioni
+che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutorial di Shoup\cite{shoup}.
+Quella basata sul concetto di game \`e una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
+Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attaccante a 
+vincere questo gioco.}. Di solito la definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad una qualche costante come 
+$0$ o $\frac{1}{2}$. Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper} il game \`e il seguente:
+\begin{itemize}
+ \item L'avversario \textbf{A} sceglie due messaggi $m_0, m_1$.
+ \item Lo sfidante \textbf{S} genera una chiave $k$ e un bit $b \xleftarrow{R} \{0,1\}$.
+ \item \textbf{S} crea il messaggio $c$, tale che $c= Enc_k(m_b)$ e lo da in input ad \textbf{A}.
+ \item \textbf{A} stampa un bit $b^{'}$
+\end{itemize}
+
+Sia $E$ l'evento: ``\textbf{A} stampa $b^{'}$ e $b=b^{'}$''.\\ 
+Definiamo sicuro il sistema se $\exists \mu$ trascurabile tale che $Pr[E]\leq \frac{1}{2} + \mu(n)$.
+
+
 
 
 

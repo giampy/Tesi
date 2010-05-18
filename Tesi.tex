@@ -65,7 +65,7 @@ Una linea di pensiero che accomuna ogni campo dell'informatica, considera effici
 quelli che hanno una complessit\`a computazionale maggiore (e.g. esponenziale). 
 La scelta di porre un limite alle risorse di calcolo dell'avversario \`e dettata dal buon senso.
 \`E ragionevole infatti pensare che l'attaccante non sia infinitamente potente; \`e altrettanto ragionevole pensare che un attaccante non sia disposto ad impiegare un tempo \emph{eccessivo} per violare un schema crittografico.\\
-Se un attaccante, infatti, per violare un cifrario, utilizzasse un algoritmo che impega l'et\`a dell'universo (stimata dai fisici intorno ai $10^{13}$ anni), sicuramente non riuscirebbe a sfruttare questa \emph{vittoria}.
+Se un attaccante, infatti, per violare un cifrario, utilizzasse un algoritmo che impega l'et\`a dell'universo (stimata dai fisici intorno ai $13$ miliardi di anni), sicuramente non riuscirebbe a sfruttare questa \emph{vittoria}.
 \`E logico, quindi, pensare che gli avversari vogliano essere \emph{efficienti}.
 Pu\`o sembrare, quindi, naturale immaginare gli avversari come degli algoritmi che terminano in un numero polinomiale di passi
 rispetto alla lunghezza dell'input.\\Come si pu\`o notare, non si fa alcuna assunzione particolare sul comportamento dell'avversario. Le uniche cose che sappiamo sono che:
@@ -149,7 +149,7 @@ Finora abbiamo parlato sempre di funzioni che prendono in input un argomento non
 Al crescere di questo parametro, le funzioni si comportano in modo diverso, a seconda che siano trascurabili, oppure no.
 Ma cosa rappresenta nella realt\`a questo input?
 Di solito, questo valore rappresenta un generico parametro di sicurezza, indipendente dal segreto. \`E comune immaginarlo come la lunghezza in bit delle chiavi.\\
-D'ora in poi con affermazioni del tipo \flqq l'algoritmo \`e polinomiale, o esponenziale \frqq, si intenderanno algoritmi polinomiali o esponenziali nella lunghezza (in bit) del parametro di sicurezza (indicato con $n$). Si utilizzer\`a questa assunzione anche quando si faranno affermazioni su funzioni trascurabili o meno. Quelle funzioni saranno trascurabili o meno nel parametro $n$.
+D'ora in poi con affermazioni del tipo \flqq\l'algoritmo \`e polinomiale, o esponenziale\frqq, si intenderanno algoritmi polinomiali o esponenziali nella lunghezza (in bit) del parametro di sicurezza (indicato con $n$). Si utilizzer\`a questa assunzione anche quando si faranno affermazioni su funzioni trascurabili o meno. Quelle funzioni saranno trascurabili o meno nel parametro $n$.
 Tutte le definizioni di sicurezza che vengono date nel modello computazionale e che utilizzano le probabilit\`a trascurabili, sono di tipo \emph{asintotico}.
 Un template di definizione di sicurezza è il seguente \cite{1206501}:
 \begin{quotation}
@@ -195,7 +195,7 @@ La definizione di indistinguibilit\`a computazionale cattura quindi il seguente 
 allora la probababilit\`a che un distinguitore riesca a discernere i valori provenienti da un insieme rispetto all'altro \`e trascurabile; di conseguenza agli occhi del distinguitore 
 gli ensemble non sono differenti e quindi sono per lui equivalenti (o meglio computazionalmente equivalenti o ancora, indistinguibili in tempo polinomiale). 
 Non \`e raro, nell'ambito scientifico in particolare, basarsi sul concetto generale di indistinguibilit\`a al fine di creare nuove classi di equivalenza di oggetti.
-
+\newpage
 \begin{quotation}
 \emph{The concept of efficient computation leads naturally to a new kind of equivalence between objects: Objects are considered to be computationally equivalent if they cannot be
 differentiated by any efficient procedure.} We note that considering indistinguishable objects as equivalent is one of the basics paradigms of both science and real-life situations. Hence,
@@ -264,12 +264,14 @@ Siccome una stringa pseudorandom appare, ad un distinguitore efficiente $D$, com
 al one-time pad che usa una chiave pseudorandom. In generale i generatori pseudorandom sono molto utili in crittografia per creare schemi crittografici simmetrici.
 
 \section{Dimostrazioni Basate su Games}
-In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della crittografia i \emph{games} (tradotti letterlamente con la parola "giochi") e come sono strutturate la maggior parte delle dimostrazioni
+In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della crittografia i \emph{games} (tradotti letteralmente con la parola "giochi") e come sono strutturate la maggior parte delle dimostrazioni
 che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutorial di Shoup\cite{shoup}.
-Quella basata sul concetto di game \`e tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
+Quella basata sul concetto di game \`e una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
 Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attaccante a 
 vincere questo gioco.}. Di solito la definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad una qualche costante come 
-$0$ o $\frac{1}{2}$. Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper} il game \`e il seguente:
+$0$ o $\frac{1}{2}$.\\
+Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper}, supponiamo di fare l'esperimento 
+mentale seguente:
 \begin{itemize}
  \item L'avversario \textbf{A} sceglie due messaggi $m_0, m_1$.
  \item Lo sfidante \textbf{S} genera una chiave $k$ e un bit $b \xleftarrow{R} \{0,1\}$.
