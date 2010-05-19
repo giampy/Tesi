@@ -65,7 +65,7 @@ Una linea di pensiero che accomuna ogni campo dell'informatica, considera effici
 quelli che hanno una complessit\`a computazionale maggiore (e.g. esponenziale). 
 La scelta di porre un limite alle risorse di calcolo dell'avversario \`e dettata dal buon senso.
 \`E ragionevole infatti pensare che l'attaccante non sia infinitamente potente; \`e altrettanto ragionevole pensare che un attaccante non sia disposto ad impiegare un tempo \emph{eccessivo} per violare un schema crittografico.\\
-Se un attaccante, infatti, per violare un cifrario, utilizzasse un algoritmo che impega l'et\`a dell'universo (stimata dai fisici intorno ai $10^{13}$ anni), sicuramente non riuscirebbe a sfruttare questa \emph{vittoria}.
+Se un attaccante, infatti, per violare un cifrario, utilizzasse un algoritmo che impega l'et\`a dell'universo (stimata dai fisici intorno ai $13$ miliardi di anni), sicuramente non riuscirebbe a sfruttare questa \emph{vittoria}.
 \`E logico, quindi, pensare che gli avversari vogliano essere \emph{efficienti}.
 Pu\`o sembrare, quindi, naturale immaginare gli avversari come degli algoritmi che terminano in un numero polinomiale di passi
 rispetto alla lunghezza dell'input.\\Come si pu\`o notare, non si fa alcuna assunzione particolare sul comportamento dell'avversario. Le uniche cose che sappiamo sono che:
@@ -269,7 +269,9 @@ che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutori
 Quella basata sul concetto di game \`e una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
 Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attaccante a 
 vincere questo gioco.}. Di solito la definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad una qualche costante come 
-$0$ o $\frac{1}{2}$. Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper} il game \`e il seguente:
+$0$ o $\frac{1}{2}$.\\
+Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper}, supponiamo di fare l'esperimento 
+mentale seguente:
 \begin{itemize}
  \item L'avversario \textbf{A} sceglie due messaggi $m_0, m_1$.
  \item Lo sfidante \textbf{S} genera una chiave $k$ e un bit $b \xleftarrow{R} \{0,1\}$.
