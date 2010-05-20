@@ -290,6 +290,696 @@ Definiamo sicuro il sistema se $\exists \mu$ trascurabile tale che $Pr[E]\leq \f
 
 
 \chapter{CryptoVerif}
+\section{Introduzione al Tool}
+CryptoVerif \`e un \emph{dimostratore} automatico che lavora direttamente nel modello computazionale.
+Questo tool \`e utilizzato per dimostrare le propriet\`a di segretezza e autenticazione. Questo dimostratore dimostra i suoi risultati basandosi sulla tecnica dei 
+game e le sue prove di sicurezza sono valide per un numero polinomiale di game nel parametro di sicurezza. Il tool pu\`o inoltre calcolare la probabilit\`a di successo
+di un attaccante come funzione di alcuni parametri come il tempo impiegato la cardinalit\`a degli insiemi in gioco ecc, ecc\dots
+Il tool \`e liberamente scaricabile sotto la licenza CeCill\footnote{http://www.cecill.info/licences/} all'url [xxx].
+L'autore principale di CryptoVerif \`e Bruno Blanchet [xxx].
+Il tool \`e stato scritto in ML con 18000 righe di codice.
+\`E un tool molto recente ed \`e in continuo sviluppo.
+Un'altra strada \`e quella di dimostrare la correttezza del protocollo nel modello formale e poi di sfruttare il teorema [???]...
+\section{Un Esempio: FDH}
+Full Domain Hash \`e un protocollo...blahblah..
+
+
+
+\begin{verbatim}
+Initial state
+Game 1 is
+(
+   foreach iH_13 ≤ qH do
+   OH(x : bitstring) :=
+   return(hash(x ))
+|
+   Ogen() :=
+      R
+   r ← seed ;
+   pk : pkey ← pkgen(r );
+   sk : skey ← skgen(r );
+   return(pk );
+   (
+      foreach iS 14 ≤ qS do
+      OS(m : bitstring) :=
+      return(invf(sk , hash(m)))
+   |
+      OT (m : bitstring, s : D) :=
+      if (f(pk , s) = hash(m )) then
+      find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+         end
+      else
+         event forge
+   )
+)
+Applying equivalence
+foreach iH 11 ≤ nH do OH(x : bitstring) := return(hash(x ))[all]
+≈0
+foreach iH 12 ≤ nH do OH(x16 : bitstring) := x : bitstring ← x16 ;
+  find u ≤ nH suchthat defined(x [u], r [u]) ∧ (x = x [u]) then return(r [u])
+          R
+  else r ← D; return(r )
+yields
+Game 2 is
+(
+   foreach iH 13 ≤ qH do
+   OH(x : bitstring) :=
+   x23 : bitstring ← x ;
+   find suchthat defined(x19 , r18 ) ∧ (x23 = x19 ) then
+      return(r18 )
+   ⊕ @i 29 ≤ qS suchthat defined(x21 [@i 29 ], r20 [@i 29 ]) ∧ (x23 = x21 [@i 29 ]) then
+      return(r20 [@i 29 ])
+   ⊕ @i 28 ≤ qH suchthat defined(x23 [@i 28 ], r22 [@i 28 ]) ∧ (x23 = x23 [@i 28 ]) then
+      return(r22 [@i 28 ])
+   else
+           R
+      r22 ← D;
+      return(r22 )
+|
+   Ogen() :=
+      R
+   r ← seed ;
+   pk : pkey ← pkgen(r );
+                                                             1
+  sk : skey ← skgen(r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    x21 : bitstring ← m;
+    find suchthat defined(x19 , r18 ) ∧ (x21 = x19 ) then
+       return(invf(sk , r18 ))
+    ⊕ @i 27 ≤ qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) ∧ (x21 = x21 [@i 27 ]) then
+       return(invf(sk , r20 [@i 27 ]))
+    ⊕ @i 26 ≤ qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) ∧ (x21 = x23 [@i 26 ]) then
+       return(invf(sk , r22 [@i 26 ]))
+    else
+            R
+       r20 ← D;
+       return(invf(sk , r20 ))
+  |
+    OT (m : bitstring, s : D) :=
+    x19 : bitstring ← m ;
+    find suchthat defined(x19 , r18 ) ∧ (x19 = x19 ) then
+       if (f(pk , s) = r18 ) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    ⊕ @i 25 ≤ qS suchthat defined(x21 [@i 25 ], r20 [@i 25 ]) ∧ (x19 = x21 [@i 25 ]) then
+       if (f(pk , s) = r20 [@i 25 ]) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    ⊕ @i 24 ≤ qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) ∧ (x19 = x23 [@i 24 ]) then
+       if (f(pk , s) = r22 [@i 24 ]) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    else
+            R
+       r18 ← D;
+       if (f(pk , s) = r18 ) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+  )
+)
+Applying simplify yields
+Game 3 is
+(
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+                                                            2
+  x23 : bitstring ← x ;
+  find suchthat defined(x19 , r18 ) ∧ (x23 = x19 ) then
+    return(r18 )
+  ⊕ @i 29 ≤ qS suchthat defined(x21 [@i 29 ], r20 [@i 29 ]) ∧ (x23 = x21 [@i 29 ]) then
+    return(r20 [@i 29 ])
+  ⊕ @i 28 ≤ qH suchthat defined(x23 [@i 28 ], r22 [@i 28 ]) ∧ (x23 = x23 [@i 28 ]) then
+    return(r22 [@i 28 ])
+  else
+         R
+    r22 ← D;
+    return(r22 )
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen(r );
+  sk : skey ← skgen(r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    x21 : bitstring ← m;
+    find suchthat defined(x19 , r18 ) ∧ (x21 = x19 ) then
+       return(invf(sk , r18 ))
+    ⊕ @i 27 ≤ qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) ∧ (x21 = x21 [@i 27 ]) then
+       return(invf(sk , r20 [@i 27 ]))
+    ⊕ @i 26 ≤ qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) ∧ (x21 = x23 [@i 26 ]) then
+       return(invf(sk , r22 [@i 26 ]))
+    else
+            R
+       r20 ← D;
+       return(invf(sk , r20 ))
+  |
+    OT (m : bitstring, s : D) :=
+    x19 : bitstring ← m ;
+    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], x21 [@i 25 ]) ∧ (x19 = x21 [@i 25 ]) then
+       end
+    ⊕ @i 24 ≤ qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) ∧ (x19 = x23 [@i 24 ]) then
+       if (f(pk , s) = r22 [@i 24 ]) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    else
+            R
+       r18 ← D;
+       if (f(pk , s) = r18 ) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+  )
+)
+Applying remove assignments of useless yields
+                                                            3
+Game 4 is
+(
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  x23 : bitstring ← cst bitstring;
+  find suchthat defined(m , x19 , r18 ) ∧ (x = m ) then
+    return(r18 )
+  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
+    return(r20 [@i 29 ])
+  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
+    return(r22 [@i 28 ])
+  else
+         R
+    r22 ← D;
+    return(r22 )
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen(r );
+  sk : skey ← skgen(r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    x21 : bitstring ← cst bitstring;
+    find suchthat defined(m , x19 , r18 ) ∧ (m = m ) then
+       return(invf(sk , r18 ))
+    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
+       return(invf(sk , r20 [@i 27 ]))
+    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
+       return(invf(sk , r22 [@i 26 ]))
+    else
+            R
+       r20 ← D;
+       return(invf(sk , r20 ))
+  |
+    OT (m : bitstring, s : D) :=
+    x19 : bitstring ← cst bitstring;
+    find @i 25 ≤ qS suchthat defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) ∧ (m = m[@i 25 ]) then
+       end
+    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
+       if (f(pk , s) = r22 [@i 24 ]) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    else
+            R
+       r18 ← D;
+       if (f(pk , s) = r18 ) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+  )
+)
+                                                             4
+Applying remove assignments of binder sk yields
+Game 5 is
+(
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  x23 : bitstring ← cst bitstring;
+  find suchthat defined(m , x19 , r18 ) ∧ (x = m ) then
+    return(r18 )
+  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
+    return(r20 [@i 29 ])
+  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
+    return(r22 [@i 28 ])
+  else
+         R
+    r22 ← D;
+    return(r22 )
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen(r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    x21 : bitstring ← cst bitstring;
+    find suchthat defined(m , x19 , r18 ) ∧ (m = m ) then
+       return(invf(skgen(r ), r18 ))
+    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
+       return(invf(skgen(r ), r20 [@i 27 ]))
+    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
+       return(invf(skgen(r ), r22 [@i 26 ]))
+    else
+            R
+       r20 ← D;
+       return(invf(skgen(r ), r20 ))
+  |
+    OT (m : bitstring, s : D) :=
+    x19 : bitstring ← cst bitstring;
+    find @i 25 ≤ qS suchthat defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) ∧ (m = m[@i 25 ]) then
+       end
+    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
+       if (f(pk , s) = r22 [@i 24 ]) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    else
+            R
+       r18 ← D;
+       if (f(pk , s) = r18 ) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+                                                             5
+          event forge
+  )
+)
+Applying equivalence
+                            R
+foreach iK 1 ≤ nK do r ← seed; (
+  Opk() := return(pkgen(r )) |
+                              R
+  foreach iF 2 ≤ nF do x ← D; (
+    Oant() := return(invf(skgen(r ), x )) |
+    Oim() := return(x )))
+≈0
+                            R
+foreach iK 3 ≤ nK do r ← seed; (
+  Opk() := return(pkgen(r )) |
+                              R
+  foreach iF 4 ≤ nF do x ← D; (
+    Oant() := return(x ) |
+    Oim() := return(f(pkgen(r ), x ))))
+with r yields
+Game 6 is
+(
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  x23 : bitstring ← cst bitstring;
+  find suchthat defined(m , x19 , r18 ) ∧ (x = m ) then
+    return(f(pkgen(r ), r18 ))
+  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
+    return(f(pkgen(r ), r20 [@i 29 ]))
+  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
+    return(f(pkgen(r ), r22 [@i 28 ]))
+  else
+         R
+    r22 ← D;
+    return(f(pkgen(r ), r22 ))
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen(r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    x21 : bitstring ← cst bitstring;
+    find suchthat defined(m , x19 , r18 ) ∧ (m = m ) then
+       return(r18 )
+    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
+       return(r20 [@i 27 ])
+    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
+       return(r22 [@i 26 ])
+    else
+            R
+       r20 ← D;
+       return(r20 )
+  |
+                                                             6
+    OT (m : bitstring, s : D) :=
+    x19 : bitstring ← cst bitstring;
+    find @i 25 ≤ qS suchthat defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) ∧ (m = m[@i 25 ]) then
+       end
+    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
+       if (f(pk , s) = f(pkgen(r ), r22 [@i 24 ])) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    else
+            R
+       r18 ← D;
+       if (f(pk , s) = f(pkgen(r ), r18 )) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+  )
+)
+Applying simplify yields
+Game 7 is
+(
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  x23 : bitstring ← cst bitstring;
+  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
+    return(f(pkgen(r ), r18 ))
+  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
+    return(f(pkgen(r ), r20 [@i 29 ]))
+  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
+    return(f(pkgen(r ), r22 [@i 28 ]))
+  else
+         R
+    r22 ← D;
+    return(f(pkgen(r ), r22 ))
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen(r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    x21 : bitstring ← cst bitstring;
+    find suchthat defined(m , r18 ) ∧ (m = m ) then
+       return(r18 )
+    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
+       return(r20 [@i 27 ])
+    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
+       return(r22 [@i 26 ])
+    else
+                                                            7
+            R
+       r20 ← D;
+       return(r20 )
+  |
+    OT (m : bitstring, s : D) :=
+    x19 : bitstring ← cst bitstring;
+    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
+       end
+    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
+       if (s = r22 [@i 24 ]) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    else
+            R
+       r18 ← D;
+       if (s = r18 ) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+  )
+)
+Applying remove assignments of useless yields
+Game 8 is
+(
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
+    return(f(pkgen(r ), r18 ))
+  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
+    return(f(pkgen(r ), r20 [@i 29 ]))
+  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
+    return(f(pkgen(r ), r22 [@i 28 ]))
+  else
+         R
+    r22 ← D;
+    return(f(pkgen(r ), r22 ))
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen(r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    find suchthat defined(m , r18 ) ∧ (m = m ) then
+       return(r18 )
+    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
+       return(r20 [@i 27 ])
+    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
+       return(r22 [@i 26 ])
+                                                            8
+    else
+            R
+       r20 ← D;
+       return(r20 )
+  |
+    OT (m : bitstring, s : D) :=
+    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
+       end
+    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
+       if (s = r22 [@i 24 ]) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    else
+            R
+       r18 ← D;
+       if (s = r18 ) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+  )
+)
+Applying equivalence
+                              R
+foreach iK 5 ≤ nK do r ← seed; (
+  Opk() := return(pkgen(r )) |
+                                R
+  foreach iF 6 ≤ nF do x ← D; (
+    Oy() := return(f(pkgen(r ), x )) |
+    foreach i1 7 ≤ n1 do Oeq(x : D) := return((x = x )) |
+    Ox() := return(x )))
+≈nK ×nF ×POW (time+(nK −1.)×time(pkgen)+(nF ×nK −1.)×time(f))
+                              R
+foreach iK 8 ≤ nK do r ← seed; (
+  Opk() := return(pkgen (r )) |
+                                R
+  foreach iF 9 ≤ nF do x ← D; (
+    Oy() := return(f (pkgen (r ), x )) |
+    foreach i1 10 ≤ n1 do Oeq(x : D) := if defined(k ) then return((x = x )) else return(false) |
+    Ox() := k : bitstring ← mark; return(x )))
+[Difference of probability POW (qS × time(f) + qH × time(f) + time + time(context for game 8))+
+qS × POW (qS × time(f) + qH × time(f) + time + time(context for game 8))+
+qH × POW (qS × time(f) + qH × time(f) + time + time(context for game 8))] yields
+Game 9 is
+(
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
+    return(f (pkgen (r ), r18 ))
+  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
+    return(f (pkgen (r ), r20 [@i 29 ]))
+  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
+    return(f (pkgen (r ), r22 [@i 28 ]))
+                                                            9
+  else
+         R
+    r22 ← D;
+    return(f (pkgen (r ), r22 ))
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen (r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    find suchthat defined(m , r18 ) ∧ (m = m ) then
+       k47 : bitstring ← mark;
+       return(r18 )
+    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
+       k48 : bitstring ← mark;
+       return(r20 [@i 27 ])
+    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
+       k50 : bitstring ← mark;
+       return(r22 [@i 26 ])
+    else
+            R
+       r20 ← D;
+       k45 : bitstring ← mark;
+       return(r20 )
+  |
+    OT (m : bitstring, s : D) :=
+    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
+       end
+    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
+       find @i 56 ≤ qS suchthat defined(k50 [@i 56 ]) ∧ (@i 24 = @i 26 [@i 56 ]) then
+         if (s = r22 [@i 24 ]) then
+         find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+            end
+         else
+            event forge
+       else
+         if false then
+         find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+            end
+         else
+            event forge
+    else
+            R
+       r18 ← D;
+       find @i 53 ≤ qS suchthat defined(k47 [@i 53 ]) then
+         if (s = r18 ) then
+         find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+            end
+         else
+            event forge
+       else
+         if false then
+         find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+            end
+                                                           10
+         else
+            event forge
+  )
+)
+Applying simplify yields
+Game 10 is
+(
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
+    return(f (pkgen (r ), r18 ))
+  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
+    return(f (pkgen (r ), r20 [@i 29 ]))
+  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
+    return(f (pkgen (r ), r22 [@i 28 ]))
+  else
+         R
+    r22 ← D;
+    return(f (pkgen (r ), r22 ))
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen (r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    find suchthat defined(m , r18 ) ∧ (m = m ) then
+       k47 : bitstring ← mark;
+       return(r18 )
+    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
+       k48 : bitstring ← mark;
+       return(r20 [@i 27 ])
+    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
+       k50 : bitstring ← mark;
+       return(r22 [@i 26 ])
+    else
+            R
+       r20 ← D;
+       k45 : bitstring ← mark;
+       return(r20 )
+  |
+    OT (m : bitstring, s : D) :=
+    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
+       end
+    ⊕ @i 24 ≤ qH suchthat defined(r22 [@i 24 ], x [@i 24 ]) ∧ (m = x [@i 24 ]) then
+       end
+    else
+            R
+       r18 ← D
+  )
+)
+                                                           11
+Applying remove assignments of useless yields
+Game 11 is
+(
+   foreach iH 13 ≤ qH do
+   OH(x : bitstring) :=
+   find suchthat defined(m , r , r18 ) ∧ (x = m ) then
+     return(f (pkgen (r ), r18 ))
+   ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
+     return(f (pkgen (r ), r20 [@i 29 ]))
+   ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
+     return(f (pkgen (r ), r22 [@i 28 ]))
+   else
+          R
+     r22 ← D;
+     return(f (pkgen (r ), r22 ))
+|
+   Ogen() :=
+     R
+   r ← seed ;
+   pk : pkey ← pkgen (r );
+   return(pk );
+   (
+     foreach iS 14 ≤ qS do
+     OS(m : bitstring) :=
+     find suchthat defined(m , r18 ) ∧ (m = m ) then
+        return(r18 )
+     ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
+        return(r20 [@i 27 ])
+     ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
+        return(r22 [@i 26 ])
+     else
+            R
+        r20 ← D;
+        return(r20 )
+   |
+     OT (m : bitstring, s : D) :=
+     find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
+        end
+     ⊕ @i 24 ≤ qH suchthat defined(r22 [@i 24 ], x [@i 24 ]) ∧ (m = x [@i 24 ]) then
+        end
+     else
+            R
+        r18 ← D
+   )
+)
+Proved event forge =⇒ false with probability
+qH × POW (qS × time(f) + qH × time(f) + time + time(context for game 8))+
+qS × POW (qS × time(f) + qH × time(f) + time + time(context for game 8))+
+POW (qS × time(f) + qH × time(f) + time + time(context for game 8))
+RESULT time(context for game 8) =
+2. × qS × time(=bitstring, maxlength(game 8 : m ), maxlength(game 8 : m[iS 14 ]))+
+qH × time(=bitstring, maxlength(game 8 : m ), maxlength(game 8 : x [iH 13 ]))+
+qH × time(=bitstring, maxlength(game 8 : m[iS 14 ]), maxlength(game 8 : x [iH 13 ])) × qS +
+qS × qS × time(=bitstring, maxlength(game 8 : m[iS 14 ]), maxlength(game 8 : m[iS 14 ]))+
+time(=bitstring, maxlength(game 8 : m[iS 14 ]), maxlength(game 8 : m )) × qS +
+                                                            12
+qH × qH × time(=bitstring, maxlength(game 8 : x [iH 13 ]), maxlength(game 8 : x [iH 13 ]))+
+qS × time(=bitstring, maxlength(game 8 : x [iH 13 ]), maxlength(game 8 : m[iS 14 ])) × qH +
+time(=bitstring, maxlength(game 8 : x [iH 13 ]), maxlength(game 8 : m )) × qH
+All queries proved.
+                                                       13
+
+\end{verbatim}
+
 \chapter{Risultati Raggiunti}
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}

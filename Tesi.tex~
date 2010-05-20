@@ -268,7 +268,10 @@ In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della critt
 che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutorial di Shoup\cite{shoup}.
 Quella basata sul concetto di game \`e una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
 Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attaccante a 
-vincere questo gioco.}. Di solito la definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad una qualche costante come 
+vincere questo gioco.}. 
+\`E difficile dare una definizione formale di \emph{game} perch\`e in letteratura non ve ne sono. Per\`o possono intuitivamente essere immaginati come un insieme di
+azioni che servono a specificare il comportamento dei partecipanti al gioco, ovvero il protocollo crittografico.
+Di solito una definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad una qualche costante come 
 $0$ o $\frac{1}{2}$.\\
 Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper}, supponiamo di fare l'esperimento 
 mentale seguente:
@@ -301,6 +304,10 @@ Il tool \`e stato scritto in ML con 18000 righe di codice.
 \`E un tool molto recente ed \`e in continuo sviluppo.
 Un'altra strada \`e quella di dimostrare la correttezza del protocollo nel modello formale e poi di sfruttare il teorema [???]...
 \section{Un Esempio: FDH}
+Full Domain Hash \`e un protocollo...blahblah..
+
+
+
 \begin{verbatim}
 Initial state
 Game 1 is

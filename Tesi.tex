@@ -268,7 +268,10 @@ In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della critt
 che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutorial di Shoup\cite{shoup}.
 Quella basata sul concetto di game \`e una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
 Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attaccante a 
-vincere questo gioco.}. Di solito la definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad una qualche costante come 
+vincere questo gioco.}. 
+\`E difficile dare una definizione formale di \emph{game} perch\`e in letteratura non ve ne sono. Per\`o possono intuitivamente essere immaginati come un insieme di
+azioni che servono a specificare il comportamento dei partecipanti al gioco, ovvero il protocollo crittografico.
+Di solito una definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad una qualche costante come 
 $0$ o $\frac{1}{2}$.\\
 Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper}, supponiamo di fare l'esperimento 
 mentale seguente:
@@ -279,8 +282,18 @@ mentale seguente:
  \item \textbf{A} stampa un bit $b^{'}$
 \end{itemize}
 
+Questo game descrive il comportamento che tengono lo sfidante e il challenger. 
 Sia $E$ l'evento: ``\textbf{A} stampa $b^{'}$ e $b=b^{'}$''.\\ 
 Definiamo sicuro il sistema se $\exists \mu$ trascurabile tale che $Pr[E]\leq \frac{1}{2} + \mu(n)$.
+Il game di cui sopra, e il la $Pr[E]$ descrivono il fatto che un attaccante non riesce a distinguere fra loro due messaggi cifrati e quindi la probabilit\`a che riesca ad
+indovinare il bit $b$ \`e trascurabilmente superiore alla costante $\frac{1}{2}$.\\
+\\
+L'utilizzo che si fa dei games non \`e limitato a definizioni di sicurezza, ma si estende a cneh a vere e proprie dimostrazioni.
+Il principio che seguono questo tipo di dimostrazioni \`e quello di partire da un game iniziale $G_0$ in cui un evento \emph{negativo} pu\`o accadere con probabilit\`a non nulla,
+e poi effettuando delle modifiche al game $G_i$ si passa al $G_{i+1}$ tale che $G_i$ e $G_{i+1}$ sono computazionalmente indistinguibili.
+Alla fine si arriva ad un game $G_f$ in cui l'evento non pu\`o accadere. 
+Si può cosi dare un limite superiore alla probabilit\`a che l'evento avvenga nel game iniziale. Questo limite \`e la somma di tutte le probabilit\`a con cui un attacante
+riesce a distinguere un game dal successivo.
 
 
 

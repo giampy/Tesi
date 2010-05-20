@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.14)  19 MAY 2010 19:04
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.14)  20 MAY 2010 16:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -445,336 +445,341 @@ Underfull \hbox (badness 10000) in paragraph at lines 242--258
 
  []
 
-[10] [11] [12
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 285--297
 
-]
+ []
+
+[11] [12]
 Capitolo 3.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 308.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 321.
 
 (/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-34.def
 File: uni-34.def 2004/10/17 UCS: Unicode data U+2200..U+22FF
-) [13]
+) [13
+
+]
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-33.def
 File: uni-33.def 2004/10/17 UCS: Unicode data U+2100..U+21FF
 )
-Overfull \hbox (8.26338pt too wide) in paragraph at lines 336--336
+Overfull \hbox (8.26338pt too wide) in paragraph at lines 349--349
 []\T1/cmtt/m/n/12 foreach iH 11 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 nH do OH
 (x : bitstring) := return(hash(x ))[all][] 
  []
 
 
-Overfull \hbox (26.4369pt too wide) in paragraph at lines 338--338
+Overfull \hbox (26.4369pt too wide) in paragraph at lines 351--351
 []\T1/cmtt/m/n/12 foreach iH 12 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 nH do OH
 (x16 : bitstring) := x : bitstring $\OMS/cmsy/m/n/12  $ \T1/cmtt/m/n/12 x16 ;[]
  
  []
 
 
-Overfull \hbox (90.3453pt too wide) in paragraph at lines 339--339
+Overfull \hbox (90.3453pt too wide) in paragraph at lines 352--352
 []  \T1/cmtt/m/n/12 find u $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 nH suchthat d
 efined(x [u], r [u]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (x = x [u]) then retu
 rn(r [u])[] 
  []
 
 
-Overfull \hbox (161.41359pt too wide) in paragraph at lines 350--350
+Overfull \hbox (161.41359pt too wide) in paragraph at lines 363--363
 []   $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cm
 tt/m/n/12 qS suchthat defined(x21 [@i 29 ], r20 [@i 29 ]) $\OMS/cmsy/m/n/12 ^$ 
 \T1/cmtt/m/n/12 (x23 = x21 [@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (161.41359pt too wide) in paragraph at lines 352--352
+Overfull \hbox (161.41359pt too wide) in paragraph at lines 365--365
 []   $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cm
 tt/m/n/12 qH suchthat defined(x23 [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy/m/n/12 ^$ 
 \T1/cmtt/m/n/12 (x23 = x23 [@i 28 ]) then[] 
  []
 
 [14]
-Overfull \hbox (167.58708pt too wide) in paragraph at lines 372--372
+Overfull \hbox (167.58708pt too wide) in paragraph at lines 385--385
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) $\OMS/cmsy/m/n/12 ^$
  \T1/cmtt/m/n/12 (x21 = x21 [@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (167.58708pt too wide) in paragraph at lines 374--374
+Overfull \hbox (167.58708pt too wide) in paragraph at lines 387--387
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) $\OMS/cmsy/m/n/12 ^$
  \T1/cmtt/m/n/12 (x21 = x23 [@i 26 ]) then[] 
  []
 
 
-Overfull \hbox (167.58708pt too wide) in paragraph at lines 389--389
+Overfull \hbox (167.58708pt too wide) in paragraph at lines 402--402
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(x21 [@i 25 ], r20 [@i 25 ]) $\OMS/cmsy/m/n/12 ^$
  \T1/cmtt/m/n/12 (x19 = x21 [@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (167.58708pt too wide) in paragraph at lines 395--395
+Overfull \hbox (167.58708pt too wide) in paragraph at lines 408--408
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) $\OMS/cmsy/m/n/12 ^$
  \T1/cmtt/m/n/12 (x19 = x23 [@i 24 ]) then[] 
  []
 
 [15]
-Overfull \hbox (155.2401pt too wide) in paragraph at lines 420--420
+Overfull \hbox (155.2401pt too wide) in paragraph at lines 433--433
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qS suchthat defined(x21 [@i 29 ], r20 [@i 29 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (x23 = x21 [@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (155.2401pt too wide) in paragraph at lines 422--422
+Overfull \hbox (155.2401pt too wide) in paragraph at lines 435--435
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qH suchthat defined(x23 [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (x23 = x23 [@i 28 ]) then[] 
  []
 
 [16]
-Overfull \hbox (167.58708pt too wide) in paragraph at lines 441--441
+Overfull \hbox (167.58708pt too wide) in paragraph at lines 454--454
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) $\OMS/cmsy/m/n/12 ^$
  \T1/cmtt/m/n/12 (x21 = x21 [@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (167.58708pt too wide) in paragraph at lines 443--443
+Overfull \hbox (167.58708pt too wide) in paragraph at lines 456--456
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) $\OMS/cmsy/m/n/12 ^$
  \T1/cmtt/m/n/12 (x21 = x23 [@i 26 ]) then[] 
  []
 
 
-Overfull \hbox (182.9477pt too wide) in paragraph at lines 452--452
+Overfull \hbox (182.9477pt too wide) in paragraph at lines 465--465
 []    \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS such
 that defined(r20 [@i 25 ], x21 [@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (
 x19 = x21 [@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (167.58708pt too wide) in paragraph at lines 454--454
+Overfull \hbox (167.58708pt too wide) in paragraph at lines 467--467
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) $\OMS/cmsy/m/n/12 ^$
  \T1/cmtt/m/n/12 (x19 = x23 [@i 24 ]) then[] 
  []
 
 
-Overfull \hbox (192.28105pt too wide) in paragraph at lines 479--479
+Overfull \hbox (192.28105pt too wide) in paragraph at lines 492--492
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) $\OMS/cmsy/
 m/n/12 ^$ \T1/cmtt/m/n/12 (x = m[@i 29 ]) then[] 
  []
 
 [17]
-Overfull \hbox (204.62804pt too wide) in paragraph at lines 481--481
+Overfull \hbox (204.62804pt too wide) in paragraph at lines 494--494
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy
 /m/n/12 ^$ \T1/cmtt/m/n/12 (x = x [@i 28 ]) then[] 
  []
 
 
-Overfull \hbox (204.62804pt too wide) in paragraph at lines 500--500
+Overfull \hbox (204.62804pt too wide) in paragraph at lines 513--513
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) $\OMS/cms
 y/m/n/12 ^$ \T1/cmtt/m/n/12 (m = m[@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (216.97502pt too wide) in paragraph at lines 502--502
+Overfull \hbox (216.97502pt too wide) in paragraph at lines 515--515
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) $\OMS/cm
 sy/m/n/12 ^$ \T1/cmtt/m/n/12 (m = x [@i 26 ]) then[] 
  []
 
 
-Overfull \hbox (219.98865pt too wide) in paragraph at lines 511--511
+Overfull \hbox (219.98865pt too wide) in paragraph at lines 524--524
 []    \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS such
 that defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cm
 tt/m/n/12 (m = m[@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (216.97502pt too wide) in paragraph at lines 513--513
+Overfull \hbox (216.97502pt too wide) in paragraph at lines 526--526
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) $\OMS/cm
 sy/m/n/12 ^$ \T1/cmtt/m/n/12 (m = x [@i 24 ]) then[] 
  []
 
 [18]
-Overfull \hbox (192.28105pt too wide) in paragraph at lines 538--538
+Overfull \hbox (192.28105pt too wide) in paragraph at lines 551--551
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) $\OMS/cmsy/
 m/n/12 ^$ \T1/cmtt/m/n/12 (x = m[@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (204.62804pt too wide) in paragraph at lines 540--540
+Overfull \hbox (204.62804pt too wide) in paragraph at lines 553--553
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy
 /m/n/12 ^$ \T1/cmtt/m/n/12 (x = x [@i 28 ]) then[] 
  []
 
 
-Overfull \hbox (204.62804pt too wide) in paragraph at lines 558--558
+Overfull \hbox (204.62804pt too wide) in paragraph at lines 571--571
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) $\OMS/cms
 y/m/n/12 ^$ \T1/cmtt/m/n/12 (m = m[@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (216.97502pt too wide) in paragraph at lines 560--560
+Overfull \hbox (216.97502pt too wide) in paragraph at lines 573--573
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) $\OMS/cm
 sy/m/n/12 ^$ \T1/cmtt/m/n/12 (m = x [@i 26 ]) then[] 
  []
 
 [19]
-Overfull \hbox (219.98865pt too wide) in paragraph at lines 569--569
+Overfull \hbox (219.98865pt too wide) in paragraph at lines 582--582
 []    \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS such
 that defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cm
 tt/m/n/12 (m = m[@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (216.97502pt too wide) in paragraph at lines 571--571
+Overfull \hbox (216.97502pt too wide) in paragraph at lines 584--584
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) $\OMS/cm
 sy/m/n/12 ^$ \T1/cmtt/m/n/12 (m = x [@i 24 ]) then[] 
  []
 
 [20]
-Overfull \hbox (192.28105pt too wide) in paragraph at lines 612--612
+Overfull \hbox (192.28105pt too wide) in paragraph at lines 625--625
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) $\OMS/cmsy/
 m/n/12 ^$ \T1/cmtt/m/n/12 (x = m[@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (204.62804pt too wide) in paragraph at lines 614--614
+Overfull \hbox (204.62804pt too wide) in paragraph at lines 627--627
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy
 /m/n/12 ^$ \T1/cmtt/m/n/12 (x = x [@i 28 ]) then[] 
  []
 
 
-Overfull \hbox (204.62804pt too wide) in paragraph at lines 632--632
+Overfull \hbox (204.62804pt too wide) in paragraph at lines 645--645
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) $\OMS/cms
 y/m/n/12 ^$ \T1/cmtt/m/n/12 (m = m[@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (216.97502pt too wide) in paragraph at lines 634--634
+Overfull \hbox (216.97502pt too wide) in paragraph at lines 647--647
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) $\OMS/cm
 sy/m/n/12 ^$ \T1/cmtt/m/n/12 (m = x [@i 26 ]) then[] 
  []
 
 
-Overfull \hbox (219.98865pt too wide) in paragraph at lines 644--644
+Overfull \hbox (219.98865pt too wide) in paragraph at lines 657--657
 []    \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS such
 that defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cm
 tt/m/n/12 (m = m[@i 25 ]) then[] 
  []
 
 [21]
-Overfull \hbox (216.97502pt too wide) in paragraph at lines 646--646
+Overfull \hbox (216.97502pt too wide) in paragraph at lines 659--659
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) $\OMS/cm
 sy/m/n/12 ^$ \T1/cmtt/m/n/12 (m = x [@i 24 ]) then[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 670--670
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 683--683
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) $\OMS/cmsy/m/n/12 ^$ 
 \T1/cmtt/m/n/12 (x = m[@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (118.19914pt too wide) in paragraph at lines 672--672
+Overfull \hbox (118.19914pt too wide) in paragraph at lines 685--685
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy/m/n/12 ^$ \T1
 /cmtt/m/n/12 (x = x [@i 28 ]) then[] 
  []
 
 [22]
-Overfull \hbox (118.19914pt too wide) in paragraph at lines 690--690
+Overfull \hbox (118.19914pt too wide) in paragraph at lines 703--703
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) $\OMS/cmsy/m/n/12 ^$ \T
 1/cmtt/m/n/12 (m = m[@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 692--692
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 705--705
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (m = x [@i 26 ]) then[] 
  []
 
 
-Overfull \hbox (133.55975pt too wide) in paragraph at lines 702--702
+Overfull \hbox (133.55975pt too wide) in paragraph at lines 715--715
 []    \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS such
 that defined(r20 [@i 25 ], m[@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (m =
  m[@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 704--704
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 717--717
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (m = x [@i 24 ]) then[] 
  []
 
 [23]
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 727--727
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 740--740
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) $\OMS/cmsy/m/n/12 ^$ 
 \T1/cmtt/m/n/12 (x = m[@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (118.19914pt too wide) in paragraph at lines 729--729
+Overfull \hbox (118.19914pt too wide) in paragraph at lines 742--742
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy/m/n/12 ^$ \T1
 /cmtt/m/n/12 (x = x [@i 28 ]) then[] 
  []
 
 
-Overfull \hbox (118.19914pt too wide) in paragraph at lines 746--746
+Overfull \hbox (118.19914pt too wide) in paragraph at lines 759--759
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) $\OMS/cmsy/m/n/12 ^$ \T
 1/cmtt/m/n/12 (m = m[@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 748--748
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 761--761
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (m = x [@i 26 ]) then[] 
  []
 
 
-Overfull \hbox (133.55975pt too wide) in paragraph at lines 757--757
+Overfull \hbox (133.55975pt too wide) in paragraph at lines 770--770
 []    \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS such
 that defined(r20 [@i 25 ], m[@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (m =
  m[@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 759--759
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 772--772
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (m = x [@i 24 ]) then[] 
  []
 
 [24]
-Overfull \hbox (11.86197pt too wide) in paragraph at lines 784--784
+Overfull \hbox (11.86197pt too wide) in paragraph at lines 797--797
 []$\OMS/cmsy/m/n/12 ^^Y$\T1/cmtt/m/n/12 nK $\OMS/cmsy/m/n/12 ^^B$\T1/cmtt/m/n/1
 2 nF $\OMS/cmsy/m/n/12 ^^B$\T1/cmtt/m/n/12 POW (time+(nK $\OMS/cmsy/m/n/12 ^^@$
 \T1/cmtt/m/n/12 1.)$\OMS/cmsy/m/n/12 ^^B$\T1/cmtt/m/n/12 time(pkgen)+(nF $\OMS/
@@ -783,235 +788,235 @@ MS/cmsy/m/n/12 ^^B$\T1/cmtt/m/n/12 time(f))[]
  []
 
 
-Overfull \hbox (211.98863pt too wide) in paragraph at lines 791--791
+Overfull \hbox (211.98863pt too wide) in paragraph at lines 804--804
 []    \T1/cmtt/m/n/12 foreach i1 10 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 n1 d
 o Oeq(x : D) := if defined(k ) then return((x = x )) else return(false) |[] 
  []
 
 
-Overfull \hbox (202.80151pt too wide) in paragraph at lines 793--793
+Overfull \hbox (202.80151pt too wide) in paragraph at lines 806--806
 []\T1/cmtt/m/n/12 [Difference of probability POW (qS $\OMS/cmsy/m/n/12 ^^B$ \T1
 /cmtt/m/n/12 time(f) + qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 time(f) + time
  + time(context for game 8))+[] 
  []
 
 
-Overfull \hbox (70.14455pt too wide) in paragraph at lines 794--794
+Overfull \hbox (70.14455pt too wide) in paragraph at lines 807--807
 []\T1/cmtt/m/n/12 qS $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 POW (qS $\OMS/cmsy/
 m/n/12 ^^B$ \T1/cmtt/m/n/12 time(f) + qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12
  time(f) + time + time(context for game 8))+[] 
  []
 
 
-Overfull \hbox (113.359pt too wide) in paragraph at lines 795--795
+Overfull \hbox (113.359pt too wide) in paragraph at lines 808--808
 []\T1/cmtt/m/n/12 qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 POW (qS $\OMS/cmsy/
 m/n/12 ^^B$ \T1/cmtt/m/n/12 time(f) + qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12
  time(f) + time + time(context for game 8))] yields[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 802--802
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 815--815
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) $\OMS/cmsy/m/n/12 ^$ 
 \T1/cmtt/m/n/12 (x = m[@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (118.19914pt too wide) in paragraph at lines 804--804
+Overfull \hbox (118.19914pt too wide) in paragraph at lines 817--817
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy/m/n/12 ^$ \T1
 /cmtt/m/n/12 (x = x [@i 28 ]) then[] 
  []
 
 [25]
-Overfull \hbox (118.19914pt too wide) in paragraph at lines 823--823
+Overfull \hbox (118.19914pt too wide) in paragraph at lines 836--836
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) $\OMS/cmsy/m/n/12 ^$ \T
 1/cmtt/m/n/12 (m = m[@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 826--826
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 839--839
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (m = x [@i 26 ]) then[] 
  []
 
 
-Overfull \hbox (133.55975pt too wide) in paragraph at lines 836--836
+Overfull \hbox (133.55975pt too wide) in paragraph at lines 849--849
 []    \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS such
 that defined(r20 [@i 25 ], m[@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (m =
  m[@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 838--838
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 851--851
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (m = x [@i 24 ]) then[] 
  []
 
 
-Overfull \hbox (139.73325pt too wide) in paragraph at lines 839--839
+Overfull \hbox (139.73325pt too wide) in paragraph at lines 852--852
 []       \T1/cmtt/m/n/12 find @i 56 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS s
 uchthat defined(k50 [@i 56 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (@i 24 = @i 
 26 [@i 56 ]) then[] 
  []
 
 [26]
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 876--876
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 889--889
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) $\OMS/cmsy/m/n/12 ^$ 
 \T1/cmtt/m/n/12 (x = m[@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (118.19914pt too wide) in paragraph at lines 878--878
+Overfull \hbox (118.19914pt too wide) in paragraph at lines 891--891
 []  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
 t/m/n/12 qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy/m/n/12 ^$ \T1
 /cmtt/m/n/12 (x = x [@i 28 ]) then[] 
  []
 
 [27]
-Overfull \hbox (118.19914pt too wide) in paragraph at lines 896--896
+Overfull \hbox (118.19914pt too wide) in paragraph at lines 909--909
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) $\OMS/cmsy/m/n/12 ^$ \T
 1/cmtt/m/n/12 (m = m[@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 899--899
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 912--912
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (m = x [@i 26 ]) then[] 
  []
 
 
-Overfull \hbox (133.55975pt too wide) in paragraph at lines 909--909
+Overfull \hbox (133.55975pt too wide) in paragraph at lines 922--922
 []    \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS such
 that defined(r20 [@i 25 ], m[@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (m =
  m[@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 911--911
+Overfull \hbox (130.54613pt too wide) in paragraph at lines 924--924
 []    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
 mtt/m/n/12 qH suchthat defined(r22 [@i 24 ], x [@i 24 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (m = x [@i 24 ]) then[] 
  []
 
 
-Overfull \hbox (136.71962pt too wide) in paragraph at lines 926--926
+Overfull \hbox (136.71962pt too wide) in paragraph at lines 939--939
 []   $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cm
 tt/m/n/12 qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) $\OMS/cmsy/m/n/12 ^$
  \T1/cmtt/m/n/12 (x = m[@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (124.37263pt too wide) in paragraph at lines 928--928
+Overfull \hbox (124.37263pt too wide) in paragraph at lines 941--941
 []   $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cm
 tt/m/n/12 qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy/m/n/12 ^$ \T
 1/cmtt/m/n/12 (x = x [@i 28 ]) then[] 
  []
 
 [28]
-Overfull \hbox (124.37263pt too wide) in paragraph at lines 945--945
+Overfull \hbox (124.37263pt too wide) in paragraph at lines 958--958
 []     $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/
 cmtt/m/n/12 qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) $\OMS/cmsy/m/n/12 ^$ \
 T1/cmtt/m/n/12 (m = m[@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (136.71962pt too wide) in paragraph at lines 947--947
+Overfull \hbox (136.71962pt too wide) in paragraph at lines 960--960
 []     $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/
 cmtt/m/n/12 qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) $\OMS/cmsy/m/n/12 ^$ 
 \T1/cmtt/m/n/12 (m = x [@i 26 ]) then[] 
  []
 
 
-Overfull \hbox (139.73325pt too wide) in paragraph at lines 955--955
+Overfull \hbox (139.73325pt too wide) in paragraph at lines 968--968
 []     \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS suc
 hthat defined(r20 [@i 25 ], m[@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (m 
 = m[@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (136.71962pt too wide) in paragraph at lines 957--957
+Overfull \hbox (136.71962pt too wide) in paragraph at lines 970--970
 []     $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/
 cmtt/m/n/12 qH suchthat defined(r22 [@i 24 ], x [@i 24 ]) $\OMS/cmsy/m/n/12 ^$ 
 \T1/cmtt/m/n/12 (m = x [@i 24 ]) then[] 
  []
 
 
-Overfull \hbox (70.14455pt too wide) in paragraph at lines 965--965
+Overfull \hbox (70.14455pt too wide) in paragraph at lines 978--978
 []\T1/cmtt/m/n/12 qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 POW (qS $\OMS/cmsy/
 m/n/12 ^^B$ \T1/cmtt/m/n/12 time(f) + qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12
  time(f) + time + time(context for game 8))+[] 
  []
 
 
-Overfull \hbox (70.14455pt too wide) in paragraph at lines 966--966
+Overfull \hbox (70.14455pt too wide) in paragraph at lines 979--979
 []\T1/cmtt/m/n/12 qS $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 POW (qS $\OMS/cmsy/
 m/n/12 ^^B$ \T1/cmtt/m/n/12 time(f) + qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12
  time(f) + time + time(context for game 8))+[] 
  []
 
 
-Overfull \hbox (29.94373pt too wide) in paragraph at lines 967--967
+Overfull \hbox (29.94373pt too wide) in paragraph at lines 980--980
 []\T1/cmtt/m/n/12 POW (qS $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 time(f) + qH $
 \OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 time(f) + time + time(context for game 8)
 )[] 
  []
 
 
-Overfull \hbox (122.54611pt too wide) in paragraph at lines 969--969
+Overfull \hbox (122.54611pt too wide) in paragraph at lines 982--982
 []\T1/cmtt/m/n/12 2. $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 qS $\OMS/cmsy/m/n/1
 2 ^^B$ \T1/cmtt/m/n/12 time(=bitstring, maxlength(game 8 : m ), maxlength(game 
 8 : m[iS 14 ]))+[] 
  []
 
 
-Overfull \hbox (94.69228pt too wide) in paragraph at lines 970--970
+Overfull \hbox (94.69228pt too wide) in paragraph at lines 983--983
 []\T1/cmtt/m/n/12 qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 time(=bitstring, ma
 xlength(game 8 : m ), maxlength(game 8 : x [iH 13 ]))+[] 
  []
 
 
-Overfull \hbox (178.10754pt too wide) in paragraph at lines 971--971
+Overfull \hbox (178.10754pt too wide) in paragraph at lines 984--984
 []\T1/cmtt/m/n/12 qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 time(=bitstring, ma
 xlength(game 8 : m[iS 14 ]), maxlength(game 8 : x [iH 13 ])) $\OMS/cmsy/m/n/12 
 ^^B$ \T1/cmtt/m/n/12 qS +[] 
  []
 
 
-Overfull \hbox (165.76056pt too wide) in paragraph at lines 972--972
+Overfull \hbox (165.76056pt too wide) in paragraph at lines 985--985
 []\T1/cmtt/m/n/12 qS $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 qS $\OMS/cmsy/m/n/1
 2 ^^B$ \T1/cmtt/m/n/12 time(=bitstring, maxlength(game 8 : m[iS 14 ]), maxlengt
 h(game 8 : m[iS 14 ]))+[] 
  []
 
 [29]
-Overfull \hbox (94.69228pt too wide) in paragraph at lines 973--973
+Overfull \hbox (94.69228pt too wide) in paragraph at lines 986--986
 []\T1/cmtt/m/n/12 time(=bitstring, maxlength(game 8 : m[iS 14 ]), maxlength(gam
 e 8 : m )) $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 qS +[] 
  []
 
 
-Overfull \hbox (178.10754pt too wide) in paragraph at lines 975--975
+Overfull \hbox (178.10754pt too wide) in paragraph at lines 988--988
 []\T1/cmtt/m/n/12 qH $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 qH $\OMS/cmsy/m/n/1
 2 ^^B$ \T1/cmtt/m/n/12 time(=bitstring, maxlength(game 8 : x [iH 13 ]), maxleng
 th(game 8 : x [iH 13 ]))+[] 
  []
 
 
-Overfull \hbox (178.10754pt too wide) in paragraph at lines 976--976
+Overfull \hbox (178.10754pt too wide) in paragraph at lines 989--989
 []\T1/cmtt/m/n/12 qS $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 time(=bitstring, ma
 xlength(game 8 : x [iH 13 ]), maxlength(game 8 : m[iS 14 ])) $\OMS/cmsy/m/n/12 
 ^^B$ \T1/cmtt/m/n/12 qH +[] 
  []
 
 
-Overfull \hbox (88.51878pt too wide) in paragraph at lines 977--977
+Overfull \hbox (88.51878pt too wide) in paragraph at lines 990--990
 []\T1/cmtt/m/n/12 time(=bitstring, maxlength(game 8 : x [iH 13 ]), maxlength(ga
 me 8 : m )) $\OMS/cmsy/m/n/12 ^^B$ \T1/cmtt/m/n/12 qH[] 
  []
@@ -1036,4 +1041,4 @@ Here is how much of TeX's memory you used:
  31 hyphenation exceptions out of 8191
  38i,14n,43p,415b,641s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (35 pages, 94456 bytes).
+Output written on Tesi.dvi (35 pages, 96260 bytes).
