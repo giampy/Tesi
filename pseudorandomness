@@ -8,16 +8,15 @@ fun G'(seed) : codG'.
 param n1, n2, n3.
 event distinguished.
 proba POW.
-
 (*query event distinguished ==> false.*)
-query secret1 w1.
+query secret1 x.
 (*
 equiv
 	foreach i1 <=n1 do
 			w <-R codG';
 			OGet():=return(w)
 	   
-    <=(0)=> 
+    <=(n1*2)=> 
     
 	foreach i1<=n1 do
 			r1 <-R seed;
@@ -28,18 +27,17 @@ equiv
             r <-R seed;
             OGet():=return (G'(r))
      
-  	 <=(0)=> (*da definire*)
+  	 <=(n1*2)=> (*da definire*)
 	
 	foreach i1 <=n1 do
              w <-R codG';
              OGet():=return(w).
 
+
 process 	
 		foreach i2 <= n2 do
-				O():=
-					s<-R seed;
-					w1:codG <- G(s);
-					return (w1)
-
-
-
+					O():=
+						 s <-R seed;
+						 x: codG' <- G'(s);
+						 return
+					

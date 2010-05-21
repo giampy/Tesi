@@ -8,6 +8,7 @@ event distinguished.
 proba POW.
 
 query event distinguished ==> false.
+query secret1 w.
 (*
 equiv
 	foreach i1 <=n1 do
