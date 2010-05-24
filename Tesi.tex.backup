@@ -10,7 +10,9 @@
 \usepackage{subfigure}  % use for side-by-side figures
 \usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs 
 \usepackage{t1enc}
-
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmic}
 \author{Gian Pietro Farina}
 \hyphenation{li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti}
 
@@ -37,9 +39,11 @@
 
 \begin{document}
 \chapter{Introduzione}
-%Nel capitolo intoduttivo si introdurranno il modello formale Vs quello computazionale,
-%il concetto di sicurezza perfetta e quella computazionale per poi riprendere quest'ultima nel
-%capitolo 1
+Nel capitolo intoduttivo si introdurranno il modello formale Vs quello computazionale,
+il concetto di sicurezza perfetta e quella computazionale per poi riprendere quest'ultima nel
+capitolo 1
+parlare di sicurezza TEORICA vs COPMUTAZINOALE
+parlare delle assunzioni....e delle funzioni one-way.
 
 Da quando la crittografia ha cessato di essere un'arte per assurgere allo stato di scienza\cite{diffiehelmann77}, sono nati almeno due modi profondamente diversi fra loro di
 vedere la crittografia.\\In uno di questi, il modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
@@ -49,9 +53,11 @@ Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cit
 
 In \cite{DBLP:journals/joc/AbadiR07} gli autori cercano per la primavolta di porre le basi per iniziare a collegare questi due modelli.
 
+Parlare del teorema che unisce i due modelli
+parlare del concetto di attaccante e di dimostrazioni che sfruttano 
+il fatto che l'attaccante non può fare delle cose
 
-%parlare del concetto di attaccante e di dimostrazioni che sfruttano 
-%il fatto che l'attaccante non può fare delle cose
+parlare del concetto di funzione one-way.
 \chapter{Il Modello Computazionale}
 \section{L'Avversario}
 Il tipico avversario con cui si ha a che fare quando si studiano cifrari o protocolli crittografici nel modello computazionale,
@@ -183,7 +189,7 @@ Dopo questa breve introduzione all'indistinguibilit\`a siamo pronti per dare una
 
 \begin{definizione}{Indistinguibilit\`a computazionale.}
 Due ensemble $X=\{X_n\}$, $Y=\{Y_n\}$ sono computazionalmente indistinguibili se e solo se per ogni algoritmo $D \in BPP$ (detto distinguitore) esiste $\mu$ trascurabile tale che:
- $\lvert Pr[D(1^n, X_n) = 1] - Pr[D(1^n, Y_n) = 1] \rvert \leq \mu(n)$.
+\begin{center}$\lvert Pr[D(1^n, X_n) = 1] - Pr[D(1^n, Y_n) = 1] \rvert \leq \mu(n)$.\end{center}
 \end{definizione}
 Nella definizione precedente: $Pr[D(1^n, X_n) = 1]$ \`e la probabilit\`a che, scegliendo $x$ secondo la distribuzione $X_n$ e fornendo questo valore al distinguitore insieme al valore $1^n$, il distinguitore stampi $1$.
 Il fatto che al distinguitore si fornisca anche il valore del parametro di sicurezza in base unaria, serve ad esser sicuri che in ogni caso il distinguitore impieghi un tempo polinomiale 
@@ -218,15 +224,16 @@ pu\`o distinguerla dalla distribuzione uniforme.
 L'ensemble $X=\{X_n\}_{n \in \mathbb{N}}$ \`e detto pseudorandom se e solo se $ \exists l:$ $\mathbb{N}\rightarrow\mathbb{N}$ tale che: 
 $X$ \`e computazionalmente indistinguibile da $U=\{U_{l(n)}\}_{n \in \mathbb{N}} $.  
 \end{definizione}
-Data questa definizione, possiamo finalmente definire formalmente cosa sia un generatore pseudorandom.
+Data questa definizione, possiamo finalmente definire formalmente cosa sia un generatore pseudorandom.\newpage
 \begin{definizione}{Generatore Pseudorandom.}
 Sia $l:$ $\mathbb{N}\rightarrow\mathbb{N}$ un polinomio detto fattore d'espansione. 
 Sia G un algoritmo polinomiale deterministico tale che: $\forall s \in \{0, 1\}^{n}$ $G(s) \in \{0, 1\}^{l(n)}.$
 Allora $G$ \`e un generatore pseudorandom se e solo se valgono le seguenti condizioni:
 \begin{itemize}
  \item Espansione: $\forall n: l(n) > n$
- \item Pseudocasualit\`a: $\forall D \in BPP, \exists \mu$ trascurabile tale che \\$\lvert Pr[D(r) = 1] - Pr[D(G(s)) = 1] \rvert \leq \mu(n)$\\con $r \in U_{l(n)}$ e 
-$s \in U_{n}$
+ \item Pseudocasualit\`a: $\forall D \in BPP, \exists \mu$ trascurabile tale che \begin{center}
+                                                   $\lvert Pr[D(r) = 1] - Pr[D(G(s)) = 1]$                               
+                                                                                 \end{center} con $r \in U_{l(n)}$ e $s \in U_{n}$
 \end{itemize}
 \end{definizione}
 
@@ -247,10 +254,11 @@ Quindi la probabilit\`a che una stringa scelta in maniera uniforme dall'insieme 
 In teoria, quindi, \`e facile immaginare un distinguitore $D$ che riesca a discernere l'output di $G$ dalla distribuzione uniforme con probabilit\`a non trascurabile.
 Supponiamo che $D$ prenda in input $y \in A$. Tutto ci\`o che $D$ deve fare \`e ricercare in modo esaustivo un $w \in B$ tale che $G(w) = y$.
 Se $y \in G(B)$ allora $D$ se ne accorger\`a con probabilit\`a 1, mentre se $y$ \`e stato scelto in maniera uniforme dall'insieme $A$, $D$ stamper\`a 1 con probabilit\`a $2^{-n}$. 
-Quindi abbiamo che: \\
-\\
-$\lvert Pr[D(r)=1] - Pr[D(G(s))=1]\rvert \geq 1 - 2^{-n}$\\
-\\con $r \xleftarrow{R} A$ e $s \xleftarrow{R} B$\footnote{con la notazione $s \xleftarrow{R} O$, si intende la scelta dell'elemento $s \in O$ in maniera random.}.\\ 
+\newpage Quindi abbiamo che:
+\begin{center}
+$\lvert Pr[D(r)=1] - Pr[D(G(s))=1]\rvert \geq 1 - 2^{-n}$ con $r \xleftarrow{R} A$ e $s \xleftarrow{R} B$\footnote{con la notazione $s \xleftarrow{R} O$, si intende la scelta dell'elemento 
+$s \in O$ in maniera random.}.
+\end{center} 
 Il membro a destra della disequazione \`e una funzione distinguibile. Sembrerebbe quindi che $G$ non sia un generatore pseudorandom.
 C'\`e un' importante constatazione da fare per\`o. Il distinguitore $D$ non \`e efficiente! Infatti impiega un tempo esponenziale nel parametro $n$, e non polinomiale.
 La distribuzione generata da $G$ dunque, \`e si ben lontana dall'essere uniforme, ma questo non \`e importante dal momento che nessun distinguitore che viaggia in tempo polinomiale pu\`o 
@@ -264,721 +272,183 @@ Siccome una stringa pseudorandom appare, ad un distinguitore efficiente $D$, com
 al one-time pad che usa una chiave pseudorandom. In generale i generatori pseudorandom sono molto utili in crittografia per creare schemi crittografici simmetrici.
 
 \section{Dimostrazioni Basate su Games}
-In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della crittografia i \emph{games} (tradotti letteralmente con la parola "giochi") e come sono strutturate la maggior parte delle dimostrazioni
-che utilizzano sequenze di games.\\Si possono trovare approfondimenti nel tutorial di Shoup\cite{shoup}.
-Quella basata sul concetto di game \`e una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
-Questi games sono giocati da un' ipotetica entit\`a maligna, l'attacante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attaccante a 
-vincere questo gioco.}. Di solito la definizione di sicurezza \`e associata ad un evento che dovrebbe avvenire con probabilit\`a trascurabilmente vicina ad una qualche costante come 
-$0$ o $\frac{1}{2}$.\\
-Per esempio nel caso della propriet\`a di sicurezza detta \emph{indistinguishable encryptions in the presence of an eavesdropper}, supponiamo di fare l'esperimento 
-mentale seguente:
-\begin{itemize}
- \item L'avversario \textbf{A} sceglie due messaggi $m_0, m_1$.
- \item Lo sfidante \textbf{S} genera una chiave $k$ e un bit $b \xleftarrow{R} \{0,1\}$.
- \item \textbf{S} crea il messaggio $c$, tale che $c= Enc_k(m_b)$ e lo da in input ad \textbf{A}.
- \item \textbf{A} stampa un bit $b^{'}$
-\end{itemize}
+In questo paragrafo si cercher\`a di spiegare cosa sono nell'ambito della crittografia i \emph{games}\footnote{che intenderemo letteralmente come "giochi"} e come sono strutturate la
+maggior parte delle dimostrazioni che utilizzano sequenze di games.\\Si possono trovare approfondimenti riguardo a questi concetti nel lavoro di Shoup \cite{shoup}.
+Quella basata sul concetto di game\footnote{game hopping tecnique} \`e una tecnica molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
+Questi games sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{perch\`e \emph{sfida} l'attaccante a 
+vincere questo gioco.}. 
+\`E difficile dare una definizione formale di game, infatti il concetto di game cambia, sebbene in maniera non sensibile, da situazione a situazione da ambiente ad ambiente e 
+da dimostrazione a dimostrazione (sia che queste siano fatte a mano sia che queste siano automatiche e quindi dipendenti dal framework in cui vengono costruite).
+Intuitivamente per\`o, i game possono essere immaginati come un insieme di azioni, modellate in una particolare algebra di processi, 
+che servono a specificare il comportamento dei partecipanti al gioco, ovvero le entit\`a che partecipano come \emph{principals} al protocollo crittografico.\\
+Il lettore trover\`a utile pensarli, almeno nell'ambito di questa tesi, come insiemi di processi che, fra le altre cose, forniscono un'interfaccia all'attaccante attraverso degli 
+\emph{oracoli} che possono resitituire dei valori all'attaccante. Questi oracoli, prima di ritornare il valore, possono effettuare calcoli, dichiarare ed utilizzare variabili che non saranno
+visibili all'esterno.\\Si deve pensare agli oracoli come delle scatole nere inaccessibili dall'esterno. Questi oracoli una volta interrogati forniscono una risposta,
+e questo \`e il massimo livello di interazione che dall'esterno si pu\`o avere con queste entit\`a.\\ \\
+Il principio che seguono le dimostrazioni di sicurezza basate su sequenze di game \`e quello di partire da un game iniziale $G_0$ che modella il protocollo crittografico reale.
+In $G_0$ esiste la probabilit\`a non nulla che un evento \emph{negativo} possa accadere (immaginiamolo come una sorta di vittoria da parte dell'attaccante).
+Ora, in generale, si procede effettuando delle modifiche al game $G_i$ ottenendo un game $G_{i+1}$ 
+tale che $G_i$ e $G_{i+1}$ sono computazionalmente indistinguibili. Le modifiche che si effettuano fra un game e un altro devono introdurre delle differenze computazionalmente irrilevanti.
+Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in gioco nei game.
+Se per esempio in un game $G_i$ un processo ha a che fare con un variabile random, e noi nel game $G_{i+1}$ la sostituiamo con una variabile che invece \`e pseudorandom, non introduciamo
+modifiche computazionalmente rilevanti, e quindi il passaggio \`e lecito visto che i due game non sono distinguibili se non con probabilit\`a trascurabile.
+Alla fine si deve arrivare ad un game $G_f$ in cui \emph{l'evento} non pu\`o accadere. Se, quindi, nel game finale l'attaccante non ha possibilit\`a di vincere, e il game finale
+\`e computazionalmente indistinguibile dal penultimo, e il penultimo lo \`e dal terzultimo e il terzultimo lo \`e dal quartultimo e cosi via fino al primo, allora
+il game finale \`e computazionalmente indistinguibile dal primo\footnote{Ricordiamo infatti che la somma di due probabilit\`a trascurabili rimane trascurabile.}. 
+Adesso, quindi, se nel game iniziale esiste la possibilit\`a che un evento avvenga, e nel game finale no,
+possiamo dare un limite superiore alla probabilit\`a che l'evento avvenga nel game iniziale. Questo limite \`e la somma di tutte le probabilit\`a\footnote{ovviamente tutte trascurabili, 
+visto che i due game sono computazionalmente indistinguibili.} con cui un attaccante riesce a distinguere un game dal successivo.
 
-Sia $E$ l'evento: ``\textbf{A} stampa $b^{'}$ e $b=b^{'}$''.\\ 
-Definiamo sicuro il sistema se $\exists \mu$ trascurabile tale che $Pr[E]\leq \frac{1}{2} + \mu(n)$.
-
-
-
-
-
-
-
-
+\`E importante dire che, anche nel modello formale si possono utilizzare le sequenze di game, la differenza \`e che due game successivi non sono computazionalmente indistinguibili 
+ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che, se in una sequenza di game, $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
+allora i due game 
+devono appartenere ad una stessa classe di equivalenza indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la sequenza sfrutta.
+Nel modello formale questa relazione sar\`a l'equivalenza osservazionale mentre in quello computazionale sar\`a l'indistinguibilit\`a computazionale.
 \chapter{CryptoVerif}
 \section{Introduzione al Tool}
-CryptoVerif \`e un \emph{dimostratore} automatico che lavora direttamente nel modello computazionale.
-Questo tool \`e utilizzato per dimostrare le propriet\`a di segretezza e autenticazione. Questo dimostratore dimostra i suoi risultati basandosi sulla tecnica dei 
-game e le sue prove di sicurezza sono valide per un numero polinomiale di game nel parametro di sicurezza. Il tool pu\`o inoltre calcolare la probabilit\`a di successo
-di un attaccante come funzione di alcuni parametri come il tempo impiegato la cardinalit\`a degli insiemi in gioco ecc, ecc\dots
-Il tool \`e liberamente scaricabile sotto la licenza CeCill\footnote{http://www.cecill.info/licences/} all'url [xxx].
-L'autore principale di CryptoVerif \`e Bruno Blanchet [xxx].
-Il tool \`e stato scritto in ML con 18000 righe di codice.
-\`E un tool molto recente ed \`e in continuo sviluppo.
-Un'altra strada \`e quella di dimostrare la correttezza del protocollo nel modello formale e poi di sfruttare il teorema [???]...
+CryptoVerif \`e un \emph{dimostratore} automatico che lavora direttamente nel modello computazionale. \`E un tool molto recente e in continuo sviluppo.\\
+CryptoVerif \`e stato scritto da Bruno Blanchet\footnote{Ricercatore al LIENS (Computer Science Laboratory of Ecole Normale Supérieure)} in ML. 
+Si possono trovare pi\`u informazioni nella home page di Blanchet\footnote{\url{http://www.di.ens.fr/~blanchet/index-eng.html}}.
+Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticazione Queste prove si basano sulla tecnica delle sequenze di game.
+Il tool \`e liberamente scaricabile\footnote{\url{http://www.cryptoverif.ens.fr/cryptoverif.html}} sotto la licenza CeCill\footnote{http://www.cecill.info/licences/}.
+CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni protocolli crittografici, come per esempio: FDH \cite{BlanchetPointchevalCrypto06}, 
+Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.
 \section{Un Esempio: FDH}
-Full Domain Hash \`e un protocollo...blahblah..
-
-
-
+Full Domain Hash \`e uno schema di firma che segue il paradigma \emph{hash-and-sign}\footnote{Questo paradigma vuole che, dato un messaggio $m$ se ne ritorni 
+la firma di $hash(m)$ e non la firma di $m$, dove la funzione hash \`e pu\`o essere istanziata con qualsiasi funzione hash collision resistant. 
+Si ottiene cos\`i una firma di lunghezza fissa e non dipendente dalla lunghezza del messaggio}. 
+Quella che a breve seguir\`a \`e una sequenza di game costruita dal CryptoVerif che d\`a un limite alla probabilit\`a che un attaccante riesca a forgiare una firma valida
+per un messaggio.
+L'input che si fornisce al CryptoVerif consta di un game iniziale chiamato $G_0$ in cui si modella la sicurezza dello schema e delle equivalenze necessarie a
+CryptoVerif per effettuare le modifiche ai game.
+La descrizione dello schema di firma \emph{FDH} attraverso il seguente game:
+\begin{center}
+$G0= \textbf{foreach}$ $iH \leq qH$ $\textbf{do}$ $OH(x : bitstring) := \textbf{return}(hash(x ))$ |\\
+	  $Ogen() := r \xleftarrow{R} seed ; pk \leftarrow pkgen(r ); sk \leftarrow skgen(r ); \textbf{return}(pk )|$\\
+    $(\textbf{foreach}$ $iS \leq qS$ $\textbf{do}$ $OS(m : bitstring) := \textbf{return}(invf(sk , hash(m)))$|\\
+  $ OT (m : bitstring, s : D) := \textbf{if} f(pk , s) = hash(m ) \textbf{then}$
+   $ \textbf{find}$ $u$ $\leq$ $qS$ $\textbf{suchthat}$ $(\textbf{defined}(m[u]) ∧ m = m[u])$ $\textbf{then end}$\\
+                                                            $\textbf{else event}$ $forge$
+\end{center}
+Possiamo vedere come in questo game si forniscano $qH$ copie dell' oracolo $OH$ che ritorna l'hash della stringa che gli si fornisce in input: $x$.
+Abbiamo poi il processo $Ogen()$ che ritorna al contesto una chiave pubblica dopo aver creato, partendo da un seme random, una coppia (chiave privata, chiave pubblica).
+Abbiamo poi $qS$ oracoli $OS$ che si occupano di fornire una firma del messaggio che gli viene dato in input. Infine abbiamo un singolo oracolo $OT$ che si occupa di verificare
+se la firma $s$ \`e valida per il messaggio $m^{'}$. In particolare se $hash(m^{'}) \neq f(pk, s)$ allora la firma non \`e valida per il messaggio. Se invece $hash(m^{'}) = f(pk, s)$
+l'oracolo si occupa di verificare se, per il messaggio $m^{'}$, \`e stata mai rilasciata una firma dall'oracolo $OS$, in caso affermativo il processo termina, altrimenti significa che 
+il contesto, ovvero l'attaccante, \`e stato in grado di forgiare una firma valida per il messaggio, e quindi \`e avvenuto l'evento \emph{forge}.
+Questo game modella la sicurezza dello schema di firma FDH. Notiamo come l'attaccante non sia modellato esplicitamente, infatti non possiamo fare nessuna assunzione su questo.
+Possiamo immaginare un attaccante come un altro processo messo in parallelo con questo game. In gergo l'attaccante viene anche detto anche \emph{contesto}.
+Per poter trasformare un game in un altro CryptoVerif ha bisogno di alcune equivalenze da poter utilizzare.
+Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze che possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in
+gioco.
+Queste regole di riscrittura di un generico elemento L in un generico elemento R possono valere incondizionatamente, oppure possono valere a meno di una certa probabilit\`a.
+Nel secondo caso la riscrittura di un termine L nell'equivalente R comporta l'introduzione di una differenza non nulla.
+Per esempio la definizione di \emph{one-wayness} viene fornita a CryptoVerif mediante questa equivalenza:
+\newpage
+\begin{center}
 \begin{verbatim}
-Initial state
-Game 1 is
-(
-   foreach iH_13 ≤ qH do
-   OH(x : bitstring) :=
-   return(hash(x ))
-|
-   Ogen() :=
-      R
-   r ← seed ;
-   pk : pkey ← pkgen(r );
-   sk : skey ← skgen(r );
-   return(pk );
-   (
-      foreach iS 14 ≤ qS do
-      OS(m : bitstring) :=
-      return(invf(sk , hash(m)))
-   |
-      OT (m : bitstring, s : D) :=
-      if (f(pk , s) = hash(m )) then
-      find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-         end
-      else
-         event forge
-   )
-)
-Applying equivalence
-foreach iH 11 ≤ nH do OH(x : bitstring) := return(hash(x ))[all]
-≈0
-foreach iH 12 ≤ nH do OH(x16 : bitstring) := x : bitstring ← x16 ;
-  find u ≤ nH suchthat defined(x [u], r [u]) ∧ (x = x [u]) then return(r [u])
-          R
-  else r ← D; return(r )
-yields
-Game 2 is
-(
-   foreach iH 13 ≤ qH do
-   OH(x : bitstring) :=
-   x23 : bitstring ← x ;
-   find suchthat defined(x19 , r18 ) ∧ (x23 = x19 ) then
-      return(r18 )
-   ⊕ @i 29 ≤ qS suchthat defined(x21 [@i 29 ], r20 [@i 29 ]) ∧ (x23 = x21 [@i 29 ]) then
-      return(r20 [@i 29 ])
-   ⊕ @i 28 ≤ qH suchthat defined(x23 [@i 28 ], r22 [@i 28 ]) ∧ (x23 = x23 [@i 28 ]) then
-      return(r22 [@i 28 ])
-   else
-           R
-      r22 ← D;
-      return(r22 )
-|
-   Ogen() :=
-      R
-   r ← seed ;
-   pk : pkey ← pkgen(r );
-                                                             1
-  sk : skey ← skgen(r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    x21 : bitstring ← m;
-    find suchthat defined(x19 , r18 ) ∧ (x21 = x19 ) then
-       return(invf(sk , r18 ))
-    ⊕ @i 27 ≤ qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) ∧ (x21 = x21 [@i 27 ]) then
-       return(invf(sk , r20 [@i 27 ]))
-    ⊕ @i 26 ≤ qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) ∧ (x21 = x23 [@i 26 ]) then
-       return(invf(sk , r22 [@i 26 ]))
-    else
-            R
-       r20 ← D;
-       return(invf(sk , r20 ))
-  |
-    OT (m : bitstring, s : D) :=
-    x19 : bitstring ← m ;
-    find suchthat defined(x19 , r18 ) ∧ (x19 = x19 ) then
-       if (f(pk , s) = r18 ) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    ⊕ @i 25 ≤ qS suchthat defined(x21 [@i 25 ], r20 [@i 25 ]) ∧ (x19 = x21 [@i 25 ]) then
-       if (f(pk , s) = r20 [@i 25 ]) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    ⊕ @i 24 ≤ qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) ∧ (x19 = x23 [@i 24 ]) then
-       if (f(pk , s) = r22 [@i 24 ]) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    else
-            R
-       r18 ← D;
-       if (f(pk , s) = r18 ) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-  )
-)
-Applying simplify yields
-Game 3 is
-(
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-                                                            2
-  x23 : bitstring ← x ;
-  find suchthat defined(x19 , r18 ) ∧ (x23 = x19 ) then
-    return(r18 )
-  ⊕ @i 29 ≤ qS suchthat defined(x21 [@i 29 ], r20 [@i 29 ]) ∧ (x23 = x21 [@i 29 ]) then
-    return(r20 [@i 29 ])
-  ⊕ @i 28 ≤ qH suchthat defined(x23 [@i 28 ], r22 [@i 28 ]) ∧ (x23 = x23 [@i 28 ]) then
-    return(r22 [@i 28 ])
-  else
-         R
-    r22 ← D;
-    return(r22 )
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen(r );
-  sk : skey ← skgen(r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    x21 : bitstring ← m;
-    find suchthat defined(x19 , r18 ) ∧ (x21 = x19 ) then
-       return(invf(sk , r18 ))
-    ⊕ @i 27 ≤ qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) ∧ (x21 = x21 [@i 27 ]) then
-       return(invf(sk , r20 [@i 27 ]))
-    ⊕ @i 26 ≤ qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) ∧ (x21 = x23 [@i 26 ]) then
-       return(invf(sk , r22 [@i 26 ]))
-    else
-            R
-       r20 ← D;
-       return(invf(sk , r20 ))
-  |
-    OT (m : bitstring, s : D) :=
-    x19 : bitstring ← m ;
-    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], x21 [@i 25 ]) ∧ (x19 = x21 [@i 25 ]) then
-       end
-    ⊕ @i 24 ≤ qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) ∧ (x19 = x23 [@i 24 ]) then
-       if (f(pk , s) = r22 [@i 24 ]) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    else
-            R
-       r18 ← D;
-       if (f(pk , s) = r18 ) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-  )
-)
-Applying remove assignments of useless yields
-                                                            3
-Game 4 is
-(
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  x23 : bitstring ← cst bitstring;
-  find suchthat defined(m , x19 , r18 ) ∧ (x = m ) then
-    return(r18 )
-  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
-    return(r20 [@i 29 ])
-  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
-    return(r22 [@i 28 ])
-  else
-         R
-    r22 ← D;
-    return(r22 )
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen(r );
-  sk : skey ← skgen(r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    x21 : bitstring ← cst bitstring;
-    find suchthat defined(m , x19 , r18 ) ∧ (m = m ) then
-       return(invf(sk , r18 ))
-    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
-       return(invf(sk , r20 [@i 27 ]))
-    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
-       return(invf(sk , r22 [@i 26 ]))
-    else
-            R
-       r20 ← D;
-       return(invf(sk , r20 ))
-  |
-    OT (m : bitstring, s : D) :=
-    x19 : bitstring ← cst bitstring;
-    find @i 25 ≤ qS suchthat defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) ∧ (m = m[@i 25 ]) then
-       end
-    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
-       if (f(pk , s) = r22 [@i 24 ]) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    else
-            R
-       r18 ← D;
-       if (f(pk , s) = r18 ) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-  )
-)
-                                                             4
-Applying remove assignments of binder sk yields
-Game 5 is
-(
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  x23 : bitstring ← cst bitstring;
-  find suchthat defined(m , x19 , r18 ) ∧ (x = m ) then
-    return(r18 )
-  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
-    return(r20 [@i 29 ])
-  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
-    return(r22 [@i 28 ])
-  else
-         R
-    r22 ← D;
-    return(r22 )
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen(r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    x21 : bitstring ← cst bitstring;
-    find suchthat defined(m , x19 , r18 ) ∧ (m = m ) then
-       return(invf(skgen(r ), r18 ))
-    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
-       return(invf(skgen(r ), r20 [@i 27 ]))
-    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
-       return(invf(skgen(r ), r22 [@i 26 ]))
-    else
-            R
-       r20 ← D;
-       return(invf(skgen(r ), r20 ))
-  |
-    OT (m : bitstring, s : D) :=
-    x19 : bitstring ← cst bitstring;
-    find @i 25 ≤ qS suchthat defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) ∧ (m = m[@i 25 ]) then
-       end
-    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
-       if (f(pk , s) = r22 [@i 24 ]) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    else
-            R
-       r18 ← D;
-       if (f(pk , s) = r18 ) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-                                                             5
-          event forge
-  )
-)
-Applying equivalence
                             R
-foreach iK 1 ≤ nK do r ← seed; (
-  Opk() := return(pkgen(r )) |
-                              R
-  foreach iF 2 ≤ nF do x ← D; (
-    Oant() := return(invf(skgen(r ), x )) |
-    Oim() := return(x )))
-≈0
+     foreach ik ≤ nk do r ← seed ; (Opk() := return(pkgen(r))
+                                  R
+          | foreach if ≤ nf do x ← D; (Oy() := return(f(pkgen(r), x))
+               | foreach i1 ≤ n1 do Oeq(x : D) := return(x = x)
+               | Ox() := return(x)))
+                                                                        
                             R
-foreach iK 3 ≤ nK do r ← seed; (
-  Opk() := return(pkgen(r )) |
-                              R
-  foreach iF 4 ≤ nF do x ← D; (
-    Oant() := return(x ) |
-    Oim() := return(f(pkgen(r ), x ))))
-with r yields
-Game 6 is
-(
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  x23 : bitstring ← cst bitstring;
-  find suchthat defined(m , x19 , r18 ) ∧ (x = m ) then
-    return(f(pkgen(r ), r18 ))
-  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
-    return(f(pkgen(r ), r20 [@i 29 ]))
-  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
-    return(f(pkgen(r ), r22 [@i 28 ]))
-  else
-         R
-    r22 ← D;
-    return(f(pkgen(r ), r22 ))
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen(r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    x21 : bitstring ← cst bitstring;
-    find suchthat defined(m , x19 , r18 ) ∧ (m = m ) then
-       return(r18 )
-    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
-       return(r20 [@i 27 ])
-    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
-       return(r22 [@i 26 ])
-    else
-            R
-       r20 ← D;
-       return(r20 )
-  |
-                                                             6
-    OT (m : bitstring, s : D) :=
-    x19 : bitstring ← cst bitstring;
-    find @i 25 ≤ qS suchthat defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) ∧ (m = m[@i 25 ]) then
-       end
-    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
-       if (f(pk , s) = f(pkgen(r ), r22 [@i 24 ])) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    else
-            R
-       r18 ← D;
-       if (f(pk , s) = f(pkgen(r ), r18 )) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-  )
-)
-Applying simplify yields
-Game 7 is
-(
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  x23 : bitstring ← cst bitstring;
-  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
-    return(f(pkgen(r ), r18 ))
-  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
-    return(f(pkgen(r ), r20 [@i 29 ]))
-  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
-    return(f(pkgen(r ), r22 [@i 28 ]))
-  else
-         R
-    r22 ← D;
-    return(f(pkgen(r ), r22 ))
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen(r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    x21 : bitstring ← cst bitstring;
-    find suchthat defined(m , r18 ) ∧ (m = m ) then
-       return(r18 )
-    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
-       return(r20 [@i 27 ])
-    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
-       return(r22 [@i 26 ])
-    else
-                                                            7
-            R
-       r20 ← D;
-       return(r20 )
-  |
-    OT (m : bitstring, s : D) :=
-    x19 : bitstring ← cst bitstring;
-    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
-       end
-    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
-       if (s = r22 [@i 24 ]) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    else
-            R
-       r18 ← D;
-       if (s = r18 ) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-  )
-)
-Applying remove assignments of useless yields
-Game 8 is
-(
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
-    return(f(pkgen(r ), r18 ))
-  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
-    return(f(pkgen(r ), r20 [@i 29 ]))
-  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
-    return(f(pkgen(r ), r22 [@i 28 ]))
-  else
-         R
-    r22 ← D;
-    return(f(pkgen(r ), r22 ))
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen(r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    find suchthat defined(m , r18 ) ∧ (m = m ) then
-       return(r18 )
-    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
-       return(r20 [@i 27 ])
-    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
-       return(r22 [@i 26 ])
-                                                            8
-    else
-            R
-       r20 ← D;
-       return(r20 )
-  |
-    OT (m : bitstring, s : D) :=
-    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
-       end
-    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
-       if (s = r22 [@i 24 ]) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    else
-            R
-       r18 ← D;
-       if (s = r18 ) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-  )
-)
-Applying equivalence
-                              R
-foreach iK 5 ≤ nK do r ← seed; (
-  Opk() := return(pkgen(r )) |
-                                R
-  foreach iF 6 ≤ nF do x ← D; (
-    Oy() := return(f(pkgen(r ), x )) |
-    foreach i1 7 ≤ n1 do Oeq(x : D) := return((x = x )) |
-    Ox() := return(x )))
-≈nK ×nF ×POW (time+(nK −1.)×time(pkgen)+(nF ×nK −1.)×time(f))
-                              R
-foreach iK 8 ≤ nK do r ← seed; (
-  Opk() := return(pkgen (r )) |
-                                R
-  foreach iF 9 ≤ nF do x ← D; (
-    Oy() := return(f (pkgen (r ), x )) |
-    foreach i1 10 ≤ n1 do Oeq(x : D) := if defined(k ) then return((x = x )) else return(false) |
-    Ox() := k : bitstring ← mark; return(x )))
-[Difference of probability POW (qS × time(f) + qH × time(f) + time + time(context for game 8))+
-qS × POW (qS × time(f) + qH × time(f) + time + time(context for game 8))+
-qH × POW (qS × time(f) + qH × time(f) + time + time(context for game 8))] yields
-Game 9 is
-(
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
-    return(f (pkgen (r ), r18 ))
-  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
-    return(f (pkgen (r ), r20 [@i 29 ]))
-  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
-    return(f (pkgen (r ), r22 [@i 28 ]))
-                                                            9
-  else
-         R
-    r22 ← D;
-    return(f (pkgen (r ), r22 ))
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen (r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    find suchthat defined(m , r18 ) ∧ (m = m ) then
-       k47 : bitstring ← mark;
-       return(r18 )
-    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
-       k48 : bitstring ← mark;
-       return(r20 [@i 27 ])
-    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
-       k50 : bitstring ← mark;
-       return(r22 [@i 26 ])
-    else
-            R
-       r20 ← D;
-       k45 : bitstring ← mark;
-       return(r20 )
-  |
-    OT (m : bitstring, s : D) :=
-    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
-       end
-    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
-       find @i 56 ≤ qS suchthat defined(k50 [@i 56 ]) ∧ (@i 24 = @i 26 [@i 56 ]) then
-         if (s = r22 [@i 24 ]) then
-         find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-            end
-         else
-            event forge
-       else
-         if false then
-         find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-            end
-         else
-            event forge
-    else
-            R
-       r18 ← D;
-       find @i 53 ≤ qS suchthat defined(k47 [@i 53 ]) then
-         if (s = r18 ) then
-         find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-            end
-         else
-            event forge
-       else
-         if false then
-         find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-            end
-                                                           10
-         else
-            event forge
-  )
-)
-Applying simplify yields
-Game 10 is
-(
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
-    return(f (pkgen (r ), r18 ))
-  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
-    return(f (pkgen (r ), r20 [@i 29 ]))
-  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
-    return(f (pkgen (r ), r22 [@i 28 ]))
-  else
-         R
-    r22 ← D;
-    return(f (pkgen (r ), r22 ))
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen (r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    find suchthat defined(m , r18 ) ∧ (m = m ) then
-       k47 : bitstring ← mark;
-       return(r18 )
-    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
-       k48 : bitstring ← mark;
-       return(r20 [@i 27 ])
-    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
-       k50 : bitstring ← mark;
-       return(r22 [@i 26 ])
-    else
-            R
-       r20 ← D;
-       k45 : bitstring ← mark;
-       return(r20 )
-  |
-    OT (m : bitstring, s : D) :=
-    find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
-       end
-    ⊕ @i 24 ≤ qH suchthat defined(r22 [@i 24 ], x [@i 24 ]) ∧ (m = x [@i 24 ]) then
-       end
-    else
-            R
-       r18 ← D
-  )
-)
-                                                           11
-Applying remove assignments of useless yields
-Game 11 is
-(
-   foreach iH 13 ≤ qH do
-   OH(x : bitstring) :=
-   find suchthat defined(m , r , r18 ) ∧ (x = m ) then
-     return(f (pkgen (r ), r18 ))
-   ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
-     return(f (pkgen (r ), r20 [@i 29 ]))
-   ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
-     return(f (pkgen (r ), r22 [@i 28 ]))
-   else
-          R
-     r22 ← D;
-     return(f (pkgen (r ), r22 ))
-|
-   Ogen() :=
-     R
-   r ← seed ;
-   pk : pkey ← pkgen (r );
-   return(pk );
-   (
-     foreach iS 14 ≤ qS do
-     OS(m : bitstring) :=
-     find suchthat defined(m , r18 ) ∧ (m = m ) then
-        return(r18 )
-     ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
-        return(r20 [@i 27 ])
-     ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
-        return(r22 [@i 26 ])
-     else
-            R
-        r20 ← D;
-        return(r20 )
-   |
-     OT (m : bitstring, s : D) :=
-     find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
-        end
-     ⊕ @i 24 ≤ qH suchthat defined(r22 [@i 24 ], x [@i 24 ]) ∧ (m = x [@i 24 ]) then
-        end
-     else
-            R
-        r18 ← D
-   )
-)
-Proved event forge =⇒ false with probability
-qH × POW (qS × time(f) + qH × time(f) + time + time(context for game 8))+
-qS × POW (qS × time(f) + qH × time(f) + time + time(context for game 8))+
-POW (qS × time(f) + qH × time(f) + time + time(context for game 8))
-RESULT time(context for game 8) =
-2. × qS × time(=bitstring, maxlength(game 8 : m ), maxlength(game 8 : m[iS 14 ]))+
-qH × time(=bitstring, maxlength(game 8 : m ), maxlength(game 8 : x [iH 13 ]))+
-qH × time(=bitstring, maxlength(game 8 : m[iS 14 ]), maxlength(game 8 : x [iH 13 ])) × qS +
-qS × qS × time(=bitstring, maxlength(game 8 : m[iS 14 ]), maxlength(game 8 : m[iS 14 ]))+
-time(=bitstring, maxlength(game 8 : m[iS 14 ]), maxlength(game 8 : m )) × qS +
-                                                            12
-qH × qH × time(=bitstring, maxlength(game 8 : x [iH 13 ]), maxlength(game 8 : x [iH 13 ]))+
-qS × time(=bitstring, maxlength(game 8 : x [iH 13 ]), maxlength(game 8 : m[iS 14 ])) × qH +
-time(=bitstring, maxlength(game 8 : x [iH 13 ]), maxlength(game 8 : m )) × qH
-All queries proved.
-                                                       13
-
+≈
+pow foreach ik ≤ nk do r ← seed ; (Opk() := return(pkgen (r))
+                                  R
+          | foreach if ≤ nf do x ← D; (Oy() := return(f (pkgen (r), x))
+               | foreach i1 ≤ n1 do Oeq(x : D) :=
+                    if defined(k) then return(x = x) else return(false)
+               | Ox() := k ← mark; return(x)))
 \end{verbatim}
+\end{center}
+
+Questa equivalenza cattura e definisce il concetto di funzione one-way. Supponiamo infatti che la funzione f non sia one-way, esister\`a dunque un avversario efficiente A che riuscir\`a ad invertire 
+la funzione. Questo avversario sar\`a dunque in grado di distinguere i due membri dell'equivalenza L<=>R. Infatti L'avversario non dovr\`a far altro che chiamare Oy(), e invertire la funzione.
+Quando poi chiamer\`a Oeq fornendo la preimmagine di y da lui calcolata se Oeq appartiene al primo membro allora Oeq tironer\`a sempre true, mentre se appartiene al secondo ritorner\`a sempre false.
+
+Supponiamo invece che $f$ si effettivamente one-way. Allora non esister\`a nessun attaccante efficiente che riesca ad invertire $f$. L'unico modo che ha quindi un attaccante
+per invertire la funzione \`e chiamare oltre Ox() e ottenere cos\`i una preimmagine valida. Se però l'attaccante chiama Ox() allora L e R sono indistinguibili (a meno di probabilit\`a trascurabili).
+Infatti se l'Ox() chiamato dall'attaccante apaprtiene ad L allora viene semplicemente ritornrata x. Se invece Ox() appartiene ad R l'oracolo prima di ritornare x segna k con una costante mark.
+Quando poi L'attaccante chiama Oeq() nel caso Oeq sia in R allora Oeq effettua un test e se k \`e stato definito ritorna quello che avrebbe ritornato L.Oeq. SE invece k non \`e stato definito
+allora siginifica che l'attaccante non ha richiamato Oeq e quindi \`e probabilissimo che non sia riuscto ad invertire la f e quindi Oeq ritorna false.
+
+Un'ulteriore definizione viene fornita al CryptoVerif, quella di funzione hash. La funzione hash viene fornita attraverso il seguente codice:
+\begin{center}
+ \begin{verbatim}
+ 726 equiv foreach iH <= nH do OH(x:hashinput) := return(hash(x)) [all]
+ 727       <=(0)=>
+ 728       foreach iH <= nH do OH(x:hashinput) :=
+ 729     find[unique] u <= nH suchthat defined(x[u],r[u]) 
+	      && otheruses(r[u]) && x= x[u] then return(r[u]) 
+	      else r <-R hashoutput; return(r).
+ 730 
+ 731 let hashoracle =
+ 732         foreach iH <= qH do
+ 733     OH(x:hashinput) :=
+ 734     return(hash(x)).
+ \end{verbatim}
+\end{center}
+
+La funzione hash \`e intesa implementata nel modello dell'oracolo random. Ovvero la funzione se non \`e mai stata richiamata su un particolare valore $x_0$ allora ritorna un
+valore random, altrimenti ritorna il valore che ha ritornato precedentemente. Questo viene fatto salvando il valore ritornato per un particolare input in un array, epoi
+al momento della chiamata effettuando un look up nell'array.
+
+\begin{algorithmic}
+\IF {$i\geq maxval$} 
+        \STATE $i\gets 0$
+\ELSE
+        \IF {$i+k\leq maxval$}
+                \STATE $i\gets i+k$
+        \ENDIF
+\ENDIF 
+\end{algorithmic}
+
+
+\begin{algorithm}                      % enter the algorithm environment
+\caption{Calculate $y = x^n$}          % give the algorithm a caption
+\label{alg1}                           % and a label for \ref{} commands later in the document
+\begin{algorithmic}                    % enter the algorithmic environment
+\REQUIRE $n \geq 0 \vee x \neq 0$
+\ENSURE $y = x^n$
+\STATE $y \Leftarrow 1$
+\IF{$n < 0$}
+\STATE $X \Leftarrow 1 / x$
+\STATE $N \Leftarrow -n$
+\ELSE
+\STATE $X \Leftarrow x$
+\STATE $N \Leftarrow n$
+\ENDIF
+\WHILE{$N \neq 0$}
+\IF{$N$ is even}
+\STATE $X \Leftarrow X \times X$
+\STATE $N \Leftarrow N / 2$
+\ELSE[$N$ is odd]
+\STATE $y \Leftarrow y \times X$
+\STATE $N \Leftarrow N - 1$
+\ENDIF
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
+ 925 forall r:seed, x:D, x':D;
+ 926     (x' = invf(skgen(r),x)) = (f(pkgen(r),x') = x).
+
+
+
+forall k:skey, x:D, x':D; (invf(k,x) = invf(k,x')) = (x = x').
+
+ 915 forall k:pkey, x:D, x':D; (f(k,x) = f(k,x')) = (x = x').
+ 916 forall k:pkey, x:D, x':D; (f'(k,x) = f'(k,x')) = (x = x').
+
+
+ 911 forall r:seed, x:D; f(pkgen(r), invf(skgen(r), x)) = x.
+
+forall r:seed, x:D; invf(skgen(r), f(pkgen(r), x)) = x.
+
+
 
 \chapter{Risultati Raggiunti}
 \chapter{Conclusioni}

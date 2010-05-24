@@ -1,26 +1,15 @@
 type seed[fixed, large].
 type codG'[fixed, large].
+type codG[fixed, large].
 
+fun G(seed) : codG.
 fun G'(seed) : codG'.
 
-param n1, n2, n3.
+
+param n1, n2.
 event distinguished.
 proba POW.
-
-query event distinguished ==> false.
-query secret1 w.
-(*
-equiv
-	foreach i1 <=n1 do
-			w <-R codG';
-			OGet():=return(w)
-	   
-    <=(0)=> 
-    
-	foreach i1<=n1 do
-			r1 <-R seed;
-			OGet():=return (G'(r1)).
-*)
+query secret1 x.
 equiv
 	foreach i1<=n1 do
             r <-R seed;
@@ -32,22 +21,8 @@ equiv
              w <-R codG';
              OGet():=return(w).
 
-let processProva =
-			foreach i3 <= n3 do	
-				Oeq(b': bool):=
-					if(b'=b) then 
-							event distinguished.
 process 	
 		foreach i2 <= n2 do
-				O():=
-				b<-R bool;
-				if(b=true) then
-					w <-R codG';
-					return(w);processProva
-				else
-					s<-R seed;
-					w:codG' <- G'(s);
-					return (w);processProva
-
-
-
+					O():=
+						x<-R seed;
+						return(x)

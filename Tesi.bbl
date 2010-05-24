@@ -1,10 +1,24 @@
-\begin{thebibliography}{Dwo06}
+\begin{thebibliography}{BJST08}
 
 \bibitem[AR07]{DBLP:journals/joc/AbadiR07}
 Mart\'{\i}n Abadi and Phillip Rogaway.
 \newblock Reconciling two views of cryptography (the computational soundness of
   formal encryption).
 \newblock {\em J. Cryptology}, 20(3):395, 2007.
+
+\bibitem[BJST08]{BlanchetJaggardScedrovTsayAsiaCCS08}
+Bruno Blanchet, Aaron~D. Jaggard, Andre Scedrov, and Joe-Kai Tsay.
+\newblock Computationally sound mechanized proofs for basic and public-key
+  {K}erberos.
+\newblock In {\em ACM Symposium on Information, Computer and Communications
+  Security (ASIACCS'08)}, pages 87--99, Tokyo, Japan, March 2008. ACM.
+
+\bibitem[BP06]{BlanchetPointchevalCrypto06}
+Bruno Blanchet and David Pointcheval.
+\newblock Automated security proofs with sequences of games.
+\newblock In Cynthia Dwork, editor, {\em CRYPTO'06}, volume 4117 of {\em
+  Lecture Notes on Computer Science}, pages 537--554, Santa Barbara, CA, August
+  2006. Springer Verlag.
 
 \bibitem[DH76]{diffiehelmann77}
 Whitfield Diffie and Martin~E. Hellman.
@@ -30,9 +44,9 @@ Jonathan Katz and Yehuda Lindell.
   Cryptography and Network Security Series)}.
 \newblock Chapman \& Hall/CRC, 2007.
 
-\bibitem[Sho08]{shoup}
+\bibitem[Sho]{shoup}
 Victor Shoup.
 \newblock Sequences of games: A tool for taming complexity in security proofs.
-\newblock 2008.
+\newblock \url{http://eprint.iacr.org/2004/332.pdf}.
 
 \end{thebibliography}

@@ -18,13 +18,23 @@ QuickBuild=
 
 [item:Tesi.tex]
 archive=true
-column=44
+column=2
 encoding=UTF-8
 highlight=LaTeX
-line=295
+line=319
 mode=LaTeX
 open=true
 order=0
+
+[item:myrefs.bib]
+archive=true
+column=54
+encoding=UTF-8
+highlight=BibTeX
+line=85
+mode=BibTeX
+open=true
+order=1
 
 [item:tesi.kilepr]
 archive=true
@@ -37,5 +47,9 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Tesi.tex]
-CursorColumn=44
-CursorLine=295
+CursorColumn=2
+CursorLine=319
+
+[view-settings,view=0,item:myrefs.bib]
+CursorColumn=54
+CursorLine=85
