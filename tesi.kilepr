@@ -18,10 +18,10 @@ QuickBuild=
 
 [item:Tesi.tex]
 archive=true
-column=2
+column=122
 encoding=UTF-8
 highlight=LaTeX
-line=319
+line=47
 mode=LaTeX
 open=true
 order=0
@@ -47,8 +47,8 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Tesi.tex]
-CursorColumn=2
-CursorLine=319
+CursorColumn=122
+CursorLine=47
 
 [view-settings,view=0,item:myrefs.bib]
 CursorColumn=54

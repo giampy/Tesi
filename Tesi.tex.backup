@@ -37,8 +37,25 @@
    \renewcommand{\headrulewidth}{0pt} % e la linea
 }
 
+
+\newcommand{\foreach}[2]{\textbf{foreach #1} $\leq$ \textbf{#2} \textbf{do}}
+\newcommand{\return}[1]{\textbf{return (#1)};}
+\renewcommand{\do}{\textbf{do}}
+\newcommand{\pipe}{\\ \textbf{|}}
+\newcommand{\setR}[2]{\textbf{#1} $\xleftarrow{R}$ \textbf{#2};}
+\newcommand{\set}[2]{\textbf{#1} $\leftarrow$ \textbf{#2};}
+\newcommand{\ifthen}[2]{\textbf{if} #1 \textbf{then} #2}
+\newcommand{\find}[6]{\textbf{find #1} $\leq$ \textbf{#2 suchthat} (\textbf{defined}(#3 $\wedge$ #4)) \textbf{then} #5 \textbf{else} #6}
+\newcommand{\event}{\textbf{event}}
 \begin{document}
 \chapter{Introduzione}
+
+$G_0=$ \foreach{iH}{qH} OH(x: bitstring):= \return{hash(x)}\pipe Ogen():=\setR{r}{seed}\set{pk}{pkgen(r)}sk\set{sk}{skgen(r)}\return{pk}\\
+	(\foreach{iS}{qS} OS(m: bitstring):= \return{invf(sk, hash(m))})\pipe
+	\find{u}{qS}{m[u]}${m^{'}=m$}{end}{\event forge}
+	
+
+
 Nel capitolo intoduttivo si introdurranno il modello formale Vs quello computazionale,
 il concetto di sicurezza perfetta e quella computazionale per poi riprendere quest'ultima nel
 capitolo 1
@@ -396,42 +413,6 @@ La funzione hash \`e intesa implementata nel modello dell'oracolo random. Ovvero
 valore random, altrimenti ritorna il valore che ha ritornato precedentemente. Questo viene fatto salvando il valore ritornato per un particolare input in un array, epoi
 al momento della chiamata effettuando un look up nell'array.
 
-\begin{algorithmic}
-\IF {$i\geq maxval$} 
-        \STATE $i\gets 0$
-\ELSE
-        \IF {$i+k\leq maxval$}
-                \STATE $i\gets i+k$
-        \ENDIF
-\ENDIF 
-\end{algorithmic}
-
-
-\begin{algorithm}                      % enter the algorithm environment
-\caption{Calculate $y = x^n$}          % give the algorithm a caption
-\label{alg1}                           % and a label for \ref{} commands later in the document
-\begin{algorithmic}                    % enter the algorithmic environment
-\REQUIRE $n \geq 0 \vee x \neq 0$
-\ENSURE $y = x^n$
-\STATE $y \Leftarrow 1$
-\IF{$n < 0$}
-\STATE $X \Leftarrow 1 / x$
-\STATE $N \Leftarrow -n$
-\ELSE
-\STATE $X \Leftarrow x$
-\STATE $N \Leftarrow n$
-\ENDIF
-\WHILE{$N \neq 0$}
-\IF{$N$ is even}
-\STATE $X \Leftarrow X \times X$
-\STATE $N \Leftarrow N / 2$
-\ELSE[$N$ is odd]
-\STATE $y \Leftarrow y \times X$
-\STATE $N \Leftarrow N - 1$
-\ENDIF
-\ENDWHILE
-\end{algorithmic}
-\end{algorithm}
 
  925 forall r:seed, x:D, x':D;
  926     (x' = invf(skgen(r),x)) = (f(pkgen(r),x') = x).

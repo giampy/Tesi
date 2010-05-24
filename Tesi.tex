@@ -37,8 +37,26 @@
    \renewcommand{\headrulewidth}{0pt} % e la linea
 }
 
+
+\newcommand{\foreach}[2]{\textbf{foreach #1} $\leq$ \textbf{#2} \textbf{do}}
+\newcommand{\return}[1]{\textbf{return}(#1);}
+\renewcommand{\do}{\textbf{do}}
+\newcommand{\pipe}{ \textbf{|} \\ \\}
+\newcommand{\setR}[2]{#1 $\xleftarrow{R}$ #2;}
+\newcommand{\set}[2]{#1 $\leftarrow$ #2;}
+\newcommand{\ifthen}[2]{\textbf{if} #1 \textbf{then} #2}
+\newcommand{\find}[6]{\textbf{find #1} $\leq$ \textbf{#2 suchthat} (\textbf{defined}(#3) $\wedge$ #4)) \textbf{then} #5 \\ \textbf{else} #6}
+\newcommand{\event}{\textbf{event}}
+\newcommand{\myend}{\textbf{end}}
 \begin{document}
 \chapter{Introduzione}
+
+$G_0=$ \foreach{iH}{qH} OH(x: bitstring):= \return{hash(x)}\pipe Ogen():=\setR{r}{seed}\set{pk}{pkgen(r)}\set{sk}{skgen(r)}\return{pk}\\
+	(\foreach{iS}{qS} OS(m: bitstring):= \return{invf(sk, hash(m))})\pipe
+	\find{u}{qS}{m[u]} {$m^{'}=m[u]$} {\myend} {\event} forge
+	
+
+
 Nel capitolo intoduttivo si introdurranno il modello formale Vs quello computazionale,
 il concetto di sicurezza perfetta e quella computazionale per poi riprendere quest'ultima nel
 capitolo 1
