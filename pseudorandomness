@@ -1,35 +1,28 @@
-type seed[fixed, large].
-type codG'[fixed, large].
-type codG[fixed, large].
-
-fun G(seed) : codG.
-fun G'(seed) : codG'.
-
+type mytype[large, fixed].
+fun G(mytype): mytype.
+fun G'(mytype): mytype.
 param n1, n2.
-event distinguished.
 query secret1 w.
-(*query event distinguished==>false.*)
 proba POW.
 equiv
 	foreach i1<=n1 do
-            r <-R seed;
+            r <-R mytype;
             OGet():=return (G'(r))
      
   	 <=(0)=> (*da definire*)
 	
 	foreach i1 <=n1 do
-             w <-R codG';
+             w <-R mytype;
              OGet():=return(w).
 
-let processPS=
-		OG():=
-		b<-R bool;
-		w:codG';
-		if(b=true) then 
-				s<-R seed;
-				return(G'(s))
-		else
-			w<-R codG';
-			return(w).
 
-process processPS	
+forall x:mytype; G(x)=(G'(G'(x))).
+
+let processO=
+	foreach i1 <=n2 do
+		O():=
+			r<-R mytype;
+			w: mytype <-G(k);
+		return.
+process
+		processO

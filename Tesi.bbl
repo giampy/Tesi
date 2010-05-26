@@ -1,10 +1,20 @@
 \begin{thebibliography}{BJST08}
 
+\bibitem[AG99]{AbadiG99}
+Mart\'{\i}n Abadi and Andrew~D. Gordon.
+\newblock A calculus for cryptographic protocols: The spi calculus.
+\newblock {\em Inf. Comput.}, 148(1):1--70, 1999.
+
 \bibitem[AR07]{DBLP:journals/joc/AbadiR07}
 Mart\'{\i}n Abadi and Phillip Rogaway.
 \newblock Reconciling two views of cryptography (the computational soundness of
   formal encryption).
 \newblock {\em J. Cryptology}, 20(3):395, 2007.
+
+\bibitem[BAN90]{BurrowsAN90}
+Michael Burrows, Mart\'{\i}n Abadi, and Roger~M. Needham.
+\newblock A logic of authentication.
+\newblock {\em ACM Trans. Comput. Syst.}, 8(1):18--36, 1990.
 
 \bibitem[BJST08]{BlanchetJaggardScedrovTsayAsiaCCS08}
 Bruno Blanchet, Aaron~D. Jaggard, Andre Scedrov, and Joe-Kai Tsay.
@@ -38,11 +48,22 @@ Oded Goldreich.
 \newblock {\em Foundations of Cryptography: Basic Tools}.
 \newblock Cambridge University Press, New York, NY, USA, 2000.
 
+\bibitem[Kem87]{Kemmerer87}
+Richard~A. Kemmerer.
+\newblock Analyzing encryption protocols using formal verification
+  authentication schemes.
+\newblock In {\em CRYPTO}, pages 289--305, 1987.
+
 \bibitem[KL07]{1206501}
 Jonathan Katz and Yehuda Lindell.
 \newblock {\em Introduction to Modern Cryptography (Chapman \& Hall/Crc
   Cryptography and Network Security Series)}.
 \newblock Chapman \& Hall/CRC, 2007.
+
+\bibitem[Pau98]{Paulson98}
+Lawrence~C. Paulson.
+\newblock The inductive approach to verifying cryptographic protocols.
+\newblock {\em Journal of Computer Security}, 6(1-2):85--128, 1998.
 
 \bibitem[Sho]{shoup}
 Victor Shoup.
