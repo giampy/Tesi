@@ -22,7 +22,7 @@ let processO=
 	foreach i1 <=n2 do
 		O():=
 			r<-R mytype;
-			w: mytype <-G(k);
+			w: mytype <-G(r);
 		return.
 process
 		processO

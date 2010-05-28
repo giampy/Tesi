@@ -49,22 +49,36 @@
 \newcommand{\find}[6]{\textbf{find #1} $\leq$ \textbf{#2 suchthat} (\textbf{defined}(#3) $\wedge$ #4)) \textbf{then} #5 \\ \textbf{else} #6}
 \newcommand{\event}{\textbf{event}}
 \newcommand{\myend}{\textbf{end}}
-\renewcommand{\equiv}{\textbf{equiv}}
+\newcommand{\equiva}{\textbf{equiv}}
 \begin{document}
 
-\chapter{Introduzione}
-Da quando la crittografia ha cessato di essere un'arte per assurgere allo stato di scienza~\cite{diffiehelmann77}, sono nati almeno due modi profondamente diversi fra loro di
-vedere la crittografia.\\In uno di questi, il modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
-Nell'altro, il modello \emph{computazionale} le operazioni crittografiche sono viste come funzioni su stringhe di bit e le operazioni hanno una semantica probabilistica.
-Il primo modello \`e stato ampiamente trattato in \cite{AbadiG99, BurrowsAN90, Kemmerer87, Paulson98}. Il secondo modello trova le basi in lavori di altrettanto illustri studiosi .
-\\
-Il modello formale fino ad oggi \`e stato sicuramente trattato in modo pi\`u approfondito. Questo ha fatto s\`i che lo stato dell'arte veda molti pi\`u tool di
-verifica automatica che lavorano nel modello formale rispetto a tool che lavorano nel modello crittografico. 
-Uno fra i pi\`u famosi tool che lavora nel modello formale \`e sicuramente il \emph{ProVerif}\footnote{Per informazioni pi\`u dettagliate su questo tool si visiti il seguente sito web: 
+\chapter*{Introduzione}
+\addcontentsline{toc}{chapter}{Introduzione}
+Negli anni anni '80 la crittografia ha cessato di essere un arte per assurgere allo stato di scienza. \\Come scienza, la crittografia moderna
+si propone innanzi tutto di fornire definizioni rigorose dei concetti con cui ha a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
+su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\
+Sebbene in alcuni casi sia possibile (ed \`e stato fatto~\cite{Shannon}) provare dei risultati \emph{incondizionatamente} la maggior parte delle prove di teoremi nel campo 
+della crittografia moderna sono basate su assunzioni che non sono ancora certe, ma che sono comunque ben formalizzate e inequivocabilmente descritte.\\La pi\`u importante \`e sicuramente
+l'ipotesi dell'esistenza di funzioni \emph{one-way}. Tutte le prove che sono basate su assunzioni non verificate sono sempre e comunque valide, sia che le assunzioni fatte vengano dimostrate,
+sia che vengano confutate; questo perch\`e ogni dimostrazione \`e del tipo: \emph{Se X allora Y} (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
+d'espansione polinomiale). Semplicemente, nel caso in cui le assunzioni vengano confutate si renderebbero poco interessanti le dimostrazioni che si basano su queste\footnote{\`E ovvio che partendo da ipotesi false si possa
+dimostrare qualsiasi cosa.}.
+ \`E per\`o giusto dire che le assunzioni che vengono fatte sono largamente ritenute vere; questo anche  grazie al fatto che alcune di esse si possono dedurre da altre ipotesi 
+largamente ritenute vere sebbene non dimostrate.\\Lo studio di una congettura infatti, pu\`o fornire evidenti prove della sua validit\`a mostrando che essa \`e la tesi di un teorema che assume come ipotesi
+un'altra congettura largamente ritenuta valida.
+Da quando la crittografia si \`e guadagnata una validit\`a scientifica, sono nati almeno due modi profondamente diversi fra loro di
+studiarla.\\In uno di questi, il modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
+Nell'altro, il modello \emph{computazionale}, le operazioni crittografiche sono viste come funzioni su stringhe di bit che hanno una semantica probabilistica.
+Il primo modello \`e stato ampiamente trattato in \cite{AbadiG99, BurrowsAN90, Kemmerer87, Paulson98}. 
+Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cite{?}.\\
+Il modello formale pu\`o contare su un vastissimo insieme di conoscenze teoriche derivanti da altri rami dell'informatica, in particolare la teoria dei linguaggi formali e della logica;
+anche per questo il modello formale \`e stato sicuramente trattato in modo pi\`u approfondito, almeno fino ad ora. Questo ha fatto s\`i che lo stato dell'arte veda, per esempio, molti pi\`u tool di
+verifica automatica che lavorano nel modello formale rispetto a tool che lavorano nel modello computazionale. 
+Uno tra i pi\`u famosi tool che lavora nel modello formale \`e sicuramente il \emph{ProVerif}\footnote{Per informazioni pi\`u dettagliate su questo tool si visiti il seguente sito web: 
 \url{http://www.proverif.ens.fr/}}.
-I sostenitori del modello formale affermano che \`e molto conveniente ignorare i dettagli di una funzione crittografica e lavorare invece con una descrizione 
-pi\`u di alto livello di questa che non includa dettagli riguardanti la funzione crittografica. I sostenitori del modello crittografico computazionale invece affermano che la visione
-del modello formale non \`e molto realistica e che le funzioni crittografiche non devono essere viste come espressioni formali ma come algoritmi probabilistici. Inoltre i
+I sostenitori del modello formale affermano che \`e molto conveniente ignorare i dettagli di una funzione crittografica e lavorare con una descrizione 
+pi\`u di alto livello di questa, che non includa dettagli riguardanti la funzione crittografica. I sostenitori del modello crittografico computazionale invece, affermano che la visione
+del modello formale non \`e molto realistica e che le funzioni crittografiche non devono essere viste come espressioni formali ma come algoritmi deterministici o probabilistici. Inoltre i
 sostenitori del modello formale, trattando le primitive crittografiche come dei simboli impenetrabili, assumono implicitamente che siano corrette e inviolabili, cosa non esatta. D'altra parte il modello 
 formale ha molti vantaggi come quello precedentemente accennato che riguarda la semplicit\`a con cui vengono costruiti strumenti automatici per la verifica di protocolli in questo modello.
 Sembrerebbe quindi che esista un divario molto ampio fra i due modelli. In effetti cos\`i \`e, ma non sono mancati i tentativi di unificare i due modelli, o comunque di cercare una linea
@@ -72,16 +86,30 @@ di collegamento che li congiunga.
 In \cite{DBLP:journals/joc/AbadiR07} gli autori cercano per la prima volta di porre le basi per iniziare a collegare questi due modelli.
 In particolare il principale risultato di questo lavoro afferma che: se due espressioni nel modello formale sono equivalenti, una volta dotate di un'opportuna semantica probabilistica,
 vengono mappati in \emph{ensemble} computazionalmente indistinguibili; quindi, sotto forti ma accettabili ipotesi\footnote{Un'importante ipotesi usata nella dimostrazione del risultato in questione
-\`e che non devono esserci crittografici, ovvero si considerano solo schemi crittografici in cui una chiave $k$, non \`e mai \emph{cifrata} attraverso $k$ stessa.}, 
+\`e che non devono esserci cicli crittografici, ovvero si considerano solo schemi crittografici in cui una chiave $k$, non \`e mai \emph{cifrata} attraverso $k$ stessa.}, 
 l'equivalenza formale implica l'indistinguibilit\`a computazionale.
 \`E quindi lecito affermare che un attaccante per il modello computazionale non \`e pi\`u potente di un attaccante nel modello formale. Questo risultato ha dato un'ulteriore spinta
-ai sostenitori del modello formale. Infatti adesso \`e possibile dimostrare un risultato nel modello formale e estendere questo risultato al modello computazionale senza troppi problemi.
-Un altra strada, invece, \`e quella che prevede di lavorare direttamente nel modello computazionale.
- 
-il concetto di sicurezza perfetta e quella computazionale per poi riprendere quest'ultima nel
-capitolo 1
-parlare di sicurezza TEORICA vs COPMUTAZINOALE
-parlare delle assunzioni....e delle funzioni one-way tecnica riduzionista.
+ai sostenitori del modello formale che potevano cos\`i dimostrare risultati nel modello formale, con tutti i benefici che questo comportava, 
+e estendere questo risultato al modello computazionale senza troppi problemi.
+Un altra strada, invece, \`e quella che prevede di lavorare direttamente nel modello computazionale senza preoccuparsi di rispettare le forti ipotesi che erano 
+state usate per dimostrare il risultato raggiunto in \cite{DBLP:journals/joc/AbadiR07}.
+Rispetto al passato oggi giorno la crittografia non \`e utilizzata solo in ambiente militare, i suoi campi di utilizzo infatti, si estendono a molti aspetti della vita quotidiana.
+Questo fatto ha comportato anche un'estensione dei possibili utilizzi della crittografia. Se infatti, un tempo l'unico scopo che si proponeva la crittografia era quello di garantire
+la segretezza oggi giorno deve poter fornire molte altre garanzie fra le quali: autenticazione e integrit\`a dei messaggi scambiati fra due parti. Ecco quindi, che la nascita di queste esigenze
+ha portato allo studio di schemi crittografici come per esempio \emph{message authentication code} oppure schemi crittografici asimmetrici.
+Quando si parla di segretezza \`e importante come gia accennato dare prima una definizione di cosa si intende con questo termine.
+Se per esempio si intende che nessun attaccante possa mai venire a conoscenza della chiave allora si ottiene qualcosa che non \`e quello che si vorrebbe. La segretezza riguarda un messaggio, 
+la chiave \`e solo un mezzo che si utilizza per ottenere questo fine. 
+Se invece si intende che un attaccante non riesca mai a scoprire il messaggio si \`e alla ricerca di una chimera. Innanzi tutto infatti, come si vedr\`a nel proseguo, dato abbastanza
+tempo a disposizione si pu\`o sempre riuscire ad scoprire con \emph{certezza} il mesasggio; inoltre esiste sempre la possiblit\`a che un attaccante riesca ad indovinare il messaggio
+semplicemente \emph{tirando ad indovinare}. Se infine si intende che ogni attaccante con determinate caratteristiche riesca difficilmente ad indovinare il messaggio cifrato, allora esiste la 
+possibilit\`a di ottenere schemi che rispettano questo tipo di definizione.
+
+Una tenica molto utilizzata per provare dei risultati nell'ambito dell crittografia computazionale \`e la cosidetta tecnica per riduzione. 
+Le dimostrazioni di sicurezza basate su questa tecnica consistono nel mostrare che se esiste un aversario ch\`e pu\`o vincere con una probabilit\`a significativa e in un
+tempo ragionevole allora anche un problema ben definito pu\`o essere risolto con una probabilit\`a significativa e in un tempo ragionevole. Ovviamente si cerca di ridurre
+lo schema crittografico ad un problema che si sa bene essere difficile da risolvere.
+
 \chapter{Il Modello Computazionale}
 In questo capitolo si cercher\`a di descrivere le principali caratteristiche del modello computazionale. Saranno resi evidenti alcuni legami che
 esistono fra la crittografia, la teoria della calcolabilit\`a e alcune nozioni di statistica e probababilit\`a. Sono questi infatti i cardini su cui poggia la crittografia
@@ -330,10 +358,10 @@ devono appartenere ad una stessa classe di equivalenza indotta dalla particolare
 Nel modello formale questa relazione sar\`a l'indistinguibilit\`a perfetta (meglio nota come equivalenza osservazionale) mentre in quello computazionale sar\`a 
 l'indistinguibilit\`a computazionale.
 \chapter{CryptoVerif}
-CryptoVerif \`e un \emph{dimostratore} automatico che lavora direttamente nel modello computazionale. \`E un tool molto recente e in continuo sviluppo.\\
+CryptoVerif \`e un \emph{dimostratore} automatico che lavora direttamente nel modello computazionale. \`E un tool molto recente e in continuo sviluppo (pi\`u informazioni).\\
 CryptoVerif \`e stato scritto da Bruno Blanchet\footnote{Ricercatore al LIENS (Computer Science Laboratory of Ecole Normale Supérieure)} in ML. 
 Si possono trovare pi\`u informazioni nella home page di Blanchet\footnote{\url{http://www.di.ens.fr/~blanchet/index-eng.html}}.
-Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticazione Queste prove si basano sulla tecnica delle sequenze di game.
+Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticazione. Queste prove si basano sulla tecnica delle sequenze di game.
 Il tool \`e liberamente scaricabile\footnote{\url{http://www.cryptoverif.ens.fr/cryptoverif.html}} sotto la licenza CeCill\footnote{http://www.cecill.info/licences/}.
 CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni protocolli crittografici, come per esempio: FDH \cite{BlanchetPointchevalCrypto06}, 
 Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.
@@ -342,18 +370,22 @@ Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.
 la firma di $hash(m)$ e non la firma di $m$, dove la funzione hash pu\`o essere istanziata con qualsiasi funzione hash collision resistant. 
 Si ottiene cos\`i una firma di lunghezza fissa e non dipendente dalla lunghezza del messaggio}. 
 Quella che a breve seguir\`a \`e una sequenza di game costruita dal CryptoVerif che d\`a un limite superiore alla probabilit\`a che un attaccante riesca a forgiare una firma valida
-per un messaggio.
-L'input che si fornisce al CryptoVerif consta di un game iniziale chiamato $G_0$ in cui si modella la sicurezza dello schema e delle equivalenze necessarie a
-CryptoVerif per effettuare le modifiche ai game.
+per un messaggio.\newpage
+L'input che si fornisce al CryptoVerif \`e costituito, fondamentalmente, da due parti: 
+\begin{itemize}
+ \item Un game iniziale $G_0$, in cui si modella la sicurezza dello schema.
+ \item Alcune equivalenze necessarie a CryptoVerif per effettuare le modifiche ai game. 
+\end{itemize}
 La descrizione dello schema di firma \emph{FDH} viene data al CryptoVerif attraverso il seguente game:\\ \\
 \begin{tabular}{lcr}
 \hline
-$G_0\equiv$ \foreach{iH}{qH} OH(x: bitstring):= \return{hash(x)}\pipe Ogen():=\setR{r}{seed}\set{pk}{pkgen(r)}\set{sk}{skgen(r)}\return{pk}\\
+$G_0 \equiv$ \foreach{iH}{qH} OH(x: bitstring):= \return{hash(x)}\pipe Ogen():=\setR{r}{seed}\set{pk}{pkgen(r)}\set{sk}{skgen(r)}\return{pk}\\
 	(\foreach{iS}{qS} OS(m: bitstring):= \return{invf(sk, hash(m))})\pipe
-	\find{u}{qS}{m[u]} {$m^{'}=m[u]$} {\myend} {\event} forge\\ \\
+	OT(m': bitstring, s:D):=\\ \ifthen{f(pk, s)=hash(m')}{\find{u}{qS}{m[u]} {$m^{'}=m[u]$} {\myend} {\event} forge}
+	\\
 \hline 
-\end{tabular}\\
-
+\end{tabular}\\ \\
+Procediamo adesso con una breve spiegazione di questo game.
 Possiamo vedere come in questo game si forniscano $qH$ copie dell' oracolo $OH$ i quali ritornano l'hash della stringa che gli si fornisce in input ovvero $x$.
 Abbiamo poi il processo $Ogen()$ che ritorna al contesto una chiave pubblica dopo aver creato, partendo da un seme casuale, una coppia costituita da una chiave privata e una chiave pubblica.
 Abbiamo poi $qS$ copie dell'oracolo $OS$ che si occupano di fornire una firma del messaggio che gli viene dato in input. Infine abbiamo un singolo oracolo $OT$ che si occupa di verificare
@@ -393,7 +425,7 @@ Siamo ora pronti per vedere come il concetto di funzione one-way viene modellato
 
 
 Si tratta di dare una definzione di one-way per mezzo di un'equivalenza fra games. La definizione \`e la seguente:\\
-\equiv \\
+\equiva \\
 \foreach{ik}{nk} \setR{r}{seed} (Opk():= \return{r} )\pipe 
  \foreach{iF}{nF} \setR{x}{D} (Oy():= \return{f(pkgen(r), x)} \pipe
   \foreach{i1}{n1} Oeq(x': D):= \return{x'=x} \pipe 
@@ -405,46 +437,41 @@ Si tratta di dare una definzione di one-way per mezzo di un'equivalenza fra game
     Ox():=\set{k}{mark}\return{x} \\
 
 
-Questa equivalenza cattura e definisce il concetto di funzione one-way. La funzione $f$, infatti, \`e one-way se e solo se vale l'equivalenza $nNXXX$.
-Supponiamo che la funzione $f$ non sia one-way, esister\`a dunque un avversario efficiente $A$ 
-che riuscir\`a ad invertire la funzione. $A$ sar\`a dunque in grado di distinguere i due membri dell'equivalenza $L \approx_{pow} R$. Infatti l'avversario non dovr\`a 
-far altro che chiamare Oy(), e invertire la funzione. 
-Quando poi chiamer\`a Oeq fornendo la preimmagine di $y$ (ovvero $x'$) da lui calcolata, se Oeq appartiene al primo membro dell'equivalenza, allora Oeq()  ritorner\`a sempre true, 
-mentre se appartiene al secondo ritorner\`a sempre false. In questo modo $A$ osserva dei comportamenti diversi fra i due game, e quindi pu\`o distinguerli.
-Supponiamo invece che $f$ si effettivamente one-way. Allora non esister\`a nessun attaccante efficiente che riesca ad invertire $f$. L'unico modo che ha quindi un attaccante $A$
-per invertire la funzione \`e chiamare Ox() e ottenere cos\`i una preimmagine valida. Se però l'attaccante chiama Ox() allora L e R sono indistinguibili (a meno di probabilit\`a trascurabili).
-Infatti se l'Ox() chiamato dall'attaccante appartiene ad L allora viene semplicemente ritornrata $x$. Se invece Ox() appartiene ad R l'oracolo prima di ritornare $x$ assegna a $k$ 
-il valore di una costante, $mark$.
-Quando poi l'attaccante chiama Oeq(), nel caso Oeq sia in R allora Oeq effettua il test e se k \`e stato definito, da una precedente chiamata a Ox(), 
-ritorner\`a quello che avrebbe ritornato Oeq nel game a sinsitra dell'equivalenza; se invece k non \`e stato definito
-allora siginifica che l'attaccante non ha richiamato Oeq e quindi \`e lecito supporre che non sia riuscito ad invertire $f$, essendo questa one-way, e quindi Oeq ritorna false.
-In questo modo i due game sono effetivamente indistinguibili, perch\`e non presentano differrenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
-Quindi $f$ \`e indistinguibile \emph{se e solo se} $f$ \`e one-way; quindi la precedente equivalenza \`e una definizione ben posta di funzione one-way.
+Questa equivalenza fra game cattura e definisce il concetto di funzione one-way. La funzione $f$, infatti, \`e one-way se e solo se vale l'equivalenza $nNXXX$, 
+e quindi il game a sinistra e quello a destra del simbolo \textbf{$\approx _{pow}$} sono indistinguibili.
+Supponiamo, infatti, che la funzione $f$ non sia one-way, esister\`a dunque un avversario efficiente $A$ 
+che pu\`o invertire $f$. $A$ sar\`a dunque in grado di distinguere i due membri dell'equivalenza $L \approx_{pow} R$.
+Potendo invertire $f$, $A$ sar\`a in grado di osservare comportamenti diversi fra i game a seconda che $A$ chiami Oeq() in $L$ o in $R$.
+Supponiamo, dunque, che $A$ chiami Oy() ottenendo l'immagine di un valore mediante $f$, sia questa $y$; poich\`e $f$ non \`e one-way, 
+$A$ inverte la funzione ottenendo un $x^{'}$ tale che $f(x^{'})= y$.
+Adesso $A$ non deve far altro che richiamare Oeq passando a questo come argomento $x^{'}$. Se l'Oeq richiamato appartiene al primo membro dell'equivalenza, 
+allora Oeq()  ritorner\`a sempre true, mentre se appartiene al secondo ritorner\`a sempre false. In questo modo $A$ osserva dei comportamenti diversi fra i due game, 
+e quindi pu\`o distinguerli. Supponiamo invece che $f$ sia effettivamente one-way. Allora non esister\`a nessun attaccante efficiente che riesca ad invertire $f$.
+L'unico modo che ha quindi un attaccante $A$ per invertire la funzione, \`e chiamare Ox() e ottenere cos\`i una preimmagine valida. 
+Se però l'attaccante chiama Ox() allora $L$ e $R$ sono effettivamente indistinguibili (a meno di probabilit\`a trascurabili).
+Notiamo infatti nella definizione dell'equivalenza che Ox() \`e definito in maniera diversa in $L$ ed $R$.
+In $L$, Ox() si occupa semplicemente di ritornare il valore del dominio $x$, tale che $f(x)=y$. In $R$ invece Ox() prima di ritornare $x$ imposta al valore $mark$ la variabile $k$.
+Ora, l'Oeq si comporter\`a in maniera diversa a seconda che appartenga ad $L$ o ad $R$.
+Se infatti l'Oeq() richiamato appartiene ad $L$ allora Oeq() si proccuper\`a semplicemente di ritornare il valore booleano dell'espressione $x^{'}=x$.
+Se invece, l'Oeq() richiamato appartiene ad $L$ allora Oeq() si comporter\`a in maniera differente a seconda che la variabile $k$ abbia o meno un valore 
+(ovvero sia stata o meno definita da una precedente chiamata a Ox). Se quindi $k$ \`e definito Oeq si comporter\`a esattamente come si sarebbe comportato l'Oeq di $L$.
+Se invece k non \`e stato definito allora siginifica che l'attaccante non ha richiamato Ox, quindi \`e lecito supporre che non sia riuscito ad invertire $f$ e quindi Oeq ritorna false\footnote{
+\`E importante notare che l'attaccante ha comunque la possibilit\`a di indovinare $x$ anche senza richiamare Ox ma questa \`e una probabilit\`a trascurabile. Di questa probabilit\`a viene
+comunque tenuto conto nell'equivalenza. L'equivalenza infatti, vale a meno di una certa probabilit\`a $pow$ (trascurabile in questo caso).}.
+In questo modo i due game sono effettivamente indistinguibili, perch\`e non presentano differrenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
+Quindi $L$ e $R$ sono \`e indistinguibile \emph{se e solo se} $f$ \`e one-way; quindi la precedente equivalenza \`e una definizione ben posta di funzione one-way.
+Un'ulteriore definizione viene fornita al CryptoVerif, quella di funzione hash. Questa definizione viene fornita al tool attraverso il seguente codice:
 
-
-
-
-
-Un'ulteriore definizione viene fornita al CryptoVerif, quella di funzione hash. La funzione hash viene fornita attraverso il seguente codice:
-
- \equiv \\ 
+ \equiva \\ 
   \foreach{iH}{nH} OH(x:hashinput) := \return{hash(x)}\\
     \textbf{$\approx _{pow}$}\\  
      \foreach{iH}{nH} OH(x:hashinput) :=
-   \find{u}{nH}{x[u],r[u]}{x= x[u]}{return(r[u])} 
-	     r <-R hashoutput; return(r).
+   \find{u}{nH}{x[u],r[u]}{x= x[u]}{return(r[u])}{\setR{r}{hashoutput}; \return{r}.}
  
-  let hashoracle =
-        foreach iH <= qH do
-    OH(x:hashinput) :=
-    return(hash(x)).
-
-La funzione hash \`e intesa implementata nel modello dell'oracolo random. Ovvero la funzione se non \`e mai stata richiamata su un particolare valore $x_0$ allora ritorna un
-valore casuale, altrimenti ritorna il valore che ha ritornato precedentemente. Questo viene fatto salvando il valore ritornato per un particolare input in un array, epoi
-al momento della chiamata effettuando un look up nell'array.
-
-
-Infine abbiamo delle semplici regole di riscrittura che servono a descrivere alcune propriet\`a delle funzioni in gioco.
+La funzione hash \`e intesa implementata nel modello dell'oracolo random: se la funzione non \`e mai stata richiamata su un particolare valore $x_0$ allora viene ritornato un valore casuale, 
+altrimenti viene ritornato lo stesso valore che era stato ritornato precedentemente. Questo viene fatto salvando il valore ritornato per un particolare input in un array e poi,
+al momento della chiamata, si effettua un look up nell'array.
+Infine abbiamo delle semplici regole di riscrittura che servono a descrivere alcune propriet\`a delle funzioni in gioco.\newpage
 Per esempio:
 \begin{verbatim}
  forall r:seed, x:D, x':D; (x' = invf(skgen(r),x)) = (f(pkgen(r),x') = x).
@@ -457,12 +484,239 @@ forall k:skey, x:D, x':D; (invf(k,x) = invf(k,x')) = (x = x').
 forall k:pkey, x:D, x':D; (f(k,x) = f(k,x')) = (x = x').
 forall k:pkey, x:D, x':D; (f'(k,x) = f'(k,x')) = (x = x).
 \end{verbatim}\\
-modellano l'iniettivit\`a delle funzioni $invf$, $f'$, $f'$\footnote{Non serve ai fini della dimostrazione modellare l'iniettivit\`a della funzione $invf'$.}.
+modellano l'iniettivit\`a delle funzioni $invf$, $f'$, $f$\footnote{Non serve ai fini della dimostrazione modellare l'iniettivit\`a della funzione $invf'$.}.
+Quella che segue \`e una spiegazione delle parti pi\`u importanti dell'output di CryptoVerif quanto questo viene eseguito sull'input prima descritto.
+Nell'appendice XX si pu\`o trovare l'input e l'output completo del CryptoVerif.
+Nel game $G_0$ viene per prima cosa sostituita ogni chiamata ad hash con la relativa definizione.
+Dopo queste modifiche CryptoVerif ottiene il seguente game:
+\begin{verbatim}
+ (
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  x23 : bitstring ← x ;
+  find suchthat defined(x19 , r18 ) ∧ (x23 = x19 ) then
+    return(r18 )
+  ⊕ @i 29 ≤ qS suchthat defined(x21 [@i 29 ], r20 [@i 29 ]) ∧ 
+    (x23 = x21 [@i 29 ]) then
+    return(r20 [@i 29 ])
+  ⊕ @i 28 ≤ qH suchthat defined(x23 [@i 28 ], r22 [@i 28 ]) ∧ 
+    (x23 = x23 [@i 28 ]) then
+    return(r22 [@i 28 ])
+  else
+         R
+    r22 ← D;
+    return(r22 )
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen(r );
+  sk : skey ← skgen(r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    x21 : bitstring ← m;
+    find suchthat defined(x19 , r18 ) ∧ (x21 = x19 ) then
+       return(invf(sk , r18 ))
+    ⊕ @i 27 ≤ qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) ∧ 
+      (x21 = x21 [@i 27 ]) then
+       return(invf(sk , r20 [@i 27 ]))
+    ⊕ @i 26 ≤ qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) ∧ 
+      (x21 = x23 [@i 26 ]) then
+       return(invf(sk , r22 [@i 26 ]))
+    else
+            R
+       r20 ← D;
+       return(invf(sk , r20 ))
+  |
+    OT (m : bitstring, s : D) :=
+    x19 : bitstring ← m ;
+    find suchthat defined(x19 , r18 ) ∧ (x19 = x19 ) then
+1
+       if (f(pk , s) = r18 ) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    ⊕ @i 25 ≤ qS suchthat defined(x21 [@i 25 ], r20 [@i 25 ]) ∧ 
+	(x19 = x21 [@i 25 ]) then
+2
+3      if (f(pk , s) = r20 [@i 25 ]) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+4
+          end
+       else
+          event forge
+    ⊕ @i 24 ≤ qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) ∧ 
+	(x19 = x23 [@i 24 ]) then
+       if (f(pk , s) = r22 [@i 24 ]) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+    else
+            R
+       r18 ← D;
+       if (f(pk , s) = r18 ) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+       else
+          event forge
+  )
+)
+\end{verbatim}
+Nel game precedente il simbolo \begin{verbatim}⊕\end{verbatim}
+sta a significare \foreach{j}{Q} dove $Q$ \`e il limite superiore dell'array e $j$ la variabile
+usata per scorrerlo.
 
-Con il comando:
-./cryptoverif -in oracles -lib default fdh
-Si 
+\begin{verbatim}
+ (
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  x23 : bitstring ← cst bitstring;
+  find suchthat defined(m , x19 , r18 ) ∧ (x = m ) then
+    return(f(pkgen(r ), r18 ))
+  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) ∧ 
+    (x = m[@i 29 ]) then
+	return(f(pkgen(r ), r20 [@i 29 ]))
+  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) ∧ 
+    (x = x [@i 28 ]) then
+    return(f(pkgen(r ), r22 [@i 28 ]))
+  else
+         R
+    r22 ← D;
+    return(f(pkgen(r ), r22 ))
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen(r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+    OS(m : bitstring) :=
+    x21 : bitstring ← cst bitstring;
+    find suchthat defined(m , x19 , r18 ) ∧ (m = m ) then
+       return(r18 )
+    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) ∧ 
+    (m = m[@i 27 ]) then
+       return(r20 [@i 27 ])
+    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) ∧ 
+    (m = x [@i 26 ]) then
+       return(r22 [@i 26 ])
+    else
+            R
+       r20 ← D;
+       return(r20 )
+  |
+    OT (m : bitstring, s : D) :=
+    x19 : bitstring ← cst bitstring;
+    find @i 25 ≤ qS suchthat defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) ∧ 
+     (m = m[@i 25 ]) then
+       end
+    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) ∧ 
+      (m = x [@i 24 ]) then
+       if (f(pk , s) = f(pkgen(r ), r22 [@i 24 ])) then
+       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+          end
+      else
+         event forge
+    else
+           R
+      r18 ← D;
+      if (f(pk , s) = f(pkgen(r ), r18 )) then
+      find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+         end
+      else
+         event forge
+  )
+)
 
+\end{verbatim}
+
+\begin{verbatim}
+ (
+  foreach iH 13 ≤ qH do
+  OH(x : bitstring) :=
+  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
+    return(f (pkgen (r ), r18 ))
+  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
+    return(f (pkgen (r ), r20 [@i 29 ]))
+  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
+    return(f (pkgen (r ), r22 [@i 28 ]))
+  else
+         R
+    r22 ← D;
+    return(f (pkgen (r ), r22 ))
+|
+  Ogen() :=
+    R
+  r ← seed ;
+  pk : pkey ← pkgen (r );
+  return(pk );
+  (
+    foreach iS 14 ≤ qS do
+1   OS(m : bitstring) :=
+    find suchthat defined(m , r18 ) ∧ (m = m ) then
+2
+       k47 : bitstring ← mark;
+3
+       return(r18 )
+     ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
+       k48 : bitstring ← mark;
+       return(r20 [@i 27 ])
+     ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
+4
+       k50 : bitstring ← mark;
+5
+       return(r22 [@i 26 ])
+     else
+            R
+       r20 ← D;
+       k45 : bitstring ← mark;
+       return(r20 )
+   |
+     OT (m : bitstring, s : D) :=
+     find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
+       end
+     ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
+6
+       find @i 56 ≤ qS suchthat defined(k50 [@i 56 ]) ∧ (@i 24 = @i 26 [@i 56 ]) then
+7
+          if (s = r22 [@i 24 ]) then
+          find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+8
+             end
+          else
+             event forge
+       else
+9         if false then
+          find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+             end
+          else
+             event forge
+     else
+            R
+       r18 ← D;
+       find @i 53 ≤ qS suchthat defined(k47 [@i 53 ]) then
+10
+          if (s = r18 ) then
+          find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+11
+             end
+          else
+             event forge
+       else
+12        if false then
+          find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
+             end
+          else
+             event forge
+   )
+)
+
+\end{verbatim}
 \chapter{Risultati Raggiunti}
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
