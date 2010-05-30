@@ -14,6 +14,9 @@
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \usepackage{listings}
+\usepackage{array}
+\usepackage{txfonts}
+
 \author{Gian Pietro Farina}
 \hyphenation{li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pse-u-do-ca-sua-le sem-bre-reb-be}
 
@@ -38,7 +41,6 @@
    \renewcommand{\headrulewidth}{0pt} % e la linea
 }
 
-
 \newcommand{\foreach}[2]{\textbf{foreach #1} $\leq$ \textbf{#2} \textbf{do}}
 \newcommand{\return}[1]{\textbf{return}(#1);}
 \renewcommand{\do}{\textbf{do}}
@@ -51,19 +53,18 @@
 \newcommand{\myend}{\textbf{end}}
 \newcommand{\equiva}{\textbf{equiv}}
 \begin{document}
-
 \chapter*{Introduzione}
 \addcontentsline{toc}{chapter}{Introduzione}
 Negli anni anni '80 la crittografia ha cessato di essere un arte per assurgere allo stato di scienza. \\Come scienza, la crittografia moderna
 si propone innanzi tutto di fornire definizioni rigorose dei concetti con cui ha a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
 su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\
-Sebbene in alcuni casi sia possibile (ed \`e stato fatto~\cite{Shannon}) provare dei risultati \emph{incondizionatamente} la maggior parte delle prove di teoremi nel campo 
+Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) provare dei risultati \emph{incondizionatamente} la maggior parte delle prove di teoremi nel campo 
 della crittografia moderna sono basate su assunzioni che non sono ancora certe, ma che sono comunque ben formalizzate e inequivocabilmente descritte.\\La pi\`u importante \`e sicuramente
 l'ipotesi dell'esistenza di funzioni \emph{one-way}. Tutte le prove che sono basate su assunzioni non verificate sono sempre e comunque valide, sia che le assunzioni fatte vengano dimostrate,
 sia che vengano confutate; questo perch\`e ogni dimostrazione \`e del tipo: \emph{Se X allora Y} (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
 d'espansione polinomiale). Semplicemente, nel caso in cui le assunzioni vengano confutate si renderebbero poco interessanti le dimostrazioni che si basano su queste\footnote{\`E ovvio che partendo da ipotesi false si possa
 dimostrare qualsiasi cosa.}.
- \`E per\`o giusto dire che le assunzioni che vengono fatte sono largamente ritenute vere; questo anche  grazie al fatto che alcune di esse si possono dedurre da altre ipotesi 
+\`E per\`o giusto dire che le assunzioni che vengono fatte sono largamente ritenute vere; questo anche  grazie al fatto che alcune di esse si possono dedurre da altre ipotesi 
 largamente ritenute vere sebbene non dimostrate.\\Lo studio di una congettura infatti, pu\`o fornire evidenti prove della sua validit\`a mostrando che essa \`e la tesi di un teorema che assume come ipotesi
 un'altra congettura largamente ritenuta valida.
 Da quando la crittografia si \`e guadagnata una validit\`a scientifica, sono nati almeno due modi profondamente diversi fra loro di
@@ -104,7 +105,6 @@ Se invece si intende che un attaccante non riesca mai a scoprire il messaggio si
 tempo a disposizione si pu\`o sempre riuscire ad scoprire con \emph{certezza} il mesasggio; inoltre esiste sempre la possiblit\`a che un attaccante riesca ad indovinare il messaggio
 semplicemente \emph{tirando ad indovinare}. Se infine si intende che ogni attaccante con determinate caratteristiche riesca difficilmente ad indovinare il messaggio cifrato, allora esiste la 
 possibilit\`a di ottenere schemi che rispettano questo tipo di definizione.
-
 Una tenica molto utilizzata per provare dei risultati nell'ambito dell crittografia computazionale \`e la cosidetta tecnica per riduzione. 
 Le dimostrazioni di sicurezza basate su questa tecnica consistono nel mostrare che se esiste un aversario ch\`e pu\`o vincere con una probabilit\`a significativa e in un
 tempo ragionevole allora anche un problema ben definito pu\`o essere risolto con una probabilit\`a significativa e in un tempo ragionevole. Ovviamente si cerca di ridurre
@@ -365,6 +365,102 @@ Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticaz
 Il tool \`e liberamente scaricabile\footnote{\url{http://www.cryptoverif.ens.fr/cryptoverif.html}} sotto la licenza CeCill\footnote{http://www.cecill.info/licences/}.
 CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni protocolli crittografici, come per esempio: FDH \cite{BlanchetPointchevalCrypto06}, 
 Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.
+\newpage
+\section{La sintassi}
+La sintassi di un sott'insieme del calcolo di processi che CryptoVerif implementa \`e descritta nelal figura 1.\\
+Verr\`a descritta solo la parte utile per capire gli esempi riportati.
+
+{\setlength\tabcolsep{4pt}
+\begin{tabular}{>{$}l<{$}>{$}r<{$}>{$}l<{$}}
+   M, P &\Coloneqq &$i$\\
+  &| & $x[$\;M_1, \dots M_m$ \;]$ \\
+  &| &e_1 \; op_b \; e_2\\
+  &| &op_m \; e\\
+  &| &(e)\\
+  &| &f(es)\\
+  es &\Coloneqq &e\\
+  &| &e, \; es\\
+  S &\Coloneqq &x := e;\\
+  &| &skip;\\
+  &| &read \; x;\\
+  &| &write \; e;\\
+  &| &return \; e;\\
+  &| &if(e) \; S_1 \; else \; S_2\\
+  &| &while(e) \; S\\
+  &| &\{Ds \; Ss\}\\
+  &| &\{Ss\}\\
+  Ss &\Coloneqq &S\\
+  &| &S \; Ss\\
+  Ds &\Coloneqq &T \; x;\\
+  &| &T \; x; Ds\\
+  Fs &\Coloneqq &T \; f(Ds)\{Ss\}\\
+  &| &T \; f(Ds)\{Ss\} \; Fs\\
+  T &\Coloneqq &int\\
+  &| &float\\
+  P &\Coloneqq &program \; Ds \; Fs \; Ss \; end
+\end{tabular}}
+
+Come possiamo vedere questo calcolo distingue due tipi di processi:
+\begin{itemize}
+ \item Definizioni di Oracoli.
+ \item Corpi di Oracoli.
+\end{itemize}
+La definizione di un oracolo permette di assegnare a questo un nome e di specificare il tipo e il nome dei parametri in input. Il corpo di un oracolo pu\`o effettuare
+delle operazioni e infine pu\`o ritornare un valore. Fra le operazioni che pu\`o effettuare ci sono:
+
+\begin{enumerate}
+ \item Assegnamento di un valore ad una variabile
+ \item Assegnamento di un valore scelto casualmente da un dominio ad una variabile
+ \item Assegnamento condizionale di una chiamata di oracolo
+ \item array lookup
+ \item esecuzione di eventi
+\end{enumerate}
+
+La semantica della terza voce \`e la seguente: se l'oracolo O ritorna un valore con la seguente istruzione : \return{x} allora questo valore \`e assegnato a $x_1$ altrimenti viene
+eseguito $P$.
+il processo "if defined" \`e zucchero sintattico per "find....".
+Quello che segue \`e un piccolo esempio di dichiarazione di oracolo:
+
+
+
+
+La sintassi di un array lookup \`e \emph{find ...} dove \~i denota una tupla.  Questo processo prova a trovare $j \in [1, m]$ tale che eistono i valori uj1...ujm tali che
+Mj1, Mjm sono definiti e Mj \\`e vero. In caso di successo esegue Pj altrimenti, se falliscono tutti i tentativi, esegue P.
+In maniera pi\`u formale possiamo dire che, valuta la condizione defined() per ogni j e ogni valore valore di uj... .Se nessuna di queste condizioni \`e vera esegue P, altrimenti
+sceglie con probabilit\`a uniforme un j e esegue Pj.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Un Esempio: FDH}
 \emph{Full Domain Hash} \`e uno schema di firma che segue il paradigma \emph{hash-and-sign}\footnote{Questo paradigma vuole che: dato un messaggio $m$ se ne ritorni 
 la firma di $hash(m)$ e non la firma di $m$, dove la funzione hash pu\`o essere istanziata con qualsiasi funzione hash collision resistant. 
@@ -406,7 +502,7 @@ Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilm
 Si noti come non sia necessario, per invertire la funzione, trovare $x$ ma \`e sufficiente trovare un $x'$ qualsiasi tale che $f(x')=y$.
 \\Possiamo ora dare la seguente:
 \begin{definizione}{Funzione One-Way.}
-$f: \{0,1\}^*\rightarrow\{0,1\}^*$ \`e one-way se e solo se $\forall x \in  \{0,1\}^* \hbox{,} \forall A \in PPT$:  $\lvert Pr[A(f(x)) \in f^{-1}(f(x))]\rvert$ \`e una funzione 
+$f: \{0,1\}^*\rightarrow \{0,1\}^*$ \`e one-way se e solo se $\forall x \in  \{0,1\}^* \hbox{,} \forall A \in PPT$:  $\lvert Pr[A(f(x)) \in f^{-1}(f(x))]\rvert$ \`e una funzione 
 trascurabile.
 \end{definizione}
 
@@ -471,7 +567,7 @@ Un'ulteriore definizione viene fornita al CryptoVerif, quella di funzione hash. 
 La funzione hash \`e intesa implementata nel modello dell'oracolo random: se la funzione non \`e mai stata richiamata su un particolare valore $x_0$ allora viene ritornato un valore casuale, 
 altrimenti viene ritornato lo stesso valore che era stato ritornato precedentemente. Questo viene fatto salvando il valore ritornato per un particolare input in un array e poi,
 al momento della chiamata, si effettua un look up nell'array.
-Infine abbiamo delle semplici regole di riscrittura che servono a descrivere alcune propriet\`a delle funzioni in gioco.\newpage
+Infine abbiamo una semplice teoria equazionale per descrivere alcune propriet\`a delle funzioni in gioco.\newpage
 Per esempio:
 \begin{verbatim}
  forall r:seed, x:D, x':D; (x' = invf(skgen(r),x)) = (f(pkgen(r),x') = x).
@@ -568,7 +664,9 @@ Dopo queste modifiche CryptoVerif ottiene il seguente game:
 \end{verbatim}
 Nel game precedente il simbolo \begin{verbatim}⊕\end{verbatim}
 sta a significare \foreach{j}{Q} dove $Q$ \`e il limite superiore dell'array e $j$ la variabile
-usata per scorrerlo.
+usata per scorrerlo. 
+Questo game adesso viene modificato nel modo seguente: poich\`e alla linea $1$ $r_{18}$ non \`e definita il relativo test fallisce sempre quindi
+pu\`e essere eliminato.
 
 \begin{verbatim}
  (

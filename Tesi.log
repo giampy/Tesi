@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.21)  28 MAY 2010 11:51
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  30 MAY 2010 11:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,7 +6,7 @@ entering extended mode
 (./Tesi.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, italian, loaded.
+yphenation, italian, spanish, galician, catalan, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size12.clo
@@ -371,39 +371,160 @@ File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
 File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
+
+(/usr/share/texmf-texlive/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen124
+\extrarowheight=\dimen125
+\NC@list=\toks36
+\extratabsurround=\skip63
+\backup@length=\skip64
+)
+(/usr/share/texmf-texlive/tex/latex/txfonts/txfonts.sty
+Package: txfonts 2008/01/22 v3.2.1
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/txr/m/n on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/txr/m/n on input line 21.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/txr/m/n --> OT1/txr/bx/n on input line 22.
+\symitalic=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `italic' in version `bold'
+(Font)                  OT1/txr/m/it --> OT1/txr/bx/it on input line 26.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/txr/bx/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/txr/bx/n on input line 29.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/txr/m/it on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/txr/m/it on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/txr/m/it --> OT1/txr/bx/it on input line 31.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 40.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/txss/m/n on input line 40.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/txss/m/n on input line 40.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/txss/m/n --> OT1/txss/b/n on input line 41.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 50.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/txtt/m/n on input line 50.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/txtt/m/n on input line 50.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/txtt/m/n --> OT1/txtt/b/n on input line 51.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 58.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/txmi/m/it on input line 58.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/txmi/m/it on input line 58.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/txmi/m/it --> OML/txmi/bx/it on input line 59.
+\symlettersA=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `lettersA' in version `bold'
+(Font)                  U/txmia/m/it --> U/txmia/bx/it on input line 67.
+LaTeX Font Info:    Redeclaring math alphabet \mathfrak on input line 70.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 77.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/txsy/m/n on input line 77.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/txsy/m/n on input line 77.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/txsy/m/n --> OMS/txsy/bx/n on input line 78.
+LaTeX Font Info:    Redeclaring symbol font `AMSa' on input line 93.
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `normal'
+(Font)                  U/msa/m/n --> U/txsya/m/n on input line 93.
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
+(Font)                  U/msa/m/n --> U/txsya/m/n on input line 93.
+LaTeX Font Info:    Overwriting symbol font `AMSa' in version `bold'
+(Font)                  U/txsya/m/n --> U/txsya/bx/n on input line 94.
+LaTeX Font Info:    Redeclaring symbol font `AMSb' on input line 102.
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `normal'
+(Font)                  U/msb/m/n --> U/txsyb/m/n on input line 102.
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
+(Font)                  U/msb/m/n --> U/txsyb/m/n on input line 102.
+LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
+(Font)                  U/txsyb/m/n --> U/txsyb/bx/n on input line 103.
+\symsymbolsC=\mathgroup8
+LaTeX Font Info:    Overwriting symbol font `symbolsC' in version `bold'
+(Font)                  U/txsyc/m/n --> U/txsyc/bx/n on input line 113.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 120.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/txex/m/n on input line 120.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/txex/m/n on input line 120.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/txex/m/n --> OMX/txex/bx/n on input line 121.
+\symlargesymbolsA=\mathgroup9
+LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `bold'
+(Font)                  U/txexa/m/n --> U/txexa/bx/n on input line 129.
+LaTeX Info: Redefining \not on input line 1043.
+)
 \c@definizione=\count127
 \c@proposizione=\count128
  (./Tesi.aux)
 \openout1 = `Tesi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 53.
-LaTeX Font Info:    Try loading font information for LGR+cmr on input line 53.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 55.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 55.
+
+
+(/usr/share/texmf-texlive/tex/latex/txfonts/omltxmi.fd
+File: omltxmi.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 55.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 55.
+
+
+(/usr/share/texmf-texlive/tex/latex/txfonts/omstxsy.fd
+File: omstxsy.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 55.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 55.
+
+
+(/usr/share/texmf-texlive/tex/latex/txfonts/omxtxex.fd
+File: omxtxex.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 55.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 55.
+
+(/usr/share/texmf-texlive/tex/latex/txfonts/utxexa.fd
+File: utxexa.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 55.
+LaTeX Font Info:    Try loading font information for LGR+cmr on input line 55.
 
 (/usr/share/texmf-texlive/tex/generic/babel/lgrcmr.fd
 File: lgrcmr.fd 2008/06/17 v2.3 Greek Computer Modern
 )
-LaTeX Font Info:    ... okay on input line 53.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 53.
-LaTeX Font Info:    ... okay on input line 53.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
+LaTeX Font Info:    ... okay on input line 55.
+LaTeX Font Info:    Try loading font information for T1+txr on input line 55.
 
+(/usr/share/texmf-texlive/tex/latex/txfonts/t1txr.fd
+File: t1txr.fd 2000/12/15 v3.1
+)
 (/usr/share/texmf-texlive/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 
 fontencoding LGR patched
 )
-Package hyperref Info: Link coloring OFF on input line 53.
+Package hyperref Info: Link coloring OFF on input line 55.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
@@ -412,8 +533,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count129
 )
-LaTeX Info: Redefining \ref on input line 53.
-LaTeX Info: Redefining \pageref on input line 53.
+LaTeX Info: Redefining \ref on input line 55.
+LaTeX Info: Redefining \pageref on input line 55.
  (./Tesi.out)
 (./Tesi.out)
 \@outlinefile=\write3
@@ -421,26 +542,43 @@ LaTeX Info: Redefining \pageref on input line 53.
 
 \AtBeginShipoutBox=\box33
 \c@lstlisting=\count130
-
-
-LaTeX Warning: Citation `Shannon' on page 1 undefined on input line 60.
-
-LaTeX Font Info:    Try loading font information for U+msa on input line 64.
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 65.
+ (/usr/share/texmf-texlive/tex/latex/txfonts/ot1txr.fd
+File: ot1txr.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 64.
+LaTeX Font Info:    Try loading font information for U+txsya on input line 65.
 
-(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+(/usr/share/texmf-texlive/tex/latex/txfonts/utxsya.fd
+File: utxsya.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 65.
+
+(/usr/share/texmf-texlive/tex/latex/txfonts/utxsyb.fd
+File: utxsyb.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txmia on input line 65.
+
+(/usr/share/texmf-texlive/tex/latex/txfonts/utxmia.fd
+File: utxmia.fd 2000/12/15 v3.1
+)
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 65.
+
+(/usr/share/texmf-texlive/tex/latex/txfonts/utxsyc.fd
+File: utxsyc.fd 2000/12/15 v3.1
 )
 
-LaTeX Warning: Citation `?' on page 1 undefined on input line 73.
+LaTeX Warning: Citation `?' on page 1 undefined on input line 74.
 
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 78.
-(/usr/share/texmf-texlive/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-) [1
+LaTeX Font Info:    Try loading font information for T1+txtt on input line 79.
+(/usr/share/texmf-texlive/tex/latex/txfonts/t1txtt.fd
+File: t1txtt.fd 2000/12/15 v3.1
+)
+Underfull \hbox (badness 6141) in paragraph at lines 79--79
+[][][][][][]\T1/txr/m/n/10 Per in-for-ma-zio-ni più det-ta-glia-te su que-sto t
+ool si vi-si-ti il se-guen-te si-to web:
+ []
+
+[1
 
 
 ]
@@ -457,14 +595,14 @@ Capitolo 1.
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 ) [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 139.
+LaTeX Font Info:    Try loading font information for OMS+txr on input line 139.
 
 
-(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+(/usr/share/texmf-texlive/tex/latex/txfonts/omstxr.fd
+File: omstxr.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 139.
+LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <12> not available
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 139.
 
 Underfull \hbox (badness 10000) in paragraph at lines 145--151
 
@@ -479,22 +617,10 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 170.
 
-[7] [8] [9]
-Overfull \hbox (2.65315pt too wide) in paragraph at lines 243--245
-[]\T1/cmr/m/it/12 Indistinguibilità com-pu-ta-zio-na-le. Due en-sem-ble $\OML/c
-mm/m/it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/cmsy/
-m/n/12 g$\T1/cmr/m/it/12 ,
- []
-
-[10]
-Overfull \hbox (1.98917pt too wide) in paragraph at lines 264--264
-[]\T1/cmr/bx/n/17.28 Pseudocasualità e Ge-ne-ra-to-ri Pseu-do-ca-sua-
- []
-
-[11]
-LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 284.
- [12]
+[7] [8] [9] [10]
+LaTeX Font Info:    Font shape `OMS/txr/m/it' in size <12> not available
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 284.
+ [11] [12]
 Underfull \hbox (badness 10000) in paragraph at lines 328--353
 
  []
@@ -503,221 +629,257 @@ Underfull \hbox (badness 10000) in paragraph at lines 328--353
 
 ]
 Capitolo 2.
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 379--403
+[17] [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 475--499
 
  []
 
 
-Overfull \hbox (98.2029pt too wide) in paragraph at lines 379--403
+Overfull \hbox (44.48854pt too wide) in paragraph at lines 475--499
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 379--403
+Underfull \hbox (badness 10000) in paragraph at lines 475--499
 
  []
 
-[18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 427--438
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 427--438
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--438
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--438
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--438
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--438
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 427--438
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
- [20]
-Overfull \hbox (44.21098pt too wide) in paragraph at lines 465--470
-\T1/cmr/bx/n/12 foreach iH $\OMS/cmsy/m/n/12 ^^T$ \T1/cmr/bx/n/12 nH do \T1/cmr
-/m/n/12 OH(x:hashinput) := \T1/cmr/bx/n/12 find u $\OMS/cmsy/m/n/12 ^^T$ \T1/cm
-r/bx/n/12 nH su-ch-that \T1/cmr/m/n/12 (\T1/cmr/bx/n/12 defined\T1/cmr/m/n/12 (
+ []
+
+
+Underfull \vbox (badness 3646) has occurred while \output is active []
+
+ [22]
+Overfull \hbox (1.41379pt too wide) in paragraph at lines 561--566
+\T1/txr/bx/n/12 foreach iH $\OMS/txsy/m/n/12 ^^T$ \T1/txr/bx/n/12 nH do \T1/txr
+/m/n/12 OH(x:hashinput) := \T1/txr/bx/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/tx
+r/bx/n/12 nH su-ch-that \T1/txr/m/n/12 (\T1/txr/bx/n/12 defined\T1/txr/m/n/12 (
 x[u],r[u])
  []
 
-[21]
-Overfull \hbox (66.83844pt too wide) in paragraph at lines 477--477
-[] \T1/cmtt/m/n/12 forall r:seed, x:D, x':D; (x' = invf(skgen(r),x)) = (f(pkgen
+[23]
+Overfull \hbox (76.1991pt too wide) in paragraph at lines 573--573
+[] \T1/txtt/m/n/12 forall r:seed, x:D, x':D; (x' = invf(skgen(r),x)) = (f(pkgen
 (r),x') = x).[] 
  []
 
 
-LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 486.
+Overfull \hbox (0.59924pt too wide) in paragraph at lines 579--579
+[]\T1/txtt/m/n/12 forall k:skey, x:D, x':D; (invf(k,x) = invf(k,x')) = (x = x')
+.[] 
+ []
+
+
+LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 582.
 
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-34.def
 File: uni-34.def 2004/10/17 UCS: Unicode data U+2200..U+22FF
 )
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-33.def
 File: uni-33.def 2004/10/17 UCS: Unicode data U+2100..U+21FF
-) [22]
-Overfull \hbox (7.07628pt too wide) in paragraph at lines 522--522
-[]    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
-mtt/m/n/12 qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) $\OMS/cmsy/m/n/12 ^$
+) [24]
+Overfull \hbox (11.11124pt too wide) in paragraph at lines 618--618
+[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 27 $\OMS/txsy/m/n/12 ^^T$ \T1/t
+xtt/m/n/12 qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) $\OMS/txsy/m/n/12 ^$
 [] 
  []
 
 
-Overfull \hbox (7.07628pt too wide) in paragraph at lines 525--525
-[]    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
-mtt/m/n/12 qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) $\OMS/cmsy/m/n/12 ^$
+Overfull \hbox (11.11124pt too wide) in paragraph at lines 621--621
+[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 26 $\OMS/txsy/m/n/12 ^^T$ \T1/t
+xtt/m/n/12 qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) $\OMS/txsy/m/n/12 ^$
 [] 
  []
 
 
-Overfull \hbox (7.07628pt too wide) in paragraph at lines 542--542
-[]    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
-mtt/m/n/12 qS suchthat defined(x21 [@i 25 ], r20 [@i 25 ]) $\OMS/cmsy/m/n/12 ^$
+Overfull \hbox (11.11124pt too wide) in paragraph at lines 638--638
+[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 25 $\OMS/txsy/m/n/12 ^^T$ \T1/t
+xtt/m/n/12 qS suchthat defined(x21 [@i 25 ], r20 [@i 25 ]) $\OMS/txsy/m/n/12 ^$
 [] 
  []
 
 
-Overfull \hbox (7.07628pt too wide) in paragraph at lines 551--551
-[]    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
-mtt/m/n/12 qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) $\OMS/cmsy/m/n/12 ^$
+Overfull \hbox (11.11124pt too wide) in paragraph at lines 647--647
+[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 24 $\OMS/txsy/m/n/12 ^^T$ \T1/t
+xtt/m/n/12 qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) $\OMS/txsy/m/n/12 ^$
 [] 
  []
 
-[23]
-Overfull \hbox (62.63771pt too wide) in paragraph at lines 582--582
-[]  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
-t/m/n/12 qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) $\OMS/cmsy/
+[25]
+Overfull \hbox (67.81113pt too wide) in paragraph at lines 678--678
+[]  $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 29 $\OMS/txsy/m/n/12 ^^T$ \T1/txt
+t/m/n/12 qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) $\OMS/txsy/
 m/n/12 ^$[] 
  []
 
 
-Overfull \hbox (68.8112pt too wide) in paragraph at lines 585--585
-[]  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
-t/m/n/12 qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy
+Overfull \hbox (74.11111pt too wide) in paragraph at lines 681--681
+[]  $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 28 $\OMS/txsy/m/n/12 ^^T$ \T1/txt
+t/m/n/12 qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) $\OMS/txsy
 /m/n/12 ^$[] 
  []
 
-[24]
-Overfull \hbox (74.9847pt too wide) in paragraph at lines 604--604
-[]    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
-mtt/m/n/12 qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) $\OMS/cms
+[26]
+Overfull \hbox (80.4111pt too wide) in paragraph at lines 700--700
+[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 27 $\OMS/txsy/m/n/12 ^^T$ \T1/t
+xtt/m/n/12 qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) $\OMS/txs
 y/m/n/12 ^$[] 
  []
 
 
-Overfull \hbox (81.15819pt too wide) in paragraph at lines 607--607
-[]    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
-mtt/m/n/12 qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) $\OMS/cm
+Overfull \hbox (86.71109pt too wide) in paragraph at lines 703--703
+[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 26 $\OMS/txsy/m/n/12 ^^T$ \T1/t
+xtt/m/n/12 qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) $\OMS/tx
 sy/m/n/12 ^$[] 
  []
 
 
-Overfull \hbox (90.3453pt too wide) in paragraph at lines 617--617
-[]    \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS such
-that defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) $\OMS/cmsy/m/n/12 ^$[] 
+Overfull \hbox (97.97906pt too wide) in paragraph at lines 713--713
+[]    \T1/txtt/m/n/12 find @i 25 $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS such
+that defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) $\OMS/txsy/m/n/12 ^$[] 
  []
 
 
-Overfull \hbox (81.15819pt too wide) in paragraph at lines 620--620
-[]    $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/c
-mtt/m/n/12 qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) $\OMS/cm
+Overfull \hbox (86.71109pt too wide) in paragraph at lines 716--716
+[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 24 $\OMS/txsy/m/n/12 ^^T$ \T1/t
+xtt/m/n/12 qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) $\OMS/tx
 sy/m/n/12 ^$[] 
  []
 
-[25]
-Overfull \hbox (130.54613pt too wide) in paragraph at lines 646--646
-[]  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 29 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
-t/m/n/12 qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) $\OMS/cmsy/m/n/12 ^$ 
-\T1/cmtt/m/n/12 (x = m[@i 29 ]) then[] 
+[27]
+Overfull \hbox (137.111pt too wide) in paragraph at lines 742--742
+[]  $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 29 $\OMS/txsy/m/n/12 ^^T$ \T1/txt
+t/m/n/12 qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) $\OMS/txsy/m/n/12 ^$ 
+\T1/txtt/m/n/12 (x = m[@i 29 ]) then[] 
  []
 
 
-Overfull \hbox (118.19914pt too wide) in paragraph at lines 648--648
-[]  $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 28 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmt
-t/m/n/12 qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) $\OMS/cmsy/m/n/12 ^$ \T1
-/cmtt/m/n/12 (x = x [@i 28 ]) then[] 
+Overfull \hbox (124.51102pt too wide) in paragraph at lines 744--744
+[]  $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 28 $\OMS/txsy/m/n/12 ^^T$ \T1/txt
+t/m/n/12 qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) $\OMS/txsy/m/n/12 ^$ \T1
+/txtt/m/n/12 (x = x [@i 28 ]) then[] 
  []
 
 
-Overfull \hbox (124.37263pt too wide) in paragraph at lines 668--668
-[]     $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 27 $\OMS/cmsy/m/n/12 ^^T$ \T1/
-cmtt/m/n/12 qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) $\OMS/cmsy/m/n/12 ^$ \
-T1/cmtt/m/n/12 (m = m[@i 27 ]) then[] 
+Overfull \hbox (130.811pt too wide) in paragraph at lines 764--764
+[]     $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 27 $\OMS/txsy/m/n/12 ^^T$ \T1/
+txtt/m/n/12 qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) $\OMS/txsy/m/n/12 ^$ \
+T1/txtt/m/n/12 (m = m[@i 27 ]) then[] 
  []
 
 
-Overfull \hbox (136.71962pt too wide) in paragraph at lines 671--671
-[]     $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 26 $\OMS/cmsy/m/n/12 ^^T$ \T1/
-cmtt/m/n/12 qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) $\OMS/cmsy/m/n/12 ^$ 
-\T1/cmtt/m/n/12 (m = x [@i 26 ]) then[] 
+Overfull \hbox (143.41098pt too wide) in paragraph at lines 767--767
+[]     $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 26 $\OMS/txsy/m/n/12 ^^T$ \T1/
+txtt/m/n/12 qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) $\OMS/txsy/m/n/12 ^$ 
+\T1/txtt/m/n/12 (m = x [@i 26 ]) then[] 
  []
 
-[26]
-Overfull \hbox (139.73325pt too wide) in paragraph at lines 683--683
-[]     \T1/cmtt/m/n/12 find @i 25 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS suc
-hthat defined(r20 [@i 25 ], m[@i 25 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (m 
+[28]
+Overfull \hbox (148.37897pt too wide) in paragraph at lines 779--779
+[]     \T1/txtt/m/n/12 find @i 25 $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS suc
+hthat defined(r20 [@i 25 ], m[@i 25 ]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m 
 = m[@i 25 ]) then[] 
  []
 
 
-Overfull \hbox (136.71962pt too wide) in paragraph at lines 685--685
-[]     $\OMS/cmsy/m/n/12 ^^H$ \T1/cmtt/m/n/12 @i 24 $\OMS/cmsy/m/n/12 ^^T$ \T1/
-cmtt/m/n/12 qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) $\OMS/cmsy/m/n/12 ^$ 
-\T1/cmtt/m/n/12 (m = x [@i 24 ]) then[] 
+Overfull \hbox (143.41098pt too wide) in paragraph at lines 781--781
+[]     $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 24 $\OMS/txsy/m/n/12 ^^T$ \T1/
+txtt/m/n/12 qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) $\OMS/txsy/m/n/12 ^$ 
+\T1/txtt/m/n/12 (m = x [@i 24 ]) then[] 
  []
 
 
-Overfull \hbox (139.73325pt too wide) in paragraph at lines 687--687
-[]       \T1/cmtt/m/n/12 find @i 56 $\OMS/cmsy/m/n/12 ^^T$ \T1/cmtt/m/n/12 qS s
-uchthat defined(k50 [@i 56 ]) $\OMS/cmsy/m/n/12 ^$ \T1/cmtt/m/n/12 (@i 24 = @i 
+Overfull \hbox (148.37897pt too wide) in paragraph at lines 783--783
+[]       \T1/txtt/m/n/12 find @i 56 $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS s
+uchthat defined(k50 [@i 56 ]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (@i 24 = @i 
 26 [@i 56 ]) then[] 
  []
 
-[27] [28]
-Capitolo 3.
-[29
 
-] [30
+Overfull \hbox (3.47925pt too wide) in paragraph at lines 786--786
+[]          \T1/txtt/m/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS su
+chthat defined(m[u]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m = m[u]) then[] 
+ []
+
+
+Overfull \hbox (3.47925pt too wide) in paragraph at lines 793--793
+[]          \T1/txtt/m/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS su
+chthat defined(m[u]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m = m[u]) then[] 
+ []
+
+
+Overfull \hbox (3.47925pt too wide) in paragraph at lines 803--803
+[]          \T1/txtt/m/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS su
+chthat defined(m[u]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m = m[u]) then[] 
+ []
+
+
+Overfull \hbox (3.47925pt too wide) in paragraph at lines 810--810
+[]          \T1/txtt/m/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS su
+chthat defined(m[u]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m = m[u]) then[] 
+ []
+
+[29] [30]
+Capitolo 3.
+[31
+
+] [32
 
 ]
 Capitolo 4.
-(./Tesi.bbl [31] [32
+(./Tesi.bbl [33] [34
 
-] [33]) [34] (./Tesi.aux)
+]
+Underfull \hbox (badness 2057) in paragraph at lines 41--44
+[]\T1/txr/m/n/12 Oded Gol-drei-ch.  \T1/txr/m/it/12 Foun-da-tions of Cryp-to-gr
+a-phy: Ba-sic Tools\T1/txr/m/n/12 .
+ []
+
+[35]) [36] (./Tesi.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 9017 strings out of 495053
- 126527 string characters out of 1182229
- 204293 words of memory out of 3000000
- 12019 multiletter control sequences out of 15000+50000
- 21151 words of font info for 60 fonts, out of 3000000 for 9000
- 34 hyphenation exceptions out of 8191
- 38i,18n,43p,415b,638s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 9585 strings out of 494993
+ 133338 string characters out of 1180536
+ 208582 words of memory out of 3000000
+ 12579 multiletter control sequences out of 15000+50000
+ 48645 words of font info for 100 fonts, out of 3000000 for 9000
+ 60 hyphenation exceptions out of 8191
+ 38i,18n,43p,415b,639s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (34 pages, 118200 bytes).
+Output written on Tesi.dvi (36 pages, 121816 bytes).

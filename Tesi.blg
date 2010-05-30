@@ -2,47 +2,46 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Tesi.aux
 The style file: alpha.bst
 Database file #1: myrefs.bib
-Warning--I didn't find a database entry for "Shannon"
 Warning--I didn't find a database entry for "?"
-You've used 11 entries,
+You've used 12 entries,
             2543 wiz_defined-function locations,
-            641 strings with 6377 characters,
-and the built_in function-call counts, 4338 in all, are:
-= -- 428
-> -- 177
-< -- 10
-+ -- 59
-- -- 56
-* -- 298
-:= -- 699
-add.period$ -- 35
-call.type$ -- 11
-change.case$ -- 61
-chr.to.int$ -- 11
-cite$ -- 11
-duplicate$ -- 193
-empty$ -- 340
-format.name$ -- 72
-if$ -- 914
+            647 strings with 6471 characters,
+and the built_in function-call counts, 4681 in all, are:
+= -- 463
+> -- 185
+< -- 11
++ -- 61
+- -- 58
+* -- 321
+:= -- 756
+add.period$ -- 38
+call.type$ -- 12
+change.case$ -- 66
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 208
+empty$ -- 369
+format.name$ -- 76
+if$ -- 985
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 11
-newline$ -- 57
-num.names$ -- 36
-pop$ -- 70
+missing$ -- 12
+newline$ -- 62
+num.names$ -- 39
+pop$ -- 73
 preamble$ -- 1
-purify$ -- 75
+purify$ -- 81
 quote$ -- 0
-skip$ -- 157
+skip$ -- 167
 stack$ -- 0
-substring$ -- 218
-swap$ -- 42
-text.length$ -- 10
-text.prefix$ -- 5
+substring$ -- 246
+swap$ -- 43
+text.length$ -- 11
+text.prefix$ -- 6
 top$ -- 0
-type$ -- 78
+type$ -- 86
 warning$ -- 0
-while$ -- 41
-width$ -- 15
-write$ -- 146
-(There were 2 warnings)
+while$ -- 44
+width$ -- 17
+write$ -- 159
+(There was 1 warning)

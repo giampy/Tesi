@@ -118,8 +118,7 @@ Title={Sequences of Games: A Tool for Taming Complexity in Security Proofs}
   year      = {1987},
   pages     = {289-305},
   ee        = {http://dx.doi.org/10.1007/3-540-48184-2_26},
-  crossref  = {DBLP:conf/crypto/1987},
-  bibsource = {DBLP, http://dblp.uni-trier.de}
+  bibsource = {DBLP:http://dblp.uni-trier.de}
 }
 @article{Paulson98,
   author    = {Lawrence C. Paulson},

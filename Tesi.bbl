@@ -59,6 +59,11 @@ Lawrence~C. Paulson.
 \newblock The inductive approach to verifying cryptographic protocols.
 \newblock {\em Journal of Computer Security}, 6(1-2):85--128, 1998.
 
+\bibitem[Sha49]{Shannon}
+C.~E. Shannon.
+\newblock Communication theory of secrecy systems.
+\newblock {\em Bell System Technical Journal}, 28:656--715, 1949.
+
 \bibitem[Sho]{shoup}
 Victor Shoup.
 \newblock Sequences of games: A tool for taming complexity in security proofs.
