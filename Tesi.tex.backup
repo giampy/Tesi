@@ -55,7 +55,7 @@
 \begin{document}
 \chapter*{Introduzione}
 \addcontentsline{toc}{chapter}{Introduzione}
-Negli anni anni '80 la crittografia ha cessato di essere un arte per assurgere allo stato di scienza. \\Come scienza, la crittografia moderna
+Negli anni anni '80 la crittografia ha cessato di essere un' arte per assurgere allo stato di scienza. \\Come scienza, la crittografia moderna
 si propone innanzi tutto di fornire definizioni rigorose dei concetti con cui ha a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
 su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\
 Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) provare dei risultati \emph{incondizionatamente} la maggior parte delle prove di teoremi nel campo 
@@ -359,7 +359,7 @@ Nel modello formale questa relazione sar\`a l'indistinguibilit\`a perfetta (megl
 l'indistinguibilit\`a computazionale.
 \chapter{CryptoVerif}
 CryptoVerif \`e un \emph{dimostratore} automatico che lavora direttamente nel modello computazionale. \`E un tool molto recente e in continuo sviluppo (pi\`u informazioni).\\
-CryptoVerif \`e stato scritto da Bruno Blanchet\footnote{Ricercatore al LIENS (Computer Science Laboratory of Ecole Normale Supérieure)} in ML. 
+CryptoVerif \`e stato scritto da Bruno Blanchet\footnote{Ricercatore al LIENS (Computer Science Laboratory of Ecole Normale Supérieure)} in Ocaml. 
 Si possono trovare pi\`u informazioni nella home page di Blanchet\footnote{\url{http://www.di.ens.fr/~blanchet/index-eng.html}}.
 Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticazione. Queste prove si basano sulla tecnica delle sequenze di game.
 Il tool \`e liberamente scaricabile\footnote{\url{http://www.cryptoverif.ens.fr/cryptoverif.html}} sotto la licenza CeCill\footnote{http://www.cecill.info/licences/}.
@@ -367,6 +367,82 @@ CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni pr
 Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.
 \newpage
 \section{La sintassi}
+Un tipico file di input per CryptoVerif ha la seguente forma: <decalaration>* process  <odef>.
+Gli oracoli sono definiti in un calcolo di processi. In questo calcolo i termini rappresentano computazioni su stringhe di bit.
+I termini del calcolo sono distinti in due categorie: semplici e non. La sintassi dei termini semplici \`e descritta dalla seguente grammatica:
+\begin{verbatim}
+<simpleterm> ::= <ident>
+              | <ident> (seq <simpleterm> )
+              | (seq <simpleterm> )
+              | <ident> [seq <simpleterm> ]
+              | <simpleterm> = <simpleterm>
+              | <simpleterm> <> <simpleterm>
+              | <simpleterm> || <simpleterm>
+              | <simpleterm> && <simpleterm>
+\end{verbatim}
+Dove
+\begin{itemize}
+ \item $[M]$ significa che M \`e opzionale.
+ \item seq<X> \`e una sequenza (eventualmente vuota) di X.
+\end{itemize}
+I termini non semplici (che chiameremo termini), contengono dei costrutti pi\`u complessi.
+La sintassi di questo tipo termini \`e descritta dalla seguente grammatica:
+\begin{verbatim}
+term ::= 
+        | <ident> <-R <ident>; <term>
+        | <ident> [: <ident> ] <- <term>
+        | let <pattern> = <term> in <term> [else <term> ]
+        | if <cond> then <term> else <term>
+        | find [[unique]] <tfindbranch> (orfind <tfindbranch> )∗ else <term>
+\end{verbatim}
+La prima produzione di questa grammatica descrive \emph{l'assegnamento casuale}. Supponiamo di avere un dominio $D \subset \{0,1\}^{*}$, 
+e una variabile
+$x$. Con il costrutto $x<-R$ $D$ si assegna ad $x$ un valore scelto casualmente, ovvero con probabilit\`a uniforme, dall'insieme $D$.
+La seconda produzione descrive l'assegnamento. Con il costrutto $x:T <- M$ si dichiara $x$ come una variabile di tipo $T$ e si assegna
+ad essa il valore che la valutazione di $M$ resituisce. Il costrutto $let$ $p = M$ $in$ $M^{'}$ $else$ $M^{''}$ cerca di decomporre il termine $M$
+secondo il pattern $p$. In caso di successo ritorna il valore di $M^{'}$ altrimenti ritorna il valore di $M^{''}$. 
+Il pattern $p$ pu\`o essere una variabile, una funzione, una tupla di valori.
+I costrutto ``if cond then M else M'`` \`e zucchero sintattico per la pi\`u complessa forma: ''find suchthat cond then M else M'``.
+Il calcolo di processi distingue due tipi di oracoli:
+\begin{itemize}
+ \item definizione di oracoli
+ \item corpi di oracoli
+\end{itemize}
+La grammatica che descrive la sintassi della definizione degli oracoli \`e la seguente:
+\begin{verbatim}
+Q ::=   0
+        | Q | Q
+        | foreach i<=N do Q
+        | O(p_1,...,p_n)
+\end{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 La sintassi di un sott'insieme del calcolo di processi che CryptoVerif implementa \`e descritta nelal figura 1.\\
 Verr\`a descritta solo la parte utile per capire gli esempi riportati.
 
