@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  31 MAY 2010 11:14
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  31 MAY 2010 15:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -622,7 +622,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 LaTeX Font Info:    Font shape `OMS/txr/m/it' in size <12> not available
 (Font)              Font shape `OMS/txsy/m/n' tried instead on input line 285.
  [11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 329--354
+Underfull \hbox (badness 10000) in paragraph at lines 329--355
 
  []
 
@@ -633,70 +633,70 @@ Capitolo 2.
 [17] (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-34.def
 File: uni-34.def 2004/10/17 UCS: Unicode data U+2200..U+22FF
 )
-Overfull \hbox (69.25111pt too wide) in paragraph at lines 401--401
+Overfull \hbox (69.25111pt too wide) in paragraph at lines 410--410
 []         \T1/txtt/m/n/12 | find [[unique]] tfindbranch (orfind tfindbranch )$
 \OMS/txsy/m/n/12 ^^C$ \T1/txtt/m/n/12 else <term>[] 
  []
 
-
-Overfull \hbox (0.59924pt too wide) in paragraph at lines 408--408
+[18]
+Overfull \hbox (0.59924pt too wide) in paragraph at lines 417--417
 []\T1/txtt/m/n/12 <tfindbranch> ::= seq <identbound> suchthat <cond> then <term
 >[] 
  []
 
-[18]
-Overfull \hbox (88.15108pt too wide) in paragraph at lines 421--421
+
+Overfull \hbox (88.15108pt too wide) in paragraph at lines 430--430
 []          \T1/txtt/m/n/12 | [seq <vartype> ;] <event> <event> (&& <event> )$\
 OMS/txsy/m/n/12 ^^C$ \T1/txtt/m/n/12 ==> <queryterm>[] 
  []
 
 [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 475--499
+Underfull \hbox (badness 10000) in paragraph at lines 488--512
 
  []
 
 
-Overfull \hbox (44.48854pt too wide) in paragraph at lines 475--499
+Overfull \hbox (44.48854pt too wide) in paragraph at lines 488--512
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--499
+Underfull \hbox (badness 10000) in paragraph at lines 488--512
 
  []
 
 [21] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 523--534
+Underfull \hbox (badness 10000) in paragraph at lines 536--547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--534
+Underfull \hbox (badness 10000) in paragraph at lines 536--547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--534
+Underfull \hbox (badness 10000) in paragraph at lines 536--547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--534
+Underfull \hbox (badness 10000) in paragraph at lines 536--547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--534
+Underfull \hbox (badness 10000) in paragraph at lines 536--547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--534
+Underfull \hbox (badness 10000) in paragraph at lines 536--547
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--534
+Underfull \hbox (badness 10000) in paragraph at lines 536--547
 
  []
 
@@ -704,7 +704,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 523--534
 Underfull \vbox (badness 3646) has occurred while \output is active []
 
  [23]
-Overfull \hbox (1.41379pt too wide) in paragraph at lines 561--566
+Overfull \hbox (1.41379pt too wide) in paragraph at lines 574--579
 \T1/txr/bx/n/12 foreach iH $\OMS/txsy/m/n/12 ^^T$ \T1/txr/bx/n/12 nH do \T1/txr
 /m/n/12 OH(x:hashinput) := \T1/txr/bx/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/tx
 r/bx/n/12 nH su-ch-that \T1/txr/m/n/12 (\T1/txr/bx/n/12 defined\T1/txr/m/n/12 (
@@ -712,19 +712,19 @@ x[u],r[u])
  []
 
 [24]
-Overfull \hbox (76.1991pt too wide) in paragraph at lines 573--573
+Overfull \hbox (76.1991pt too wide) in paragraph at lines 586--586
 [] \T1/txtt/m/n/12 forall r:seed, x:D, x':D; (x' = invf(skgen(r),x)) = (f(pkgen
 (r),x') = x).[] 
  []
 
 
-Overfull \hbox (0.59924pt too wide) in paragraph at lines 579--579
+Overfull \hbox (0.59924pt too wide) in paragraph at lines 592--592
 []\T1/txtt/m/n/12 forall k:skey, x:D, x':D; (invf(k,x) = invf(k,x')) = (x = x')
 .[] 
  []
 
 
-LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 582.
+LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 595.
 
 [25] [26
 
@@ -756,4 +756,4 @@ Here is how much of TeX's memory you used:
  60 hyphenation exceptions out of 8191
  38i,18n,43p,415b,643s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (32 pages, 115012 bytes).
+Output written on Tesi.dvi (32 pages, 116240 bytes).

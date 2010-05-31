@@ -331,7 +331,7 @@ maggior parte delle dimostrazioni che utilizzano sequenze di games.\\Si possono 
 Quella basata sul concetto di game \`e una tecnica\footnote{Game hopping technique.} molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
 Questi games sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{Perch\`e \emph{sfida} l'attaccante a 
 vincere questo gioco.}. 
-\`E difficile dare una definizione formale di game; infatti il concetto di game cambia, sebbene in maniera non sensibile, da situazione a situazione, da ambiente ad ambiente e 
+\`E difficile dare una definizione formale di game; infatti il concetto di game cambia, sebbene in maniera non considerevole, da situazione a situazione, da ambiente ad ambiente e 
 da dimostrazione a dimostrazione (sia che queste siano fatte manualmente sia che queste siano automatiche e quindi dipendenti dal framework in cui vengono costruite).
 Intuitivamente per\`o, i game possono essere immaginati come un insieme di azioni, modellate in una particolare algebra di processi, 
 che servono a specificare il comportamento dei partecipanti al gioco, ovvero le entit\`a che partecipano come \emph{principals} al protocollo crittografico.\\
@@ -346,7 +346,8 @@ tale che $G_i$ e $G_{i+1}$ siano computazionalmente indistinguibili. Le modifich
 Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in gioco nei game.
 Se per esempio in un game $G_i$ un processo ha a che fare con un variabile casuale, e nel game $G_{i+1}$ questa viene sostituita con una variabile che invece \`e pseudocasuale, non vengono introdotte
 modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due game non sono distinguibili se non con probabilit\`a trascurabile.
-Alla fine si arriva ad un game $G_f$ in cui \emph{l'evento} non pu\`o accadere. Se, quindi, nel game finale l'attaccante non ha possibilit\`a di vincere e il game finale
+Alla fine si arriva ad un game $G_f$ in cui \emph{l'evento} non pu\`o accadere. Se l'evento non pu\`o accadere, l'attaccante non ha possibilit\`a di vincere. 
+Se, quindi, nel game finale l'attaccante non ha possibilit\`a di vincere e il game finale
 \`e computazionalmente indistinguibile dal penultimo, questo lo \`e dal terzultimo e cos\`i via fino a $G_0$, allora
 il game finale \`e computazionalmente indistinguibile dal primo\footnote{Ricordiamo infatti che la somma di due probabilit\`a trascurabili rimane trascurabile.}. 
 Adesso, quindi, se nel game iniziale esiste la possibilit\`a che un evento avvenga, e nel game finale no,
@@ -359,18 +360,26 @@ devono appartenere ad una stessa classe di equivalenza indotta dalla particolare
 Nel modello formale questa relazione sar\`a l'indistinguibilit\`a perfetta (meglio nota come equivalenza osservazionale) mentre in quello computazionale sar\`a 
 l'indistinguibilit\`a computazionale.
 \chapter{CryptoVerif}
-CryptoVerif \`e un \emph{dimostratore} automatico che lavora direttamente nel modello computazionale. \`E un tool molto recente e in continuo sviluppo (pi\`u informazioni).\\
+CryptoVerif \`e un \emph{dimostratore} automatico di sviluppo molto recente che lavora direttamente nel modello computazionale.\\
 CryptoVerif \`e stato scritto da Bruno Blanchet\footnote{Ricercatore al LIENS (Computer Science Laboratory of Ecole Normale Supérieure)} in Ocaml. 
 Si possono trovare pi\`u informazioni nella home page di Blanchet\footnote{\url{http://www.di.ens.fr/~blanchet/index-eng.html}}.
 Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticazione. Queste prove si basano sulla tecnica delle sequenze di game.
 Il tool \`e liberamente scaricabile\footnote{\url{http://www.cryptoverif.ens.fr/cryptoverif.html}} sotto la licenza CeCill\footnote{http://www.cecill.info/licences/}.
 CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni protocolli crittografici, come per esempio: FDH \cite{BlanchetPointchevalCrypto06}, 
-Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.
+Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.\\
+Scopo di questo capitolo \`e quello di descrivere in modo non troppo formale\footnote{Nel senso che la semantica formale non sar\`a trattata rigorosamente. 
+Il lettore interessato all'argomento pu\`o comunque trovare pi\`u informazioni in \cite{BlanchetJaggardScedrovTsayAsiaCCS08}} 
+un sottinsieme del linguaggio con cui i file di input di CryptoVerif sono scritti, in modo 
+da poter leggere il capitolo successivo con le conoscenze necessarie.
+Alla fine del capitolo verr\`a descritta brevemente la dimostrazione di non invertibilit\`a del protocollo \emph{FDH} che CryptoVerif costruisce e che pu\`o essere reperita
+nella sua completezza in  \cite{BlanchetPointchevalCrypto06}.
 \newpage
 \section{La sintassi}
 Un tipico file di input per CryptoVerif ha la seguente forma: \begin{center}
                                                                $<decalaration>^{*} $ \textbf{process} $  <odef>$.
                                                               \end{center}
+Quindi di solito la parte iniziale dell'input \`e costituita da una serie di dichiarazioni, una serie di definizioni di primitive crittografiche e, successivamente alla parola chiave \textbf{process}, 
+si trova la definizione di un oracolo che descrive il protocollo che si vuolte dimostrare sicuro.
 Gli oracoli sono definiti in un calcolo di processi. In questo calcolo i termini rappresentano computazioni su stringhe di bit.
 I termini del calcolo sono distinti in due categorie: semplici e non. La sintassi dei termini semplici \`e descritta dalla seguente grammatica:
 \begin{verbatim}
@@ -389,7 +398,7 @@ Dove
  \item seq<X> \`e una sequenza (eventualmente vuota) di X.
 \end{itemize}
 I termini non semplici (che chiameremo termini), contengono dei costrutti pi\`u complessi.
-La sintassi di questo tipo termini, insieme ad altri componenti della sintassi, \`e descritta dalla seguente grammatica:
+La sintassi dei termini, \`e descritta dalla seguente grammatica:
 \begin{verbatim}
 <identbound> ::= <ident> <= <ident>
 <vartype> ::= <ident> : <ident>
@@ -420,7 +429,10 @@ query ::= secret <ident>
           | secret1 <ident>
           | [seq <vartype> ;] <event> <event> (&& <event> )∗ ==> <queryterm>
 \end{verbatim}
-Il calcolo di processi distingue due tipi di oracoli:
+Il costrutto $x<-R D$ assegna in maniera casuale un valore del dominio $D$ alla variabile $x$, abbiamo poi il costrutto $x:T<- M$ che dichiara una variabile $x$ di tipo $T$,
+e assegna a questa il valore di $M$. Il costrutto definito dalla produzione: $$ Il costrutto $let$ $p=M$ $in$ $M'$ $else$ $M''$ cerca di decomporre il termine $M$ secondo il pattern $p$. In caso di successo ritorna
+il valore di $M'$ altrimenti ritorna il valor di $M''$.
+Il calcolo di processi distingue fra:
 \begin{itemize}
  \item definizione di oracoli
  \item corpi di oracoli
@@ -444,16 +456,6 @@ Q ::=     end
         | let p = M in P else P'
         | return(N1,...Nl);Q
 \end{verbatim}
-La sintassi di un sott'insieme del calcolo di processi che CryptoVerif implementa \`e descritta nelal figura 1.\\
-Verr\`a descritta solo la parte utile per capire gli esempi riportati.
-Come possiamo vedere questo calcolo distingue due tipi di processi:
-\begin{itemize}
- \item Definizioni di Oracoli.
- \item Corpi di Oracoli.
-\end{itemize}
-La definizione di un oracolo permette di assegnare a questo un nome e di specificare il tipo e il nome dei parametri in input. Il corpo di un oracolo pu\`o effettuare
-delle operazioni e infine pu\`o ritornare un valore. Fra le operazioni che pu\`o effettuare ci sono:
-
 \begin{enumerate}
  \item Assegnamento di un valore ad una variabile
  \item Assegnamento di un valore scelto casualmente da un dominio ad una variabile
@@ -461,6 +463,20 @@ delle operazioni e infine pu\`o ritornare un valore. Fra le operazioni che pu\`o
  \item array lookup
  \item esecuzione di eventi
 \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Un Esempio: FDH}
 \emph{Full Domain Hash} \`e uno schema di firma che segue il paradigma \emph{hash-and-sign}\footnote{Questo paradigma vuole che: dato un messaggio $m$ se ne ritorni 
 la firma di $hash(m)$ e non la firma di $m$, dove la funzione hash pu\`o essere istanziata con qualsiasi funzione hash collision resistant. 
@@ -486,7 +502,7 @@ Possiamo vedere come in questo game si forniscano $qH$ copie dell' oracolo $OH$ 
 Abbiamo poi il processo $Ogen()$ che ritorna al contesto una chiave pubblica dopo aver creato, partendo da un seme casuale, una coppia costituita da una chiave privata e una chiave pubblica.
 Abbiamo poi $qS$ copie dell'oracolo $OS$ che si occupano di fornire una firma del messaggio che gli viene dato in input. Infine abbiamo un singolo oracolo $OT$ che si occupa di verificare
 se la firma $s$ \`e valida per il messaggio $m^{'}$. In particolare se $hash(m^{'}) \neq f(pk, s)$ allora la firma non \`e valida per il messaggio. Se invece $hash(m^{'}) = f(pk, s)$
-l'oracolo si occupa di verificare se, per il messaggio $m^{'}$, \`e stata mai rilasciata una firma dall'oracolo $OS$, in caso affermativo il processo <term>ina, altrimenti significa che 
+l'oracolo si occupa di verificare se, per il messaggio $m^{'}$, \`e stata mai rilasciata una firma dall'oracolo $OS$, in caso affermativo il processo termina, altrimenti significa che 
 il contesto, ovvero l'attaccante, \`e stato in grado di forgiare una firma valida per il messaggio, e quindi \`e avvenuto l'evento \emph{forge}.
 Notiamo come l'attaccante non sia modellato esplicitamente, infatti non possiamo fare nessuna assunzione sul comprtamento di questo.
 Possiamo immaginare un attaccante come un altro processo non meglio specificato messo in parallelo con questo game. In gergo l'attaccante viene anche detto anche \emph{contesto}.
@@ -495,7 +511,7 @@ Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze che p
 gioco.
 Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R} possono valere incondizionatamente, 
 oppure possono valere a meno di una certa probabilit\`a.
-Nel secondo caso la riscrittura di un <term>ine L nell'equivalente R comporta l'introduzione di una differenza non nulla fra i due game.
+Nel secondo caso la riscrittura di un termine L nell'equivalente R comporta l'introduzione di una differenza non nulla fra i due game.
 
 Prima di descrivere il secondo input di CryptoVerif \`e necessario fare una piccola digressione riguardo al concetto di funzione \emph{one-way}.
 Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente. Cio\`e se dato $y=f(x)$ \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 

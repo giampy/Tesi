@@ -34,22 +34,22 @@ ReadWrite=true
 
 [item:Tesi.tex]
 archive=true
-column=100
+column=13
 encoding=UTF-8
 highlight=LaTeX
-line=370
+line=398
 mode=LaTeX
 open=true
 order=0
 
 [item:myrefs.bib]
 archive=true
-column=0
+column=50
 encoding=UTF-8
 highlight=BibTeX
-line=115
+line=60
 mode=BibTeX
-open=false
+open=true
 order=1
 
 [item:tesi.kilepr]
@@ -63,9 +63,9 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Tesi.tex]
-CursorColumn=100
-CursorLine=370
+CursorColumn=13
+CursorLine=398
 
 [view-settings,view=0,item:myrefs.bib]
-CursorColumn=0
-CursorLine=115
+CursorColumn=50
+CursorLine=60
