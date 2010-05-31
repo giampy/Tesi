@@ -22,6 +22,7 @@
 
 \newtheorem{definizione}{Definizione}[chapter]
 \newtheorem{proposizione}{Proposizione}[chapter]
+\newtheorem{teorema}{Teorema}[chapter]
 \pagenumbering{arabic}
 \pagestyle{fancy}
 % i comandi seguenti impediscono la scrittura in maiuscolo
@@ -367,18 +368,20 @@ CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni pr
 Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.
 \newpage
 \section{La sintassi}
-Un tipico file di input per CryptoVerif ha la seguente forma: <decalaration>* process  <odef>.
+Un tipico file di input per CryptoVerif ha la seguente forma: \begin{center}
+                                                               $<decalaration>^{*} $ \textbf{process} $  <odef>$.
+                                                              \end{center}
 Gli oracoli sono definiti in un calcolo di processi. In questo calcolo i termini rappresentano computazioni su stringhe di bit.
 I termini del calcolo sono distinti in due categorie: semplici e non. La sintassi dei termini semplici \`e descritta dalla seguente grammatica:
 \begin{verbatim}
 <simpleterm> ::= <ident>
-              | <ident> (seq <simpleterm> )
-              | (seq <simpleterm> )
-              | <ident> [seq <simpleterm> ]
-              | <simpleterm> = <simpleterm>
-              | <simpleterm> <> <simpleterm>
-              | <simpleterm> || <simpleterm>
-              | <simpleterm> && <simpleterm>
+                  | <ident> (seq <simpleterm> )
+                  | (seq <simpleterm> )
+                  | <ident> [seq <simpleterm> ]
+                  | <simpleterm> = <simpleterm>
+                  | <simpleterm> <> <simpleterm>
+                  | <simpleterm> || <simpleterm>
+                  | <simpleterm> && <simpleterm>
 \end{verbatim}
 Dove
 \begin{itemize}
@@ -386,23 +389,37 @@ Dove
  \item seq<X> \`e una sequenza (eventualmente vuota) di X.
 \end{itemize}
 I termini non semplici (che chiameremo termini), contengono dei costrutti pi\`u complessi.
-La sintassi di questo tipo termini \`e descritta dalla seguente grammatica:
+La sintassi di questo tipo termini, insieme ad altri componenti della sintassi, \`e descritta dalla seguente grammatica:
 \begin{verbatim}
-term ::= 
-        | <ident> <-R <ident>; <term>
-        | <ident> [: <ident> ] <- <term>
-        | let <pattern> = <term> in <term> [else <term> ]
-        | if <cond> then <term> else <term>
-        | find [[unique]] <tfindbranch> (orfind <tfindbranch> )∗ else <term>
+<identbound> ::= <ident> <= <ident>
+<vartype> ::= <ident> : <ident>
+<term> ::= 
+         | <ident> <-R <ident> ; <term>
+         | <ident> [: <ident> ] <- <term>
+         | let <pattern> = <term> in <term> [else <term> ]
+         | if <cond> then <term> else <term>
+         | find [[unique]] tfindbranch (orfind tfindbranch )∗ else <term>
+varref ::= <ident> [seq <simpleterm> ]
+           | <ident>
+<cond> ::= 
+    defined(seq+ <varref> ) 
+    [&& otheruses([seq+ <varref> ->] <varref> )] [&& <term> ] 
+    |<term>
+<tfindbranch> ::= seq <identbound> suchthat <cond> then <term>
+<pattern> ::= <ident>
+             | <vartype>
+             | <ident> (seq <pattern> )
+             | (seq <pattern> )
+             | = <term>
+<event> ::= [inj:] <ident> [(seq <simpleterm> )]
+<queryterm> ::= <queryterm> && <queryterm>
+                 | <queryterm> || <queryterm>
+                 | <event>
+                 | <simpleterm>
+query ::= secret <ident>
+          | secret1 <ident>
+          | [seq <vartype> ;] <event> <event> (&& <event> )∗ ==> <queryterm>
 \end{verbatim}
-La prima produzione di questa grammatica descrive \emph{l'assegnamento casuale}. Supponiamo di avere un dominio $D \subset \{0,1\}^{*}$, 
-e una variabile
-$x$. Con il costrutto $x<-R$ $D$ si assegna ad $x$ un valore scelto casualmente, ovvero con probabilit\`a uniforme, dall'insieme $D$.
-La seconda produzione descrive l'assegnamento. Con il costrutto $x:T <- M$ si dichiara $x$ come una variabile di tipo $T$ e si assegna
-ad essa il valore che la valutazione di $M$ resituisce. Il costrutto $let$ $p = M$ $in$ $M^{'}$ $else$ $M^{''}$ cerca di decomporre il termine $M$
-secondo il pattern $p$. In caso di successo ritorna il valore di $M^{'}$ altrimenti ritorna il valore di $M^{''}$. 
-Il pattern $p$ pu\`o essere una variabile, una funzione, una tupla di valori.
-I costrutto ``if cond then M else M'`` \`e zucchero sintattico per la pi\`u complessa forma: ''find suchthat cond then M else M'``.
 Il calcolo di processi distingue due tipi di oracoli:
 \begin{itemize}
  \item definizione di oracoli
@@ -410,72 +427,25 @@ Il calcolo di processi distingue due tipi di oracoli:
 \end{itemize}
 La grammatica che descrive la sintassi della definizione degli oracoli \`e la seguente:
 \begin{verbatim}
-Q ::=   0
-        | Q | Q
-        | foreach i<=N do Q
-        | O(p_1,...,p_n)
+<odef> ::= <ident>
+        | (<odef>)
+        | 0
+        | <odef> | <odef>
+        | foreach <ident> <= <ident> do <odef>
+        | <ident> (seq <pattern> ) := <obody>
+
+\end{verbatim} 
+La grammatica che invece descrive la sintassi del corpo degli oracoli \`e la seguente:
+\begin{verbatim}
+Q ::=     end
+        | <event> e(M1,...Mn);P
+        | x<-R T; P
+        | x[:T] <-M;P
+        | let p = M in P else P'
+        | return(N1,...Nl);Q
 \end{verbatim}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 La sintassi di un sott'insieme del calcolo di processi che CryptoVerif implementa \`e descritta nelal figura 1.\\
 Verr\`a descritta solo la parte utile per capire gli esempi riportati.
-
-{\setlength\tabcolsep{4pt}
-\begin{tabular}{>{$}l<{$}>{$}r<{$}>{$}l<{$}}
-   M, P &\Coloneqq &$i$\\
-  &| & $x[$\;M_1, \dots M_m$ \;]$ \\
-  &| &e_1 \; op_b \; e_2\\
-  &| &op_m \; e\\
-  &| &(e)\\
-  &| &f(es)\\
-  es &\Coloneqq &e\\
-  &| &e, \; es\\
-  S &\Coloneqq &x := e;\\
-  &| &skip;\\
-  &| &read \; x;\\
-  &| &write \; e;\\
-  &| &return \; e;\\
-  &| &if(e) \; S_1 \; else \; S_2\\
-  &| &while(e) \; S\\
-  &| &\{Ds \; Ss\}\\
-  &| &\{Ss\}\\
-  Ss &\Coloneqq &S\\
-  &| &S \; Ss\\
-  Ds &\Coloneqq &T \; x;\\
-  &| &T \; x; Ds\\
-  Fs &\Coloneqq &T \; f(Ds)\{Ss\}\\
-  &| &T \; f(Ds)\{Ss\} \; Fs\\
-  T &\Coloneqq &int\\
-  &| &float\\
-  P &\Coloneqq &program \; Ds \; Fs \; Ss \; end
-\end{tabular}}
-
 Come possiamo vedere questo calcolo distingue due tipi di processi:
 \begin{itemize}
  \item Definizioni di Oracoli.
@@ -491,52 +461,6 @@ delle operazioni e infine pu\`o ritornare un valore. Fra le operazioni che pu\`o
  \item array lookup
  \item esecuzione di eventi
 \end{enumerate}
-
-La semantica della terza voce \`e la seguente: se l'oracolo O ritorna un valore con la seguente istruzione : \return{x} allora questo valore \`e assegnato a $x_1$ altrimenti viene
-eseguito $P$.
-il processo "if defined" \`e zucchero sintattico per "find....".
-Quello che segue \`e un piccolo esempio di dichiarazione di oracolo:
-
-
-
-
-La sintassi di un array lookup \`e \emph{find ...} dove \~i denota una tupla.  Questo processo prova a trovare $j \in [1, m]$ tale che eistono i valori uj1...ujm tali che
-Mj1, Mjm sono definiti e Mj \\`e vero. In caso di successo esegue Pj altrimenti, se falliscono tutti i tentativi, esegue P.
-In maniera pi\`u formale possiamo dire che, valuta la condizione defined() per ogni j e ogni valore valore di uj... .Se nessuna di queste condizioni \`e vera esegue P, altrimenti
-sceglie con probabilit\`a uniforme un j e esegue Pj.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Un Esempio: FDH}
 \emph{Full Domain Hash} \`e uno schema di firma che segue il paradigma \emph{hash-and-sign}\footnote{Questo paradigma vuole che: dato un messaggio $m$ se ne ritorni 
 la firma di $hash(m)$ e non la firma di $m$, dove la funzione hash pu\`o essere istanziata con qualsiasi funzione hash collision resistant. 
@@ -562,7 +486,7 @@ Possiamo vedere come in questo game si forniscano $qH$ copie dell' oracolo $OH$ 
 Abbiamo poi il processo $Ogen()$ che ritorna al contesto una chiave pubblica dopo aver creato, partendo da un seme casuale, una coppia costituita da una chiave privata e una chiave pubblica.
 Abbiamo poi $qS$ copie dell'oracolo $OS$ che si occupano di fornire una firma del messaggio che gli viene dato in input. Infine abbiamo un singolo oracolo $OT$ che si occupa di verificare
 se la firma $s$ \`e valida per il messaggio $m^{'}$. In particolare se $hash(m^{'}) \neq f(pk, s)$ allora la firma non \`e valida per il messaggio. Se invece $hash(m^{'}) = f(pk, s)$
-l'oracolo si occupa di verificare se, per il messaggio $m^{'}$, \`e stata mai rilasciata una firma dall'oracolo $OS$, in caso affermativo il processo termina, altrimenti significa che 
+l'oracolo si occupa di verificare se, per il messaggio $m^{'}$, \`e stata mai rilasciata una firma dall'oracolo $OS$, in caso affermativo il processo <term>ina, altrimenti significa che 
 il contesto, ovvero l'attaccante, \`e stato in grado di forgiare una firma valida per il messaggio, e quindi \`e avvenuto l'evento \emph{forge}.
 Notiamo come l'attaccante non sia modellato esplicitamente, infatti non possiamo fare nessuna assunzione sul comprtamento di questo.
 Possiamo immaginare un attaccante come un altro processo non meglio specificato messo in parallelo con questo game. In gergo l'attaccante viene anche detto anche \emph{contesto}.
@@ -571,7 +495,7 @@ Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze che p
 gioco.
 Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R} possono valere incondizionatamente, 
 oppure possono valere a meno di una certa probabilit\`a.
-Nel secondo caso la riscrittura di un termine L nell'equivalente R comporta l'introduzione di una differenza non nulla fra i due game.
+Nel secondo caso la riscrittura di un <term>ine L nell'equivalente R comporta l'introduzione di una differenza non nulla fra i due game.
 
 Prima di descrivere il secondo input di CryptoVerif \`e necessario fare una piccola digressione riguardo al concetto di funzione \emph{one-way}.
 Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente. Cio\`e se dato $y=f(x)$ \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 
@@ -662,236 +586,25 @@ Nell'appendice XX si pu\`o trovare l'input e l'output completo del CryptoVerif.
 Nel game $G_0$ viene per prima cosa sostituita ogni chiamata ad hash con la relativa definizione.
 Dopo queste modifiche CryptoVerif ottiene il seguente game:
 \begin{verbatim}
- (
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  x23 : bitstring ← x ;
-  find suchthat defined(x19 , r18 ) ∧ (x23 = x19 ) then
-    return(r18 )
-  ⊕ @i 29 ≤ qS suchthat defined(x21 [@i 29 ], r20 [@i 29 ]) ∧ 
-    (x23 = x21 [@i 29 ]) then
-    return(r20 [@i 29 ])
-  ⊕ @i 28 ≤ qH suchthat defined(x23 [@i 28 ], r22 [@i 28 ]) ∧ 
-    (x23 = x23 [@i 28 ]) then
-    return(r22 [@i 28 ])
-  else
-         R
-    r22 ← D;
-    return(r22 )
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen(r );
-  sk : skey ← skgen(r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    x21 : bitstring ← m;
-    find suchthat defined(x19 , r18 ) ∧ (x21 = x19 ) then
-       return(invf(sk , r18 ))
-    ⊕ @i 27 ≤ qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) ∧ 
-      (x21 = x21 [@i 27 ]) then
-       return(invf(sk , r20 [@i 27 ]))
-    ⊕ @i 26 ≤ qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) ∧ 
-      (x21 = x23 [@i 26 ]) then
-       return(invf(sk , r22 [@i 26 ]))
-    else
-            R
-       r20 ← D;
-       return(invf(sk , r20 ))
-  |
-    OT (m : bitstring, s : D) :=
-    x19 : bitstring ← m ;
-    find suchthat defined(x19 , r18 ) ∧ (x19 = x19 ) then
-1
-       if (f(pk , s) = r18 ) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    ⊕ @i 25 ≤ qS suchthat defined(x21 [@i 25 ], r20 [@i 25 ]) ∧ 
-	(x19 = x21 [@i 25 ]) then
-2
-3      if (f(pk , s) = r20 [@i 25 ]) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-4
-          end
-       else
-          event forge
-    ⊕ @i 24 ≤ qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) ∧ 
-	(x19 = x23 [@i 24 ]) then
-       if (f(pk , s) = r22 [@i 24 ]) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-    else
-            R
-       r18 ← D;
-       if (f(pk , s) = r18 ) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-       else
-          event forge
-  )
-)
 \end{verbatim}
 Nel game precedente il simbolo \begin{verbatim}⊕\end{verbatim}
-sta a significare \foreach{j}{Q} dove $Q$ \`e il limite superiore dell'array e $j$ la variabile
-usata per scorrerlo. 
-Questo game adesso viene modificato nel modo seguente: poich\`e alla linea $1$ $r_{18}$ non \`e definita il relativo test fallisce sempre quindi
-pu\`e essere eliminato.
-
+sta a significare \foreach{j}{Q} dove $Q$ \`e il limite superiore dell'array e $j$ la variabile usata per scorrerlo. 
+Questo game adesso viene modificato nel modo seguente: poich\`e alla linea $1$ $r_{18}$ non \`e definita il relativo test fallisce sempre quindi pu\`e essere eliminato.
 \begin{verbatim}
- (
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  x23 : bitstring ← cst bitstring;
-  find suchthat defined(m , x19 , r18 ) ∧ (x = m ) then
-    return(f(pkgen(r ), r18 ))
-  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) ∧ 
-    (x = m[@i 29 ]) then
-	return(f(pkgen(r ), r20 [@i 29 ]))
-  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) ∧ 
-    (x = x [@i 28 ]) then
-    return(f(pkgen(r ), r22 [@i 28 ]))
-  else
-         R
-    r22 ← D;
-    return(f(pkgen(r ), r22 ))
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen(r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-    OS(m : bitstring) :=
-    x21 : bitstring ← cst bitstring;
-    find suchthat defined(m , x19 , r18 ) ∧ (m = m ) then
-       return(r18 )
-    ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) ∧ 
-    (m = m[@i 27 ]) then
-       return(r20 [@i 27 ])
-    ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) ∧ 
-    (m = x [@i 26 ]) then
-       return(r22 [@i 26 ])
-    else
-            R
-       r20 ← D;
-       return(r20 )
-  |
-    OT (m : bitstring, s : D) :=
-    x19 : bitstring ← cst bitstring;
-    find @i 25 ≤ qS suchthat defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) ∧ 
-     (m = m[@i 25 ]) then
-       end
-    ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) ∧ 
-      (m = x [@i 24 ]) then
-       if (f(pk , s) = f(pkgen(r ), r22 [@i 24 ])) then
-       find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-          end
-      else
-         event forge
-    else
-           R
-      r18 ← D;
-      if (f(pk , s) = f(pkgen(r ), r18 )) then
-      find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-         end
-      else
-         event forge
-  )
-)
-
 \end{verbatim}
-
 \begin{verbatim}
- (
-  foreach iH 13 ≤ qH do
-  OH(x : bitstring) :=
-  find suchthat defined(m , r , r18 ) ∧ (x = m ) then
-    return(f (pkgen (r ), r18 ))
-  ⊕ @i 29 ≤ qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) ∧ (x = m[@i 29 ]) then
-    return(f (pkgen (r ), r20 [@i 29 ]))
-  ⊕ @i 28 ≤ qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) ∧ (x = x [@i 28 ]) then
-    return(f (pkgen (r ), r22 [@i 28 ]))
-  else
-         R
-    r22 ← D;
-    return(f (pkgen (r ), r22 ))
-|
-  Ogen() :=
-    R
-  r ← seed ;
-  pk : pkey ← pkgen (r );
-  return(pk );
-  (
-    foreach iS 14 ≤ qS do
-1   OS(m : bitstring) :=
-    find suchthat defined(m , r18 ) ∧ (m = m ) then
-2
-       k47 : bitstring ← mark;
-3
-       return(r18 )
-     ⊕ @i 27 ≤ qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) ∧ (m = m[@i 27 ]) then
-       k48 : bitstring ← mark;
-       return(r20 [@i 27 ])
-     ⊕ @i 26 ≤ qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) ∧ (m = x [@i 26 ]) then
-4
-       k50 : bitstring ← mark;
-5
-       return(r22 [@i 26 ])
-     else
-            R
-       r20 ← D;
-       k45 : bitstring ← mark;
-       return(r20 )
-   |
-     OT (m : bitstring, s : D) :=
-     find @i 25 ≤ qS suchthat defined(r20 [@i 25 ], m[@i 25 ]) ∧ (m = m[@i 25 ]) then
-       end
-     ⊕ @i 24 ≤ qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) ∧ (m = x [@i 24 ]) then
-6
-       find @i 56 ≤ qS suchthat defined(k50 [@i 56 ]) ∧ (@i 24 = @i 26 [@i 56 ]) then
-7
-          if (s = r22 [@i 24 ]) then
-          find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-8
-             end
-          else
-             event forge
-       else
-9         if false then
-          find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-             end
-          else
-             event forge
-     else
-            R
-       r18 ← D;
-       find @i 53 ≤ qS suchthat defined(k47 [@i 53 ]) then
-10
-          if (s = r18 ) then
-          find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-11
-             end
-          else
-             event forge
-       else
-12        if false then
-          find u ≤ qS suchthat defined(m[u]) ∧ (m = m[u]) then
-             end
-          else
-             event forge
-   )
-)
-
 \end{verbatim}
 \chapter{Risultati Raggiunti}
+
+Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un risultato classico della crittografia computazionale.
+\section{Teorema}
+Il teorema \`e il seguente:\\
+\begin{teorema}
+Se esiste un generatore pseudocasuale $G^{'}$ con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni polinomio $p$ esiste un generatore pseudocasuale $G$ con coefficiente d'espazione
+$l(n)=p(n)$.
+\end{teorema}
+
+Si pu\`o trovare una dimostrazione \emph{classica} di questo teorema in \cite{1206501}.
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
 \bibliographystyle{alpha}	

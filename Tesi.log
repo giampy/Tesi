@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.5.14)  31 MAY 2010 09:59
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  31 MAY 2010 11:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,7 +6,7 @@ entering extended mode
 (./Tesi.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, loaded.
+yphenation, italian, spanish, galician, catalan, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size12.clo
@@ -55,14 +55,9 @@ File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count89
 \U@D=\dimen103
 )
-
-Package babel Warning: No hyphenation patterns were loaded for
-(babel)                the language `Italian'
-(babel)                I will use the patterns loaded for \language=0 instead.
-
-\l@italian = a dialect from \language0
 Package babel Info: Making " an active character on input line 94.
-)) (/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
+))
+(/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip43
 \f@ncyO@elh=\skip44
 \f@ncyO@erh=\skip45
@@ -158,11 +153,10 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/etc/texmf/tex/latex/config/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: dvips.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
-\Gread@gobject=\count102
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
@@ -179,8 +173,11 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 (/etc/texmf/tex/latex/config/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 130.
-)
+Package color Info: Driver file: dvips.def on input line 130.
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
 (/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigtopskip=\skip55
@@ -189,10 +186,10 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigbottomskip=\skip57
 \subfigcapmargin=\dimen116
 \subfiglabelskip=\skip58
-\c@subfigure=\count103
-\c@lofdepth=\count104
-\c@subtable=\count105
-\c@lotdepth=\count106
+\c@subfigure=\count102
+\c@lofdepth=\count103
+\c@subtable=\count104
+\c@lotdepth=\count105
 
 ****************************************
 * Local config file subfigure.cfg used *
@@ -206,7 +203,7 @@ Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode detected.
+Package ifpdf Info: pdfTeX in pdf mode not detected.
 )
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
@@ -223,8 +220,8 @@ O)
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
 \@linkdim=\dimen117
-\Hy@linkcounter=\count107
-\Hy@pagecounter=\count108
+\Hy@linkcounter=\count106
+\Hy@pagecounter=\count107
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
@@ -240,7 +237,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )
-(/etc/texmf/tex/latex/config/hyperref.cfg
+(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 (/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
@@ -289,7 +286,7 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )))
-\Fld@menulength=\count109
+\Fld@menulength=\count108
 \Field@Width=\dimen118
 \Fld@charsize=\dimen119
 \Field@toks=\toks28
@@ -304,15 +301,22 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count110
-\c@Item=\count111
-\c@Hfootnote=\count112
+\Hy@abspage=\count109
+\c@Item=\count110
+\c@Hfootnote=\count111
 )
-*hyperref using default driver hpdftex*
-(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
-\Fld@listcount=\count113
-)
+*hyperref using default driver hdvips*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2009/10/09 v6.79a Hyperref driver for dvips
+
+(/usr/share/texmf-texlive/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2009/10/09 v6.79a Hyperref definitions for pdfmark specials
+\pdf@docset=\toks29
+\pdf@box=\box28
+\pdf@toks=\toks30
+\pdf@defaulttoks=\toks31
+\Fld@listcount=\count112
+))
 (/usr/share/texmf-texlive/tex/latex/base/t1enc.sty
 Package: t1enc 1994/06/01 Standard LaTeX package
 )
@@ -322,46 +326,46 @@ nment
 
 (/usr/share/texmf-texlive/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count114
-\float@exts=\toks29
-\float@box=\box28
-\@float@everytoks=\toks30
-\@floatcapt=\box29
+\c@float@type=\count113
+\float@exts=\toks32
+\float@box=\box29
+\@float@everytoks=\toks33
+\@floatcapt=\box30
 )
 (/usr/share/texmf-texlive/tex/latex/base/ifthen.sty
 Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\@float@every@algorithm=\toks31
-\c@algorithm=\count115
+\@float@every@algorithm=\toks34
+\c@algorithm=\count114
 )
 (/usr/share/texmf-texlive/tex/latex/algorithms/algorithmic.sty
 Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count116
-\c@ALC@line=\count117
-\c@ALC@rem=\count118
-\c@ALC@depth=\count119
+\c@ALC@unique=\count115
+\c@ALC@line=\count116
+\c@ALC@rem=\count117
+\c@ALC@depth=\count118
 \ALC@tlm=\skip61
 \algorithmicindent=\skip62
 )
 (/usr/share/texmf-texlive/tex/latex/listings/listings.sty
-\lst@mode=\count120
-\lst@gtempboxa=\box30
-\lst@token=\toks32
-\lst@length=\count121
+\lst@mode=\count119
+\lst@gtempboxa=\box31
+\lst@token=\toks35
+\lst@length=\count120
 \lst@currlwidth=\dimen120
-\lst@column=\count122
-\lst@pos=\count123
+\lst@column=\count121
+\lst@pos=\count122
 \lst@lostspace=\dimen121
 \lst@width=\dimen122
-\lst@newlines=\count124
-\lst@lineno=\count125
+\lst@newlines=\count123
+\lst@lineno=\count124
 \lst@maxwidth=\dimen123
 
 (/usr/share/texmf-texlive/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count126
-\lst@skipnumbers=\count127
-\lst@framebox=\box31
+\c@lstnumber=\count125
+\lst@skipnumbers=\count126
+\lst@framebox=\box32
 )
 (/usr/share/texmf-texlive/tex/latex/listings/listings.cfg
 File: listings.cfg 2007/02/22 1.4 listings configuration
@@ -372,7 +376,7 @@ Package: listings 2007/02/22 1.4 (Carsten Heinz)
 Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
 \col@sep=\dimen124
 \extrarowheight=\dimen125
-\NC@list=\toks33
+\NC@list=\toks36
 \extratabsurround=\skip63
 \backup@length=\skip64
 )
@@ -461,56 +465,57 @@ LaTeX Font Info:    Overwriting symbol font `largesymbolsA' in version `bold'
 (Font)                  U/txexa/m/n --> U/txexa/bx/n on input line 129.
 LaTeX Info: Redefining \not on input line 1043.
 )
-\c@definizione=\count128
-\c@proposizione=\count129
+\c@definizione=\count127
+\c@proposizione=\count128
+\c@teorema=\count129
  (./Tesi.aux)
 \openout1 = `Tesi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 55.
-LaTeX Font Info:    Try loading font information for OML+txmi on input line 55.
+LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 56.
+LaTeX Font Info:    Try loading font information for OML+txmi on input line 56.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 55.
-LaTeX Font Info:    Try loading font information for OMS+txsy on input line 55.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 56.
+LaTeX Font Info:    Try loading font information for OMS+txsy on input line 56.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 55.
-LaTeX Font Info:    Try loading font information for OMX+txex on input line 55.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for OMX/txex/m/n on input line 56.
+LaTeX Font Info:    Try loading font information for OMX+txex on input line 56.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omxtxex.fd
 File: omxtxex.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 55.
-LaTeX Font Info:    Try loading font information for U+txexa on input line 55.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for U/txexa/m/n on input line 56.
+LaTeX Font Info:    Try loading font information for U+txexa on input line 56.
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxexa.fd
 File: utxexa.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 55.
-LaTeX Font Info:    Try loading font information for LGR+cmr on input line 55.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for LGR/cmr/m/n on input line 56.
+LaTeX Font Info:    Try loading font information for LGR+cmr on input line 56.
 
 (/usr/share/texmf-texlive/tex/generic/babel/lgrcmr.fd
 File: lgrcmr.fd 2008/06/17 v2.3 Greek Computer Modern
 )
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 55.
-LaTeX Font Info:    ... okay on input line 55.
-LaTeX Font Info:    Try loading font information for T1+txr on input line 55.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 56.
+LaTeX Font Info:    ... okay on input line 56.
+LaTeX Font Info:    Try loading font information for T1+txr on input line 56.
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/t1txr.fd
 File: t1txr.fd 2000/12/15 v3.1
@@ -519,77 +524,65 @@ File: t1txr.fd 2000/12/15 v3.1
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 
 fontencoding LGR patched
-) (/usr/share/texmf/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count130
-\scratchdimen=\dimen126
-\scratchbox=\box32
-\nofMPsegments=\count131
-\nofMParguments=\count132
-\everyMPshowfont=\toks34
-\MPscratchCnt=\count133
-\MPscratchDim=\dimen127
-\MPnumerator=\count134
-\everyMPtoPDFconversion=\toks35
 )
-Package hyperref Info: Link coloring OFF on input line 55.
+Package hyperref Info: Link coloring OFF on input line 56.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count135
+\c@section@level=\count130
 )
-LaTeX Info: Redefining \ref on input line 55.
-LaTeX Info: Redefining \pageref on input line 55.
+LaTeX Info: Redefining \ref on input line 56.
+LaTeX Info: Redefining \pageref on input line 56.
  (./Tesi.out)
 (./Tesi.out)
 \@outlinefile=\write3
 \openout3 = `Tesi.out'.
 
 \AtBeginShipoutBox=\box33
-\c@lstlisting=\count136
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 65.
+\c@lstlisting=\count131
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 66.
  (/usr/share/texmf-texlive/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsya on input line 65.
+LaTeX Font Info:    Try loading font information for U+txsya on input line 66.
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyb on input line 65.
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 66.
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxsyb.fd
 File: utxsyb.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txmia on input line 65.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 66.
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 65.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 66.
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
 
-LaTeX Warning: Citation `?' on page 1 undefined on input line 74.
+LaTeX Warning: Citation `?' on page 1 undefined on input line 75.
 
-LaTeX Font Info:    Try loading font information for T1+txtt on input line 79.
+LaTeX Font Info:    Try loading font information for T1+txtt on input line 80.
 (/usr/share/texmf-texlive/tex/latex/txfonts/t1txtt.fd
 File: t1txtt.fd 2000/12/15 v3.1
 )
-Overfull \hbox (3.50403pt too wide) in paragraph at lines 58--112
-\T1/txr/m/n/12 Come scien-za, la crit-tografia mod-er-na si pro-pone in-nanzi t
-ut-to di fornire definizioni
+Underfull \hbox (badness 6141) in paragraph at lines 80--80
+[][][][][][]\T1/txr/m/n/10 Per in-for-ma-zio-ni più det-ta-glia-te su que-sto t
+ool si vi-si-ti il se-guen-te si-to web:
  []
 
 [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+]
 
 Package Fancyhdr Warning: \headheight is too small (12.5pt): 
  Make it at least 14.49998pt.
@@ -603,33 +596,33 @@ Capitolo 1.
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 ) [5]
-LaTeX Font Info:    Try loading font information for OMS+txr on input line 139.
+LaTeX Font Info:    Try loading font information for OMS+txr on input line 140.
 
 
 (/usr/share/texmf-texlive/tex/latex/txfonts/omstxr.fd
 File: omstxr.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    Font shape `OMS/txr/m/n' in size <12> not available
-(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 139.
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 140.
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--151
+Underfull \hbox (badness 10000) in paragraph at lines 146--152
 
  []
 
 [6]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 170.
+(hyperref)                removing `math shift' on input line 171.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 170.
+(hyperref)                removing `math shift' on input line 171.
 
 [7] [8] [9] [10]
 LaTeX Font Info:    Font shape `OMS/txr/m/it' in size <12> not available
-(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 284.
+(Font)              Font shape `OMS/txsy/m/n' tried instead on input line 285.
  [11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 328--353
+Underfull \hbox (badness 10000) in paragraph at lines 329--354
 
  []
 
@@ -640,284 +633,127 @@ Capitolo 2.
 [17] (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-34.def
 File: uni-34.def 2004/10/17 UCS: Unicode data U+2200..U+22FF
 )
-Overfull \hbox (88.15108pt too wide) in paragraph at lines 398--398
-[]        \T1/txtt/m/n/12 | find [[unique]] <tfindbranch> (orfind <tfindbranch>
- )$\OMS/txsy/m/n/12 ^^C$ \T1/txtt/m/n/12 else <term>[] 
+Overfull \hbox (69.25111pt too wide) in paragraph at lines 401--401
+[]         \T1/txtt/m/n/12 | find [[unique]] tfindbranch (orfind tfindbranch )$
+\OMS/txsy/m/n/12 ^^C$ \T1/txtt/m/n/12 else <term>[] 
+ []
+
+
+Overfull \hbox (0.59924pt too wide) in paragraph at lines 408--408
+[]\T1/txtt/m/n/12 <tfindbranch> ::= seq <identbound> suchthat <cond> then <term
+>[] 
  []
 
 [18]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Overfull \hbox (88.15108pt too wide) in paragraph at lines 421--421
+[]          \T1/txtt/m/n/12 | [seq <vartype> ;] <event> <event> (&& <event> )$\
+OMS/txsy/m/n/12 ^^C$ \T1/txtt/m/n/12 ==> <queryterm>[] 
+ []
 
- [19]
-[20] [21]
-Underfull \hbox (badness 10000) in paragraph at lines 564--588
+[19] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 475--499
 
  []
 
 
-Overfull \hbox (44.48854pt too wide) in paragraph at lines 564--588
+Overfull \hbox (44.48854pt too wide) in paragraph at lines 475--499
 [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 564--588
+Underfull \hbox (badness 10000) in paragraph at lines 475--499
 
  []
 
-[22] [23]
-Overfull \hbox (2.60083pt too wide) in paragraph at lines 609--610
-[]\T1/txr/m/n/12 Siamo ora pron-ti per vedere come il con-cet-to di fun-zione o
-ne-way viene model-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 612--623
+[21] [22]
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--623
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--623
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--623
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--623
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--623
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 612--623
+Underfull \hbox (badness 10000) in paragraph at lines 523--534
 
  []
 
 
 Underfull \vbox (badness 3646) has occurred while \output is active []
 
- [24]
-Overfull \hbox (1.41379pt too wide) in paragraph at lines 650--655
+ [23]
+Overfull \hbox (1.41379pt too wide) in paragraph at lines 561--566
 \T1/txr/bx/n/12 foreach iH $\OMS/txsy/m/n/12 ^^T$ \T1/txr/bx/n/12 nH do \T1/txr
 /m/n/12 OH(x:hashinput) := \T1/txr/bx/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/tx
-r/bx/n/12 nH suchthat \T1/txr/m/n/12 (\T1/txr/bx/n/12 defined\T1/txr/m/n/12 (x[
-u],r[u])
+r/bx/n/12 nH su-ch-that \T1/txr/m/n/12 (\T1/txr/bx/n/12 defined\T1/txr/m/n/12 (
+x[u],r[u])
  []
 
-[25]
-Overfull \hbox (76.1991pt too wide) in paragraph at lines 662--662
+[24]
+Overfull \hbox (76.1991pt too wide) in paragraph at lines 573--573
 [] \T1/txtt/m/n/12 forall r:seed, x:D, x':D; (x' = invf(skgen(r),x)) = (f(pkgen
 (r),x') = x).[] 
  []
 
 
-Overfull \hbox (0.59924pt too wide) in paragraph at lines 668--668
+Overfull \hbox (0.59924pt too wide) in paragraph at lines 579--579
 []\T1/txtt/m/n/12 forall k:skey, x:D, x':D; (invf(k,x) = invf(k,x')) = (x = x')
 .[] 
  []
 
 
-LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 671.
+LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 582.
 
-(/usr/share/texmf-texlive/tex/latex/ucs/data/uni-33.def
-File: uni-33.def 2004/10/17 UCS: Unicode data U+2100..U+21FF
-) [26]
-Overfull \hbox (11.11124pt too wide) in paragraph at lines 707--707
-[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 27 $\OMS/txsy/m/n/12 ^^T$ \T1/t
-xtt/m/n/12 qS suchthat defined(x21 [@i 27 ], r20 [@i 27 ]) $\OMS/txsy/m/n/12 ^$
-[] 
- []
+[25] [26
 
-
-Overfull \hbox (11.11124pt too wide) in paragraph at lines 710--710
-[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 26 $\OMS/txsy/m/n/12 ^^T$ \T1/t
-xtt/m/n/12 qH suchthat defined(x23 [@i 26 ], r22 [@i 26 ]) $\OMS/txsy/m/n/12 ^$
-[] 
- []
-
-
-Overfull \hbox (11.11124pt too wide) in paragraph at lines 727--727
-[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 25 $\OMS/txsy/m/n/12 ^^T$ \T1/t
-xtt/m/n/12 qS suchthat defined(x21 [@i 25 ], r20 [@i 25 ]) $\OMS/txsy/m/n/12 ^$
-[] 
- []
-
-
-Overfull \hbox (11.11124pt too wide) in paragraph at lines 736--736
-[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 24 $\OMS/txsy/m/n/12 ^^T$ \T1/t
-xtt/m/n/12 qH suchthat defined(x23 [@i 24 ], r22 [@i 24 ]) $\OMS/txsy/m/n/12 ^$
-[] 
- []
-
-[27]
-Overfull \hbox (67.81113pt too wide) in paragraph at lines 767--767
-[]  $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 29 $\OMS/txsy/m/n/12 ^^T$ \T1/txt
-t/m/n/12 qS suchthat defined(m[@i 29 ], x21 [@i 29 ], r20 [@i 29 ]) $\OMS/txsy/
-m/n/12 ^$[] 
- []
-
-
-Overfull \hbox (74.11111pt too wide) in paragraph at lines 770--770
-[]  $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 28 $\OMS/txsy/m/n/12 ^^T$ \T1/txt
-t/m/n/12 qH suchthat defined(x [@i 28 ], x23 [@i 28 ], r22 [@i 28 ]) $\OMS/txsy
-/m/n/12 ^$[] 
- []
-
-[28]
-Overfull \hbox (80.4111pt too wide) in paragraph at lines 789--789
-[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 27 $\OMS/txsy/m/n/12 ^^T$ \T1/t
-xtt/m/n/12 qS suchthat defined(m[@i 27 ], x21 [@i 27 ], r20 [@i 27 ]) $\OMS/txs
-y/m/n/12 ^$[] 
- []
-
-
-Overfull \hbox (86.71109pt too wide) in paragraph at lines 792--792
-[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 26 $\OMS/txsy/m/n/12 ^^T$ \T1/t
-xtt/m/n/12 qH suchthat defined(x [@i 26 ], x23 [@i 26 ], r22 [@i 26 ]) $\OMS/tx
-sy/m/n/12 ^$[] 
- []
-
-
-Overfull \hbox (97.97906pt too wide) in paragraph at lines 802--802
-[]    \T1/txtt/m/n/12 find @i 25 $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS such
-that defined(m[@i 25 ], x21 [@i 25 ], r20 [@i 25 ]) $\OMS/txsy/m/n/12 ^$[] 
- []
-
-
-Overfull \hbox (86.71109pt too wide) in paragraph at lines 805--805
-[]    $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 24 $\OMS/txsy/m/n/12 ^^T$ \T1/t
-xtt/m/n/12 qH suchthat defined(x [@i 24 ], x23 [@i 24 ], r22 [@i 24 ]) $\OMS/tx
-sy/m/n/12 ^$[] 
- []
-
-[29]
-Overfull \hbox (137.111pt too wide) in paragraph at lines 831--831
-[]  $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 29 $\OMS/txsy/m/n/12 ^^T$ \T1/txt
-t/m/n/12 qS suchthat defined(m[@i 29 ], r , r20 [@i 29 ]) $\OMS/txsy/m/n/12 ^$ 
-\T1/txtt/m/n/12 (x = m[@i 29 ]) then[] 
- []
-
-
-Overfull \hbox (124.51102pt too wide) in paragraph at lines 833--833
-[]  $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 28 $\OMS/txsy/m/n/12 ^^T$ \T1/txt
-t/m/n/12 qH suchthat defined(x [@i 28 ], r22 [@i 28 ]) $\OMS/txsy/m/n/12 ^$ \T1
-/txtt/m/n/12 (x = x [@i 28 ]) then[] 
- []
-
-
-Overfull \hbox (130.811pt too wide) in paragraph at lines 853--853
-[]     $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 27 $\OMS/txsy/m/n/12 ^^T$ \T1/
-txtt/m/n/12 qS suchthat defined(m[@i 27 ], r20 [@i 27 ]) $\OMS/txsy/m/n/12 ^$ \
-T1/txtt/m/n/12 (m = m[@i 27 ]) then[] 
- []
-
-
-Overfull \hbox (143.41098pt too wide) in paragraph at lines 856--856
-[]     $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 26 $\OMS/txsy/m/n/12 ^^T$ \T1/
-txtt/m/n/12 qH suchthat defined(x [@i 26 ], r22 [@i 26 ]) $\OMS/txsy/m/n/12 ^$ 
-\T1/txtt/m/n/12 (m = x [@i 26 ]) then[] 
- []
-
-[30]
-Overfull \hbox (148.37897pt too wide) in paragraph at lines 868--868
-[]     \T1/txtt/m/n/12 find @i 25 $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS suc
-hthat defined(r20 [@i 25 ], m[@i 25 ]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m 
-= m[@i 25 ]) then[] 
- []
-
-
-Overfull \hbox (143.41098pt too wide) in paragraph at lines 870--870
-[]     $\OMS/txsy/m/n/12 ^^H$ \T1/txtt/m/n/12 @i 24 $\OMS/txsy/m/n/12 ^^T$ \T1/
-txtt/m/n/12 qH suchthat defined(x [@i 24 ], r22 [@i 24 ]) $\OMS/txsy/m/n/12 ^$ 
-\T1/txtt/m/n/12 (m = x [@i 24 ]) then[] 
- []
-
-
-Overfull \hbox (148.37897pt too wide) in paragraph at lines 872--872
-[]       \T1/txtt/m/n/12 find @i 56 $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS s
-uchthat defined(k50 [@i 56 ]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (@i 24 = @i 
-26 [@i 56 ]) then[] 
- []
-
-
-Overfull \hbox (3.47925pt too wide) in paragraph at lines 875--875
-[]          \T1/txtt/m/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS su
-chthat defined(m[u]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m = m[u]) then[] 
- []
-
-
-Overfull \hbox (3.47925pt too wide) in paragraph at lines 882--882
-[]          \T1/txtt/m/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS su
-chthat defined(m[u]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m = m[u]) then[] 
- []
-
-
-Overfull \hbox (3.47925pt too wide) in paragraph at lines 892--892
-[]          \T1/txtt/m/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS su
-chthat defined(m[u]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m = m[u]) then[] 
- []
-
-
-Overfull \hbox (3.47925pt too wide) in paragraph at lines 899--899
-[]          \T1/txtt/m/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/txtt/m/n/12 qS su
-chthat defined(m[u]) $\OMS/txsy/m/n/12 ^$ \T1/txtt/m/n/12 (m = m[u]) then[] 
- []
-
-[31] [32]
+]
 Capitolo 3.
-[33
-
-] [34
+[27] [28
 
 ]
 Capitolo 4.
-(./Tesi.bbl [35] [36
+(./Tesi.bbl [29] [30
 
 ]
 Underfull \hbox (badness 2057) in paragraph at lines 41--44
-[]\T1/txr/m/n/12 Oded Gol-dre-ich.  \T1/txr/m/it/12 Foun-da-tions of Cryp-tog-r
+[]\T1/txr/m/n/12 Oded Gol-drei-ch.  \T1/txr/m/it/12 Foun-da-tions of Cryp-to-gr
 a-phy: Ba-sic Tools\T1/txr/m/n/12 .
  []
 
-[37]) [38] (./Tesi.aux)
+[31]) [32] (./Tesi.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 9896 strings out of 495061
- 136417 string characters out of 1182621
- 203896 words of memory out of 3000000
- 12745 multiletter control sequences out of 15000+50000
- 69343 words of font info for 132 fonts, out of 3000000 for 9000
- 34 hyphenation exceptions out of 8191
+ 9449 strings out of 494993
+ 131763 string characters out of 1180536
+ 208582 words of memory out of 3000000
+ 12446 multiletter control sequences out of 15000+50000
+ 48645 words of font info for 100 fonts, out of 3000000 for 9000
+ 60 hyphenation exceptions out of 8191
  38i,18n,43p,415b,643s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/txfonts/rtxb.pfb></usr/share/texmf-texlive/fonts/type1/pu
-blic/txfonts/rtxi.pfb></usr/share/texmf-texlive/fonts/type1/public/txfonts/rtxm
-i.pfb></usr/share/texmf-texlive/fonts/type1/public/txfonts/rtxr.pfb></usr/share
-/texmf-texlive/fonts/type1/public/txfonts/t1xtt.pfb></usr/share/texmf-texlive/f
-onts/type1/public/txfonts/txex.pfb></usr/share/texmf-texlive/fonts/type1/public
-/txfonts/txsy.pfb></usr/share/texmf-texlive/fonts/type1/public/txfonts/txsyb.pf
-b></usr/share/texmf-texlive/fonts/type1/public/txfonts/txsyc.pfb></usr/share/te
-xmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/urw/times/utmbi8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmr8
-a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmri8a.pfb>
-Output written on Tesi.pdf (38 pages, 194671 bytes).
-PDF statistics:
- 388 PDF objects out of 1000 (max. 8388607)
- 103 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
 
+Output written on Tesi.dvi (32 pages, 115012 bytes).
