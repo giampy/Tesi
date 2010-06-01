@@ -9,13 +9,6 @@
 \usepackage{color}      % use if color is used in text
 \usepackage{subfigure}  % use for side-by-side figures
 \usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs 
-\usepackage{t1enc}
-\usepackage{url}
-\usepackage{algorithm}
-\usepackage{algorithmic}
-\usepackage{listings}
-\usepackage{array}
-\usepackage{txfonts}
 
 \author{Gian Pietro Farina}
 \hyphenation{li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pse-u-do-ca-sua-le sem-bre-reb-be}
@@ -360,10 +353,10 @@ devono appartenere ad una stessa classe di equivalenza indotta dalla particolare
 Nel modello formale questa relazione sar\`a l'indistinguibilit\`a perfetta (meglio nota come equivalenza osservazionale) mentre in quello computazionale sar\`a 
 l'indistinguibilit\`a computazionale.
 \chapter{CryptoVerif}
-CryptoVerif \`e un \emph{dimostratore} automatico di sviluppo molto recente che lavora direttamente nel modello computazionale.\\
+CryptoVerif \`e un \emph{dimostratore} automatico di sviluppo abbastanza recente\footnote{La sua prima release stabile risale all 2006} che lavora direttamente nel modello computazionale.\\
 CryptoVerif \`e stato scritto da Bruno Blanchet\footnote{Ricercatore al LIENS (Computer Science Laboratory of Ecole Normale Supérieure)} in Ocaml. 
-Si possono trovare pi\`u informazioni nella home page di Blanchet\footnote{\url{http://www.di.ens.fr/~blanchet/index-eng.html}}.
-Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticazione. Queste prove si basano sulla tecnica delle sequenze di game.
+Si possono trovare pi\`u informazioni riguardo al tool nella home page di Blanchet\footnote{\url{http://www.di.ens.fr/~blanchet/index-eng.html}}.
+Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticazione. Le prove in questione  si basano sulla tecnica delle sequenze di game.
 Il tool \`e liberamente scaricabile\footnote{\url{http://www.cryptoverif.ens.fr/cryptoverif.html}} sotto la licenza CeCill\footnote{http://www.cecill.info/licences/}.
 CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni protocolli crittografici, come per esempio: FDH \cite{BlanchetPointchevalCrypto06}, 
 Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.\\
@@ -371,13 +364,13 @@ Scopo di questo capitolo \`e quello di descrivere in modo non troppo formale\foo
 Il lettore interessato all'argomento pu\`o comunque trovare pi\`u informazioni in \cite{BlanchetJaggardScedrovTsayAsiaCCS08}} 
 un sottinsieme del linguaggio che CryptoVerif implementa, in modo 
 da poter leggere il capitolo successivo con le conoscenze necessarie.
-Alla fine del capitolo verr\`a descritto brevemente la descrizione nel linguaggio che CryptoVerif implementa dello schema di firma \emph{FDH}.
+Alla fine del capitolo verr\`a descritta brevemente l'implementazione dello schema di firma FDH nel linguaggio di CryptoVerif.
 \newpage
 \section{La sintassi}
 Un tipico file di input per CryptoVerif ha la seguente forma: \begin{center}
                                                                $<decalaration>^{*}$ \textbf{process} $<odef>$.
                                                               \end{center}
-Quindi di solito la parte iniziale dell'input \`e costituita da una serie di dichiarazioni, una serie di definizioni di primitive crittografiche e, successivamente alla parola chiave \textbf{process}, 
+Di solito quindi, la parte iniziale dell'input \`e costituita da una serie di dichiarazioni, una serie di definizioni di primitive crittografiche e, successivamente alla parola chiave \textbf{process}, 
 si trova la definizione di un oracolo che descrive il protocollo di cui si vogliono dimostrare alcune propriet\`a.
 Gli oracoli sono definiti in un calcolo di processi. In questo calcolo i termini rappresentano computazioni su stringhe di bit.
 I termini del calcolo sono distinti in due categorie: semplici e non. La sintassi dei termini semplici \`e descritta dalla seguente grammatica:
@@ -394,15 +387,15 @@ I termini del calcolo sono distinti in due categorie: semplici e non. La sintass
 Dove
 \begin{itemize}
  \item $[M]$ significa che M \`e opzionale.
- \item seq<X> \`e una sequenza (eventualmente vuota) di X.
+ \item seq$<$X$>$ \`e una sequenza (eventualmente vuota) di X.
 \end{itemize}
 \`E interessante la terza regola che definisce una tupla di termini semplici. Ovvero partendo dai termini $M_1,....,M_n$ si costruisce la tupla $(M_1,...M_n)$ che corrisponde
 alla concatenazione di $M_1,...,M_n$. La tupla conterr\`a anche informazioni sulle singole componenti (tipo, lunghezza) in modo che possano essere successivamente 
 recuperate senza ambiguit\`a.
 Non si deve confondere la tupla con un semplice termine fra parentesi, che in quel caso, non definiscono un nuovo oggetto ma semplicemente 
 permettono di non avere ambiguit\`a all'interno di espressioni. Abbiamo poi, delle produzioni che descrivono il fatto che un termine semplice pu\`o essere
-un semplice identificatore o un identificatore \emph{applicato} ad altri termini (una funzione). Il calcolo dispone infine di simboli di funzione di default:
-ovvero uguaglianza, diseguaglianza, disgiunzione e congiunzione. \newpage
+un identificatore o un identificatore \emph{applicato} ad altri termini (una funzione). Il calcolo dispone infine di simboli di funzione di default:
+ovvero uguaglianza, diseguaglianza, disgiunzione e congiunzione. 
 I termini non semplici (che chiameremo termini), contengono dei costrutti pi\`u complessi.
 La sintassi dei termini, \`e descritta dalla seguente grammatica:
 \begin{verbatim}
@@ -414,8 +407,8 @@ La sintassi dei termini, \`e descritta dalla seguente grammatica:
          | find [[unique]] <tfindbranch> (orfind <tfindbranch> 
                            else <term>
 \end{verbatim}
-Il costrutto $x$<-R $D$ assegna in maniera casuale un valore del dominio $D$ alla variabile $x$, abbiamo poi il costrutto $x:T$<- $M$ che dichiara una variabile $x$ di tipo $T$,
-e assegna a questa il valore ottenuto dalla valutazione del termine $M$. 
+Il costrutto $x<$-R $D$ assegna in maniera casuale un valore del dominio $D$ alla variabile $x$, abbiamo poi il costrutto $x:T<$- $M$ che dichiara una variabile $x$ di tipo $T$,
+e assegna a questa il valore ottenuto dalla valutazione del termine $M$. \\
 \`E interessante analizzare il costrutto $let$ $p=M$ $in$ $M'$ $else$ $M''$; questo cerca di decomporre il termine $M$ secondo il pattern $p$. In caso di successo ritorna
 il valore di $M'$ altrimenti ritorna il valore di $M''$. Il pattern $p$ pu\`o essere una variabile, un simbolo di funzione (eventualmente applicato ai suoi argomenti),
 una tupla di valori, oppure un'ugualiglianza con un altro termine. Possiamo vedere ci\`o dalla grammatica che descrive la sintassi di un pattern:
@@ -430,12 +423,13 @@ Tralasciando l'ovvio costrutto condizionale analizziamo il costrutto definito da
 Questo costrutto, che \`e probabilmente il maggior apporto fornito da CryptoVerif rispetto ad altri calcoli che lavorano invece su liste, permette di effettuare un lookup su un array.
 In particolare un $<tfindbranch>$ \`e descritto dalla seguente produzione:
 \begin{verbatim}<tfindbranch> ::= seq(<identbound> suchthat <cond> then <term>)\end{verbatim}. 
-In particolare un $<identbound>$ \`e una diseguaglianza fra una variabile e un parametro, per esempio: $i<=N$ dove $i$ \`e una variabile e $N$ \`e un parametro; questa diseguaglianza permette
-di ricercare in un array un indice $i$ minore uguale di $N$ tale per cui valga una certa condizione specificata da <cond>, se questo indice viene trovato allora viene ritornato il valore di $<term>$.
-Il costrutto find per\`o pu\`o in generale avere vari indici che scorrono vari array in cui si verificano diverse condizioni; in generale quindi avremo:
+Un $<identbound>$ \`e una diseguaglianza fra una variabile e un parametro, per esempio: $i<=N$ dove $i$ \`e una variabile e $N$ \`e un parametro; questa diseguaglianza permette
+di ricercare in un array un elemento di indice $i$ minore uguale di $N$ tale per cui valga una certa condizione specificata da $<$cond$>$,
+se questo elemento viene trovato allora viene ritornato il valore di $<term>$. Il costrutto find per\`o, pu\`o in generale avere vari indici che scorrono vari array in cui si testano diverse condizioni; 
+in generale quindi avremo:\\
 $find$ $u_{j1}<=n_{j1}$ $suchthat$ $cond_j$ $then$ $M_j$,...,$orfind$ $u_{ji}<=n_{ji}$ $suchthat$ $cond_j$ $then$ $M_j,...,$ $orfind$ $u_{jm}<=n_{jm}$ $suchthat$ $cond_j$ $then$ $M_j$ $else$ $M$.
-Se nessuna condizione si verifica viene ritornato il valore $M$, altrimenti si possono avere due casi: o si verifica una sola delle condizioni e allora viene ritornato il valore del termine
-relativo a quella condizione, oppure pi\`u di una condizione si verifica e in questo caso viene scelto in maniera casuale uno dei termini relativi alle condizioni vere e viene ritornato quello. 
+\\Se nessuna condizione si verifica viene ritornato il valore di $M$, altrimenti si possono avere due casi: o si verifica una sola delle condizioni e allora viene ritornato il valore del termine
+relativo a quella condizione, oppure pi\`u di una condizione si verifica. In questo caso viene scelto in maniera casuale uno dei termini relativi alle condizioni vere e viene ritornato quello. 
 Il costrutto $find$ esiste anche in relazione agli oracoli e quindi verr\`a ulteriormente spiegato in seguito.
 \\
 \\
@@ -484,12 +478,12 @@ obody ::= <ident>
 \end{verbatim}
 Come si pu\`o vedere nel corpo di un oracolo si possono assegnare valori a variabili in maniera casuale con il costrutto fornito dalla quinta produzione, o si pu\`o anche
 assegnare un valore che \`e risultato delle computazioni di un altro oracolo come nella sesta produzione. Un oracolo ritorna il valore con un $return$ e successivamente 
-pu\`o chiamare un altro oracolo come si dall'ultima produzione. La parola chiave $end$ serve per far terminare la definizione di un oracolo.
+pu\`o chiamare un altro oracolo come si pu\`o vedere dall'ultima produzione. La parola chiave $end$ serve per far terminare la definizione di un oracolo.
 Attraverso l'istruzione condizionale, all'interno del corpo di un oracolo, possiamo chiamare altri oracoli a seconda del valore di verit\`a della condizione verificata.
 Attraverso il costrutto $let$ \`e possibile cercare di decomporre il valore del termine in un pattern specificato e, a seconda che questa decomposizione abbia o meno successo,
 \`e possibile chiamare un oracolo o un altro. In particolare se il pattern \`e una semplice variabile l'effetto, da un punto di vista pratico, \`e un assegnamento semplice 
-che ha sempre successo, e sfocia in una dicharazione e inizializzazione di una variabile il cui scope \`e l'oraclo che si trova dopo la parola chiave $in$; 
-se il pattern \`e una variabile quindi il ramo $else$ non viene mai eseguito. 
+che ha sempre successo, e sfocia in una dichiarazione e inizializzazione di una variabile il cui scope \`e l'oraclo che si trova dopo la parola chiave $in$; 
+se il pattern \`e una variabile quindi, il ramo $else$ non viene mai eseguito. 
 La grammatica che descrive la sintassi dei pattern \`e stata gi\`a trattata precedentemente e non verr\`a ripetuta.\\
 \`E fondamentale specificare a CryptoVerif, nella parte delle dichiarazioni (quindi all'inizio), 
 le propriet\`a che deve cercare di dimostrare. Questo \`e fatto attraverso la parola chiave $query$, la cui sintassi \`e
@@ -520,39 +514,42 @@ valga per un numero di test qualsiasi.
 \emph{Full Domain Hash} \`e uno schema di firma che segue il paradigma \emph{hash-and-sign}\footnote{Questo paradigma vuole che: dato un messaggio $m$ se ne ritorni 
 la firma di $hash(m)$ e non la firma di $m$, dove la funzione hash pu\`o essere istanziata con qualsiasi funzione hash collision resistant. 
 Si ottiene cos\`i una firma di lunghezza fissa e non dipendente dalla lunghezza del messaggio}. 
-Quella che a breve seguir\`a \`e la descrizione dello schema di firma $FDH$ nel linguaggio di CryptoVerif. 
+Quella che a breve seguir\`a \`e la descrizione dello schema di firma FDH nel linguaggio di CryptoVerif. In quest'esempio la funzione $f$ sar\`a la funzione la cui inversa
+viene utilizzate per firmare il messaggio, mentre la funzione $hash$ sar\`a la funzione utilizzate per ottenere un'hash di una stringa di bit.\\
 L'input che si fornisce al CryptoVerif \`e costituito, fondamentalmente, da due parti: 
 \begin{itemize}
  \item Un game iniziale $G_0$, in cui si modella la sicurezza dello schema.
  \item Alcune equivalenze necessarie a CryptoVerif per effettuare le modifiche ai game. 
 \end{itemize}
-La descrizione dello schema di firma \emph{FDH} viene data al CryptoVerif attraverso il seguente game:\\ \\
-\begin{tabular}{lcr}
-\hline
+La descrizione dello schema di firma FDH viene data al CryptoVerif attraverso il seguente game:\\ \\
+
 $G_0 \equiv$ \foreach{iH}{qH} OH(x: bitstring):= \return{hash(x)}\pipe Ogen():=\setR{r}{seed}\set{pk}{pkgen(r)}\set{sk}{skgen(r)}\return{pk}\\
 	(\foreach{iS}{qS} OS(m: bitstring):= \return{invf(sk, hash(m))})\pipe
 	OT(m': bitstring, s:D):=\\ \ifthen{f(pk, s)=hash(m')}{\find{u}{qS}{m[u]} {$m^{'}=m[u]$} {\myend} {\event} forge}
 	\\
-\hline 
-\end{tabular}\\ \\
-Procediamo adesso con una breve spiegazione di questo game.
-Possiamo vedere come in questo game si forniscano $qH$ copie dell' oracolo $OH$ i quali ritornano l'hash della stringa che gli si fornisce in input ovvero $x$.
-Abbiamo poi il processo $Ogen()$ che ritorna al contesto una chiave pubblica dopo aver creato, partendo da un seme casuale, una coppia costituita da una chiave privata e una chiave pubblica.
-Abbiamo poi $qS$ copie dell'oracolo $OS$ che si occupano di fornire una firma del messaggio che gli viene dato in input. Infine abbiamo un singolo oracolo $OT$ che si occupa di verificare
-se la firma $s$ \`e valida per il messaggio $m^{'}$. In particolare se $hash(m^{'}) \neq f(pk, s)$ allora la firma non \`e valida per il messaggio. Se invece $hash(m^{'}) = f(pk, s)$
-l'oracolo si occupa di verificare se, per il messaggio $m^{'}$, \`e stata mai rilasciata una firma dall'oracolo $OS$, in caso affermativo il processo termina, altrimenti significa che 
-il contesto, ovvero l'attaccante, \`e stato in grado di forgiare una firma valida per il messaggio, e quindi \`e avvenuto l'evento \emph{forge}.
-Notiamo come l'attaccante non sia modellato esplicitamente, infatti non possiamo fare nessuna assunzione sul comprtamento di questo.
-Possiamo immaginare un attaccante come un altro processo non meglio specificato messo in parallelo con questo game. In gergo l'attaccante viene anche detto anche \emph{contesto}.
-Per poter trasformare un game in un altro CryptoVerif ha bisogno di alcune equivalenze da poter utilizzare.
-Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze che possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in
-gioco.
-Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R} possono valere incondizionatamente, 
-oppure possono valere a meno di una certa probabilit\`a.
-Nel secondo caso la riscrittura di un termine L nell'equivalente R comporta l'introduzione di una differenza non nulla fra i due game.
 
-Prima di descrivere il secondo input di CryptoVerif \`e necessario fare una piccola digressione riguardo al concetto di funzione \emph{one-way}.
-Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente. Cio\`e se dato $y=f(x)$ \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 
+Procediamo adesso con una breve spiegazione di questo game.
+Possiamo vedere come in questo game si forniscano $qH$ copie dell' oracolo $OH$ i quali ritornano l'hash della stringa che gli si fornisce in input, ovvero $x$.\\
+Abbiamo poi l'oracolo $Ogen()$ che ritorna al contesto una chiave pubblica dopo aver creato, partendo da un seme casuale, una coppia costituita da una chiave privata e una chiave pubblica.\\
+Vengono fornite, mediante il costrutto $foreach$, $qS$ copie dell'oracolo $OS$ le quali si occupano di ritornare in output una firma del messaggio che gli viene dato in input.\\ 
+Infine viene  fornito un oracolo $OT$ che si occupa di verificare se la firma $s$ \`e valida per il messaggio $m^{'}$. \\
+In particolare se $hash(m^{'}) \neq f(pk, s)$ allora la firma non \`e valida per il messaggio. Se invece $hash(m^{'}) = f(pk, s)$
+l'oracolo si occupa di verificare se, per il messaggio $m^{'}$, \`e stata mai rilasciata una firma dall'oracolo $OS$, in caso affermativo il processo termina, altrimenti significa che 
+l'attaccante, \`e stato in grado di forgiare una firma valida per il messaggio, e quindi \`e avvenuto l'evento \emph{forge}.\\
+Notiamo come l'attaccante non sia modellato esplicitamente, infatti non possiamo fare nessuna assunzione sul comprtamento di questo.
+Possiamo immaginare un attaccante come un altro processo non meglio specificato messo in parallelo con questo game.\\ 
+Per poter trasformare un game in un altro CryptoVerif ha bisogno di alcune definizioni di primitive crittografiche da poter utilizzare.
+\\
+Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze le quali possono essere viste come regole di riscrittura 
+delle distribuzioni di probabilit\`a delle variabili in gioco.
+Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R} possono essere valide incondizionatamente, 
+oppure possono valere a meno di una certa probabilit\`a.
+Nel secondo caso la riscrittura di un termine \emph{L} nell'equivalente \emph{R} comporta l'introduzione di una differenza non nulla fra i due game; di solito per\`o
+questa differenza introdotta \`e rilevata dall'avversario solo con probabilit\`a trascurabile oppure con probabilit\`a trascurabilmente vicina a qualche costante come 
+per esempio $\frac{1}{2}$.
+\\ 
+Prima di descrivere la seconda parte dell'input di CryptoVerif \`e necessario fare una piccola digressione riguardo al concetto di funzione \emph{one-way}.
+Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente; cio\`e se, dato $y=f(x)$, \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 
 Si noti come non sia necessario, per invertire la funzione, trovare $x$ ma \`e sufficiente trovare un $x'$ qualsiasi tale che $f(x')=y$.
 \\Possiamo ora dare la seguente:
 \begin{definizione}{Funzione One-Way.}
@@ -569,12 +566,9 @@ $P$ e $NP$\footnote{$P$ \`e l'insieme dei problemi risolvibili nel caso pessimo 
 si pu\`o verificare in tempo polinomiale se questo \`e o meno soluzione del problema (ovvero \`e l'insieme dei problemi con certificazione polinomiale.). 
 Non \`e ancora noto se questi insiemi siano o meno lo stesso insieme.}.
 Il fatto che però qualcuno un giorno possa dimostrare che $P \neq NP$ non dimostrerebbe affatto l'esistenza delle funzioni one-way. 
-Infatti una funzione one-way deve, come prima sottolineato, essere non invertibile in modo efficiente, sempre e non solo nel \emph{caso pessimo}. 
-\newpage
-Siamo ora pronti per vedere come il concetto di funzione one-way viene modellato in CryptoVerif.
-
-
-Si tratta di dare una definzione di one-way per mezzo di un'equivalenza fra games. La definizione \`e la seguente:\\
+Infatti una funzione one-way deve, come prima sottolineato, essere non invertibile in modo efficiente, sempre e non solo nel \emph{caso pessimo}. \\ 
+Siamo ora pronti per vedere come il concetto di funzione one-way venga modellato in CryptoVerif.
+Si tratta di dare una definzione di one-wayness per mezzo di un'equivalenza fra games. La definizione \`e la seguente:\\
 \equiva \\
 \foreach{ik}{nk} \setR{r}{seed} (Opk():= \return{r} )\pipe 
  \foreach{iF}{nF} \setR{x}{D} (Oy():= \return{f(pkgen(r), x)} \pipe
@@ -587,30 +581,33 @@ Si tratta di dare una definzione di one-way per mezzo di un'equivalenza fra game
     Ox():=\set{k}{mark}\return{x} \\
 
 
-Questa equivalenza fra game cattura e definisce il concetto di funzione one-way. La funzione $f$, infatti, \`e one-way se e solo se vale l'equivalenza $nNXXX$, 
+Questa equivalenza fra game cattura e definisce il concetto di funzione one-way. La funzione $f$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
 e quindi il game a sinistra e quello a destra del simbolo \textbf{$\approx _{pow}$} sono indistinguibili.
-Supponiamo, infatti, che la funzione $f$ non sia one-way, esister\`a dunque un avversario efficiente $A$ 
-che pu\`o invertire $f$. $A$ sar\`a dunque in grado di distinguere i due membri dell'equivalenza $L \approx_{pow} R$.
-Potendo invertire $f$, $A$ sar\`a in grado di osservare comportamenti diversi fra i game a seconda che $A$ chiami Oeq() in $L$ o in $R$.
-Supponiamo, dunque, che $A$ chiami Oy() ottenendo l'immagine di un valore mediante $f$, sia questa $y$; poich\`e $f$ non \`e one-way, 
+Supponiamo infatti che la funzione $f$ non sia one-way, esister\`a dunque un avversario efficiente $A$ 
+che pu\`o invertire $f$. $A$ sar\`a dunque in grado di distinguere i due membri dell'equivalenza $L \approx_{pow} R$. 
+Questo perch\`e potendo invertire $f$, $A$ sar\`a in grado di osservare comportamenti diversi fra i game a seconda che $A$ chiami Oeq() in $L$ o in $R$.
+Procediamo con una sorta di esperimento mentale.\\ 
+Supponiamo che $A$ chiami Oy() ottenendo l'immagine di un valore mediante $f$, sia questa $y$; poich\`e $f$ non \`e one-way, 
 $A$ inverte la funzione ottenendo un $x^{'}$ tale che $f(x^{'})= y$.
-Adesso $A$ non deve far altro che richiamare Oeq passando a questo come argomento $x^{'}$. Se l'Oeq richiamato appartiene al primo membro dell'equivalenza, 
-allora Oeq()  ritorner\`a sempre true, mentre se appartiene al secondo ritorner\`a sempre false. In questo modo $A$ osserva dei comportamenti diversi fra i due game, 
-e quindi pu\`o distinguerli. Supponiamo invece che $f$ sia effettivamente one-way. Allora non esister\`a nessun attaccante efficiente che riesca ad invertire $f$.
-L'unico modo che ha quindi un attaccante $A$ per invertire la funzione, \`e chiamare Ox() e ottenere cos\`i una preimmagine valida. 
-Se però l'attaccante chiama Ox() allora $L$ e $R$ sono effettivamente indistinguibili (a meno di probabilit\`a trascurabili).
+Adesso $A$ non deve far altro che richiamare Oeq() passando a questo come argomento $x^{'}$. Se Oeq \`e richiamato dal primo membro dell'equivalenza, 
+allora Oeq()  ritorner\`a sempre true, mentre se appartiene al secondo ritorner\`a sempre false.\\
+In questo modo $A$ osserva dei comportamenti diversi fra i due game, e quindi pu\`o distinguerli. 
+Supponiamo invece che $f$ sia effettivamente one-way. Allora non esister\`a nessun attaccante efficiente che riesca ad invertire $f$.
+L'unico modo che ha quindi un attaccante $A$ per invertire la funzione \`e chiamare Ox() e ottenere cos\`i una preimmagine valida. 
+Se però l'attaccante chiama Ox() allora $L$ e $R$ sono effettivamente indistinguibili (a meno di una probabilit\`a trascurabile di cui parleremo dopo).
 Notiamo infatti nella definizione dell'equivalenza che Ox() \`e definito in maniera diversa in $L$ ed $R$.
-In $L$, Ox() si occupa semplicemente di ritornare il valore del dominio $x$, tale che $f(x)=y$. In $R$ invece Ox() prima di ritornare $x$ imposta al valore $mark$ la variabile $k$.
-Ora, l'Oeq si comporter\`a in maniera diversa a seconda che appartenga ad $L$ o ad $R$.
-Se infatti l'Oeq() richiamato appartiene ad $L$ allora Oeq() si proccuper\`a semplicemente di ritornare il valore booleano dell'espressione $x^{'}=x$.
-Se invece, l'Oeq() richiamato appartiene ad $L$ allora Oeq() si comporter\`a in maniera differente a seconda che la variabile $k$ abbia o meno un valore 
-(ovvero sia stata o meno definita da una precedente chiamata a Ox). Se quindi $k$ \`e definito Oeq si comporter\`a esattamente come si sarebbe comportato l'Oeq di $L$.
-Se invece k non \`e stato definito allora siginifica che l'attaccante non ha richiamato Ox, quindi \`e lecito supporre che non sia riuscito ad invertire $f$ e quindi Oeq ritorna false\footnote{
-\`E importante notare che l'attaccante ha comunque la possibilit\`a di indovinare $x$ anche senza richiamare Ox ma questa \`e una probabilit\`a trascurabile. Di questa probabilit\`a viene
-comunque tenuto conto nell'equivalenza. L'equivalenza infatti, vale a meno di una certa probabilit\`a $pow$ (trascurabile in questo caso).}.
-In questo modo i due game sono effettivamente indistinguibili, perch\`e non presentano differrenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
-Quindi $L$ e $R$ sono \`e indistinguibile \emph{se e solo se} $f$ \`e one-way; quindi la precedente equivalenza \`e una definizione ben posta di funzione one-way.
-Un'ulteriore definizione viene fornita al CryptoVerif, quella di funzione hash. Questa definizione viene fornita al tool attraverso il seguente codice:
+In $L$, Ox() si occupa semplicemente di ritornare il valore del dominio $x$, tale che $f(x)=y$. 
+In $R$ invece, Ox() prima di ritornare $x$ imposta al valore $mark$ la variabile $k$.
+Ora, Oeq si comporter\`a in maniera diversa a seconda che sia richiamato da $L$ o da $R$.
+Se infatti Oeq() \`e chiamato da $L$ allora Oeq() si proccuper\`a semplicemente di ritornare il valore booleano dell'espressione $x^{'}=x$.
+Se invece, Oeq() \`e chiamato da $L$ allora Oeq() si comporter\`a in maniera differente a seconda che la variabile $k$ abbia o meno un valore 
+(ovvero sia stata o meno definita da una precedente chiamata a Ox()). Se quindi $k$ \`e definita allora Oeq() si comporter\`a esattamente come si sarebbe comportato Oeq() di $L$.
+Se invece $k$ non \`e stata definita allora siginifica che l'attaccante non ha richiamato Ox(), quindi \`e lecito supporre che non sia riuscito ad invertire $f$ e quindi Oeq() ritorna false.\\
+\`E importante notare che l'attaccante avrebbe comunque la possibilit\`a di indovinare $x$ anche senza richiamare Ox() ma questa \`e una probabilit\`a trascurabile. 
+Di questa probabilit\`a viene comunque tenuto conto nell'equivalenza. L'equivalenza infatti, vale a meno di una certa probabilit\`a $pow$ (trascurabile in questo caso).
+In questo modo i due game sono effettivamente indistinguibili, perch\`e non presentano differenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
+Quindi $L$ e $R$ sono indistinguibili \emph{se e solo se} $f$ \`e one-way e di conseguenza la precedente equivalenza \`e una definizione ben posta di funzione one-way.
+Un'ulteriore definizione che viene fornita al CryptoVerif \`e quella di funzione hash. Questa definizione viene fornita al tool attraverso il seguente codice:
 
  \equiva \\ 
   \foreach{iH}{nH} OH(x:hashinput) := \return{hash(x)}\\
@@ -618,10 +615,10 @@ Un'ulteriore definizione viene fornita al CryptoVerif, quella di funzione hash. 
      \foreach{iH}{nH} OH(x:hashinput) :=
    \find{u}{nH}{x[u],r[u]}{x= x[u]}{return(r[u])}{\setR{r}{hashoutput}; \return{r}.}
  
-La funzione hash \`e intesa implementata nel modello dell'oracolo random: se la funzione non \`e mai stata richiamata su un particolare valore $x_0$ allora viene ritornato un valore casuale, 
-altrimenti viene ritornato lo stesso valore che era stato ritornato precedentemente. Questo viene fatto salvando il valore ritornato per un particolare input in un array e poi,
+La funzione hash \`e intesa implementata nel modello dell'oracolo random: se la funzione non \`e mai stata richiamata su un particolare valore $x_0$ allora viene restituito un valore casuale, 
+altrimenti viene restituito lo stesso valore che era stato dato in output precedentemente. Questo viene fatto salvando il valore restituito per un particolare input in un array e poi,
 al momento della chiamata, si effettua un look up nell'array.
-Infine abbiamo una semplice teoria equazionale per descrivere alcune propriet\`a delle funzioni in gioco.\newpage
+Infine abbiamo una semplice teoria equazionale per descrivere alcune propriet\`a delle funzioni in gioco.
 Per esempio:
 \begin{verbatim}
  forall r:seed, x:D, x':D; (x' = invf(skgen(r),x)) = (f(pkgen(r),x') = x).
@@ -635,21 +632,9 @@ forall k:pkey, x:D, x':D; (f(k,x) = f(k,x')) = (x = x').
 forall k:pkey, x:D, x':D; (f'(k,x) = f'(k,x')) = (x = x).
 \end{verbatim}\\
 modellano l'iniettivit\`a delle funzioni $invf$, $f'$, $f$\footnote{Non serve ai fini della dimostrazione modellare l'iniettivit\`a della funzione $invf'$.}.
-Quella che segue \`e una spiegazione delle parti pi\`u importanti dell'output di CryptoVerif quanto questo viene eseguito sull'input prima descritto.
-Nell'appendice XX si pu\`o trovare l'input e l'output completo del CryptoVerif.
-Nel game $G_0$ viene per prima cosa sostituita ogni chiamata ad hash con la relativa definizione.
-Dopo queste modifiche CryptoVerif ottiene il seguente game:
-\begin{verbatim}
-\end{verbatim}
-Nel game precedente il simbolo \begin{verbatim}⊕\end{verbatim}
-sta a significare \foreach{j}{Q} dove $Q$ \`e il limite superiore dell'array e $j$ la variabile usata per scorrerlo. 
-Questo game adesso viene modificato nel modo seguente: poich\`e alla linea $1$ $r_{18}$ non \`e definita il relativo test fallisce sempre quindi pu\`e essere eliminato.
-\begin{verbatim}
-\end{verbatim}
-\begin{verbatim}
-\end{verbatim}
+Nell'appendice A si pu\`o trovare l'input completo, mentre in \cite{BlanchetPointchevalCrypto06} possiamo trovare una spiegazione delle fasi 
+pi\`u importanti dell'output di CryptoVerif e infine in \cite{fdhall} troviamo l'ouput completo di CryptoVerif sull'input descritto precedentemente.
 \chapter{Risultati Raggiunti}
-
 Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un risultato classico della crittografia computazionale.
 \section{Teorema}
 Il teorema \`e il seguente:\\
@@ -659,10 +644,6 @@ $l(n)=p(n)$.
 \end{teorema}
 
 Si pu\`o trovare una dimostrazione \emph{classica} di questo teorema in \cite{1206501}. La dimostrazione classica procede....
-
-
-Per
-
 
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
