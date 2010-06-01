@@ -131,10 +131,10 @@ Title={Sequences of Games: A Tool for Taming Complexity in Security Proofs}
   bibsource = {DBLP, http://dblp.uni-trier.de}
 }
 @Article{Shannon,
- author =     "C. E. Shannon",
- title =     "Communication Theory of Secrecy Systems",
- journal =     "Bell System Technical Journal",
- year =     "1949",
- volume =     "28",
- pages =     "656-715"
+ author =    { C. E. Shannon},
+ title =     {Communication Theory of Secrecy Systems},
+ journal =     { Bell System Technical Journal},
+ year =      {1949},
+ volume =    {  28},
+ pages =     { 656-715}
 }

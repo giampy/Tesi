@@ -34,10 +34,10 @@ ReadWrite=true
 
 [item:Tesi.tex]
 archive=true
-column=13
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=398
+line=455
 mode=LaTeX
 open=true
 order=0
@@ -63,8 +63,8 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Tesi.tex]
-CursorColumn=13
-CursorLine=398
+CursorColumn=0
+CursorLine=455
 
 [view-settings,view=0,item:myrefs.bib]
 CursorColumn=50

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  31 MAY 2010 15:46
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  1 JUN 2010 12:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -630,130 +630,161 @@ Underfull \hbox (badness 10000) in paragraph at lines 329--355
 
 ]
 Capitolo 2.
-[17] (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-34.def
-File: uni-34.def 2004/10/17 UCS: Unicode data U+2200..U+22FF
-)
-Overfull \hbox (69.25111pt too wide) in paragraph at lines 410--410
-[]         \T1/txtt/m/n/12 | find [[unique]] tfindbranch (orfind tfindbranch )$
-\OMS/txsy/m/n/12 ^^C$ \T1/txtt/m/n/12 else <term>[] 
- []
-
-[18]
-Overfull \hbox (0.59924pt too wide) in paragraph at lines 417--417
-[]\T1/txtt/m/n/12 <tfindbranch> ::= seq <identbound> suchthat <cond> then <term
+[17] [18]
+Overfull \hbox (0.59924pt too wide) in paragraph at lines 414--414
+[]         \T1/txtt/m/n/12 | find [[unique]] <tfindbranch> (orfind <tfindbranch
 >[] 
  []
 
 
-Overfull \hbox (88.15108pt too wide) in paragraph at lines 430--430
-[]          \T1/txtt/m/n/12 | [seq <vartype> ;] <event> <event> (&& <event> )$\
-OMS/txsy/m/n/12 ^^C$ \T1/txtt/m/n/12 ==> <queryterm>[] 
- []
-
-[19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 488--512
-
+Overfull \hbox (6.89923pt too wide) in paragraph at lines 432--432
+[]\T1/txtt/m/n/12 <tfindbranch> ::= seq(<identbound> suchthat <cond> then <term
+>)[] 
  []
 
 
-Overfull \hbox (44.48854pt too wide) in paragraph at lines 488--512
-[] 
- []
+LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 432.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 488--512
+Underfull \hbox (badness 10000) in paragraph at lines 433--443
 
  []
 
-[21] [22]
-Underfull \hbox (badness 10000) in paragraph at lines 536--547
+[19]
+Overfull \hbox (6.89923pt too wide) in paragraph at lines 478--478
+[]          \T1/txtt/m/n/12 | let <pattern> = <term> [in <obody> [else <obody> 
+]][] 
+ []
 
+[20] (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-34.def
+File: uni-34.def 2004/10/17 UCS: Unicode data U+2200..U+22FF
+)
+Overfull \hbox (12.55122pt too wide) in paragraph at lines 480--480
+[]          \T1/txtt/m/n/12 | find [[unique]] <findbranch> (orfind <findbranch>
+ )$\OMS/txsy/m/n/12 ^^C$[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--547
-
+Overfull \hbox (56.65114pt too wide) in paragraph at lines 500--500
+[]     \T1/txtt/m/n/12 | [seq <vartype> ;] <event> <event> (&& <event> )$\OMS/t
+xsy/m/n/12 ^^C$ \T1/txtt/m/n/12 ==> <queryterm>[] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 536--547
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 536--547
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 536--547
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 529--530
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--547
+Underfull \hbox (badness 10000) in paragraph at lines 529--530
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 536--547
+Underfull \hbox (badness 10000) in paragraph at lines 531--535
 
  []
 
 
-Underfull \vbox (badness 3646) has occurred while \output is active []
+Underfull \hbox (badness 10000) in paragraph at lines 531--535
 
- [23]
-Overfull \hbox (1.41379pt too wide) in paragraph at lines 574--579
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 531--535
+
+ []
+
+[22] [23]
+Underfull \hbox (badness 10000) in paragraph at lines 574--585
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--585
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--585
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--585
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--585
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--585
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--585
+
+ []
+
+[24]
+Overfull \hbox (1.41379pt too wide) in paragraph at lines 612--617
 \T1/txr/bx/n/12 foreach iH $\OMS/txsy/m/n/12 ^^T$ \T1/txr/bx/n/12 nH do \T1/txr
 /m/n/12 OH(x:hashinput) := \T1/txr/bx/n/12 find u $\OMS/txsy/m/n/12 ^^T$ \T1/tx
 r/bx/n/12 nH su-ch-that \T1/txr/m/n/12 (\T1/txr/bx/n/12 defined\T1/txr/m/n/12 (
 x[u],r[u])
  []
 
-[24]
-Overfull \hbox (76.1991pt too wide) in paragraph at lines 586--586
+
+Underfull \vbox (badness 2469) has occurred while \output is active []
+
+ [25]
+[26]
+Overfull \hbox (76.1991pt too wide) in paragraph at lines 624--624
 [] \T1/txtt/m/n/12 forall r:seed, x:D, x':D; (x' = invf(skgen(r),x)) = (f(pkgen
 (r),x') = x).[] 
  []
 
 
-Overfull \hbox (0.59924pt too wide) in paragraph at lines 592--592
+Overfull \hbox (0.59924pt too wide) in paragraph at lines 630--630
 []\T1/txtt/m/n/12 forall k:skey, x:D, x':D; (invf(k,x) = invf(k,x')) = (x = x')
 .[] 
  []
 
 
-LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 595.
+LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 633.
 
-[25] [26
-
-]
-Capitolo 3.
 [27] [28
 
 ]
-Capitolo 4.
-(./Tesi.bbl [29] [30
+Capitolo 3.
+[29] [30
 
 ]
-Underfull \hbox (badness 2057) in paragraph at lines 41--44
+Capitolo 4.
+(./Tesi.bbl [31] [32
+
+]
+Underfull \hbox (badness 2057) in paragraph at lines 46--49
 []\T1/txr/m/n/12 Oded Gol-drei-ch.  \T1/txr/m/it/12 Foun-da-tions of Cryp-to-gr
 a-phy: Ba-sic Tools\T1/txr/m/n/12 .
  []
 
-[31]) [32] (./Tesi.aux)
+[33]) [34] (./Tesi.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 9449 strings out of 494993
- 131763 string characters out of 1180536
+ 9450 strings out of 494993
+ 131771 string characters out of 1180536
  208582 words of memory out of 3000000
- 12446 multiletter control sequences out of 15000+50000
+ 12447 multiletter control sequences out of 15000+50000
  48645 words of font info for 100 fonts, out of 3000000 for 9000
  60 hyphenation exceptions out of 8191
- 38i,18n,43p,415b,643s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,14n,43p,415b,641s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (32 pages, 116240 bytes).
+Output written on Tesi.dvi (34 pages, 124868 bytes).

@@ -369,17 +369,16 @@ CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni pr
 Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.\\
 Scopo di questo capitolo \`e quello di descrivere in modo non troppo formale\footnote{Nel senso che la semantica formale non sar\`a trattata rigorosamente. 
 Il lettore interessato all'argomento pu\`o comunque trovare pi\`u informazioni in \cite{BlanchetJaggardScedrovTsayAsiaCCS08}} 
-un sottinsieme del linguaggio con cui i file di input di CryptoVerif sono scritti, in modo 
+un sottinsieme del linguaggio che CryptoVerif implementa, in modo 
 da poter leggere il capitolo successivo con le conoscenze necessarie.
-Alla fine del capitolo verr\`a descritta brevemente la dimostrazione di non invertibilit\`a del protocollo \emph{FDH} che CryptoVerif costruisce e che pu\`o essere reperita
-nella sua completezza in  \cite{BlanchetPointchevalCrypto06}.
+Alla fine del capitolo verr\`a descritto brevemente la descrizione nel linguaggio che CryptoVerif implementa dello schema di firma \emph{FDH}.
 \newpage
 \section{La sintassi}
 Un tipico file di input per CryptoVerif ha la seguente forma: \begin{center}
-                                                               $<decalaration>^{*} $ \textbf{process} $  <odef>$.
+                                                               $<decalaration>^{*}$ \textbf{process} $<odef>$.
                                                               \end{center}
 Quindi di solito la parte iniziale dell'input \`e costituita da una serie di dichiarazioni, una serie di definizioni di primitive crittografiche e, successivamente alla parola chiave \textbf{process}, 
-si trova la definizione di un oracolo che descrive il protocollo che si vuolte dimostrare sicuro.
+si trova la definizione di un oracolo che descrive il protocollo di cui si vogliono dimostrare alcune propriet\`a.
 Gli oracoli sono definiti in un calcolo di processi. In questo calcolo i termini rappresentano computazioni su stringhe di bit.
 I termini del calcolo sono distinti in due categorie: semplici e non. La sintassi dei termini semplici \`e descritta dalla seguente grammatica:
 \begin{verbatim}
@@ -397,42 +396,53 @@ Dove
  \item $[M]$ significa che M \`e opzionale.
  \item seq<X> \`e una sequenza (eventualmente vuota) di X.
 \end{itemize}
+\`E interessante la terza regola che definisce una tupla di termini semplici. Ovvero partendo dai termini $M_1,....,M_n$ si costruisce la tupla $(M_1,...M_n)$ che corrisponde
+alla concatenazione di $M_1,...,M_n$. La tupla conterr\`a anche informazioni sulle singole componenti (tipo, lunghezza) in modo che possano essere successivamente 
+recuperate senza ambiguit\`a.
+Non si deve confondere la tupla con un semplice termine fra parentesi, che in quel caso, non definiscono un nuovo oggetto ma semplicemente 
+permettono di non avere ambiguit\`a all'interno di espressioni. Abbiamo poi, delle produzioni che descrivono il fatto che un termine semplice pu\`o essere
+un semplice identificatore o un identificatore \emph{applicato} ad altri termini (una funzione). Il calcolo dispone infine di simboli di funzione di default:
+ovvero uguaglianza, diseguaglianza, disgiunzione e congiunzione. \newpage
 I termini non semplici (che chiameremo termini), contengono dei costrutti pi\`u complessi.
-La sintassi di questo tipo termini, \`e descritta dalla seguente grammatica:
+La sintassi dei termini, \`e descritta dalla seguente grammatica:
 \begin{verbatim}
-<identbound> ::= <ident> <= <ident>
-<vartype> ::= <ident> : <ident>
 <term> ::= 
          | <ident> <-R <ident> ; <term>
          | <ident> [: <ident> ] <- <term>
          | let <pattern> = <term> in <term> [else <term> ]
          | if <cond> then <term> else <term>
-         | find [[unique]] tfindbranch (orfind tfindbranch )∗ else <term>
-varref ::= <ident> [seq <simpleterm> ]
-           | <ident>
-<cond> ::= 
-    defined(seq+ <varref> ) 
-    [&& otheruses([seq+ <varref> ->] <varref> )] [&& <term> ] 
-    |<term>
-<tfindbranch> ::= seq <identbound> suchthat <cond> then <term>
+         | find [[unique]] <tfindbranch> (orfind <tfindbranch> 
+                           else <term>
+\end{verbatim}
+Il costrutto $x$<-R $D$ assegna in maniera casuale un valore del dominio $D$ alla variabile $x$, abbiamo poi il costrutto $x:T$<- $M$ che dichiara una variabile $x$ di tipo $T$,
+e assegna a questa il valore ottenuto dalla valutazione del termine $M$. 
+\`E interessante analizzare il costrutto $let$ $p=M$ $in$ $M'$ $else$ $M''$; questo cerca di decomporre il termine $M$ secondo il pattern $p$. In caso di successo ritorna
+il valore di $M'$ altrimenti ritorna il valore di $M''$. Il pattern $p$ pu\`o essere una variabile, un simbolo di funzione (eventualmente applicato ai suoi argomenti),
+una tupla di valori, oppure un'ugualiglianza con un altro termine. Possiamo vedere ci\`o dalla grammatica che descrive la sintassi di un pattern:
+\begin{verbatim}
 <pattern> ::= <ident>
              | <vartype>
              | <ident> (seq <pattern> )
              | (seq <pattern> )
              | = <term>
-<event> ::= [inj:] <ident> [(seq <simpleterm> )]
-<queryterm> ::= <queryterm> && <queryterm>
-                 | <queryterm> || <queryterm>
-                 | <event>
-                 | <simpleterm>
-query ::= secret <ident>
-          | secret1 <ident>
-          | [seq <vartype> ;] <event> <event> (&& <event> )∗ ==> <queryterm>
 \end{verbatim}
+Tralasciando l'ovvio costrutto condizionale analizziamo il costrutto definito dall'ultima produzione che ha come testa il non terminale $<term>$.
+Questo costrutto, che \`e probabilmente il maggior apporto fornito da CryptoVerif rispetto ad altri calcoli che lavorano invece su liste, permette di effettuare un lookup su un array.
+In particolare un $<tfindbranch>$ \`e descritto dalla seguente produzione:
+\begin{verbatim}<tfindbranch> ::= seq(<identbound> suchthat <cond> then <term>)\end{verbatim}. 
+In particolare un $<identbound>$ \`e una diseguaglianza fra una variabile e un parametro, per esempio: $i<=N$ dove $i$ \`e una variabile e $N$ \`e un parametro; questa diseguaglianza permette
+di ricercare in un array un indice $i$ minore uguale di $N$ tale per cui valga una certa condizione specificata da <cond>, se questo indice viene trovato allora viene ritornato il valore di $<term>$.
+Il costrutto find per\`o pu\`o in generale avere vari indici che scorrono vari array in cui si verificano diverse condizioni; in generale quindi avremo:
+$find$ $u_{j1}<=n_{j1}$ $suchthat$ $cond_j$ $then$ $M_j$,...,$orfind$ $u_{ji}<=n_{ji}$ $suchthat$ $cond_j$ $then$ $M_j,...,$ $orfind$ $u_{jm}<=n_{jm}$ $suchthat$ $cond_j$ $then$ $M_j$ $else$ $M$.
+Se nessuna condizione si verifica viene ritornato il valore $M$, altrimenti si possono avere due casi: o si verifica una sola delle condizioni e allora viene ritornato il valore del termine
+relativo a quella condizione, oppure pi\`u di una condizione si verifica e in questo caso viene scelto in maniera casuale uno dei termini relativi alle condizioni vere e viene ritornato quello. 
+Il costrutto $find$ esiste anche in relazione agli oracoli e quindi verr\`a ulteriormente spiegato in seguito.
+\\
+\\
 Il calcolo di processi distingue fra:
 \begin{itemize}
- \item definizione di oracoli
- \item corpi di oracoli
+ \item definizione di un oracolo.
+ \item corpo di un oracolo.
 \end{itemize}
 La grammatica che descrive la sintassi della definizione degli oracoli \`e la seguente:
 \begin{verbatim}
@@ -442,44 +452,75 @@ La grammatica che descrive la sintassi della definizione degli oracoli \`e la se
         | <odef> | <odef>
         | foreach <ident> <= <ident> do <odef>
         | <ident> (seq <pattern> ) := <obody>
-
 \end{verbatim} 
-La grammatica che invece descrive la sintassi del corpo degli oracoli \`e la seguente:
+\`E interessante analizzare il costrutto $foreach$ che permette di creare un numero limitato di oracoli identici. \\
+Per esempio: \begin{center}
+		\begin{verbatim}
+		  foreach iS <= qS do OS():=P
+		\end{verbatim}
+	      \end{center}
+crea $qS$ copie dell'oracolo $OS$ il cui corpo \`e definito da $P$. $qS$ \`e un valore che deve essere dichiarato mediante la parola chiave $param$, 
+inserendo nella parte iniziale del file di input la seguente dichiarazione:
 \begin{verbatim}
-Q ::=     end
-        | <event> e(M1,...Mn);P
-        | x<-R T; P
-        | x[:T] <-M;P
-        | let p = M in P else P'
-        | return(N1,...Nl);Q
+param qS. 
 \end{verbatim}
-\begin{enumerate}
- \item Assegnamento di un valore ad una variabile
- \item Assegnamento di un valore scelto casualmente da un dominio ad una variabile
- \item Assegnamento condizionale di una chiamata di oracolo
- \item array lookup
- \item esecuzione di eventi
-\end{enumerate}
+$qS$ non \`e meglio specificato e non assume un valore definito, l'unica cosa che \`e data sapere \`e che \`e un valore polinomiale nel parametro di sicurezza.
+Se cosi non fosse sarebbe come mettere a disposizione dell'attaccante pi\`u mezzi di quanti ne possa avere nel modello computazionale, mentre sappiamo bene che le
+risorse dell'attaccante sono, nel modello computazionale, limitate da una funzione polinomiale nel parametro di sicurezza.
+La grammatica che descrive la sintassi del corpo degli oracoli \`e la seguente:
+\begin{verbatim}
+obody ::= <ident>
+          | ( <obody> )
+          | end
+          | event <ident> [(seq <term> )] [; <obody> ]
+          | <ident> <-R <ident> [; <obody> ]
+          | <ident> [: <ident> ] <- <term> [; <obody> ]
+          | let <pattern> = <term> [in <obody> [else <obody> ]]
+          | if <cond> then <obody> [else <obody> ]
+          | find [[unique]] <findbranch> (orfind <findbranch> )∗ 
+                    [else <obody> ]
+          | return(seq <term> )[; <odef> ]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+\end{verbatim}
+Come si pu\`o vedere nel corpo di un oracolo si possono assegnare valori a variabili in maniera casuale con il costrutto fornito dalla quinta produzione, o si pu\`o anche
+assegnare un valore che \`e risultato delle computazioni di un altro oracolo come nella sesta produzione. Un oracolo ritorna il valore con un $return$ e successivamente 
+pu\`o chiamare un altro oracolo come si dall'ultima produzione. La parola chiave $end$ serve per far terminare la definizione di un oracolo.
+Attraverso l'istruzione condizionale, all'interno del corpo di un oracolo, possiamo chiamare altri oracoli a seconda del valore di verit\`a della condizione verificata.
+Attraverso il costrutto $let$ \`e possibile cercare di decomporre il valore del termine in un pattern specificato e, a seconda che questa decomposizione abbia o meno successo,
+\`e possibile chiamare un oracolo o un altro. In particolare se il pattern \`e una semplice variabile l'effetto, da un punto di vista pratico, \`e un assegnamento semplice 
+che ha sempre successo, e sfocia in una dicharazione e inizializzazione di una variabile il cui scope \`e l'oraclo che si trova dopo la parola chiave $in$; 
+se il pattern \`e una variabile quindi il ramo $else$ non viene mai eseguito. 
+La grammatica che descrive la sintassi dei pattern \`e stata gi\`a trattata precedentemente e non verr\`a ripetuta.\\
+\`E fondamentale specificare a CryptoVerif, nella parte delle dichiarazioni (quindi all'inizio), 
+le propriet\`a che deve cercare di dimostrare. Questo \`e fatto attraverso la parola chiave $query$, la cui sintassi \`e
+descritta dalla seguente grammatica:
+\begin{verbatim}
+<query> ::= secret <ident>
+     | secret1 <ident>
+     | [seq <vartype> ;] <event> <event> (&& <event> )∗ ==> <queryterm>
+<queryterm> ::= <queryterm> && <queryterm>
+     | <queryterm> || <queryterm>
+     | <event>
+     | <simpleterm>
+<event> ::= [inj:] <ident> [(seq <simpleterm> )]
+\end{verbatim}
+Per esempio attraverso la seguente dichiarazione:
+\begin{verbatim}
+query secret1 w. 
+\end{verbatim}
+si chiede a CryptoVerif di tentare di dimostrare la propriet\`a di \emph{one-session secrecy} per l'array $w$. 
+Ovvero si chiede al tool di provare l'indistinguibilit\`a di ogni elemento dell'array $w$ da un numero casuale per un singolo test. 
+Mediante la seguente dichiarazione invece:
+\begin{verbatim}
+query secret w. 
+\end{verbatim}
+si chiede a CryptoVerif di tentare di dimostrare la propriet\`a di \emph{secrecy} per l'array $w$. Ovvero si chiede al tool di provare che l'indistinguibilit\`a degli elementi di w da numeri casuali 
+valga per un numero di test qualsiasi.
 \section{Un Esempio: FDH}
 \emph{Full Domain Hash} \`e uno schema di firma che segue il paradigma \emph{hash-and-sign}\footnote{Questo paradigma vuole che: dato un messaggio $m$ se ne ritorni 
 la firma di $hash(m)$ e non la firma di $m$, dove la funzione hash pu\`o essere istanziata con qualsiasi funzione hash collision resistant. 
 Si ottiene cos\`i una firma di lunghezza fissa e non dipendente dalla lunghezza del messaggio}. 
-Quella che a breve seguir\`a \`e una sequenza di game costruita dal CryptoVerif che d\`a un limite superiore alla probabilit\`a che un attaccante riesca a forgiare una firma valida
-per un messaggio.\newpage
+Quella che a breve seguir\`a \`e la descrizione dello schema di firma $FDH$ nel linguaggio di CryptoVerif. 
 L'input che si fornisce al CryptoVerif \`e costituito, fondamentalmente, da due parti: 
 \begin{itemize}
  \item Un game iniziale $G_0$, in cui si modella la sicurezza dello schema.

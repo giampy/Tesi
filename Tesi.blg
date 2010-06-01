@@ -3,45 +3,45 @@ The top-level auxiliary file: Tesi.aux
 The style file: alpha.bst
 Database file #1: myrefs.bib
 Warning--I didn't find a database entry for "?"
-You've used 12 entries,
+You've used 13 entries,
             2543 wiz_defined-function locations,
-            647 strings with 6471 characters,
-and the built_in function-call counts, 4681 in all, are:
-= -- 463
-> -- 185
+            650 strings with 6549 characters,
+and the built_in function-call counts, 5002 in all, are:
+= -- 494
+> -- 204
 < -- 11
-+ -- 61
-- -- 58
-* -- 321
-:= -- 756
-add.period$ -- 38
-call.type$ -- 12
-change.case$ -- 66
-chr.to.int$ -- 12
-cite$ -- 12
-duplicate$ -- 208
-empty$ -- 369
-format.name$ -- 76
-if$ -- 985
++ -- 67
+- -- 64
+* -- 337
+:= -- 809
+add.period$ -- 41
+call.type$ -- 13
+change.case$ -- 72
+chr.to.int$ -- 13
+cite$ -- 13
+duplicate$ -- 218
+empty$ -- 394
+format.name$ -- 83
+if$ -- 1052
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 12
-newline$ -- 62
-num.names$ -- 39
-pop$ -- 73
+newline$ -- 67
+num.names$ -- 42
+pop$ -- 84
 preamble$ -- 1
-purify$ -- 81
+purify$ -- 88
 quote$ -- 0
-skip$ -- 167
+skip$ -- 179
 stack$ -- 0
-substring$ -- 246
-swap$ -- 43
+substring$ -- 253
+swap$ -- 44
 text.length$ -- 11
 text.prefix$ -- 6
 top$ -- 0
-type$ -- 86
+type$ -- 94
 warning$ -- 0
-while$ -- 44
-width$ -- 17
-write$ -- 159
+while$ -- 47
+width$ -- 18
+write$ -- 170
 (There was 1 warning)
