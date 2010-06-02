@@ -52,14 +52,14 @@
 Negli anni anni '80 la crittografia ha cessato di essere un' arte per assurgere allo stato di scienza. \\Come scienza, la crittografia moderna
 si propone innanzi tutto di fornire definizioni rigorose dei concetti con cui ha a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
 su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\
-Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) provare dei risultati \emph{incondizionatamente} la maggior parte delle prove di teoremi nel campo 
-della crittografia moderna sono basate su assunzioni che non sono ancora certe, ma che sono comunque ben formalizzate e inequivocabilmente descritte.\\La pi\`u importante \`e sicuramente
+Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) \emph{incondizionatamente} provare dei risultati, la maggior parte delle prove di teoremi, nel campo 
+della crittografia moderna, sono basate su assunzioni che non sono ancora certe, ma che sono comunque ben formalizzate e inequivocabilmente descritte.\\La pi\`u importante \`e sicuramente
 l'ipotesi dell'esistenza di funzioni \emph{one-way}. Tutte le prove che sono basate su assunzioni non verificate sono sempre e comunque valide, sia che le assunzioni fatte vengano dimostrate,
-sia che vengano confutate; questo perch\`e ogni dimostrazione \`e del tipo: \emph{Se X allora Y} (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
-d'espansione polinomiale). Semplicemente, nel caso in cui le assunzioni vengano confutate si renderebbero poco interessanti le dimostrazioni che si basano su queste\footnote{\`E ovvio che partendo da ipotesi false si possa
+sia che vengano confutate; questo perch\'e ogni dimostrazione \`e del tipo: \emph{Se X allora Y} (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
+d'espansione polinomiale). Semplicemente, nel caso in cui le assunzioni dovessero essere confutate si renderebbero poco interessanti le dimostrazioni che si basano su queste\footnote{\`E ovvio che partendo da ipotesi false si possa
 dimostrare qualsiasi cosa.}.
 \`E per\`o giusto dire che le assunzioni che vengono fatte sono largamente ritenute vere; questo anche  grazie al fatto che alcune di esse si possono dedurre da altre ipotesi 
-largamente ritenute vere sebbene non dimostrate.\\Lo studio di una congettura infatti, pu\`o fornire evidenti prove della sua validit\`a mostrando che essa \`e la tesi di un teorema che assume come ipotesi
+anche queste ampiamente accettate sebbene non dimostrate.\\Lo studio di una congettura, infatti, pu\`o fornire evidenti prove della sua validit\`a mostrando che essa \`e la tesi di un teorema che assume come ipotesi
 un'altra congettura largamente ritenuta valida.
 Da quando la crittografia si \`e guadagnata una validit\`a scientifica, sono nati almeno due modi profondamente diversi fra loro di
 studiarla.\\In uno di questi, il modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
@@ -72,35 +72,35 @@ verifica automatica che lavorano nel modello formale rispetto a tool che lavoran
 Uno tra i pi\`u famosi tool che lavora nel modello formale \`e sicuramente il \emph{ProVerif}\footnote{Per informazioni pi\`u dettagliate su questo tool si visiti il seguente sito web: 
 \url{http://www.proverif.ens.fr/}}.
 I sostenitori del modello formale affermano che \`e molto conveniente ignorare i dettagli di una funzione crittografica e lavorare con una descrizione 
-pi\`u di alto livello di questa, che non includa dettagli riguardanti la funzione crittografica. I sostenitori del modello crittografico computazionale invece, affermano che la visione
-del modello formale non \`e molto realistica e che le funzioni crittografiche non devono essere viste come espressioni formali ma come algoritmi deterministici o probabilistici. Inoltre i
-sostenitori del modello formale, trattando le primitive crittografiche come dei simboli impenetrabili, assumono implicitamente che siano corrette e inviolabili, cosa non esatta. D'altra parte il modello 
-formale ha molti vantaggi come quello precedentemente accennato che riguarda la semplicit\`a con cui vengono costruiti strumenti automatici per la verifica di protocolli in questo modello.
-Sembrerebbe quindi che esista un divario molto ampio fra i due modelli. In effetti cos\`i \`e, ma non sono mancati i tentativi di unificare i due modelli, o comunque di cercare una linea
+di pi\`u alto livello di questa e che non includa dettagli riguardanti la funzione crittografica. I sostenitori del modello crittografico computazionale, invece, affermano che la visione
+del modello formale non \`e molto realistica e che le funzioni crittografiche non devono essere viste come espressioni formali, ma come algoritmi deterministici o probabilistici. Inoltre i
+sostenitori del modello formale, trattando le primitive crittografiche come dei simboli impenetrabili, assumono implicitamente che siano corrette e inviolabili ma questa non \`e
+del tutto esatto. D'altra parte, il modello formale ha molti vantaggi come quello precedentemente accennato che riguarda la semplicit\`a con cui vengono costruiti strumenti automatici per la verifica di protocolli in questo modello.
+Sembrerebbe quindi, che esista un divario molto ampio fra i due modelli. In effetti cos\`i \`e, ma non sono mancati i tentativi di unificare le due teorie, o comunque di cercare una linea
 di collegamento che li congiunga.
 In \cite{DBLP:journals/joc/AbadiR07} gli autori cercano per la prima volta di porre le basi per iniziare a collegare questi due modelli.
-In particolare il principale risultato di questo lavoro afferma che: se due espressioni nel modello formale sono equivalenti, una volta dotate di un'opportuna semantica probabilistica,
+In particolare il principale risultato di questo lavoro afferma che se due espressioni nel modello formale sono equivalenti, una volta dotate di un'opportuna semantica probabilistica,
 vengono mappati in \emph{ensemble} computazionalmente indistinguibili; quindi, sotto forti ma accettabili ipotesi\footnote{Un'importante ipotesi usata nella dimostrazione del risultato in questione
 \`e che non devono esserci cicli crittografici, ovvero si considerano solo schemi crittografici in cui una chiave $k$, non \`e mai \emph{cifrata} attraverso $k$ stessa.}, 
 l'equivalenza formale implica l'indistinguibilit\`a computazionale.
 \`E quindi lecito affermare che un attaccante per il modello computazionale non \`e pi\`u potente di un attaccante nel modello formale. Questo risultato ha dato un'ulteriore spinta
-ai sostenitori del modello formale che potevano cos\`i dimostrare risultati nel modello formale, con tutti i benefici che questo comportava, 
+ai sostenitori del modello formale che potevano cos\`i dimostrare risultati, con tutti i benefici che il modello formale comportava, 
 e estendere questo risultato al modello computazionale senza troppi problemi.
-Un altra strada, invece, \`e quella che prevede di lavorare direttamente nel modello computazionale senza preoccuparsi di rispettare le forti ipotesi che erano 
+Un' altra strada, invece, \`e quella che prevede di lavorare direttamente nel modello computazionale senza preoccuparsi di rispettare le forti ipotesi che erano 
 state usate per dimostrare il risultato raggiunto in \cite{DBLP:journals/joc/AbadiR07}.
-Rispetto al passato oggi giorno la crittografia non \`e utilizzata solo in ambiente militare, i suoi campi di utilizzo infatti, si estendono a molti aspetti della vita quotidiana.
+Rispetto al passato, oggi giorno, la crittografia non \`e utilizzata solo in ambiente militare. I suoi campi di utilizzo si estendono a molti aspetti della vita quotidiana.
 Questo fatto ha comportato anche un'estensione dei possibili utilizzi della crittografia. Se infatti, un tempo l'unico scopo che si proponeva la crittografia era quello di garantire
-la segretezza oggi giorno deve poter fornire molte altre garanzie fra le quali: autenticazione e integrit\`a dei messaggi scambiati fra due parti. Ecco quindi, che la nascita di queste esigenze
+la segretezza oggi giorno deve poter fornire molte altre garanzie fra le quali: autenticazione e integrit\`a dei messaggi scambiati fra due parti. Ecco, quindi, che la nascita di queste esigenze
 ha portato allo studio di schemi crittografici come per esempio \emph{message authentication code} oppure schemi crittografici asimmetrici.
-Quando si parla di segretezza \`e importante come gia accennato dare prima una definizione di cosa si intende con questo termine.
-Se per esempio si intende che nessun attaccante possa mai venire a conoscenza della chiave allora si ottiene qualcosa che non \`e quello che si vorrebbe. La segretezza riguarda un messaggio, 
+Quando si parla di segretezza, \`e importante, come gi\`a accennato, dare prima una definizione di cosa si intenda con questo termine.
+Se per esempio si intende che nessun attaccante possa mai venire a conoscenza della chiave allora si ottiene qualcosa che non \`e quello che si vorrebbe. La segretezza, infatti, riguarda un messaggio, 
 la chiave \`e solo un mezzo che si utilizza per ottenere questo fine. 
-Se invece si intende che un attaccante non riesca mai a scoprire il messaggio si \`e alla ricerca di una chimera. Innanzi tutto infatti, come si vedr\`a nel proseguo, dato abbastanza
-tempo a disposizione si pu\`o sempre riuscire ad scoprire con \emph{certezza} il mesasggio; inoltre esiste sempre la possiblit\`a che un attaccante riesca ad indovinare il messaggio
-semplicemente \emph{tirando ad indovinare}. Se infine si intende che ogni attaccante con determinate caratteristiche riesca difficilmente ad indovinare il messaggio cifrato, allora esiste la 
+Se invece si intende che un attaccante non riesca mai a decifrare il messaggio si \`e alla ricerca di una chimera, perch\'e come si vedr\`a nel proseguo, posto che si abbia sufficiente tempo 
+a disposizione si pu\`o sempre riuscire a decifrare con \emph{certezza} il messaggio; inoltre esiste sempre la possiblit\`a che un attaccante riesca ad indovinare il messaggio
+semplicemente \emph{tirando ad indovinare}. Se infine, si intende che ogni attaccante con determinate caratteristiche riesca difficilmente ad indovinare il messaggio cifrato, allora esiste la 
 possibilit\`a di ottenere schemi che rispettano questo tipo di definizione.
-Una tenica molto utilizzata per provare dei risultati nell'ambito dell crittografia computazionale \`e la cosidetta tecnica per riduzione. 
-Le dimostrazioni di sicurezza basate su questa tecnica consistono nel mostrare che se esiste un aversario ch\`e pu\`o vincere con una probabilit\`a significativa e in un
+Una tenica molto utilizzata per provare dei risultati nell'ambito della crittografia computazionale \`e la cosidetta ``tecnica per riduzione''. 
+Le dimostrazioni di sicurezza basate su questa tecnica consistono nel mostrare che se esiste un aversario che pu\`o vincere con una probabilit\`a significativa e in un
 tempo ragionevole allora anche un problema ben definito pu\`o essere risolto con una probabilit\`a significativa e in un tempo ragionevole. Ovviamente si cerca di ridurre
 lo schema crittografico ad un problema che si sa bene essere difficile da risolvere.
 
@@ -118,7 +118,8 @@ moltissimi anni si può infatti violare facilmente con tecniche di tipo statisti
 Il tipico avversario con cui si ha a che fare quando si studiano cifrari o protocolli crittografici nel modello computazionale,
 è un avversario con risorse di calcolo \emph{limitate}. Limitate nel senso che si sceglie di porre un limite alla potenza di calcolo dell'avversario.
 Questo significa che non avremo a che fare con un avversario che ha una capacit\`a di calcolo potenzialmente infinita o un tempo illimitato a disposizione.\\
-Sebbene siano stati ideati cifrari sicuri anche rispetto ad avversari non limitati\footnote{Il cifrario \emph{one-time pad} \`e il tipico esempio di cifrario perfettamente sicuro o teoricamente sicuro.}, questi hanno alcuni difetti come per esempio
+Sebbene siano stati ideati cifrari sicuri anche rispetto ad avversari non limitati\footnote{Il cifrario \emph{one-time pad} \`e il tipico esempio di cifrario perfettamente sicuro o teoricamente sicuro.}, 
+questi hanno alcuni difetti, come per esempio
 il fatto che la chiave debba essere lunga quanto il messaggio o che sia utilizzabile una sola volta.
 Per rappresentare in modo formale un avversario con risorse di calcolo limitate, si pu\`o rappresentare questo come un generico algoritmo appartenente ad una 
 particolare classe di complessit\`a computazionale\footnote{Un avversario infatti \`e una macchina di Turing che esegue un algoritmo.}. \\
@@ -319,26 +320,26 @@ Siccome una stringa pseudocasuale appare, ad un distinguitore efficiente $D$, co
 al one-time pad che usa una chiave pseudocasuale. In generale i generatori pseudocasuali sono molto utili in crittografia per creare schemi crittografici simmetrici.
 
 \section{Dimostrazioni Basate su Games}
-In questo paragrafo si cercher\`a di spiegare cosa siano nell'ambito della crittografia i \emph{games}\footnote{Che intenderemo letteralmente come "giochi".} e come siano strutturate la
+In questo paragrafo si cercher\`a di spiegare cosa siano, nell'ambito della crittografia, i \emph{games}\footnote{Che intenderemo letteralmente come "giochi".} e come siano strutturate la
 maggior parte delle dimostrazioni che utilizzano sequenze di games.\\Si possono trovare approfondimenti riguardo a questi concetti nel lavoro di Shoup \cite{shoup}.
 Quella basata sul concetto di game \`e una tecnica\footnote{Game hopping technique.} molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
-Questi games sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamato sfidante\footnote{Perch\`e \emph{sfida} l'attaccante a 
+Questi games sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamata sfidante\footnote{Perch\`e \emph{sfida} l'attaccante a 
 vincere questo gioco.}. 
 \`E difficile dare una definizione formale di game; infatti il concetto di game cambia, sebbene in maniera non considerevole, da situazione a situazione, da ambiente ad ambiente e 
-da dimostrazione a dimostrazione (sia che queste siano fatte manualmente sia che queste siano automatiche e quindi dipendenti dal framework in cui vengono costruite).
+da dimostrazione a dimostrazione (sia che queste siano fatte manualmente, sia che queste siano automatiche e quindi dipendenti dal framework in cui vengono costruite).
 Intuitivamente per\`o, i game possono essere immaginati come un insieme di azioni, modellate in una particolare algebra di processi, 
 che servono a specificare il comportamento dei partecipanti al gioco, ovvero le entit\`a che partecipano come \emph{principals} al protocollo crittografico.\\
 Il lettore trover\`a utile pensarli, almeno nell'ambito di questa tesi, come insiemi di processi che, fra le altre cose, forniscono un'interfaccia all'attaccante attraverso degli 
-\emph{oracoli} che possono resitituire dei valori all'attaccante. Questi oracoli, prima di ritornare il valore, possono effettuare calcoli, dichiarare ed utilizzare variabili che non saranno
-visibili all'esterno.\\Si deve pensare agli oracoli come delle scatole nere inaccessibili dall'esterno. Questi oracoli una volta interrogati forniscono una risposta,
+\emph{oracoli} che possono resitituire dei valori all'attaccante. Questi oracoli, prima di restituire il valore, possono effettuare calcoli, dichiarare ed utilizzare variabili che non saranno
+visibili all'esterno.\\Si deve pensare agli oracoli come a delle scatole nere inaccessibili dall'esterno. Questi oracoli, una volta interrogati, forniscono una risposta,
 e questo \`e il massimo livello di interazione che dall'esterno si pu\`o avere con queste entit\`a.\\ \\
 Il primo passo che le dimostrazioni di sicurezza basate su sequenze di game fanno, \`e quello di modellare il protocollo crittografico reale in un game iniziale $G_0$.
 In $G_0$ esiste la probabilit\`a non nulla che un evento \emph{negativo} possa accadere (immaginiamolo come una sorta di vittoria da parte dell'attaccante).
 Ora, in generale, si procede effettuando delle modifiche al game $G_i$ ottenendo un game $G_{i+1}$ 
 tale che $G_i$ e $G_{i+1}$ siano computazionalmente indistinguibili. Le modifiche che si effettuano fra un game e un altro devono introdurre delle differenze computazionalmente irrilevanti.
-Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in gioco nei game.
-Se per esempio in un game $G_i$ un processo ha a che fare con un variabile casuale, e nel game $G_{i+1}$ questa viene sostituita con una variabile che invece \`e pseudocasuale, non vengono introdotte
-modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due game non sono distinguibili se non con probabilit\`a trascurabile.
+Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in gioco nei games.
+Se, per esempio, in un game $G_i$ un processo ha a che fare con un variabile casuale, e nel game $G_{i+1}$ questa viene sostituita con una variabile che invece \`e pseudocasuale, non vengono introdotte
+modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due games non sono distinguibili se non con probabilit\`a trascurabile.
 Alla fine si arriva ad un game $G_f$ in cui \emph{l'evento} non pu\`o accadere. Se l'evento non pu\`o accadere, l'attaccante non ha possibilit\`a di vincere. 
 Se, quindi, nel game finale l'attaccante non ha possibilit\`a di vincere e il game finale
 \`e computazionalmente indistinguibile dal penultimo, questo lo \`e dal terzultimo e cos\`i via fino a $G_0$, allora
@@ -346,23 +347,22 @@ il game finale \`e computazionalmente indistinguibile dal primo\footnote{Ricordi
 Adesso, quindi, se nel game iniziale esiste la possibilit\`a che un evento avvenga, e nel game finale no,
 si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga nel game iniziale. Questo limite \`e la somma di tutte le probabilit\`a con cui un attaccante riesce a distinguere un game dal successivo all'interno della sequenza.
 
-\`E importante dire che, anche nel modello formale si possono utilizzare le sequenze di game, la differenza \`e che due game successivi non sono computazionalmente indistinguibili 
-ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che: se in una sequenza di game $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
+\`E importante dire che anche nel modello formale si possono utilizzare le sequenze di game. La differenza \`e che due games successivi non sono computazionalmente indistinguibili, 
+ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che se in una sequenza di game $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
 allora i due game 
-devono appartenere ad una stessa classe di equivalenza indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di games sfrutta.
+devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di games sfrutta.
 Nel modello formale questa relazione sar\`a l'indistinguibilit\`a perfetta (meglio nota come equivalenza osservazionale) mentre in quello computazionale sar\`a 
 l'indistinguibilit\`a computazionale.
 \chapter{CryptoVerif}
-CryptoVerif \`e un \emph{dimostratore} automatico di sviluppo abbastanza recente\footnote{La sua prima release stabile risale all 2006} che lavora direttamente nel modello computazionale.\\
+CryptoVerif \`e un \emph{dimostratore} automatico di sviluppo abbastanza recente\footnote{La sua prima release stabile risale al 2006.} che lavora direttamente nel modello computazionale.\\
 CryptoVerif \`e stato scritto da Bruno Blanchet\footnote{Ricercatore al LIENS (Computer Science Laboratory of Ecole Normale Supérieure)} in Ocaml. 
 Si possono trovare pi\`u informazioni riguardo al tool nella home page di Blanchet\footnote{\url{http://www.di.ens.fr/~blanchet/index-eng.html}}.
-Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticazione. Le prove in questione  si basano sulla tecnica delle sequenze di game.
+Questo tool \`e utilizzato per dimostrare propriet\`a di segretezza e autenticazione. Le prove in questione  si basano sulla tecnica delle sequenze di games.
 Il tool \`e liberamente scaricabile\footnote{\url{http://www.cryptoverif.ens.fr/cryptoverif.html}} sotto la licenza CeCill\footnote{http://www.cecill.info/licences/}.
 CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni protocolli crittografici, come per esempio: FDH \cite{BlanchetPointchevalCrypto06}, 
 Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.\\
-Scopo di questo capitolo \`e quello di descrivere in modo non troppo formale\footnote{Nel senso che la semantica formale non sar\`a trattata rigorosamente. 
-Il lettore interessato all'argomento pu\`o comunque trovare pi\`u informazioni in \cite{BlanchetJaggardScedrovTsayAsiaCCS08}} 
-un sottinsieme del linguaggio che CryptoVerif implementa, in modo 
+Scopo di questo capitolo \`e quello di descrivere, in modo non troppo formale\footnote{Nel senso che la semantica formale non sar\`a trattata rigorosamente. Il lettore interessato all'argomento pu\`o comunque trovare pi\`u informazioni in \cite{BlanchetJaggardScedrovTsayAsiaCCS08}}, 
+un sottoinsieme del linguaggio che CryptoVerif implementa, in modo 
 da poter leggere il capitolo successivo con le conoscenze necessarie.
 Alla fine del capitolo verr\`a descritta brevemente l'implementazione dello schema di firma FDH nel linguaggio di CryptoVerif.
 \newpage
@@ -371,7 +371,7 @@ Un tipico file di input per CryptoVerif ha la seguente forma: \begin{center}
                                                                $<decalaration>^{*}$ \textbf{process} $<odef>$.
                                                               \end{center}
 Di solito quindi, la parte iniziale dell'input \`e costituita da una serie di dichiarazioni, una serie di definizioni di primitive crittografiche e, successivamente alla parola chiave \textbf{process}, 
-si trova la definizione di un oracolo che descrive il protocollo di cui si vogliono dimostrare alcune propriet\`a.
+da la definizione di un oracolo che descrive il protocollo di cui si vogliono dimostrare alcune propriet\`a.
 Gli oracoli sono definiti in un calcolo di processi. In questo calcolo i termini rappresentano computazioni su stringhe di bit.
 I termini del calcolo sono distinti in due categorie: semplici e non. La sintassi dei termini semplici \`e descritta dalla seguente grammatica:
 \begin{verbatim}
@@ -389,12 +389,12 @@ Dove
  \item $[M]$ significa che M \`e opzionale.
  \item seq$<$X$>$ \`e una sequenza (eventualmente vuota) di X.
 \end{itemize}
-\`E interessante la terza regola che definisce una tupla di termini semplici. Ovvero partendo dai termini $M_1,....,M_n$ si costruisce la tupla $(M_1,...M_n)$ che corrisponde
+\`E interessante la terza regola, la quale definisce una tupla di termini semplici. Ovvero partendo dai termini $M_1,....,M_n$ si costruisce la tupla $(M_1,...M_n)$ che corrisponde
 alla concatenazione di $M_1,...,M_n$. La tupla conterr\`a anche informazioni sulle singole componenti (tipo, lunghezza) in modo che possano essere successivamente 
 recuperate senza ambiguit\`a.
-Non si deve confondere la tupla con un semplice termine fra parentesi, che in quel caso, non definiscono un nuovo oggetto ma semplicemente 
-permettono di non avere ambiguit\`a all'interno di espressioni. Abbiamo poi, delle produzioni che descrivono il fatto che un termine semplice pu\`o essere
-un identificatore o un identificatore \emph{applicato} ad altri termini (una funzione). Il calcolo dispone infine di simboli di funzione di default:
+Non si deve confondere la tupla con un semplice termine fra parentesi, le quali in quest'ultimo caso, non definiscono un nuovo oggetto ma semplicemente 
+permettono di non avere ambiguit\`a all'interno di espressioni. Abbiamo poi delle produzioni che descrivono il fatto che un termine semplice pu\`o essere
+un identificatore o un identificatore \emph{applicato} ad altri termini (una funzione). Il calcolo dispone infine di simboli di funzione di default
 ovvero uguaglianza, diseguaglianza, disgiunzione e congiunzione. 
 I termini non semplici (che chiameremo termini), contengono dei costrutti pi\`u complessi.
 La sintassi dei termini, \`e descritta dalla seguente grammatica:
@@ -407,7 +407,7 @@ La sintassi dei termini, \`e descritta dalla seguente grammatica:
          | find [[unique]] <tfindbranch> (orfind <tfindbranch> 
                            else <term>
 \end{verbatim}
-Il costrutto $x<$-R $D$ assegna in maniera casuale un valore del dominio $D$ alla variabile $x$, abbiamo poi il costrutto $x:T<$- $M$ che dichiara una variabile $x$ di tipo $T$,
+Il costrutto $x<$-R $D$ assegna in maniera casuale un valore del dominio $D$ alla variabile $x$; abbiamo poi il costrutto $x:T<$- $M$ che dichiara una variabile $x$ di tipo $T$,
 e assegna a questa il valore ottenuto dalla valutazione del termine $M$. \\
 \`E interessante analizzare il costrutto $let$ $p=M$ $in$ $M'$ $else$ $M''$; questo cerca di decomporre il termine $M$ secondo il pattern $p$. In caso di successo ritorna
 il valore di $M'$ altrimenti ritorna il valore di $M''$. Il pattern $p$ pu\`o essere una variabile, un simbolo di funzione (eventualmente applicato ai suoi argomenti),
@@ -425,11 +425,11 @@ In particolare un $<tfindbranch>$ \`e descritto dalla seguente produzione:
 \begin{verbatim}<tfindbranch> ::= seq(<identbound> suchthat <cond> then <term>)\end{verbatim}. 
 Un $<identbound>$ \`e una diseguaglianza fra una variabile e un parametro, per esempio: $i<=N$ dove $i$ \`e una variabile e $N$ \`e un parametro; questa diseguaglianza permette
 di ricercare in un array un elemento di indice $i$ minore uguale di $N$ tale per cui valga una certa condizione specificata da $<$cond$>$,
-se questo elemento viene trovato allora viene ritornato il valore di $<term>$. Il costrutto find per\`o, pu\`o in generale avere vari indici che scorrono vari array in cui si testano diverse condizioni; 
+se questo elemento viene trovato allora viene ritornato il valore di $<term>$. Il costrutto find, in generale, pu\`o avere vari indici che scorrono vari array, in cui si testano diverse condizioni; 
 in generale quindi avremo:\\
 $find$ $u_{j1}<=n_{j1}$ $suchthat$ $cond_j$ $then$ $M_j$,...,$orfind$ $u_{ji}<=n_{ji}$ $suchthat$ $cond_j$ $then$ $M_j,...,$ $orfind$ $u_{jm}<=n_{jm}$ $suchthat$ $cond_j$ $then$ $M_j$ $else$ $M$.
-\\Se nessuna condizione si verifica viene ritornato il valore di $M$, altrimenti si possono avere due casi: o si verifica una sola delle condizioni e allora viene ritornato il valore del termine
-relativo a quella condizione, oppure pi\`u di una condizione si verifica. In questo caso viene scelto in maniera casuale uno dei termini relativi alle condizioni vere e viene ritornato quello. 
+\\Se nessuna condizione si verifica viene ritornato il valore di $M$, altrimenti si possono avere due casi: o si verifica una sola delle condizioni e allora viene restituito il valore del termine
+relativo a quella condizione, oppure si verifica pi\`u di una condizione. In questo caso viene scelto, in maniera casuale, uno dei termini relativi alle condizioni vere e viene ritornato quello. 
 Il costrutto $find$ esiste anche in relazione agli oracoli e quindi verr\`a ulteriormente spiegato in seguito.
 \\
 \\
@@ -454,7 +454,7 @@ Per esempio: \begin{center}
 		\end{verbatim}
 	      \end{center}
 crea $qS$ copie dell'oracolo $OS$ il cui corpo \`e definito da $P$. $qS$ \`e un valore che deve essere dichiarato mediante la parola chiave $param$, 
-inserendo nella parte iniziale del file di input la seguente dichiarazione:
+inserendo, nella parte iniziale del file di input, la seguente dichiarazione:
 \begin{verbatim}
 param qS. 
 \end{verbatim}
@@ -476,13 +476,13 @@ obody ::= <ident>
           | return(seq <term> )[; <odef> ]
 
 \end{verbatim}
-Come si pu\`o vedere nel corpo di un oracolo si possono assegnare valori a variabili in maniera casuale con il costrutto fornito dalla quinta produzione, o si pu\`o anche
-assegnare un valore che \`e risultato delle computazioni di un altro oracolo come nella sesta produzione. Un oracolo ritorna il valore con un $return$ e successivamente 
+Come si pu\`o vedere, nel corpo di un oracolo, si possono assegnare valori a variabili in maniera casuale con il costrutto fornito dalla quinta produzione, o si pu\`o anche
+assegnare un valore che \`e il risultato delle computazioni di un altro oracolo come nella sesta produzione. Un oracolo restituisce un valore attraverso $return$ e successivamente 
 pu\`o chiamare un altro oracolo come si pu\`o vedere dall'ultima produzione. La parola chiave $end$ serve per far terminare la definizione di un oracolo.
 Attraverso l'istruzione condizionale, all'interno del corpo di un oracolo, possiamo chiamare altri oracoli a seconda del valore di verit\`a della condizione verificata.
 Attraverso il costrutto $let$ \`e possibile cercare di decomporre il valore del termine in un pattern specificato e, a seconda che questa decomposizione abbia o meno successo,
-\`e possibile chiamare un oracolo o un altro. In particolare se il pattern \`e una semplice variabile l'effetto, da un punto di vista pratico, \`e un assegnamento semplice 
-che ha sempre successo, e sfocia in una dichiarazione e inizializzazione di una variabile il cui scope \`e l'oraclo che si trova dopo la parola chiave $in$; 
+\`e possibile chiamare un oracolo o un altro. In particolare se il pattern \`e una semplice variabile, l'effetto, da un punto di vista pratico, \`e un assegnamento semplice 
+che ha sempre successo, e sfocia in una dichiarazione e inizializzazione di una variabile il cui \emph{scope} \`e l'oraclo che si trova dopo la parola chiave $in$; 
 se il pattern \`e una variabile quindi, il ramo $else$ non viene mai eseguito. 
 La grammatica che descrive la sintassi dei pattern \`e stata gi\`a trattata precedentemente e non verr\`a ripetuta.\\
 \`E fondamentale specificare a CryptoVerif, nella parte delle dichiarazioni (quindi all'inizio), 
@@ -519,7 +519,7 @@ viene utilizzata per firmare messaggi, mentre la funzione $hash$ sar\`a la funzi
 L'input che si fornisce al CryptoVerif \`e costituito, fondamentalmente, da due parti: 
 \begin{itemize}
  \item Un game iniziale $G_0$, in cui si modella la sicurezza dello schema.
- \item Alcune equivalenze necessarie a CryptoVerif per effettuare le modifiche ai game. 
+ \item Alcune equivalenze necessarie a CryptoVerif per effettuare le modifiche ai games. 
 \end{itemize}
 La descrizione dello schema di firma FDH viene data al CryptoVerif attraverso il seguente game:\\ \\
 
@@ -529,27 +529,27 @@ $G_0 \equiv$ \foreach{iH}{qH} OH(x: bitstring):= \return{hash(x)}\pipe Ogen():=\
 	\\
 
 Procediamo adesso con una breve spiegazione di questo game.
-Possiamo vedere come in questo game si forniscano $qH$ copie dell' oracolo $OH$ i quali ritornano l'hash della stringa che gli si fornisce in input, ovvero $x$.\\
+Possiamo vedere come in questo game si forniscano $qH$ copie dell' oracolo $OH$ le quali ritornano l'hash della stringa che gli si fornisce in input, ovvero $x$.\\
 Abbiamo poi l'oracolo $Ogen()$ che ritorna al contesto una chiave pubblica dopo aver creato, partendo da un seme casuale, una coppia costituita da una chiave privata e una chiave pubblica.\\
-Vengono fornite, mediante il costrutto $foreach$, $qS$ copie dell'oracolo $OS$ le quali si occupano di ritornare in output una firma del messaggio che gli viene dato in input.
-La firma di un messaggio $m$, data una chiave privata $sk$ mediante la funzione $f$, viene effettuata restituendo il valore $invf(sk, m)$\\ 
+Vengono fornite, mediante il costrutto $foreach$, $qS$ copie dell'oracolo $OS$ le quali si occupano di restituire in output una firma del messaggio che gli viene dato in input.
+La firma di un messaggio $m$, data una chiave privata $sk$ mediante la funzione $f$, viene effettuata restituendo il valore $invf(sk, m)$.\\ 
 Infine viene fornito un oracolo $OT$ che si occupa di verificare se la firma $s$ \`e valida per il messaggio $m^{'}$. \\
-In particolare se $hash(m^{'}) \neq f(pk, s)$ allora la firma non \`e valida per il messaggio. Se invece $hash(m^{'}) = f(pk, s)$
-l'oracolo si occupa di verificare se, per il messaggio $m^{'}$, \`e stata mai rilasciata una firma dall'oracolo $OS$, in caso affermativo il processo termina, altrimenti significa che 
+In particolare se $hash(m^{'}) \neq f(pk, s)$ allora la firma non \`e valida per il messaggio. Se invece $hash(m^{'}) = f(pk, s)$,
+l'oracolo si occupa di verificare se, per il messaggio $m^{'}$, \`e stata mai rilasciata una firma dall'oracolo $OS$. In caso affermativo il processo termina, altrimenti significa che 
 l'attaccante, \`e stato in grado di forgiare una firma valida per il messaggio, e quindi \`e avvenuto l'evento \emph{forge}.\\
-Notiamo come l'attaccante non sia modellato esplicitamente, infatti non possiamo fare nessuna assunzione sul comprtamento di questo.
+Notiamo come l'attaccante non sia modellato esplicitamente, infatti non possiamo fare nessuna assunzione sul comportamento di questo.
 Possiamo immaginare un attaccante come un altro processo non meglio specificato messo in parallelo con questo game.\\ 
-Per poter trasformare un game in un altro CryptoVerif ha bisogno di alcune definizioni di primitive crittografiche da poter utilizzare.
+Per poter trasformare un game in un altro, CryptoVerif ha bisogno di alcune definizioni di primitive crittografiche da poter utilizzare.
 \\
-Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze le quali possono essere viste come regole di riscrittura 
+Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze che possono essere viste come regole di riscrittura 
 delle distribuzioni di probabilit\`a delle variabili in gioco.
-Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R} possono essere valide incondizionatamente, 
+Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R}, possono essere valide incondizionatamente, 
 oppure possono valere a meno di una certa probabilit\`a.
-Nel secondo caso la riscrittura di un termine \emph{L} nell'equivalente \emph{R} comporta l'introduzione di una differenza non nulla fra i due game; di solito per\`o
+Nel secondo caso la riscrittura di un termine \emph{L} nell'equivalente \emph{R}, comporta l'introduzione di una differenza non nulla fra i due games; di solito per\`o
 questa differenza introdotta \`e rilevata dall'avversario solo con probabilit\`a trascurabile oppure con probabilit\`a trascurabilmente vicina a qualche costante come 
 per esempio $\frac{1}{2}$.
 \\ 
-Prima di descrivere la seconda parte dell'input di CryptoVerif \`e necessario fare una piccola digressione riguardo al concetto di funzione \emph{one-way}.
+Prima di descrivere la seconda parte dell'input di CryptoVerif, \`e necessario fare una piccola digressione riguardo al concetto di funzione \emph{one-way}.
 Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente; cio\`e se, dato $y=f(x)$, \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 
 Si noti come non sia necessario, per invertire la funzione, trovare $x$ ma \`e sufficiente trovare un $x'$ qualsiasi tale che $f(x')=y$.
 \\Possiamo ora dare la seguente:
@@ -559,12 +559,12 @@ trascurabile.
 \end{definizione}
 
 \`E importante notare come la definizione valga per ogni $x$ del dominio; con questo si vuole sottolineare che invertire $f$ deve essere \emph{sempre} difficile e non per particolari $x$.
-\`E importante affermare ci\`o perch\`e tutta la crittografia moderna \`e fondata sull'ipotesi che esistano le funzioni one-way.
-Si parla di ipotesi perch\`e, sebbene la maggior parte degli informatici ne sia convinta, non \`e stato ancora dimostrata l'esistenza di funzioni di questo genere\footnote{Questo non toglie
-che esistono funzioni che si avvicinano all'idea che abbiamo di funzioni one-way, per esempio SHA1, o MD5.}.
+\`E importante affermare ci\`o perch\'e tutta la crittografia moderna \`e fondata sull'ipotesi che esistano le funzioni one-way.
+Si parla di ipotesi perch\'e, sebbene la maggior parte degli informatici ne sia convinta, non \`e stata ancora dimostrata l'esistenza di funzioni di questo genere\footnote{Questo non toglie
+che esistano funzioni che si avvicinino all'idea che abbiamo di funzioni one-way, per esempio SHA1, o MD5.}.
 La dimostrazione dell'esistenza di funzioni one-way comporterebbe, tra l'altro, anche la risoluzione della famosa questione riguardo agli insiemi
-$P$ e $NP$\footnote{$P$ \`e l'insieme dei problemi risolvibili nel caso pessimo in un numero di passi polinomiale nell'input. $NP$ invece, \`e l'insieme dei problemi per cui dato un certo valore, 
-si pu\`o verificare in tempo polinomiale se questo \`e o meno soluzione del problema (ovvero \`e l'insieme dei problemi con certificazione polinomiale.). 
+$P$ e $NP$\footnote{$P$ \`e l'insieme dei problemi risolvibili, nel caso pessimo, in un numero di passi polinomiale nell'input. $NP$ invece, \`e l'insieme dei problemi per cui dato un certo valore, 
+si pu\`o verificare in tempo polinomiale se questo \`e o meno soluzione del problema (ovvero \`e l'insieme dei problemi con certificazione polinomiale). 
 Non \`e ancora noto se questi insiemi siano o meno lo stesso insieme.}.
 Il fatto che però qualcuno un giorno possa dimostrare che $P \neq NP$ non dimostrerebbe affatto l'esistenza delle funzioni one-way. 
 Infatti una funzione one-way deve, come prima sottolineato, essere non invertibile in modo efficiente, sempre e non solo nel \emph{caso pessimo}. \\ 
@@ -582,31 +582,31 @@ Si tratta di dare una definzione di one-wayness per mezzo di un'equivalenza fra 
     Ox():=\set{k}{mark}\return{x} \\
 
 
-Questa equivalenza fra game cattura e definisce il concetto di funzione one-way. La funzione $f$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
+Questa equivalenza fra games cattura e definisce il concetto di funzione one-way. La funzione $f$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
 e quindi il game a sinistra e quello a destra del simbolo \textbf{$\approx _{pow}$} sono indistinguibili.
 Supponiamo infatti che la funzione $f$ non sia one-way, esister\`a dunque un avversario efficiente $A$ 
 che pu\`o invertire $f$. $A$ sar\`a dunque in grado di distinguere i due membri dell'equivalenza $L \approx_{pow} R$. 
-Questo perch\`e potendo invertire $f$, $A$ sar\`a in grado di osservare comportamenti diversi fra i game a seconda che $A$ chiami Oeq() in $L$ o in $R$.
+Questo perch\'e potendo invertire $f$, $A$ sar\`a in grado di osservare comportamenti diversi fra i game a seconda che $A$ chiami Oeq() in $L$ o in $R$.
 Procediamo con una sorta di esperimento mentale.\\ 
-Supponiamo che $A$ chiami Oy() ottenendo l'immagine di un valore mediante $f$, sia questa $y$; poich\`e $f$ non \`e one-way, 
+Supponiamo che $A$ chiami Oy() ottenendo l'immagine di un valore mediante $f$, sia questa $y$; poich\'e $f$ non \`e one-way, 
 $A$ inverte la funzione ottenendo un $x^{'}$ tale che $f(x^{'})= y$.
 Adesso $A$ non deve far altro che richiamare Oeq() passando a questo come argomento $x^{'}$. Se Oeq \`e richiamato dal primo membro dell'equivalenza, 
 allora Oeq()  ritorner\`a sempre true, mentre se appartiene al secondo ritorner\`a sempre false.\\
 In questo modo $A$ osserva dei comportamenti diversi fra i due game, e quindi pu\`o distinguerli. 
-Supponiamo invece che $f$ sia effettivamente one-way. Allora non esister\`a nessun attaccante efficiente che riesca ad invertire $f$.
+Supponiamo, invece, che $f$ sia effettivamente one-way. Allora non esister\`a nessun attaccante efficiente che riesca ad invertire $f$.
 L'unico modo che ha quindi un attaccante $A$ per invertire la funzione \`e chiamare Ox() e ottenere cos\`i una preimmagine valida. 
 Se però l'attaccante chiama Ox() allora $L$ e $R$ sono effettivamente indistinguibili (a meno di una probabilit\`a trascurabile di cui parleremo dopo).
 Notiamo infatti nella definizione dell'equivalenza che Ox() \`e definito in maniera diversa in $L$ ed $R$.
 In $L$, Ox() si occupa semplicemente di ritornare il valore del dominio $x$, tale che $f(x)=y$. 
-In $R$ invece, Ox() prima di ritornare $x$ imposta al valore $mark$ la variabile $k$.
+In $R$ invece, Ox() prima di ritornare $x$, imposta al valore $mark$ la variabile $k$.
 Ora, Oeq si comporter\`a in maniera diversa a seconda che sia richiamato da $L$ o da $R$.
-Se infatti Oeq() \`e chiamato da $L$ allora Oeq() si proccuper\`a semplicemente di ritornare il valore booleano dell'espressione $x^{'}=x$.
+Se infatti Oeq() \`e chiamato da $L$, allora Oeq() si proccuper\`a semplicemente di ritornare il valore booleano dell'espressione $x^{'}=x$.
 Se invece, Oeq() \`e chiamato da $L$ allora Oeq() si comporter\`a in maniera differente a seconda che la variabile $k$ abbia o meno un valore 
-(ovvero sia stata o meno definita da una precedente chiamata a Ox()). Se quindi $k$ \`e definita allora Oeq() si comporter\`a esattamente come si sarebbe comportato Oeq() di $L$.
+(ovvero sia stata o meno definita da una precedente chiamata a Ox()). Se quindi $k$ \`e definita, allora Oeq() si comporter\`a esattamente come si sarebbe comportato Oeq() di $L$.
 Se invece $k$ non \`e stata definita allora siginifica che l'attaccante non ha richiamato Ox(), quindi \`e lecito supporre che non sia riuscito ad invertire $f$ e quindi Oeq() ritorna false.\\
-\`E importante notare che l'attaccante avrebbe comunque la possibilit\`a di indovinare $x$ anche senza richiamare Ox() ma questa \`e una probabilit\`a trascurabile. 
+\`E importante notare che l'attaccante avrebbe comunque la possibilit\`a di indovinare $x$ anche senza richiamare Ox(), ma questa \`e una probabilit\`a trascurabile. 
 Di questa probabilit\`a viene comunque tenuto conto nell'equivalenza. L'equivalenza infatti, vale a meno di una certa probabilit\`a $pow$ (trascurabile in questo caso).
-In questo modo i due game sono effettivamente indistinguibili, perch\`e non presentano differenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
+In questo modo i due games, sono effettivamente indistinguibili, perch\'e non presentano differenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
 Quindi $L$ e $R$ sono indistinguibili \emph{se e solo se} $f$ \`e one-way e di conseguenza la precedente equivalenza \`e una definizione ben posta di funzione one-way.
 Un'ulteriore definizione che viene fornita al CryptoVerif \`e quella di funzione hash. Questa definizione viene fornita al tool attraverso il seguente codice:
 

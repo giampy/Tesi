@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  1 JUN 2010 17:44
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  2 JUN 2010 16:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -396,30 +396,30 @@ Capitolo 1.
 (/usr/share/texmf-texlive/tex/latex/ucs/data/uni-0.def
 File: uni-0.def 2004/10/17 UCS: Unicode data U+0000..U+00FF
 ) [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 133.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 134.
 
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 133.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 134.
 
-Underfull \hbox (badness 10000) in paragraph at lines 139--145
+Underfull \hbox (badness 10000) in paragraph at lines 140--146
 
  []
 
 [6]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 164.
+(hyperref)                removing `math shift' on input line 165.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 164.
+(hyperref)                removing `math shift' on input line 165.
 
 [7] [8] [9]
-Overfull \hbox (2.73685pt too wide) in paragraph at lines 237--239
+Overfull \hbox (2.73685pt too wide) in paragraph at lines 238--240
 []\OT1/cmr/m/it/12 Indistinguibilit^^Ra com-pu-ta-zio-na-le. Due en-sem-ble $\O
 ML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 X[]\OMS/c
 msy/m/n/12 g$\OT1/cmr/m/it/12 ,
@@ -427,9 +427,9 @@ msy/m/n/12 g$\OT1/cmr/m/it/12 ,
 
 [10] [11]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 278.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 279.
  [12]
-Underfull \hbox (badness 10000) in paragraph at lines 322--348
+Underfull \hbox (badness 10000) in paragraph at lines 323--349
 
  []
 
@@ -568,4 +568,4 @@ Here is how much of TeX's memory you used:
  60 hyphenation exceptions out of 8191
  38i,14n,43p,416b,640s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (34 pages, 131000 bytes).
+Output written on Tesi.dvi (34 pages, 131152 bytes).

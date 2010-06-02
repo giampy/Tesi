@@ -1,0 +1,62 @@
+type nbits [fixed].     (* All bitstrings of length n *)
+type np1bits [fixed].   (* All bitstrings of length n+1 *)
+type np2bits [fixed].   (* All bitstrings of length n+2 *)
+
+param n1.
+
+(* Concatenation of n+1 bits and a bit to a bitstring of n+2 bits. *)
+fun concatnp1(np1bits,bool):np2bits.
+
+(* The concatenation of random numbers is a random number *)
+equiv 
+      foreach i1<=n1 do
+            r <-R np1bits;
+		    b <-R bool;
+            OGet():=return (concatnp1(r,b))
+      <=(0)=> 
+     foreach i1 <=n1 do
+            w <-R np2bits;
+            OGet():=return(w).
+
+(* Extract the first n bits *)
+fun getn(np1bits):nbits.
+(* Extract the last bit *)
+fun getlast(np1bits):bool.
+
+(* The getn and getlast of a random number are random numbers *)
+equiv 
+      foreach i1<=n1 do
+            r <-R np1bits;(
+		    OGetn():=return (getn(r)) |
+            OGetlast():=return (getlast(r)))
+      <=(0)=>
+     foreach i1 <=n1 do
+             (
+             OGetn():= w <-R nbits;return(w) |
+	     	 OGetlast():=wl <-R bool;return(wl)
+	     	 ).
+
+(* Generator with expansion n+1 *)
+fun G'(nbits): np1bits.
+equiv
+    foreach i1<=n1 do
+            	r <-R nbits;
+            	OGet():=return (G'(r))
+      <=(0)=> (* To define *)
+     foreach i1 <=n1 do
+              	w <-R np1bits;
+              	OGet():=return(w).
+
+query secret1 w.
+
+
+process
+        O():=
+             r<-R nbits;
+             let x' = G'(r) in
+             let y = getn(x') in
+             let b = getlast(x') in
+             w: np2bits <- concatnp1(G'(y),b);
+             return
+
+
