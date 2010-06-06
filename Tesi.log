@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.5.14)  6 JUN 2010 16:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.5.14)  6 JUN 2010 19:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -565,72 +565,72 @@ LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 634.
 ]
 Capitolo 3.
 [29] [30] [31]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 772--772
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 784--784
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 781--781
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 793--793
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 [32]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 808--808
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 820--820
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 817--817
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 829--829
+[]\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
+(r))[] 
+ []
+
+
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 856--856
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 [33]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 844--844
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 865--865
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 853--853
-[]\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
-(r))[] 
- []
-
-[34]
-Overfull \hbox (283.07533pt too wide) in paragraph at lines 876--876
+Overfull \hbox (283.07533pt too wide) in paragraph at lines 888--888
 []\OT1/cmtt/m/n/12 equiv foreach i1_3 <= n1 do r <-R np1bits; b' <-R bool; b'' 
 <-R bool; OGet() := return(concatnp2(r, b'', b'))[] 
  []
 
-
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 901--901
+[34]
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 913--913
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 [35] [36]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 970--970
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 982--982
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
-[37] [38]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 1031--1031
+[37]
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 1043--1043
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 
-Overfull \hbox (283.07533pt too wide) in paragraph at lines 1046--1046
+Overfull \hbox (283.07533pt too wide) in paragraph at lines 1058--1058
 []\OT1/cmtt/m/n/12 equiv foreach i1_3 <= n1 do r <-R np1bits; b' <-R bool; b'' 
 <-R bool; OGet() := return(concatnp2(r, b'', b'))[] 
  []
 
-[39] [40
+[38] [39] [40
 
 ]
 Capitolo 4.
@@ -665,7 +665,7 @@ xmf-texlive/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive
 1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
 sfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symb
 ols/msbm10.pfb>
-Output written on Tesi.pdf (44 pages, 384549 bytes).
+Output written on Tesi.pdf (44 pages, 385687 bytes).
 PDF statistics:
  466 PDF objects out of 1000 (max. 8388607)
  110 named destinations out of 1000 (max. 500000)

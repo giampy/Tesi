@@ -37,7 +37,7 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=663
+line=814
 mode=LaTeX
 open=true
 order=0
@@ -64,7 +64,7 @@ order=-1
 
 [view-settings,view=0,item:Tesi.tex]
 CursorColumn=0
-CursorLine=663
+CursorLine=814
 
 [view-settings,view=0,item:myrefs.bib]
 CursorColumn=33
