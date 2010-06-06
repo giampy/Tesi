@@ -65,7 +65,7 @@ Da quando la crittografia si \`e guadagnata una validit\`a scientifica, sono nat
 studiarla.\\In uno di questi, il modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
 Nell'altro, il modello \emph{computazionale}, le operazioni crittografiche sono viste come funzioni su stringhe di bit che hanno una semantica probabilistica.
 Il primo modello \`e stato ampiamente trattato in \cite{AbadiG99, BurrowsAN90, Kemmerer87, Paulson98}. 
-Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cite{?}.\\
+Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cite{}.\\
 Il modello formale pu\`o contare su un vastissimo insieme di conoscenze teoriche derivanti da altri rami dell'informatica, in particolare la teoria dei linguaggi formali e della logica;
 anche per questo il modello formale \`e stato sicuramente trattato in modo pi\`u approfondito, almeno fino ad ora. Questo ha fatto s\`i che lo stato dell'arte veda, per esempio, molti pi\`u tool di
 verifica automatica che lavorano nel modello formale rispetto a tool che lavorano nel modello computazionale. 
@@ -151,7 +151,7 @@ Questa probabilit\`a tende a 0 in modo esponenziale al crescere della lunghezza 
 \`E quindi pi\`u realistico cercare di rappresentare l'avversario come un algoritmo che, oltre a terminare in tempo polinomiale, ha
 anche la possibilit\`a di effettuare scelte casuali e di commettere errori (anche se con probabilit\`a limitata).
 La classe dei problemi risolti da questo tipo di algoritmi \`e indicata con la
-sigla \emph{BPP} (i.e. \emph{Bounded-Probability Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
+sigla \emph{BPP} (i.e. \emph{Bounded Probability Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
 esegue l'algoritmo, oltre a ricevere l'input, diciamo $x$, riceva anche un input ausiliario $r$. Questa stringa di bit $r$, rappresenta una possibile sequenza di lanci di moneta dove \`e stato associato al valore $0$ la croce e al valore $1$ la testa (o anche viceversa ovviamente).
 Qualora la macchina dovesse effettuare una scelta casuale, non dovr\`a far altro che prendere il successivo bit dalla stringa $r$, e prendere una decisione in base ad esso
 (\`e, in effetti, come se avesse preso una decisione lanciando una moneta). Ecco quindi che il nostro tipico avversario si configura come un algoritmo polinomiale probabilistico.
@@ -371,7 +371,7 @@ Un tipico file di input per CryptoVerif ha la seguente forma: \begin{center}
                                                                $<decalaration>^{*}$ \textbf{process} $<odef>$.
                                                               \end{center}
 Di solito quindi, la parte iniziale dell'input \`e costituita da una serie di dichiarazioni, una serie di definizioni di primitive crittografiche e, successivamente alla parola chiave \textbf{process}, 
-da la definizione di un oracolo che descrive il protocollo di cui si vogliono dimostrare alcune propriet\`a.
+dalla definizione di un oracolo che descrive il protocollo di cui si vogliono dimostrare alcune propriet\`a.
 Gli oracoli sono definiti in un calcolo di processi. In questo calcolo i termini rappresentano computazioni su stringhe di bit.
 I termini del calcolo sono distinti in due categorie: semplici e non. La sintassi dei termini semplici \`e descritta dalla seguente grammatica:
 \begin{verbatim}
@@ -637,14 +637,427 @@ Nell'appendice A si pu\`o trovare l'input completo, mentre in \cite{BlanchetPoin
 pi\`u importanti dell'output di CryptoVerif e infine in \cite{fdhall} troviamo l'ouput completo di CryptoVerif sull'input descritto precedentemente.
 \chapter{Risultati Raggiunti}
 Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un risultato classico della crittografia computazionale.
+Dopo un'attenta analisi si \`e giunti alla conclusione che, a causa dell'insufficiente sistema di tipi di CryptoVerif, non sarebbe stato
+possibile mediante questo dimostrare il risultato nella sua generalit\`a; ecco quindi che si \`e scelto di utilizzare il tool
+per dimostrare una caso particolare del teorema.
 \section{Teorema}
-Il teorema \`e il seguente:\\
+Il risultato nella sua generalit\`a \`e il seguente teorema:
 \begin{teorema}
-Se esiste un generatore pseudocasuale $G^{'}$ con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni polinomio $p(n)>n$ esiste un generatore pseudocasuale $G$ con coefficiente d'espansione
-$l(n)=p(n)$.
+Se esiste un generatore pseudocasuale $G^{'}$ con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni polinomio $p(n)>n$ 
+esiste un generatore pseudocasuale $G$ con coefficiente d'espansione $l(n)=p(n)$.
 \end{teorema}
 
 Si pu\`o trovare una dimostrazione \emph{classica} di questo teorema in \cite{1206501}. La dimostrazione classica procede....
+
+Si \`e invece provato il risultato con CryptoVerif per un numero $p(n)$ che \`e una costante. In particolare mediante CryptoVerif si \`e provato
+che:
+\begin{center}
+\emph{Se esiste un generatore pseudocasuale $G^{'}$ con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni costante $k$ esiste
+un generatore pseudocasuale $G$ con coefficiente d'espansione $l(n)=k$}
+\end{center}
+
+
+
+\section{L'input}
+Il codice che verr\`a descritto permette a CryptoVerif di dimostrare che se si ha a disposizione un generatore pseudorandom con fattore
+di espansione $n+1$ allora si pu\`o avere un generatore pseudorandom con fattore di espansione $n+3$.
+L'input che \`e stato fornito a CryptoVerif inizia con le seguenti dichiarazioni:
+\begin{verbatim}
+  1 type nbits 	 [fixed].     
+  2 type np1bits [fixed].   
+  3 type np2bits [fixed].   
+  4 type np3bits [fixed]. 
+\end{verbatim}
+Queste linee di codice servono per dichiarare dei tipi. Alla linea 1 dichiariamo il tipo delle stringhe di lunghezza n, ovvero
+definiamo il tipo \emph{nbits}. Questo tipo rappresenter\`a l'insieme $\{0, 1\}^n$. Alla linea 2 invece viene dichiarato un tipo
+per rappresentare le stringhe appartenenti all'insieme $\{0, 1\}^{n+1}$, mentre nelle righe 3 e 4 lo stesso viene fatto per le stringhe
+casuali appartenenti agli insiemi $\{0, 1\}^{n+2}$, e $\{0, 1\}^{n+3}$. Si noti come ogni tipo sia dichiarato con il modificatore $fixed$.
+Infatti CryptoVerif permette una scelta casuale all'interno di un dominio se e solo se questo \`e dichiarato come fixed.
+
+
+\begin{verbatim}
+ 
+  5 param n1.
+  6 
+  7 fun concatnp1(np1bits,bool):np2bits.
+  8 fun concatnp2(np1bits,bool, bool):np3bits.
+  9 
+ 10 equiv
+ 11       foreach i1<=n1 do
+ 12             r <-R np1bits;
+ 13             b <-R bool;
+ 14             OGet():=return (concatnp1(r,b))
+ 15       <=(0)=>
+ 16      foreach i1 <=n1 do
+ 17             w <-R np2bits;
+ 18             OGet():=return(w).
+ 19 
+ 20 equiv
+ 21     foreach i1<=n1 do
+ 22             r<-R np1bits;
+ 23             b'<-R bool;
+ 24             b''<-R bool;
+ 25             OGet():=return(concatnp2(r, b'', b'))
+ 26     <=(0)=>
+ 27     foreach i1<=n1 do
+ 28             w<-R np3bits;
+ 29             OGet():=return(w).
+ 30 
+ 31 fun getn(np1bits):nbits.
+ 32 fun getlast(np1bits):bool.
+ 33 equiv
+ 34        foreach i1<=n1 do
+ 35              r <-R np1bits;(
+ 36              OGetn():=return (getn(r)) |
+ 37              OGetlast():=return (getlast(r)))
+ 38        <=(0)=>
+ 39       foreach i1 <=n1 do
+ 40               (
+ 41               OGetn():= w <-R nbits;return(w) |
+ 42               OGetlast():=wl <-R bool;return(wl)
+ 43               ).
+ 44 fun getn1(np2bits):nbits.
+ 45 fun getlast1(np2bits):bool.
+ 46 equiv
+ 47       foreach i1<=n1 do
+ 48             r <-R np2bits;(
+ 49             OGetn():=return (getn1(r)) |
+ 50             OGetlast():=return (getlast1(r)))
+ 51       <=(0)=>
+ 52      foreach i1 <=n1 do
+ 53              (
+ 54              OGetn():= w <-R nbits;return(w) |
+ 55              OGetlast():=wl <-R bool;return(wl)
+ 56              ).
+ 57 
+ 58 fun G'(nbits): np1bits.
+ 59 equiv
+ 60     foreach i1<=n1 do
+ 61                 r <-R nbits;
+ 62                 OGet():=return (G'(r))
+ 63       <=(0)=> (* To define *)
+ 64      foreach i1 <=n1 do
+ 65                 w <-R np1bits;
+ 66                 OGet():=return(w).
+ 67 
+ 68 query secret1 w3.
+ 69 
+ 70 
+ 71 process
+ 72         O():=
+ 73              r<-R nbits;
+ 74              let x' = G'(r) in
+ 75              let y' = getn(x') in
+ 76              let b' = getlast(x') in
+ 77              let x''=G'(y') in
+ 78              let y''=getn(x'') in
+ 79          	 let b''=getlast(x'') in
+ 80              w3:np3bits <-concatnp2(G'(y''), b'', b');
+ 81 		 return
+\end{verbatim}
+Le linee di codice [1,4] servono per dichiarare dei tipi. Alla linea 1 dichiariamo il tipo delle stringhe di lunghezza n, ovvero
+definiamo il tipo \emph{nbits} questo tipo rappresenter\`a l'insieme $\{0, 1\}^n$. Alla linea 2 invece viene dichiarato un tipo
+per rappresentare le stringhe appartenenti all'insieme $\{0, 1\}^{n+1}$, mentre nelle righe 3 e 4 lo stesso viene fatto per le stringhe
+casuali appartenenti agli insiemi $\{0, 1\}^{n+2}$, e $\{0, 1\}^{n+3}$. Si noti come ogni tipo sia dichiarato con il modificatore $fixed$.
+Infatti CryptoVerif permette una scelta casuale all'interno di un dominio se e solo se questo \`e dichiarato come fixed.
+\section{L'output}
+L'output di CryptoVerif \`e il seguente:
+\begin{verbatim}
+Doing expand if, let, find... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... No change.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... Done.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Failed.
+Trying equivalence
+equiv foreach i1_7 <= n1 do r <-R np2bits; (
+  OGetn() := return(getn1(r)) |
+  OGetlast() := return(getlast1(r)))
+<=(0)=>
+      foreach i1_8 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Failed.
+Trying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... Done.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... Done.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Failed.
+Trying equivalence
+equiv foreach i1_7 <= n1 do r <-R np2bits; (
+  OGetn() := return(getn1(r)) |
+  OGetlast() := return(getlast1(r)))
+<=(0)=>
+      foreach i1_8 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Failed.
+Trying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... Done.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... No change.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Failed.
+Trying equivalence
+equiv foreach i1_7 <= n1 do r <-R np2bits; (
+  OGetn() := return(getn1(r)) |
+  OGetlast() := return(getlast1(r)))
+<=(0)=>
+      foreach i1_8 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Failed.
+Trying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Failed.
+Trying equivalence
+equiv foreach i1_3 <= n1 do r <-R np1bits; b' <-R bool; b'' <-R bool; OGet() := return(concatnp2(r, b'', b'))
+<=(0)=>
+      foreach i1_4 <= n1 do w <-R np3bits; OGet() := return(w)
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... No change.
+Proved one-session secrecy of w3
+===================== Proof starts =======================
+Initial state
+Game 1 is
+O() :=
+r <-R nbits;
+x': np1bits <- G'(r);
+y': nbits <- getn(x');
+b': bool <- getlast(x');
+x'': np1bits <- G'(y');
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', b');
+return()
+
+
+Applying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+ yields
+
+Game 2 is
+O() :=
+w_11 <-R np1bits;
+x': np1bits <- w_11;
+y': nbits <- getn(x');
+b': bool <- getlast(x');
+x'': np1bits <- G'(y');
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', b');
+return()
+
+
+Applying remove assignments of useless yields
+
+Game 3 is
+O() :=
+w_11 <-R np1bits;
+y': nbits <- getn(w_11);
+b': bool <- getlast(w_11);
+x'': np1bits <- G'(y');
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', b');
+return()
+
+
+Applying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+ yields
+
+Game 4 is
+O() :=
+wl_13 <-R bool;
+w_12 <-R nbits;
+y': nbits <- w_12;
+b': bool <- wl_13;
+x'': np1bits <- G'(y');
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', b');
+return()
+
+
+Applying remove assignments of useless yields
+
+Game 5 is
+O() :=
+wl_13 <-R bool;
+w_12 <-R nbits;
+x'': np1bits <- G'(w_12);
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', wl_13);
+return()
+
+
+Applying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+ yields
+
+Game 6 is
+O() :=
+wl_13 <-R bool;
+w_14 <-R np1bits;
+x'': np1bits <- w_14;
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', wl_13);
+return()
+
+
+Applying remove assignments of useless yields
+
+Game 7 is
+O() :=
+wl_13 <-R bool;
+w_14 <-R np1bits;
+y'': nbits <- getn(w_14);
+b'': bool <- getlast(w_14);
+w3: np3bits <- concatnp2(G'(y''), b'', wl_13);
+return()
+
+
+Applying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+ yields
+
+Game 8 is
+O() :=
+wl_13 <-R bool;
+wl_16 <-R bool;
+w_15 <-R nbits;
+y'': nbits <- w_15;
+b'': bool <- wl_16;
+w3: np3bits <- concatnp2(G'(y''), b'', wl_13);
+return()
+
+
+Applying remove assignments of useless yields
+
+Game 9 is
+O() :=
+wl_13 <-R bool;
+wl_16 <-R bool;
+w_15 <-R nbits;
+w3: np3bits <- concatnp2(G'(w_15), wl_16, wl_13);
+return()
+
+
+Applying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+ yields
+
+Game 10 is
+O() :=
+wl_13 <-R bool;
+wl_16 <-R bool;
+w_17 <-R np1bits;
+w3: np3bits <- concatnp2(w_17, wl_16, wl_13);
+return()
+
+
+Applying equivalence
+equiv foreach i1_3 <= n1 do r <-R np1bits; b' <-R bool; b'' <-R bool; OGet() := return(concatnp2(r, b'', b'))
+<=(0)=>
+      foreach i1_4 <= n1 do w <-R np3bits; OGet() := return(w)
+ yields
+
+Game 11 is
+O() :=
+w_18 <-R np3bits;
+w3: np3bits <- w_18;
+return()
+
+
+RESULT Proved one-session secrecy of w3
+All queries proved.
+\end{verbatim}
 
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}

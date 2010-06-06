@@ -65,7 +65,7 @@ Da quando la crittografia si \`e guadagnata una validit\`a scientifica, sono nat
 studiarla.\\In uno di questi, il modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
 Nell'altro, il modello \emph{computazionale}, le operazioni crittografiche sono viste come funzioni su stringhe di bit che hanno una semantica probabilistica.
 Il primo modello \`e stato ampiamente trattato in \cite{AbadiG99, BurrowsAN90, Kemmerer87, Paulson98}. 
-Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cite{?}.\\
+Il secondo modello trova le basi in lavori di altrettanto illustri studiosi \cite{}.\\
 Il modello formale pu\`o contare su un vastissimo insieme di conoscenze teoriche derivanti da altri rami dell'informatica, in particolare la teoria dei linguaggi formali e della logica;
 anche per questo il modello formale \`e stato sicuramente trattato in modo pi\`u approfondito, almeno fino ad ora. Questo ha fatto s\`i che lo stato dell'arte veda, per esempio, molti pi\`u tool di
 verifica automatica che lavorano nel modello formale rispetto a tool che lavorano nel modello computazionale. 
@@ -151,7 +151,7 @@ Questa probabilit\`a tende a 0 in modo esponenziale al crescere della lunghezza 
 \`E quindi pi\`u realistico cercare di rappresentare l'avversario come un algoritmo che, oltre a terminare in tempo polinomiale, ha
 anche la possibilit\`a di effettuare scelte casuali e di commettere errori (anche se con probabilit\`a limitata).
 La classe dei problemi risolti da questo tipo di algoritmi \`e indicata con la
-sigla \emph{BPP} (i.e. \emph{Bounded-Probability Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
+sigla \emph{BPP} (i.e. \emph{Bounded Probability Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
 esegue l'algoritmo, oltre a ricevere l'input, diciamo $x$, riceva anche un input ausiliario $r$. Questa stringa di bit $r$, rappresenta una possibile sequenza di lanci di moneta dove \`e stato associato al valore $0$ la croce e al valore $1$ la testa (o anche viceversa ovviamente).
 Qualora la macchina dovesse effettuare una scelta casuale, non dovr\`a far altro che prendere il successivo bit dalla stringa $r$, e prendere una decisione in base ad esso
 (\`e, in effetti, come se avesse preso una decisione lanciando una moneta). Ecco quindi che il nostro tipico avversario si configura come un algoritmo polinomiale probabilistico.
@@ -371,7 +371,7 @@ Un tipico file di input per CryptoVerif ha la seguente forma: \begin{center}
                                                                $<decalaration>^{*}$ \textbf{process} $<odef>$.
                                                               \end{center}
 Di solito quindi, la parte iniziale dell'input \`e costituita da una serie di dichiarazioni, una serie di definizioni di primitive crittografiche e, successivamente alla parola chiave \textbf{process}, 
-si trova la definizione di un oracolo che descrive il protocollo di cui si vogliono dimostrare alcune propriet\`a.
+dalla definizione di un oracolo che descrive il protocollo di cui si vogliono dimostrare alcune propriet\`a.
 Gli oracoli sono definiti in un calcolo di processi. In questo calcolo i termini rappresentano computazioni su stringhe di bit.
 I termini del calcolo sono distinti in due categorie: semplici e non. La sintassi dei termini semplici \`e descritta dalla seguente grammatica:
 \begin{verbatim}
@@ -393,7 +393,7 @@ Dove
 alla concatenazione di $M_1,...,M_n$. La tupla conterr\`a anche informazioni sulle singole componenti (tipo, lunghezza) in modo che possano essere successivamente 
 recuperate senza ambiguit\`a.
 Non si deve confondere la tupla con un semplice termine fra parentesi, le quali in quest'ultimo caso, non definiscono un nuovo oggetto ma semplicemente 
-permettono di non avere ambiguit\`a all'interno di espressioni. Abbiamo poi, delle produzioni che descrivono il fatto che un termine semplice pu\`o essere
+permettono di non avere ambiguit\`a all'interno di espressioni. Abbiamo poi delle produzioni che descrivono il fatto che un termine semplice pu\`o essere
 un identificatore o un identificatore \emph{applicato} ad altri termini (una funzione). Il calcolo dispone infine di simboli di funzione di default
 ovvero uguaglianza, diseguaglianza, disgiunzione e congiunzione. 
 I termini non semplici (che chiameremo termini), contengono dei costrutti pi\`u complessi.
@@ -428,7 +428,7 @@ di ricercare in un array un elemento di indice $i$ minore uguale di $N$ tale per
 se questo elemento viene trovato allora viene ritornato il valore di $<term>$. Il costrutto find, in generale, pu\`o avere vari indici che scorrono vari array, in cui si testano diverse condizioni; 
 in generale quindi avremo:\\
 $find$ $u_{j1}<=n_{j1}$ $suchthat$ $cond_j$ $then$ $M_j$,...,$orfind$ $u_{ji}<=n_{ji}$ $suchthat$ $cond_j$ $then$ $M_j,...,$ $orfind$ $u_{jm}<=n_{jm}$ $suchthat$ $cond_j$ $then$ $M_j$ $else$ $M$.
-\\Se nessuna condizione si verifica viene ritornato il valore di $M$, altrimenti si possono avere due casi o si verifica una sola delle condizioni e allora viene restituito il valore del termine
+\\Se nessuna condizione si verifica viene ritornato il valore di $M$, altrimenti si possono avere due casi: o si verifica una sola delle condizioni e allora viene restituito il valore del termine
 relativo a quella condizione, oppure si verifica pi\`u di una condizione. In questo caso viene scelto, in maniera casuale, uno dei termini relativi alle condizioni vere e viene ritornato quello. 
 Il costrutto $find$ esiste anche in relazione agli oracoli e quindi verr\`a ulteriormente spiegato in seguito.
 \\
@@ -477,11 +477,11 @@ obody ::= <ident>
 
 \end{verbatim}
 Come si pu\`o vedere, nel corpo di un oracolo, si possono assegnare valori a variabili in maniera casuale con il costrutto fornito dalla quinta produzione, o si pu\`o anche
-assegnare un valore che \`e risultato delle computazioni di un altro oracolo come nella sesta produzione. Un oracolo restituisce un valore attraverso $return$ e successivamente 
+assegnare un valore che \`e il risultato delle computazioni di un altro oracolo come nella sesta produzione. Un oracolo restituisce un valore attraverso $return$ e successivamente 
 pu\`o chiamare un altro oracolo come si pu\`o vedere dall'ultima produzione. La parola chiave $end$ serve per far terminare la definizione di un oracolo.
 Attraverso l'istruzione condizionale, all'interno del corpo di un oracolo, possiamo chiamare altri oracoli a seconda del valore di verit\`a della condizione verificata.
 Attraverso il costrutto $let$ \`e possibile cercare di decomporre il valore del termine in un pattern specificato e, a seconda che questa decomposizione abbia o meno successo,
-\`e possibile chiamare un oracolo o un altro. In particolare se il pattern \`e una semplice variabile l'effetto, da un punto di vista pratico, \`e un assegnamento semplice 
+\`e possibile chiamare un oracolo o un altro. In particolare se il pattern \`e una semplice variabile, l'effetto, da un punto di vista pratico, \`e un assegnamento semplice 
 che ha sempre successo, e sfocia in una dichiarazione e inizializzazione di una variabile il cui \emph{scope} \`e l'oraclo che si trova dopo la parola chiave $in$; 
 se il pattern \`e una variabile quindi, il ramo $else$ non viene mai eseguito. 
 La grammatica che descrive la sintassi dei pattern \`e stata gi\`a trattata precedentemente e non verr\`a ripetuta.\\
@@ -637,14 +637,417 @@ Nell'appendice A si pu\`o trovare l'input completo, mentre in \cite{BlanchetPoin
 pi\`u importanti dell'output di CryptoVerif e infine in \cite{fdhall} troviamo l'ouput completo di CryptoVerif sull'input descritto precedentemente.
 \chapter{Risultati Raggiunti}
 Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un risultato classico della crittografia computazionale.
+Dopo un'attenta analisi si \`e giunti alla conclusione che, a causa dell'insufficiente sistema di tipi di CryptoVerif, non sarebbe stato
+possibile mediante questo dimostrare il risultato nella sua generalit\`a; ecco quindi che si \`e scelto di utilizzare il tool
+per dimostrare una caso particolare del teorema.
 \section{Teorema}
-Il teorema \`e il seguente:\\
+Il risultato nella sua generalit\`a \`e il seguente teorema:
 \begin{teorema}
-Se esiste un generatore pseudocasuale $G^{'}$ con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni polinomio $p(n)>n$ esiste un generatore pseudocasuale $G$ con coefficiente d'espansione
-$l(n)=p(n)$.
+Se esiste un generatore pseudocasuale $G^{'}$ con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni polinomio $p(n)>n$ 
+esiste un generatore pseudocasuale $G$ con coefficiente d'espansione $l(n)=p(n)$.
 \end{teorema}
 
 Si pu\`o trovare una dimostrazione \emph{classica} di questo teorema in \cite{1206501}. La dimostrazione classica procede....
+
+Si \`e invece provato il risultato con CryptoVerif per un numero $p(n)$ che \`e una costante. In particolare mediante CryptoVerif si \`e provato
+che:
+\begin{center}
+\emph{Se esiste un generatore pseudocasuale $G^{'}$ con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni costante $k$ esiste
+un generatore pseudocasuale $G$ con coefficiente d'espansione $l(n)=k$}
+\end{center}
+
+
+
+\section{L'input}
+L'input che \`e stato fornito a CryptoVerif \`e il seguente:
+\begin{verbatim}
+type nbits [fixed].     (* stringhe di lunghezza  n *)
+type np1bits [fixed].   (* stringhe di lunghezza  n+1 *)
+type np2bits [fixed].   (* stringhe di lunghezza  n+2 *)
+type np3bits [fixed].   (* stringhe di lunghezza  n+2 *)
+param n1.
+
+(* La concatenazione di una stringa random di n+1 bits e un bit random è una stringa random di n+2 bits. *)
+fun concatnp1(np1bits,bool):np2bits.
+(* La concatenazione di una stringa random di n+2 bits e un bit random è una stringa random di n+3 bits. *)
+fun concatnp2(np1bits,bool, bool):np3bits.
+
+(* La concatenzione di stringhe random è una stringa random*)
+equiv 
+      foreach i1<=n1 do
+            r <-R np1bits;
+		    b <-R bool;
+            OGet():=return (concatnp1(r,b))
+      <=(0)=> 
+     foreach i1 <=n1 do
+            w <-R np2bits;
+            OGet():=return(w).
+
+equiv
+	foreach i1<=n1 do
+			r<-R np1bits;
+			b'<-R bool;
+			b''<-R bool;
+			OGet():=return(concatnp2(r, b'', b'))
+	<=(0)=>
+	foreach i1<=n1 do
+			w<-R np3bits;
+			OGet():=return(w).
+
+(* Estrae i primi n bits da una stringa di n+1 bits *)
+fun getn(np1bits):nbits.
+(* Estrae l'ultimo bit da una stringa di n+1 bits *)
+fun getlast(np1bits):bool.
+equiv
+       foreach i1<=n1 do
+             r <-R np1bits;(
+             OGetn():=return (getn(r)) |
+             OGetlast():=return (getlast(r)))
+       <=(0)=>
+      foreach i1 <=n1 do
+              (
+              OGetn():= w <-R nbits;return(w) |
+              OGetlast():=wl <-R bool;return(wl)
+              ).
+fun getn1(np2bits):nbits.
+fun getlast1(np2bits):bool.
+(* Se x è un numero random allora getn1(n) e getlast(x) sono numeri random *)
+equiv 
+      foreach i1<=n1 do
+            r <-R np2bits;(
+		    OGetn():=return (getn1(r)) |
+            OGetlast():=return (getlast1(r)))
+      <=(0)=>
+     foreach i1 <=n1 do
+             (
+             OGetn():= w <-R nbits;return(w) |
+	     	 OGetlast():=wl <-R bool;return(wl)
+	     	 ).
+
+(* Generatore pseudorandom con fattore n+1 *)
+fun G'(nbits): np1bits.
+equiv
+    foreach i1<=n1 do
+            	r <-R nbits;
+            	OGet():=return (G'(r))
+      <=(0)=> (* To define *)
+     foreach i1 <=n1 do
+              	w <-R np1bits;
+              	OGet():=return(w).
+
+query secret1 w3.
+
+
+process
+        O():=
+             r<-R nbits;
+             let x' = G'(r) in
+             let y' = getn(x') in
+             let b' = getlast(x') in
+    	     let x''=G'(y') in
+             let y''=getn(x'') in
+	     let b''=getlast(x'') in
+             w3:np3bits <-concatnp2(G'(y''), b'', b');
+return
+\end{verbatim}
+\section{L'output}
+L'output di CryptoVerif \`e il seguente:
+\begin{verbatim}
+ Doing expand if, let, find... No change.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... No change.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... Done.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Failed.
+Trying equivalence
+equiv foreach i1_7 <= n1 do r <-R np2bits; (
+  OGetn() := return(getn1(r)) |
+  OGetlast() := return(getlast1(r)))
+<=(0)=>
+      foreach i1_8 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Failed.
+Trying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... Done.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... Done.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Failed.
+Trying equivalence
+equiv foreach i1_7 <= n1 do r <-R np2bits; (
+  OGetn() := return(getn1(r)) |
+  OGetlast() := return(getlast1(r)))
+<=(0)=>
+      foreach i1_8 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Failed.
+Trying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... Done.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... No change.
+Trying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+... Failed.
+Trying equivalence
+equiv foreach i1_7 <= n1 do r <-R np2bits; (
+  OGetn() := return(getn1(r)) |
+  OGetlast() := return(getlast1(r)))
+<=(0)=>
+      foreach i1_8 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Failed.
+Trying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+... Failed.
+Trying equivalence
+equiv foreach i1_3 <= n1 do r <-R np1bits; b' <-R bool; b'' <-R bool; OGet() := return(concatnp2(r, b'', b'))
+<=(0)=>
+      foreach i1_4 <= n1 do w <-R np3bits; OGet() := return(w)
+... Succeeded.
+Doing simplify... Run simplify 1 time(s). Fixpoint reached.
+No change.
+Doing move all binders... No change.
+Doing remove assignments of useless... No change.
+Proved one-session secrecy of w3
+===================== Proof starts =======================
+Initial state
+Game 1 is
+O() :=
+r <-R nbits;
+x': np1bits <- G'(r);
+y': nbits <- getn(x');
+b': bool <- getlast(x');
+x'': np1bits <- G'(y');
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', b');
+return()
+
+
+Applying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+ yields
+
+Game 2 is
+O() :=
+w_11 <-R np1bits;
+x': np1bits <- w_11;
+y': nbits <- getn(x');
+b': bool <- getlast(x');
+x'': np1bits <- G'(y');
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', b');
+return()
+
+
+Applying remove assignments of useless yields
+
+Game 3 is
+O() :=
+w_11 <-R np1bits;
+y': nbits <- getn(w_11);
+b': bool <- getlast(w_11);
+x'': np1bits <- G'(y');
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', b');
+return()
+
+
+Applying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+ yields
+
+Game 4 is
+O() :=
+wl_13 <-R bool;
+w_12 <-R nbits;
+y': nbits <- w_12;
+b': bool <- wl_13;
+x'': np1bits <- G'(y');
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', b');
+return()
+
+
+Applying remove assignments of useless yields
+
+Game 5 is
+O() :=
+wl_13 <-R bool;
+w_12 <-R nbits;
+x'': np1bits <- G'(w_12);
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', wl_13);
+return()
+
+
+Applying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+ yields
+
+Game 6 is
+O() :=
+wl_13 <-R bool;
+w_14 <-R np1bits;
+x'': np1bits <- w_14;
+y'': nbits <- getn(x'');
+b'': bool <- getlast(x'');
+w3: np3bits <- concatnp2(G'(y''), b'', wl_13);
+return()
+
+
+Applying remove assignments of useless yields
+
+Game 7 is
+O() :=
+wl_13 <-R bool;
+w_14 <-R np1bits;
+y'': nbits <- getn(w_14);
+b'': bool <- getlast(w_14);
+w3: np3bits <- concatnp2(G'(y''), b'', wl_13);
+return()
+
+
+Applying equivalence
+equiv foreach i1_5 <= n1 do r <-R np1bits; (
+  OGetn() := return(getn(r)) |
+  OGetlast() := return(getlast(r)))
+<=(0)=>
+      foreach i1_6 <= n1 do w <-R nbits; wl <-R bool; (
+  OGetn() := return(w) |
+  OGetlast() := return(wl))
+ yields
+
+Game 8 is
+O() :=
+wl_13 <-R bool;
+wl_16 <-R bool;
+w_15 <-R nbits;
+y'': nbits <- w_15;
+b'': bool <- wl_16;
+w3: np3bits <- concatnp2(G'(y''), b'', wl_13);
+return()
+
+
+Applying remove assignments of useless yields
+
+Game 9 is
+O() :=
+wl_13 <-R bool;
+wl_16 <-R bool;
+w_15 <-R nbits;
+w3: np3bits <- concatnp2(G'(w_15), wl_16, wl_13);
+return()
+
+
+Applying equivalence
+equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'(r))
+<=(0)=>
+      foreach i1_10 <= n1 do w <-R np1bits; OGet() := return(w)
+ yields
+
+Game 10 is
+O() :=
+wl_13 <-R bool;
+wl_16 <-R bool;
+w_17 <-R np1bits;
+w3: np3bits <- concatnp2(w_17, wl_16, wl_13);
+return()
+
+
+Applying equivalence
+equiv foreach i1_3 <= n1 do r <-R np1bits; b' <-R bool; b'' <-R bool; OGet() := return(concatnp2(r, b'', b'))
+<=(0)=>
+      foreach i1_4 <= n1 do w <-R np3bits; OGet() := return(w)
+ yields
+
+Game 11 is
+O() :=
+w_18 <-R np3bits;
+w3: np3bits <- w_18;
+return()
+
+
+RESULT Proved one-session secrecy of w3
+All queries proved.
+\end{verbatim}
 
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}

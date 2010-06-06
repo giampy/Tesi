@@ -4,12 +4,9 @@ type np2bits [fixed].   (* stringhe di lunghezza  n+2 *)
 type np3bits [fixed].   (* stringhe di lunghezza  n+2 *)
 param n1.
 
-(* La concatenazione di una stringa random di n+1 bits e un bit random è una stringa random di n+2 bits. *)
 fun concatnp1(np1bits,bool):np2bits.
-(* La concatenazione di una stringa random di n+2 bits e un bit random è una stringa random di n+3 bits. *)
 fun concatnp2(np1bits,bool, bool):np3bits.
 
-(* La concatenzione di stringhe random è una stringa random*)
 equiv 
       foreach i1<=n1 do
             r <-R np1bits;
@@ -31,9 +28,7 @@ equiv
 			w<-R np3bits;
 			OGet():=return(w).
 
-(* Estrae i primi n bits da una stringa di n+1 bits *)
 fun getn(np1bits):nbits.
-(* Estrae l'ultimo bit da una stringa di n+1 bits *)
 fun getlast(np1bits):bool.
 equiv
        foreach i1<=n1 do
@@ -48,7 +43,6 @@ equiv
               ).
 fun getn1(np2bits):nbits.
 fun getlast1(np2bits):bool.
-(* Se x è un numero random allora getn1(n) e getlast(x) sono numeri random *)
 equiv 
       foreach i1<=n1 do
             r <-R np2bits;(
@@ -61,7 +55,6 @@ equiv
 	     	 OGetlast():=wl <-R bool;return(wl)
 	     	 ).
 
-(* Generatore pseudorandom con fattore n+1 *)
 fun G'(nbits): np1bits.
 equiv
     foreach i1<=n1 do

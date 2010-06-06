@@ -2,10 +2,9 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Tesi.aux
 The style file: alpha.bst
 Database file #1: myrefs.bib
-Warning--I didn't find a database entry for "?"
 You've used 13 entries,
             2543 wiz_defined-function locations,
-            650 strings with 6549 characters,
+            649 strings with 6548 characters,
 and the built_in function-call counts, 5002 in all, are:
 = -- 494
 > -- 204
@@ -44,4 +43,3 @@ warning$ -- 0
 while$ -- 47
 width$ -- 18
 write$ -- 170
-(There was 1 warning)
