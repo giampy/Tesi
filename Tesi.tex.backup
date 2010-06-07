@@ -643,12 +643,18 @@ per dimostrare una caso particolare del teorema.
 \section{Teorema}
 Il risultato nella sua generalit\`a \`e il seguente teorema:
 \begin{teorema}
-Se esiste un generatore pseudocasuale $G^{'}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni polinomio $p(n)>n$ 
+Se esiste un generatore pseudocasuale $G^{'}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ con fattore 
+d'espansione $l^{'}(n)=n+1$ allora per ogni polinomio $p(n)$ (tale che $\forall n$ $p(n)>n$)
 esiste un generatore pseudocasuale $G$ con coefficiente d'espansione $l(n)=p(n)$.
 \end{teorema}
 
-Si pu\`o trovare una dimostrazione \emph{classica} di questo teorema in \cite{1206501}. La dimostrazione classica procede....
-
+Si pu\`o trovare una dimostrazione \emph{classica} di questo teorema in \cite{1206501}. La dimostrazione classica \`e di tipo costruttivo, ovvero fornisce un'implementazione
+di un generatore pseudocasuale con fattore d'espansione polinomiale a partire dal generatore pseudocasuale che si ha in ipotesi.
+L'idea di base consiste nel partire da un seme casuale $r \in \{0, 1\}^n$ e applicargli $\hat{G}$. Il risultato sar\`a una stringa di bit pseudocasuale di lunghezza $n+1$. La costruzione
+ora procede con lo scindere questa stringa nelle due stringhe che la compongono di rispettivamente $n$ bits e $1$ bit.
+La prima parte funger\`a da input per un'altra esecuzione di $\hat{G}$, mentre l'$n+1$-esimo bit sar\`a parte dell'output finale.
+Si ripete poi questo procedimento per un numero polinomiale di volte in $n$. La dimostrazione procede infine con la prova che la stringa che si ottiene \`e pseudocasuale.
+Ora il sistema di tipi di CryptoVerif non ha permesso una definizione di $\hat{G}$ che potesse essere utilizzata
 Si \`e invece provato il risultato con CryptoVerif per un numero $p(n)$ che \`e una costante. In particolare mediante CryptoVerif si \`e provato
 che:
 \begin{center}
@@ -656,12 +662,10 @@ che:
 con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni costante $k$ esiste un generatore 
 pseudocasuale $G$ con coefficiente d'espansione $l(n)=k$}
 \end{center}
-
-
-
+\newpage
 \section{L'input}
-Il codice che verr\`a descritto permette a CryptoVerif di dimostrare che se si ha a disposizione un generatore pseudorandom con fattore
-di espansione $n+1$ allora si pu\`o avere un generatore pseudorandom con fattore di espansione $n+3$.
+Il codice che verr\`a descritto permette a CryptoVerif di dimostrare che se si ha a disposizione un generatore pseudocasuale con fattore
+di espansione $n+1$ allora si pu\`o avere un generatore pseudocasuale con fattore di espansione $n+3$.
 L'input che \`e stato fornito a CryptoVerif inizia con le seguenti dichiarazioni:
 \begin{verbatim}
   1 type nbits 	 [fixed].     
@@ -674,13 +678,12 @@ definiamo il tipo \emph{nbits}. Questo tipo rappresenter\`a l'insieme $\{0, 1\}^
 per rappresentare le stringhe appartenenti all'insieme $\{0, 1\}^{n+1}$, mentre nelle righe 3 e 4 lo stesso viene fatto per le stringhe
 casuali appartenenti agli insiemi $\{0, 1\}^{n+2}$, e $\{0, 1\}^{n+3}$. Si noti come ogni tipo sia dichiarato con il modificatore $fixed$.
 Infatti CryptoVerif permette una scelta casuale all'interno di un dominio se e solo se questo \`e dichiarato come fixed.
-
 Con la linea di codice seguente:
 \begin{verbatim}
 5 param n1.
 \end{verbatim}
-Si dichiara un parametro $n1$. Questo parametro assumer\`a valori polinomiali nel parametro di sicurezza. Sar\`a utilizzato principlamente per 
-fornire al distinguitore un numero polinomiale di oracoli con cui interagire.
+Si dichiara un parametro $n1$. Questo parametro assumer\`a valori polinomiali nel parametro di sicurezza. 
+Sar\`a utilizzato principalmente per fornire al distinguitore un numero polinomiale di oracoli con cui interagire.
 Quelle che seguono sono delle dichiarazioni di simboli di funzioni con i relativi tipi di input e di output.
 \begin{verbatim}  
 7 fun concatnp1(np1bits,bool):np2bits.
@@ -688,10 +691,14 @@ Quelle che seguono sono delle dichiarazioni di simboli di funzioni con i relativ
 \end{verbatim}
 In particolare la prima funzione prende in input come argomenti una stringa di lunghezza $n+1$ e un bit quest'ultimo rappresentato attraverso
 un valore booleano. L'output sar\`a una stringa di lunghezza $n+2$.
-La seconda funzione invece prende in input una stringa fi $n+1$ bits e due bit anche questi rappresentati mediante valori booleani.
+La seconda funzione invece prende in input una stringa di $n+1$ bits e due bits, anche questi rappresentati mediante valori booleani.
 Il risultato di questa funzione sar\`a una stringa di lunghezza $n+3$. Come si pu\`o intuire dai nomi delle funzioni, queste rappresentano
 la concatenazione di stringhe di lunghezza $n+1$ con uno e due bits rispettimavamente.
-
+Mediante le seguenti equivalenze non facciamo altro che implementare le funzioni dichiarate prima.
+Per esempio la funzione concatnp1 viene descritta mediante un'equivalenza che rappresenta il seguente asserto:
+la concatenazione di una stringa casuale di $n+1$ bits con un bit casuale \`e una stringa casuale di
+$n+2$ bits. 
+\begin{verbatim}
  10 equiv
  11       foreach i1<=n1 do
  12             r <-R np1bits;
@@ -701,7 +708,9 @@ la concatenazione di stringhe di lunghezza $n+1$ con uno e due bits rispettimava
  16      foreach i1 <=n1 do
  17             w <-R np2bits;
  18             OGet():=return(w).
- 19 
+\end{verbatim} 
+Una definizione simile \`e stata data per la funzione $concatpn2$:
+\begin{verbatim}
  20 equiv
  21     foreach i1<=n1 do
  22             r<-R np1bits;
@@ -712,7 +721,14 @@ la concatenazione di stringhe di lunghezza $n+1$ con uno e due bits rispettimava
  27     foreach i1<=n1 do
  28             w<-R np3bits;
  29             OGet():=return(w).
- 30 
+\end{verbatim}
+Infatti concatenare due bits casuali ad una stringa casuale di lunghezza $n+1$ \`e equivalente a scegliere in maniera casuale una stringa
+dall'insieme $\{0, 1\}^{n+3}$.
+Attraverso le successive due equivalenze vengono definite due simboli funzionali $getn$ $:\{0,1\}^{n+1} \rightarrow \{0,1\}^{n}$ e $getlast$ $:\{0,1\}^{n+1} \rightarrow \{0,1\}$.
+Il primo rappresenta una funzione che estrae i primi $n$ bits di una stringa casuale di lunghezza $n+1$, mentre la seconda estrae l'ultimo bit di una stringa casuale di
+$n+1$ bits.
+
+\begin{verbatim}
  31 fun getn(np1bits):nbits.
  32 fun getlast(np1bits):bool.
  33 equiv
@@ -726,6 +742,10 @@ la concatenazione di stringhe di lunghezza $n+1$ con uno e due bits rispettimava
  41               OGetn():= w <-R nbits;return(w) |
  42               OGetlast():=wl <-R bool;return(wl)
  43               ).
+\end{verbatim}
+\`E infatti ovvio che i primi $n$ bits di una stringa casuale di $n+1$ bits sono anch'essi casuali e che l'ultimo bit di una stringa casuale di $n+1$ bits \`e un bit casuale.
+Lo stesso viene poi fatto con stringhe di lunghezza $n+2$ attraverso le seguenti equivalenze:
+\begin{verbatim}
  44 fun getn1(np2bits):nbits.
  45 fun getlast1(np2bits):bool.
  46 equiv
@@ -750,6 +770,8 @@ la concatenazione di stringhe di lunghezza $n+1$ con uno e due bits rispettimava
  65                 w <-R np1bits;
  66                 OGet():=return(w).
  67 
+\end{verbatim}
+
  68 query secret1 w3.
  69 
  70 
@@ -764,11 +786,6 @@ la concatenazione di stringhe di lunghezza $n+1$ con uno e due bits rispettimava
  79          	 let b''=getlast(x'') in
  80              w3:np3bits <-concatnp2(G'(y''), b'', b');
  81 		 return
-Le linee di codice [1,4] servono per dichiarare dei tipi. Alla linea 1 dichiariamo il tipo delle stringhe di lunghezza n, ovvero
-definiamo il tipo \emph{nbits} questo tipo rappresenter\`a l'insieme $\{0, 1\}^n$. Alla linea 2 invece viene dichiarato un tipo
-per rappresentare le stringhe appartenenti all'insieme $\{0, 1\}^{n+1}$, mentre nelle righe 3 e 4 lo stesso viene fatto per le stringhe
-casuali appartenenti agli insiemi $\{0, 1\}^{n+2}$, e $\{0, 1\}^{n+3}$. Si noti come ogni tipo sia dichiarato con il modificatore $fixed$.
-Infatti CryptoVerif permette una scelta casuale all'interno di un dominio se e solo se questo \`e dichiarato come fixed.
 \section{L'output}
 L'output di CryptoVerif \`e il seguente:
 \begin{verbatim}

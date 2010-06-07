@@ -83,7 +83,7 @@ process
              let b' = getlast(x') in
     	     let x''=G'(y') in
              let y''=getn(x'') in
-	     let b''=getlast(x'') in
+	     	 let b''=getlast(x'') in
              w3:np3bits <-concatnp2(G'(y''), b'', b');
 return
 
