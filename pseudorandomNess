@@ -60,14 +60,14 @@ equiv
              OGetn():= w <-R nbits;return(w) |
 	     	 OGetlast():=wl <-R bool;return(wl)
 	     	 ).
-
+proba POW.
 (* Generatore pseudorandom con fattore n+1 *)
 fun G'(nbits): np1bits.
 equiv
     foreach i1<=n1 do
             	r <-R nbits;
             	OGet():=return (G'(r))
-      <=(0)=> (* To define *)
+      <=(POW)=> (* To define *)
      foreach i1 <=n1 do
               	w <-R np1bits;
               	OGet():=return(w).

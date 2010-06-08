@@ -1,4 +1,4 @@
-\begin{thebibliography}{BJST08}
+\begin{thebibliography}{MRST06}
 
 \bibitem[AG99]{AbadiG99}
 Mart\'{\i}n Abadi and Andrew~D. Gordon.
@@ -58,6 +58,12 @@ Jonathan Katz and Yehuda Lindell.
 \newblock {\em Introduction to Modern Cryptography (Chapman \& Hall/Crc
   Cryptography and Network Security Series)}.
 \newblock Chapman \& Hall/CRC, 2007.
+
+\bibitem[MRST06]{MitchellRST06}
+John~C. Mitchell, Ajith Ramanathan, Andre Scedrov, and Vanessa Teague.
+\newblock A probabilistic polynomial-time process calculus for the analysis of
+  cryptographic protocols.
+\newblock {\em Theor. Comput. Sci.}, 353(1-3):118--164, 2006.
 
 \bibitem[Pau98]{Paulson98}
 Lawrence~C. Paulson.

@@ -86,6 +86,11 @@ Author={Victor Shoup},
 Howpublished={\url{http://eprint.iacr.org/2004/332.pdf}},
 Title={Sequences of Games: A Tool for Taming Complexity in Security Proofs}
 }
+@misc{fdhall,
+Author={Bruno Blanchet and David Pointcheval},
+Howpublished={\url{http://www.cryptoverif.ens.fr/FDH/fdh.pdf}},
+Title={sequences of games of fdh}
+}
 @article{AbadiG99,
   author    = {Mart\'{\i}n Abadi and
                Andrew D. Gordon},
