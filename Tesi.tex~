@@ -628,8 +628,8 @@ Se $Q$ \`e un processo e $\varepsilon$ \`e una sequenza ordinata di eventi allor
 Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C, a, \varepsilon$
 $\lvert Pr[C[Q] \rightsquigarrow a] - Pr[C[Q^{'}]\rightsquigarrow a] \rvert \leq p(t)$ $\lvert Pr[C[Q] \rightsquigarrow \varepsilon] -  Pr[C[Q^{'}] \rightsquigarrow \varepsilon]\rvert \leq p(t)$ 
 \end{definizione}
-Questa definizione vuole catturare il concetto che due processi sono equivalenti a meno di un probabilit\`a se nessun avversario che ha tempo di esecuzione $t$ riesce
-a distinguerli con una probabilit\`a maggiore di $p(t)$. Intendendo con quella scrittura che la probabilit\`a \`e funzione del tempo d'esecuzione di chi cerca di distinguere. 
+Questa definizione vuole catturare il concetto che due processi sono equivalenti a meno di una probabilit\`a $p$ se nessun avversario che ha tempo di esecuzione $t$ riesce
+a distinguerli con una probabilit\`a, funzione di $t$, maggiore di $p(t)$. Intendendo con quella scrittura che la probabilit\`a \`e funzione del tempo d'esecuzione di chi cerca di distinguere. 
 Si pu\`o dire che questa relazione sia un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che questa corrisponda all'indistinguibilit\`a del modello computazionale 
 (questo nel momento in cui la probabilit\`a che permette ai due processi di essere in relazione \`e trascurabile). Se due processi sono legati da questa relazione d'equivalenza allora sono equivalenti a meno di una certa probabilit\`a nel senso che, 
 qualsiasi attaccante (contesto) $C$ che va in esecuzione per un tempo $t$ ha una probabilit\`a di distinguere questi due processi al massimo $p(t)$.
@@ -816,10 +816,11 @@ pi\`u importanti dell'output di CryptoVerif e infine in \cite{fdhall} troviamo l
 
 
 \chapter{Risultati Raggiunti}
-Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un risultato classico della crittografia computazionale.
+Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un caso particolare di un risultato classico della crittografia computazionale.
 Dopo un'attenta analisi si \`e giunti alla conclusione che, a causa dell'insufficiente sistema di tipi di CryptoVerif, non sarebbe stato
 possibile mediante questo dimostrare il risultato nella sua generalit\`a; ecco quindi che si \`e scelto di utilizzare il tool
-per dimostrare una caso particolare del teorema.
+per dimostrare una caso particolare del teorema. La dimostrazione proceder\`a utilizzando CryptoVerif per dimostrare il caso base e il caso induttivo
+di una una prova che sar\`a in generale di tipo induttivo.
 \section{Teorema}
 Il risultato nella sua generalit\`a \`e il seguente teorema:
 \begin{teorema}
