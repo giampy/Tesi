@@ -165,12 +165,12 @@ Non \`e quindi necessario dimostrare che un particolare schema crittografico sia
 Sappiamo che il concetto di \emph{tempo ragionevole} \`e catturato dalla classe degli algoritmi polinomiali probabilistici. Vediamo ora di catturare il concetto di \emph{scarsa probabilit\`a}.
 \section{Funzioni Trascurabili e non $\dots$}
 In crittografia i concetti di \emph{scarsa probabilit\`a} e di evento \emph{raro} vengono formalizzati attraverso la nozione di funzione trascurabile.
-\begin{definizione}{Funzione Trascurabile.}
+\begin{definizione}[Funzione Trascurabile]
 Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e trascurabile se e solo se per ogni polinomio $p$, esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) < \frac{1}{p(n)}$.  
 \end{definizione}
 Una funzione trascurabile, quindi, \`e una funzione che tende a 0 pi\`u velocemente dell'inverso di qualsiasi polinomio.
 Un'altra definizione utile \`e la seguente:
-\begin{definizione}{Funzione Distinguibile.}
+\begin{definizione}[Funzione Distinguibile]
 Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e distinguibile se e solo se esiste un polinomio $p$, tale per cui esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) > \frac{1}{p(n)}$.  
 \end{definizione}
 Per esempio la funzione $n  \mapsto 2^{-\sqrt{n}}$ \`e una funzione trascurabile, mentre la funzione $n \mapsto \frac{1}{n^2}$ non lo \`e. 
@@ -221,7 +221,7 @@ Possiamo immaginare che un algoritmo riesca a distinguere due oggetti, se quando
 fornisce come input il secondo da in output una costante \emph{$c'$} e ovviamente $c \neq c'$.
 La definizione tipica di indistinguibilit\`a computazionale \`e data prendendo come oggetti da distinguere alcune particolari distribuzioni statistiche detti \emph{ensembles}.
 
-\begin{definizione}{Ensemble.}
+\begin{definizione}[Ensemble]
 Sia $I$ un insieme numerabile infinito. $X=\{X_i\}_{i \in I}$ \`e un ensemble su $I$ se e solo se \`e una sequenza di variabili statistiche, tutte con lo stesso tipo di distribuzione.
 \end{definizione}
 Un \emph{ensemble} \`e quindi una sequenza infinita di distribuzioni di probabilit\`a\footnote{Siccome si parla di distribuzioni su stringhe di bit con lunghezza finita,
@@ -236,7 +236,7 @@ essere inteso in senso \emph{classico}, ma deve essere inteso in senso statistic
 uniformemente distribuita sull'insieme delle stringhe di lunghezza $m$, chiameremo $U=\{U_n\}_{n \in \mathbb{N}}$ l'ensemble uniforme.
 Dopo questa breve introduzione all'indistinguibilit\`a siamo pronti per dare una definizione rigorosa:
 
-\begin{definizione}{Indistinguibilit\`a computazionale.}
+\begin{definizione}[Indistinguibilit\`a computazionale]
 Due ensemble $X=\{X_n\}$, $Y=\{Y_n\}$ sono computazionalmente indistinguibili se e solo se per ogni algoritmo $D \in BPP$ (detto distinguitore) esiste $\mu$ trascurabile tale che:
 \begin{center}$\lvert Pr[D(1^n, X_n) = 1] - Pr[D(1^n, Y_n) = 1] \rvert \leq \mu(n)$.\end{center}
 \end{definizione}
@@ -267,12 +267,12 @@ perch\'e non ci sono elementi pi\`u probabili di altri.
 
 Il concetto di pseudocasualit\`a \`e un caso particolare di indistinguibilit\`a, infatti una distribuzione \`e \emph{pseudocasuale} se nessuna procedura efficiente, 
 pu\`o distinguerla dalla distribuzione uniforme.
-\begin{definizione}{Pseudocasualit\`a.}
+\begin{definizione}[Pseudocasualit\`a]
 L'ensemble $X=\{X_n\}_{n \in \mathbb{N}}$ \`e detto pseudocasuale se e solo se $ \exists l:$ $\mathbb{N}\rightarrow\mathbb{N}$ tale che: 
 $X$ \`e computazionalmente indistinguibile da $U=\{U_{l(n)}\}_{n \in \mathbb{N}} $.  
 \end{definizione}
 Data questa definizione, possiamo finalmente definire formalmente cosa sia un generatore pseudocasuale.
-\begin{definizione}{Generatore Pseudocasuale.}
+\begin{definizione}[Generatore Pseudocasuale]
 Sia $l:$ $\mathbb{N}\rightarrow\mathbb{N}$ un polinomio detto fattore d'espansione. 
 Sia G un algoritmo polinomiale deterministico tale che: $\forall s \in \{0, 1\}^{n}$ $G(s) \in \{0, 1\}^{l(n)}.$
 Allora $G$ \`e un generatore pseudocasuale se e solo se valgono le seguenti condizioni:
@@ -351,7 +351,7 @@ si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga nel ga
 \`E importante dire che anche nel modello formale si possono utilizzare le sequenze di game. La differenza \`e che due games successivi non sono computazionalmente indistinguibili, 
 ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che se in una sequenza di game $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
 allora i due game 
-devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di games sfrutta.
+devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di game sfrutta.
 Nel modello formale questa relazione sar\`a l'indistinguibilit\`a perfetta (meglio nota come equivalenza osservazionale) mentre in quello computazionale sar\`a 
 l'indistinguibilit\`a computazionale.
 \chapter{CryptoVerif}
@@ -609,9 +609,22 @@ Se diverse condizioni vengono verificate e quindi c'\`e la possibilit\`a che deb
 ne sceglie uno casualmente ed esegue quello.
 
 
+\section{Tecnica di dimostrazione}
+Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di game. Infatti CryptoVerif parte da un game iniziale fornito dall'utente e mediante equivalenze, che possono o meno
+introdurre differenze, cerca di modificare un game in un altro fino ad arrivare ad un game finale che soddisfi le richieste fatte dall'utente. Questa tecnica \`e basata innanzi tutto su una 
+particolare relazione di cui a breve si dar\`a una definizione. Prima di darla un po' di notazione. \\
+\begin{definizione}[Equivalenza Osservazionale relativa alla probabilit\`a $p$]
+Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C$
+\end{definizione}
+Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui le seguenti:
+\begin{enumerate}
+ \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_p^{'} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{'} $}
+ \item \emph{Se Q esegue un evento $e$ con probabilit\`a al massimo $p$ e $Q \approx_p Q^{'}$ allora $Q^{'}$ esegue l'evento $e$ con probabilit\`a al massimo $p+p^{'}$}
+\end{enumerate}
 
-
-
+Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
+osservazionalmente equivalenti fra loro: $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_f} G_f $; data questa sequenza, attraverso le propriet\`a 1 e 2, conclude che
+$G_0  \approx_{\sum_{p=1}^{f}} G_f $.
 
 
 \section{Un Esempio: FDH}
@@ -669,7 +682,7 @@ Prima di descrivere la seconda parte dell'input di CryptoVerif, \`e necessario f
 Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente; cio\`e se, dato $y=f(x)$, \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 
 Si noti come non sia necessario, per invertire la funzione, trovare $x$ ma \`e sufficiente trovare un $x'$ qualsiasi tale che $f(x')=y$.
 \\Possiamo ora dare la seguente:
-\begin{definizione}{Funzione One-Way.}
+\begin{definizione}[Funzione One-Way]
 Una funzione $f: \{0,1\}^*\rightarrow \{0,1\}^*$ \`e one-way se e solo se $\forall x \in  \{0,1\}^* \hbox{,} \forall A \in PPT$:  $\lvert Pr[A(f(x)) \in f^{-1}(f(x))]\rvert$ \`e una funzione 
 trascurabile.
 \end{definizione}

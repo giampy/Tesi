@@ -165,12 +165,12 @@ Non \`e quindi necessario dimostrare che un particolare schema crittografico sia
 Sappiamo che il concetto di \emph{tempo ragionevole} \`e catturato dalla classe degli algoritmi polinomiali probabilistici. Vediamo ora di catturare il concetto di \emph{scarsa probabilit\`a}.
 \section{Funzioni Trascurabili e non $\dots$}
 In crittografia i concetti di \emph{scarsa probabilit\`a} e di evento \emph{raro} vengono formalizzati attraverso la nozione di funzione trascurabile.
-\begin{definizione}{Funzione Trascurabile.}
+\begin{definizione}[Funzione Trascurabile]
 Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e trascurabile se e solo se per ogni polinomio $p$, esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) < \frac{1}{p(n)}$.  
 \end{definizione}
 Una funzione trascurabile, quindi, \`e una funzione che tende a 0 pi\`u velocemente dell'inverso di qualsiasi polinomio.
 Un'altra definizione utile \`e la seguente:
-\begin{definizione}{Funzione Distinguibile.}
+\begin{definizione}[Funzione Distinguibile]
 Sia $\mu: \mathbb{N} \rightarrow \mathbb{R^{+}}$ una funzione. Si dice che $\mu$ \`e distinguibile se e solo se esiste un polinomio $p$, tale per cui esiste $C \in \mathbb{N} $ tale che $\forall n>C$: $\mu(n) > \frac{1}{p(n)}$.  
 \end{definizione}
 Per esempio la funzione $n  \mapsto 2^{-\sqrt{n}}$ \`e una funzione trascurabile, mentre la funzione $n \mapsto \frac{1}{n^2}$ non lo \`e. 
@@ -221,7 +221,7 @@ Possiamo immaginare che un algoritmo riesca a distinguere due oggetti, se quando
 fornisce come input il secondo da in output una costante \emph{$c'$} e ovviamente $c \neq c'$.
 La definizione tipica di indistinguibilit\`a computazionale \`e data prendendo come oggetti da distinguere alcune particolari distribuzioni statistiche detti \emph{ensembles}.
 
-\begin{definizione}{Ensemble.}
+\begin{definizione}[Ensemble]
 Sia $I$ un insieme numerabile infinito. $X=\{X_i\}_{i \in I}$ \`e un ensemble su $I$ se e solo se \`e una sequenza di variabili statistiche, tutte con lo stesso tipo di distribuzione.
 \end{definizione}
 Un \emph{ensemble} \`e quindi una sequenza infinita di distribuzioni di probabilit\`a\footnote{Siccome si parla di distribuzioni su stringhe di bit con lunghezza finita,
@@ -236,7 +236,7 @@ essere inteso in senso \emph{classico}, ma deve essere inteso in senso statistic
 uniformemente distribuita sull'insieme delle stringhe di lunghezza $m$, chiameremo $U=\{U_n\}_{n \in \mathbb{N}}$ l'ensemble uniforme.
 Dopo questa breve introduzione all'indistinguibilit\`a siamo pronti per dare una definizione rigorosa:
 
-\begin{definizione}{Indistinguibilit\`a computazionale.}
+\begin{definizione}[Indistinguibilit\`a computazionale]
 Due ensemble $X=\{X_n\}$, $Y=\{Y_n\}$ sono computazionalmente indistinguibili se e solo se per ogni algoritmo $D \in BPP$ (detto distinguitore) esiste $\mu$ trascurabile tale che:
 \begin{center}$\lvert Pr[D(1^n, X_n) = 1] - Pr[D(1^n, Y_n) = 1] \rvert \leq \mu(n)$.\end{center}
 \end{definizione}
@@ -267,12 +267,12 @@ perch\'e non ci sono elementi pi\`u probabili di altri.
 
 Il concetto di pseudocasualit\`a \`e un caso particolare di indistinguibilit\`a, infatti una distribuzione \`e \emph{pseudocasuale} se nessuna procedura efficiente, 
 pu\`o distinguerla dalla distribuzione uniforme.
-\begin{definizione}{Pseudocasualit\`a.}
+\begin{definizione}[Pseudocasualit\`a]
 L'ensemble $X=\{X_n\}_{n \in \mathbb{N}}$ \`e detto pseudocasuale se e solo se $ \exists l:$ $\mathbb{N}\rightarrow\mathbb{N}$ tale che: 
 $X$ \`e computazionalmente indistinguibile da $U=\{U_{l(n)}\}_{n \in \mathbb{N}} $.  
 \end{definizione}
 Data questa definizione, possiamo finalmente definire formalmente cosa sia un generatore pseudocasuale.
-\begin{definizione}{Generatore Pseudocasuale.}
+\begin{definizione}[Generatore Pseudocasuale]
 Sia $l:$ $\mathbb{N}\rightarrow\mathbb{N}$ un polinomio detto fattore d'espansione. 
 Sia G un algoritmo polinomiale deterministico tale che: $\forall s \in \{0, 1\}^{n}$ $G(s) \in \{0, 1\}^{l(n)}.$
 Allora $G$ \`e un generatore pseudocasuale se e solo se valgono le seguenti condizioni:
@@ -351,7 +351,7 @@ si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga nel ga
 \`E importante dire che anche nel modello formale si possono utilizzare le sequenze di game. La differenza \`e che due games successivi non sono computazionalmente indistinguibili, 
 ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che se in una sequenza di game $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
 allora i due game 
-devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di games sfrutta.
+devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di game sfrutta.
 Nel modello formale questa relazione sar\`a l'indistinguibilit\`a perfetta (meglio nota come equivalenza osservazionale) mentre in quello computazionale sar\`a 
 l'indistinguibilit\`a computazionale.
 \chapter{CryptoVerif}
@@ -609,9 +609,24 @@ Se diverse condizioni vengono verificate e quindi c'\`e la possibilit\`a che deb
 ne sceglie uno casualmente ed esegue quello.
 
 
+\section{Tecnica di dimostrazione}
+Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di game. Infatti CryptoVerif parte da un game iniziale fornito dall'utente e mediante equivalenze, che possono o meno
+introdurre differenze, cerca di modificare un game in un altro fino ad arrivare ad un game finale che soddisfi le richieste fatte dall'utente. Questa tecnica \`e basata innanzi tutto su una 
+particolare relazione di cui a breve si dar\`a una definizione. Prima di darla un po' di notazione. \\
+\begin{definizione}[Equivalenza Osservazionale relativa alla probabilit\`a $p$]
+Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C$
+\end{definizione}
+Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui le seguenti:
+\begin{itemize}
+ \item \emph{Se $ $ e $ $ allora $ $}
+ \item \emph{Se $ $ esegue un evento $e$ con probabilit\`a al massimo $p$ e $ $ allora $ $ esegue l'evento $e$ con probabilit\`a $ $}
+ \item \emph{Se $ $ e}
+ \item \emph{} 
+\end{itemize}
 
-
-
+Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
+osservazionalmente equivalenti fra loro: $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_f} G_f $; data questa sequenza, attrverso le propriet\`a 1 e 2, conclude che
+$G_0  \approx_{\sum_{p=1}^{f}} G_f $  
 
 
 \section{Un Esempio: FDH}
@@ -669,7 +684,7 @@ Prima di descrivere la seconda parte dell'input di CryptoVerif, \`e necessario f
 Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente; cio\`e se, dato $y=f(x)$, \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 
 Si noti come non sia necessario, per invertire la funzione, trovare $x$ ma \`e sufficiente trovare un $x'$ qualsiasi tale che $f(x')=y$.
 \\Possiamo ora dare la seguente:
-\begin{definizione}{Funzione One-Way.}
+\begin{definizione}[Funzione One-Way]
 Una funzione $f: \{0,1\}^*\rightarrow \{0,1\}^*$ \`e one-way se e solo se $\forall x \in  \{0,1\}^* \hbox{,} \forall A \in PPT$:  $\lvert Pr[A(f(x)) \in f^{-1}(f(x))]\rvert$ \`e una funzione 
 trascurabile.
 \end{definizione}
@@ -709,7 +724,7 @@ equiv
                  else return(false) |
            Ox() := let k:bitstring = mark in return(x))).
  \end{verbatim}
-Per ora, non \`e interessante per quale probabilit\`a questi games sono equivalenti, ecco perch\`e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ senza specificare ulteriormente.
+Per ora, non \`e interessante per quale probabilit\`a questi games siano equivalenti, ecco perch\`e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ senza specificare ulteriormente.
 Questa equivalenza fra games cattura e definisce il concetto di funzione one-way. La funzione $\texttt{f}$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
 e quindi il game a sinistra e quello a destra del simbolo \textbf{$\approx _{pow}$} sono indistinguibili.
 Supponiamo infatti che la funzione $\texttt{f}$ non sia one-way, esister\`a dunque un avversario efficiente $A$ 
@@ -717,8 +732,8 @@ che pu\`o invertire $\texttt{f}$. $A$ sar\`a dunque in grado di distinguere i du
 Questo perch\'e potendo invertire $\texttt{f}$, $A$ sar\`a in grado di osservare comportamenti diversi fra i game a seconda che $A$ chiami $\texttt{Oeq()}$ in $L$ o in $R$.
 Procediamo con una sorta di esperimento mentale.\\ 
 Supponiamo che $A$ chiami $\texttt{Oy()}$ ottenendo l'immagine di un valore mediante $\texttt{f}$, sia questa $y$; poich\'e $\texttt{f}$ non \`e one-way, 
-$A$ inverte la funzione ottenendo un \verb!x^{'}! tale che \verb!f(x^{'})= y!.
-Adesso $A$ non deve far altro che richiamare $\texttt{Oeq()}$ passando a questo come argomento \verb!x^{'}!. Se $\texttt{Oeq()}$ \`e richiamato dal primo membro dell'equivalenza, 
+$A$ inverte la funzione ottenendo un \verb!x'! tale che \verb!f(x')= y!.
+Adesso $A$ non deve far altro che richiamare $\texttt{Oeq()}$ passando a questo come argomento \verb!x'!. Se $\texttt{Oeq()}$ \`e richiamato dal primo membro dell'equivalenza, 
 allora $\texttt{Oeq()}$ ritorner\`a sempre true, mentre se appartiene al secondo ritorner\`a sempre false.\\
 In questo modo $A$ osserva dei comportamenti diversi fra i due game, e quindi pu\`o distinguerli. 
 Supponiamo, invece, che $\texttt{f}$ sia effettivamente one-way. Allora non esister\`a nessun attaccante efficiente che riesca ad invertire $\texttt{f}$.
@@ -728,7 +743,7 @@ Notiamo infatti nella definizione dell'equivalenza che  $\texttt{Ox()}$\`e defin
 In $L$, $\texttt{Ox()}$ si occupa semplicemente di ritornare il valore del dominio $\texttt{x}$, tale che $\texttt{f(x)=y}$. 
 In $R$ invece, $\texttt{Ox()}$ prima di ritornare $\texttt{x}$, imposta al valore $\texttt{mark}$ la variabile $\texttt{k}$.
 Ora, $\texttt{Oeq()}$ si comporter\`a in maniera diversa a seconda che sia richiamato da $L$ o da $R$.
-Se infatti $\texttt{Oeq()}$ \`e chiamato da $L$, allora $\texttt{Oeq()}$ si proccuper\`a semplicemente di ritornare il valore booleano dell'espressione \verb!x^{'}=x!.
+Se infatti $\texttt{Oeq()}$ \`e chiamato da $L$, allora $\texttt{Oeq()}$ si proccuper\`a semplicemente di ritornare il valore booleano dell'espressione \verb!x'=x!.
 Se invece,  $\texttt{Oeq()}$\`e chiamato da $L$ allora $\texttt{Oeq()}$ si comporter\`a in maniera differente a seconda che la variabile $\texttt{k}$ abbia o meno un valore 
 (ovvero sia stata o meno definita da una precedente chiamata a $\texttt{Ox()}$). Se quindi $\texttt{k}$ \`e definita, allora $\texttt{Oeq()}$ si comporter\`a esattamente come si sarebbe comportato $\texttt{Oeq()}$  di $L$.
 Se invece $\texttt{k}$ non \`e stata definita allora siginifica che l'attaccante non ha richiamato $\texttt{Ox()}$, quindi \`e lecito supporre che non sia riuscito ad invertire $\texttt{f}$ e quindi $\texttt{Oeq()}$ ritorna false.\\
