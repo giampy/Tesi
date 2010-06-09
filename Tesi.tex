@@ -53,7 +53,7 @@
 Negli anni anni '80 la crittografia ha cessato di essere un' arte per assurgere allo stato di scienza. \\Come scienza, la crittografia moderna
 si propone innanzi tutto di fornire definizioni rigorose dei concetti con cui ha a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
 su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\
-Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) \emph{incondizionatamente} provare dei risultati, la maggior parte delle prove di teoremi, nel campo 
+Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) provare \emph{incondizionatamente} dei risultati, la maggior parte delle prove di teoremi, nel campo 
 della crittografia moderna, sono basate su assunzioni che non sono ancora certe, ma che sono comunque ben formalizzate e inequivocabilmente descritte.\\La pi\`u importante \`e sicuramente
 l'ipotesi dell'esistenza di funzioni \emph{one-way}. Tutte le prove che sono basate su assunzioni non verificate sono sempre e comunque valide, sia che le assunzioni fatte vengano dimostrate,
 sia che vengano confutate; questo perch\'e ogni dimostrazione \`e del tipo: \emph{Se X allora Y} (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
@@ -628,15 +628,16 @@ Se $Q$ \`e un processo e $\varepsilon$ \`e una sequenza ordinata di eventi allor
 Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C, a, \varepsilon$
 $\lvert Pr[C[Q] \rightsquigarrow a] - Pr[C[Q^{'}]\rightsquigarrow a] \rvert \leq p(t)$ $\lvert Pr[C[Q] \rightsquigarrow \varepsilon] -  Pr[C[Q^{'}] \rightsquigarrow \varepsilon]\rvert \leq p(t)$ 
 \end{definizione}
- 
+Questa definizione vuole catturare il concetto che due processi sono equivalenti a meno di una probabilit\`a $p$ se nessun avversario che ha tempo di esecuzione $t$ riesce
+a distinguerli con una probabilit\`a, funzione di $t$, maggiore di $p(t)$. Intendendo con quella scrittura che la probabilit\`a \`e funzione del tempo d'esecuzione di chi cerca di distinguere. 
 Si pu\`o dire che questa relazione sia un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che questa corrisponda all'indistinguibilit\`a del modello computazionale 
 (questo nel momento in cui la probabilit\`a che permette ai due processi di essere in relazione \`e trascurabile). Se due processi sono legati da questa relazione d'equivalenza allora sono equivalenti a meno di una certa probabilit\`a nel senso che, 
 qualsiasi attaccante (contesto) $C$ che va in esecuzione per un tempo $t$ ha una probabilit\`a di distinguere questi due processi al massimo $p(t)$.
 Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui le seguenti:
 \begin{enumerate}
- \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_p^{'} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{''} $}
- \item \emph{Se $Q$ esegue un evento $e$ con probabilit\`a al massimo $p$ e $Q \approx_p Q^{'}$ allora $Q^{'}$ esegue l'evento $e$ con probabilit\`a al massimo $p+p^{'}$}
- \item \emph{Se $Q \approx_p Q^{'}$ e $C$ si esegue in tempo $t_C$ allora $C[Q] \approx_p^{'} C[Q^{'}]$ dove $p'(t)=p(t+t_C)$}
+ \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_{p^{'}} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{''} $}
+ \item \emph{Se $Q$ esegue un evento $\texttt{e}$ con probabilit\`a al massimo $p$ e $Q \approx_p Q^{'}$ allora $Q^{'}$ esegue l'evento $\texttt{e}$ con probabilit\`a al massimo $p+p^{'}$}
+ \item \emph{Se $Q \approx_p Q^{'}$ e $C$ si esegue in tempo $t_C$ allora $C[Q] \approx_{p^{'}} C[Q^{'}]$ dove $p'(t)=p(t+t_C)$}
 \end{enumerate}
 
 Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
