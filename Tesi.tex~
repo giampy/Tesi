@@ -609,23 +609,38 @@ Se diverse condizioni vengono verificate e quindi c'\`e la possibilit\`a che deb
 ne sceglie uno casualmente ed esegue quello.
 
 
-\section{Tecnica di dimostrazione}
+\section{La Tecnica di Dimostrazione}
 Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di game. Infatti CryptoVerif parte da un game iniziale fornito dall'utente e mediante equivalenze, che possono o meno
 introdurre differenze, cerca di modificare un game in un altro fino ad arrivare ad un game finale che soddisfi le richieste fatte dall'utente. Questa tecnica \`e basata innanzi tutto su una 
-particolare relazione di cui a breve si dar\`a una definizione. Prima di darla un po' di notazione. \\
+particolare relazione di cui a breve si dar\`a una definizione. Prima di darla per\`o, si spieger\`a un po' di notazione necessaria a comprendere la
+definizione della relazione d'equivalenza che si dar\`a. \\Di solito indicheremo con la lettera $t$ dei tempi d'esecuzione di processi. Con i simboli $C[\cdot]$ e $C^{'}[\cdot]$ dei contesti.
+Un contesto \`e un processo con un $buco$, ovvero un processo che prende come argomento un altro processo e viene eseguito in parallelo a questo. Di solito un contesto \`e un attaccante che cerca di distinguere un processo che 
+gli viene passato in input. Sia $C[\cdot]$ un contesto e siano $Q$ e $Q^{'}$ dei processi, allora $C$ distingue i due processi se $C[Q]$ (ovvero $C|Q$) osserva un comportamento diverso da $C[Q^{'}]$.
+Infatti se quando $C$ interagisce con il processo $Q$ osserva un comportamento diverso da quello che osserva quando interagisce con $Q^{'}$ allora $C$ pu\`o effettivamente distinguere i due processi.
+Se $a$ \`e una qualsiasia stringa (supponiamo binaria per semplicit\`a) $C$ \`e un contesto e $Q$ un processo, allora con la notazione $Pr[C[Q] \rightsquigarrow a]$ si intende la probabilit\`a
+che il contesto (ovvero l'osservatore) $C$ riesca ad osservare $a$ come output di $Q$.
+\newpage
 \begin{definizione}[Equivalenza Osservazionale relativa alla probabilit\`a $p$]
 Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C$
 \end{definizione}
+Grazie 
+Si pu\`o dire che questa reazione \`e un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che corrisponda all'indistinguibilit\`a del modello computazionale.
+Se due processi sono legati da questa relazione d'equivalenza allora sono equivalenti a meno di una certa probabilit\`a.
 Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui le seguenti:
 \begin{enumerate}
- \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_p^{'} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{'} $}
- \item \emph{Se Q esegue un evento $e$ con probabilit\`a al massimo $p$ e $Q \approx_p Q^{'}$ allora $Q^{'}$ esegue l'evento $e$ con probabilit\`a al massimo $p+p^{'}$}
+ \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_p^{'} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{''} $}
+ \item \emph{Se $Q$ esegue un evento $e$ con probabilit\`a al massimo $p$ e $Q \approx_p Q^{'}$ allora $Q^{'}$ esegue l'evento $e$ con probabilit\`a al massimo $p+p^{'}$}
+ \item \emph{Se $Q \approx_p Q^{'}$ e $C$ si esegue in tempo $t_C$ allora $C[Q] \approx_p^{'} C[Q^{'}]$ dove $p'(t)=p(t+t_C)$}
 \end{enumerate}
 
 Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
 osservazionalmente equivalenti fra loro: $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_f} G_f $; data questa sequenza, attraverso le propriet\`a 1 e 2, conclude che
-$G_0  \approx_{\sum_{p=1}^{f}} G_f $.
-
+$G_0  \approx_{\sum_{p=1}^{f}} G_f $.\\
+Come \`e stato detto le regole di trasformazione da un game ad un altro sono date mediante un'equivalenz. Dato un game $G$, per utilizzare un generica regola di trasformazione  $L \approx_p R$,
+CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente apportando delle modifiche sintattiche al game $G$, costruisce inoltre un game $G^{'}$
+tale che $G^{'} \approx_0 C[R]$. Adesso CryptoVerif grazie alla propriet\`a 3 pu\`o dedurre che $G \approx_p G^{'}$. Con questa tecnica CryptoVerif riesce spesso a costruire catene
+di game che permettono di provare delle propriet\`a di alcuni protocolli.
+\newpage
 
 \section{Un Esempio: FDH}
 \emph{Full Domain Hash} \`e uno schema di firma che segue il paradigma \emph{hash-and-sign}\footnote{Questo paradigma vuole che: dato un messaggio $m$ se ne ritorni 
