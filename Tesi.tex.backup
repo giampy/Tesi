@@ -612,18 +612,25 @@ ne sceglie uno casualmente ed esegue quello.
 \section{La Tecnica di Dimostrazione}
 Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di game. Infatti CryptoVerif parte da un game iniziale fornito dall'utente e mediante equivalenze, che possono o meno
 introdurre differenze, cerca di modificare un game in un altro fino ad arrivare ad un game finale che soddisfi le richieste fatte dall'utente. Questa tecnica \`e basata innanzi tutto su una 
-particolare relazione di cui a breve si dar\`a una definizione. Prima di darla un po' di notazione. \\Di solito indicheremo con la lettera $t$ dei tempi d'esecuzione di processi. Con i simboli $C[\cdot]$ e $C^{'}[\cdot]$ dei contesti.
+particolare relazione di cui a breve si dar\`a una definizione. Prima di darla per\`o, si spieger\`a un po' di notazione necessaria a comprendere la
+definizione della relazione d'equivalenza che si dar\`a. \\Di solito indicheremo con la lettera $t$ dei tempi d'esecuzione di processi. Con i simboli $C[\cdot]$ e $C^{'}[\cdot]$ dei contesti.
 Un contesto \`e un processo con un $buco$, ovvero un processo che prende come argomento un altro processo e viene eseguito in parallelo a questo. Di solito un contesto \`e un attaccante che cerca di distinguere un processo che 
 gli viene passato in input. Sia $C[\cdot]$ un contesto e siano $Q$ e $Q^{'}$ dei processi, allora $C$ distingue i due processi se $C[Q]$ (ovvero $C|Q$) osserva un comportamento diverso da $C[Q^{'}]$.
 Infatti se quando $C$ interagisce con il processo $Q$ osserva un comportamento diverso da quello che osserva quando interagisce con $Q^{'}$ allora $C$ pu\`o effettivamente distinguere i due processi.
 Se $a$ \`e una qualsiasia stringa (supponiamo binaria per semplicit\`a) $C$ \`e un contesto e $Q$ un processo, allora con la notazione $Pr[C[Q] \rightsquigarrow a]$ si intende la probabilit\`a
-che il contesto (ovvero l'osservatore) $C$ riesca ad osservare $a$ come output di $Q$.
+che il contesto (ovvero l'osservatore) $C$ riesca ad osservare $a$ come output di $Q$. \\
+Se $Q$ \`e un processo e $\varepsilon$ \`e un evento allora con i simboli $Q \rightsquigarrow e$ indichiamo il fatto che $Q$ esegue l'evento $e$. 
+\newpage
 \begin{definizione}[Equivalenza Osservazionale relativa alla probabilit\`a $p$]
 Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C$
 \end{definizione}
+ 
+Si pu\`o dire che questa reazione \`e un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che corrisponda all'indistinguibilit\`a del modello computazionale.
+Se due processi sono legati da questa relazione d'equivalenza allora sono equivalenti a meno di una certa probabilit\`a nel senso che, qualsiasi attaccante (contesto) $C$ che si esegue per un tempo $t$
+ha una probabilit\`a di distinguere questi due processi al massimo $p(t)$.
 Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui le seguenti:
 \begin{enumerate}
- \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_p^{'} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{'} $}
+ \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_p^{'} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{''} $}
  \item \emph{Se $Q$ esegue un evento $e$ con probabilit\`a al massimo $p$ e $Q \approx_p Q^{'}$ allora $Q^{'}$ esegue l'evento $e$ con probabilit\`a al massimo $p+p^{'}$}
  \item \emph{Se $Q \approx_p Q^{'}$ e $C$ si esegue in tempo $t_C$ allora $C[Q] \approx_p^{'} C[Q^{'}]$ dove $p'(t)=p(t+t_C)$}
 \end{enumerate}

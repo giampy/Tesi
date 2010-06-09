@@ -618,14 +618,17 @@ Un contesto \`e un processo con un $buco$, ovvero un processo che prende come ar
 gli viene passato in input. Sia $C[\cdot]$ un contesto e siano $Q$ e $Q^{'}$ dei processi, allora $C$ distingue i due processi se $C[Q]$ (ovvero $C|Q$) osserva un comportamento diverso da $C[Q^{'}]$.
 Infatti se quando $C$ interagisce con il processo $Q$ osserva un comportamento diverso da quello che osserva quando interagisce con $Q^{'}$ allora $C$ pu\`o effettivamente distinguere i due processi.
 Se $a$ \`e una qualsiasia stringa (supponiamo binaria per semplicit\`a) $C$ \`e un contesto e $Q$ un processo, allora con la notazione $Pr[C[Q] \rightsquigarrow a]$ si intende la probabilit\`a
-che il contesto (ovvero l'osservatore) $C$ riesca ad osservare $a$ come output di $Q$.
+che il contesto (ovvero l'osservatore) $C$ riesca ad osservare $a$ come output di $Q$. \\
+Se $Q$ \`e un processo e $\varepsilon$ \`e una sequenza ordinata di eventi allora con i simboli $Q \rightsquigarrow \varepsilon$ si indica che $Q$ esegue la sequenza ordinata di eventi $\varepsilon$ . 
 \newpage
 \begin{definizione}[Equivalenza Osservazionale relativa alla probabilit\`a $p$]
-Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C$
+Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C, a, \varepsilon$
+$\lvert Pr[C[Q] \rightsquigarrow a] - Pr[C[Q^{'}]\rightsquigarrow a] \rvert \leq p(t)$ $\lvert \rvert \leq p(t)$ 
 \end{definizione}
-Grazie 
-Si pu\`o dire che questa reazione \`e un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che corrisponda all'indistinguibilit\`a del modello computazionale.
-Se due processi sono legati da questa relazione d'equivalenza allora sono equivalenti a meno di una certa probabilit\`a.
+ 
+Si pu\`o dire che questa relazione sia un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che corrisponda all'indistinguibilit\`a del modello computazionale 
+nel momento in cui la probabilit\`a che permette ai due processi di essere in relazione \`e trascurabile. Se due processi sono legati da questa relazione d'equivalenza allora sono equivalenti a meno di una certa probabilit\`a nel senso che, 
+qualsiasi attaccante (contesto) $C$ che si esegue per un tempo $t$ ha una probabilit\`a di distinguere questi due processi al massimo $p(t)$.
 Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui le seguenti:
 \begin{enumerate}
  \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_p^{'} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{''} $}
@@ -634,11 +637,12 @@ Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui l
 \end{enumerate}
 
 Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
-osservazionalmente equivalenti fra loro: $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_f} G_f $; data questa sequenza, attraverso le propriet\`a 1 e 2, conclude che
-$G_0  \approx_{\sum_{p=1}^{f}} G_f $.\\
-Come \`e stato detto le regole di trasformazione da un game ad un altro sono date mediante un'equivalenz. Dato un game $G$, per utilizzare un generica regola di trasformazione  $L \approx_p R$,
-CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente apportando delle modifiche sintattiche al game $G$, costruisce inoltre un game $G^{'}$
-tale che $G^{'} \approx_0 C[R]$. Adesso CryptoVerif grazie alla propriet\`a 3 pu\`o dedurre che $G \approx_p G^{'}$. Con questa tecnica CryptoVerif riesce spesso a costruire catene
+osservazionalmente equivalenti (secondo la definizione di cui prima) fra loro: $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_f} G_f $; data questa sequenza, 
+attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{p=1}^{f}} G_f $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
+$G_0$ da $G_f$.\\
+Come \`e stato spiegato precedentemente le regole di trasformazione da un game ad un altro sono date mediante delle equivalenza. 
+Dato un game $G$, per utilizzare una generica regola di trasformazione  $L \approx_p R$, CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente 
+apportando delle modifiche sintattiche al game $G$, costruisce inoltre un game $G^{'}$ tale che $G^{'} \approx_0 C[R]$. Adesso CryptoVerif grazie alla propriet\`a 3 pu\`o dedurre che $G \approx_p G^{'}$. Con questa tecnica CryptoVerif riesce spesso a costruire catene
 di game che permettono di provare delle propriet\`a di alcuni protocolli.
 \newpage
 
@@ -714,7 +718,7 @@ Il fatto che però qualcuno un giorno possa dimostrare che $P \neq NP$ non dimos
 Infatti una funzione one-way deve, come prima sottolineato, essere non invertibile in modo efficiente, sempre e non solo nel \emph{caso pessimo}. \\ 
 Siamo ora pronti per vedere come il concetto di funzione one-way venga modellato in CryptoVerif.
 Si tratta di dare una definzione di one-wayness per mezzo di un'equivalenza fra games.\\La definizione \`e la seguente:
-\newpage
+
 \begin{verbatim}
 equiv 
        foreach iK <= nK do r <-R seed; (
