@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  9 JUN 2010 23:38
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.5.28)  10 JUN 2010 11:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -512,72 +512,72 @@ Capitolo 3.
 [35
 
 ] [36] [37]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 966--966
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 897--897
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 975--975
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 906--906
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 [38]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 1002--1002
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 933--933
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 1011--1011
-[]\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
-(r))[] 
- []
-
-
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 1038--1038
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 942--942
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 [39]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 1047--1047
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 969--969
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 
-Overfull \hbox (283.07533pt too wide) in paragraph at lines 1070--1070
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 978--978
+[]\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
+(r))[] 
+ []
+
+
+Overfull \hbox (283.07533pt too wide) in paragraph at lines 1001--1001
 []\OT1/cmtt/m/n/12 equiv foreach i1_3 <= n1 do r <-R np1bits; b' <-R bool; b'' 
 <-R bool; OGet() := return(concatnp2(r, b'', b'))[] 
  []
 
 [40]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 1095--1095
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 1026--1026
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 [41] [42]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 1164--1164
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 1095--1095
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
 [43]
-Overfull \hbox (5.2002pt too wide) in paragraph at lines 1225--1225
+Overfull \hbox (5.2002pt too wide) in paragraph at lines 1156--1156
 []\OT1/cmtt/m/n/12 equiv foreach i1_9 <= n1 do r <-R nbits; OGet() := return(G'
 (r))[] 
  []
 
-
-Overfull \hbox (283.07533pt too wide) in paragraph at lines 1240--1240
+[44]
+Overfull \hbox (283.07533pt too wide) in paragraph at lines 1171--1171
 []\OT1/cmtt/m/n/12 equiv foreach i1_3 <= n1 do r <-R np1bits; b' <-R bool; b'' 
 <-R bool; OGet() := return(concatnp2(r, b'', b'))[] 
  []
 
-[44] [45] [46
+[45] [46
 
 ]
 Capitolo 4.
@@ -599,4 +599,4 @@ Here is how much of TeX's memory you used:
  60 hyphenation exceptions out of 8191
  38i,14n,43p,416b,638s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (50 pages, 180948 bytes).
+Output written on Tesi.dvi (50 pages, 181012 bytes).

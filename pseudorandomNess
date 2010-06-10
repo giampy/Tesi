@@ -1,13 +1,11 @@
 type nbits [fixed].     (* stringhe di lunghezza  n *)
 type np1bits [fixed].   (* stringhe di lunghezza  n+1 *)
 type np2bits [fixed].   (* stringhe di lunghezza  n+2 *)
-type np3bits [fixed].   (* stringhe di lunghezza  n+2 *)
+
 param n1.
 
 (* La concatenazione di una stringa random di n+1 bits e un bit random è una stringa random di n+2 bits. *)
 fun concatnp1(np1bits,bool):np2bits.
-(* La concatenazione di una stringa random di n+2 bits e un bit random è una stringa random di n+3 bits. *)
-fun concatnp2(np1bits,bool, bool):np3bits.
 
 (* La concatenzione di stringhe random è una stringa random*)
 equiv 
@@ -19,17 +17,6 @@ equiv
      foreach i1 <=n1 do
             w <-R np2bits;
             OGet():=return(w).
-
-equiv
-	foreach i1<=n1 do
-			r<-R np1bits;
-			b'<-R bool;
-			b''<-R bool;
-			OGet():=return(concatnp2(r, b'', b'))
-	<=(0)=>
-	foreach i1<=n1 do
-			w<-R np3bits;
-			OGet():=return(w).
 
 (* Estrae i primi n bits da una stringa di n+1 bits *)
 fun getn(np1bits):nbits.
@@ -43,23 +30,9 @@ equiv
        <=(0)=>
       foreach i1 <=n1 do
               (
-              OGetn():= w <-R nbits;return(w) |
-              OGetlast():=wl <-R bool;return(wl)
+              OGetn():= x <-R nbits;return(x) |
+              OGetlast():= xl <-R bool;return(xl)
               ).
-fun getn1(np2bits):nbits.
-fun getlast1(np2bits):bool.
-(* Se x è un numero random allora getn1(n) e getlast(x) sono numeri random *)
-equiv 
-      foreach i1<=n1 do
-            r <-R np2bits;(
-		    OGetn():=return (getn1(r)) |
-            OGetlast():=return (getlast1(r)))
-      <=(0)=>
-     foreach i1 <=n1 do
-             (
-             OGetn():= w <-R nbits;return(w) |
-	     	 OGetlast():=wl <-R bool;return(wl)
-	     	 ).
 proba POW.
 (* Generatore pseudorandom con fattore n+1 *)
 fun G'(nbits): np1bits.
@@ -69,11 +42,10 @@ equiv
             	OGet():=return (G'(r))
       <=(POW)=> (* To define *)
      foreach i1 <=n1 do
-              	w <-R np1bits;
-              	OGet():=return(w).
+              	x <-R np1bits;
+              	OGet():=return(x).
 
-query secret1 w3.
-
+query secret1 w.
 
 process
         O():=
@@ -81,10 +53,7 @@ process
              let x' = G'(r) in
              let y' = getn(x') in
              let b' = getlast(x') in
-    	     let x''=G'(y') in
-             let y''=getn(x'') in
-	     	 let b''=getlast(x'') in
-             w3:np3bits <-concatnp2(G'(y''), b'', b');
+             w:np2bits <-concatnp1(G'(y'), b');
 return
 
 

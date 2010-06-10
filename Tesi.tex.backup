@@ -53,7 +53,7 @@
 Negli anni anni '80 la crittografia ha cessato di essere un' arte per assurgere allo stato di scienza. \\Come scienza, la crittografia moderna
 si propone innanzi tutto di fornire definizioni rigorose dei concetti con cui ha a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
 su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\
-Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) \emph{incondizionatamente} provare dei risultati, la maggior parte delle prove di teoremi, nel campo 
+Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) provare \emph{incondizionatamente} dei risultati, la maggior parte delle prove di teoremi, nel campo 
 della crittografia moderna, sono basate su assunzioni che non sono ancora certe, ma che sono comunque ben formalizzate e inequivocabilmente descritte.\\La pi\`u importante \`e sicuramente
 l'ipotesi dell'esistenza di funzioni \emph{one-way}. Tutte le prove che sono basate su assunzioni non verificate sono sempre e comunque valide, sia che le assunzioni fatte vengano dimostrate,
 sia che vengano confutate; questo perch\'e ogni dimostrazione \`e del tipo: \emph{Se X allora Y} (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
@@ -368,7 +368,8 @@ da poter leggere il capitolo successivo con le conoscenze necessarie.
 Alla fine del capitolo verr\`a descritta brevemente l'implementazione dello schema di firma FDH nel linguaggio di CryptoVerif.
 \newpage
 \section{La Sintassi}
-Un tipico file di input per CryptoVerif ha la seguente forma: $\texttt{}$.
+Un tipico file di input per CryptoVerif ha la seguente forma: \\
+\verb!<declaration>!$^{*}$\verb! process <odef>!.
                                                        
 Si cercher\`a di fornire maggiori spiegazioni senza per\`o, per ora, entrare troppo nel dettaglio.
 Una dichiarazione (declaration) serve a CryptoVerif per avere delle informazioni su come comportarsi nella dimostrazione; 
@@ -623,26 +624,26 @@ Infatti se quando $C$ interagisce con il processo $Q$ osserva un comportamento d
 Se $a$ \`e una qualsiasia stringa (supponiamo binaria per semplicit\`a) e $Q$ un processo, allora con la notazione $Pr[Q \rightsquigarrow a]$ si intende la probabilit\`a
 che $Q$ abbia $a$ come output. \\
 Se $Q$ \`e un processo e $\varepsilon$ \`e una sequenza ordinata di eventi allora con i simboli $Pr[Q \rightsquigarrow \varepsilon]$ si indica la probabilit\`a che $Q$ esegua la sequenza ordinata di eventi $\varepsilon$ . 
-\newpage
 \begin{definizione}[Equivalenza Osservazionale Relativa alla Probabilit\`a $p$]
 Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C, a, \varepsilon$
 $\lvert Pr[C[Q] \rightsquigarrow a] - Pr[C[Q^{'}]\rightsquigarrow a] \rvert \leq p(t)$ $\lvert Pr[C[Q] \rightsquigarrow \varepsilon] -  Pr[C[Q^{'}] \rightsquigarrow \varepsilon]\rvert \leq p(t)$ 
 \end{definizione}
- 
+Questa definizione vuole catturare il concetto che due processi sono equivalenti a meno di una probabilit\`a $p$ se nessun avversario che ha tempo di esecuzione $t$ riesce
+a distinguerli con una probabilit\`a, funzione di $t$, maggiore di $p(t)$. Intendendo con quella scrittura che la probabilit\`a \`e funzione del tempo d'esecuzione di chi cerca di distinguere. 
 Si pu\`o dire che questa relazione sia un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che questa corrisponda all'indistinguibilit\`a del modello computazionale 
 (questo nel momento in cui la probabilit\`a che permette ai due processi di essere in relazione \`e trascurabile). Se due processi sono legati da questa relazione d'equivalenza allora sono equivalenti a meno di una certa probabilit\`a nel senso che, 
 qualsiasi attaccante (contesto) $C$ che va in esecuzione per un tempo $t$ ha una probabilit\`a di distinguere questi due processi al massimo $p(t)$.
 Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui le seguenti:
 \begin{enumerate}
- \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_p^{'} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{''} $}
- \item \emph{Se $Q$ esegue un evento $e$ con probabilit\`a al massimo $p$ e $Q \approx_p Q^{'}$ allora $Q^{'}$ esegue l'evento $e$ con probabilit\`a al massimo $p+p^{'}$}
- \item \emph{Se $Q \approx_p Q^{'}$ e $C$ si esegue in tempo $t_C$ allora $C[Q] \approx_p^{'} C[Q^{'}]$ dove $p'(t)=p(t+t_C)$}
+ \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_{p^{'}} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{''} $}
+ \item \emph{Se $Q$ esegue un evento $\texttt{e}$ con probabilit\`a al massimo $p$ e $Q \approx_p Q^{'}$ allora $Q^{'}$ esegue l'evento $\texttt{e}$ con probabilit\`a al massimo $p+p^{'}$}
+ \item \emph{Se $Q \approx_p Q^{'}$ e $C$ si esegue in tempo $t_C$ allora $C[Q] \approx_{p^{'}} C[Q^{'}]$ dove $p'(t)=p(t+t_C)$}
 \end{enumerate}
 
 Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
-osservazionalmente equivalenti (secondo la definizione di cui prima) fra loro: $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_f} G_f $; data questa sequenza, 
-attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{p=1}^{f}} G_f $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
-$G_0$ da $G_f$. Ora se in $G_f$ non esiste la possibilit\`a che un evento negativo possa accadere (grazie alle trasformazioni precedenti) visto che  $G_0$ si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.\\
+osservazionalmente equivalenti (secondo la definizione di cui prima) fra loro: $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_n} G_{p_{n}} $; data questa sequenza, 
+attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{p=p_1}^{p_n}} G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
+$G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{p=p_1}^{p_n}} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.\\
 Come \`e stato spiegato precedentemente le regole di trasformazione da un game ad un altro sono date mediante delle equivalenze. 
 Dato un game $G$, per utilizzare una generica regola di trasformazione  $L \approx_p R$, CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente 
 apportando delle modifiche sintattiche al game $G$, costruisce inoltre un game $G^{'}$ tale che $G^{'} \approx_0 C[R]$. Adesso CryptoVerif grazie alla propriet\`a 3 pu\`o dedurre che $G \approx_p G^{'}$. Con questa tecnica CryptoVerif riesce a costruire catene
@@ -803,22 +804,16 @@ forall k:skey, x:D, x':D; (invf(k,x) = invf(k,x')) = (x = x').
 forall k:pkey, x:D, x':D; (f(k,x) = f(k,x')) = (x = x').
 forall k:pkey, x:D, x':D; (f'(k,x) = f'(k,x')) = (x = x).
 \end{verbatim}\\
-modellano l'iniettivit\`a delle funzioni $\texttt{invf}$, \verb!f'!, $\texttt{f}$\footnote{Non serve ai fini della dimostrazione modellare l'iniettivit\`a della funzione invf{'}}.
+modellano l'iniettivit\`a delle funzioni $\texttt{invf}$, \verb!f'!, $\texttt{f}$\footnote{Non serve ai fini della dimostrazione modellare l'iniettivit\`a della funzione invf'. }.
 Nell'appendice A si pu\`o trovare l'input completo, mentre in \cite{BlanchetPointchevalCrypto06} possiamo trovare una spiegazione delle fasi 
 pi\`u importanti dell'output di CryptoVerif e infine in \cite{fdhall} troviamo l'ouput completo di CryptoVerif sull'input descritto precedentemente.
 
-
-
-
-
-
-
-
 \chapter{Risultati Raggiunti}
-Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un risultato classico della crittografia computazionale.
+Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un caso particolare di un risultato classico della crittografia computazionale.
 Dopo un'attenta analisi si \`e giunti alla conclusione che, a causa dell'insufficiente sistema di tipi di CryptoVerif, non sarebbe stato
 possibile mediante questo dimostrare il risultato nella sua generalit\`a; ecco quindi che si \`e scelto di utilizzare il tool
-per dimostrare una caso particolare del teorema.
+per dimostrare un caso particolare del teorema. La dimostrazione proceder\`a utilizzando CryptoVerif per dimostrare il caso base e il caso induttivo
+di una una prova che sar\`a in generale di tipo induttivo.
 \section{Teorema}
 Il risultato nella sua generalit\`a \`e il seguente teorema:
 \begin{teorema}
@@ -827,16 +822,24 @@ d'espansione $l^{'}(n)=n+1$ allora per ogni polinomio $p(n)$ (tale che $\forall 
 esiste un generatore pseudocasuale $G$ con coefficiente d'espansione $l(n)=p(n)$.
 \end{teorema}
 
-Si pu\`o trovare una dimostrazione \emph{classica} di questo teorema in \cite{1206501}. La dimostrazione classica procede....
+Si pu\`o trovare una dimostrazione \emph{classica}\footnote{Per classica qui si intende che 
+il linguaggio con cui \`e espressa la dimostrazione non \`e formalizzato, ovvero \`e in inglese.} di questo teorema in \cite{1206501}. La dimostrazione classica \`e di tipo costruttivo e procede in modo iterativo.
+La costruzione procede nel partire da un seme casuale $r$ di lunghezza $n$ e applicando a  questo il generatore pseudocasuale $\hat{G}$. $\hat{G}(r)$ sar\`a una stringa pseudocasuale di $n+1$ bit,
+di questi uno andr\`a a costituire parte dell'output finale mentre gli altri $n$ fungeranno da seme per una successiva applicazione di $\hat{G}$. \`E lecito utilizzare $n$ bit dell'output di
+$\hat{G}$ come successivo input di questo perch\`e il risultato di $\hat{G}$ \`e una stringa pseudocasuale \footnote{E quindi anche una sua parte \`e pseudocasuale.} e quindi sostituibile ad una stringa casuale.
 
-Si \`e invece provato il risultato con CryptoVerif per un numero $p(n)$ che \`e una costante. In particolare mediante CryptoVerif si \`e provato
+
+
+Si \`e invece provato il risultato con CryptoVerif per un numero $p^{'}(n)$ che \`e una costante. In particolare mediante CryptoVerif si \`e provato
 che:
 \begin{teorema}
 Se esiste un generatore pseudocasuale $G^{'}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ 
-con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni costante $k$ esiste un generatore 
+con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni costante $k > 1$ esiste un generatore 
 pseudocasuale $G$ con coefficiente d'espansione $l(n)=n+k$
 \end{teorema}
 
+Dimostrare automaticamente questo risultato $\forall k > 1$ richiede di utilizzare sia CryptoVerif che un procedimento induttivo. In particolare si \`e proceduto dimostrando il caso
+base ovvero per $k=2$ mediante CryptoVerif poi si \`e dimostrato che CryptoVerif riesce a dimostrare il risultato per $k=i+1$ assumendo che sia riuscito a dimostrarlo per $k=i$. 
 
 
 \newpage
