@@ -34,20 +34,30 @@ ReadWrite=true
 
 [item:Tesi.tex]
 archive=true
-column=17
+column=42
 encoding=UTF-8
 highlight=LaTeX
-line=821
+line=857
 mode=LaTeX
 open=true
 order=0
 
+[item:frontespizio.tex]
+archive=true
+column=6
+encoding=UTF-8
+highlight=LaTeX
+line=30
+mode=LaTeX
+open=false
+order=-1
+
 [item:myrefs.bib]
 archive=true
-column=0
+column=33
 encoding=UTF-8
 highlight=BibTeX
-line=0
+line=91
 mode=BibTeX
 open=false
 order=1
@@ -63,8 +73,12 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Tesi.tex]
-CursorColumn=17
-CursorLine=821
+CursorColumn=42
+CursorLine=857
+
+[view-settings,view=0,item:frontespizio.tex]
+CursorColumn=6
+CursorLine=30
 
 [view-settings,view=0,item:myrefs.bib]
 CursorColumn=33
