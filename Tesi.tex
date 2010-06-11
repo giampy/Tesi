@@ -372,35 +372,35 @@ Un tipico file di input per CryptoVerif ha la seguente forma: \\
 \verb!<declaration>!$^{*}$\verb! process <odef>!.
                                                        
 Si cercher\`a di fornire maggiori spiegazioni senza per\`o, per ora, entrare troppo nel dettaglio.
-Una dichiarazione (declaration) serve a CryptoVerif per avere delle informazioni su come comportarsi nella dimostrazione; 
+Una dichiarazione (declaration) fornisce CryptoVerif delle informazioni su come comportarsi nella dimostrazione; 
 spesso \`e la descrizione di una primitiva crittografica che CryptoVerif pu\`o assumere come vera per costruire le sue prove.
 In generale una dichiarazione pu\`o essere:
 \begin{description}
- \item{\emph{Simbolo funzionale}.} La dichiarazione di una funzione si d\`a insieme ai tipi dei parametri in input (se ce ne sono) e il tipo del valore di ritorno. Per esempio, con il seguente frammento codice:\\
+ \item{\emph{Simbolo funzionale}.} La dichiarazione di una funzione si d\`a insieme ai tipi dei parametri in input (se ce ne sono) e il tipo del valore di ritorno. Per esempio, con il seguente frammento di codice:\\
 				      \begin{verbatim}
 				       fun kgen(keyseed):key.
 				      \end{verbatim}	   
 si dichiara una funzione \verb!kgen: keyseed!$\rightarrow$ \verb!key!. Intuitivamente il simbolo $\texttt{kgen}$ rappresenta una funzione per generare chiavi crittografiche a partire semi casuali.
  \item{\emph{Tipo}.} L'utente pu\`o definire dei propri tipi i cui valori saranno trattati come stringhe di bit.
-	    Ovvero i valori dei tipi sono sempre dei sottoinsiemi di $\{0, 1\}^*$. Per esempio, con il seguente codice:
+	    Ovvero i valori dei tipi sono sempre dei sottoinsiemi di $\{0, 1\}^*$. Per esempio, con il seguente frammento di codice:
   				      \begin{verbatim}
 				       type keyseed[fixed].
 				      \end{verbatim}
-si dichiara un nuovo tipo $\texttt{keyseed}$. La parola chiave $\texttt{fixed}$ serve per informare CryptoVerif che deve essere possibile estrarre valori casuali da quell'insieme.
+si dichiara un nuovo tipo $\texttt{keyseed}$. La parola chiave $\texttt{fixed}$ serve ad informare CryptoVerif che \`e possibile estrarre valori casuali da quell'insieme.
 Un'altra opzione molto utilizzata \`e $\texttt{large}$. Un tipo dichiarato come $\texttt{large}$ gode della propriet\`a che, scegliendo casualmente due valori dal dominio del tipo, la probabilit\`a di ottenere
-due valori identici \`e trascurabile.
+due valori identici \`e bassa.
  \item{\emph{Propriet\`a}.} \`E possibile modellare alcune propriet\`a dei simboli di funzione che si specificano, come per esempio l'iniettivit\`a oppure la monotonia. Per esempio, con il seguente frammento di codice:
     				      \begin{verbatim}
 				    forall x, y: myType; (f(x) = f(y)) = (y = x).
 				      \end{verbatim}
 definiamo l'iniettivit\`a della funzione $\texttt{f}$. Infatti possiamo sostituire il membro a sinistra dell'equazione con quello di destra solo se la funzione \`e $\texttt{f}$ iniettiva.
  \item{\emph{Regola di Riscrittura}.} La dichiarazione di una regola di riscrittura consiste in una coppia di espressioni. Ogni qualvolta CrytptoVerif incontra la prima
-			      pu\`o decidere di sostituirla con la seconda. Per esempio, con il seguente frammento codice:
+			      pu\`o decidere di sostituirla con la seconda. Per esempio, con il seguente frammento di codice:
       				      \begin{verbatim}
 				      not(not(true))=false.
 				      not(not(false))=true.
 				      \end{verbatim}
-informiamo CryptoVerif che ogni qualvolta incontra una doppia negazione del valore $\texttt{true}$ pu\`o sostituirlo con il valore false, e viceversa. 
+informiamo CryptoVerif che ogni qualvolta incontra una doppia negazione del valore $\texttt{true}$ pu\`o sostituirlo con il valore $\texttt{false}$, e viceversa. 
 Si badi: se si dessero, invece delle precedenti, queste regole di riscrittura:
 				      \begin{verbatim}
 				      false=not(not(true)).
@@ -409,17 +409,17 @@ Si badi: se si dessero, invece delle precedenti, queste regole di riscrittura:
 si andrebbe incontro ad un probabile loop infinito durante la fase di elaborazione di CryptoVerif. Infatti nel momento in cui il tool riconoscesse nel codice il valore $\texttt{true}$, 
 procederebbe con una riscrittura di questo nel frammento $\texttt{not(not(false))}$ il quale a sua volta sarebbe riscritto in $\texttt{not(not(not(not(true))))}$ e cosi via senza poter mai terminare.
  \item{\emph{Probabilit\`a}.} In CryptoVerif \`e possibile dichiarare delle probabilit\`a. Le probabilit\`a non solo possono essere trattate come \emph{oggetti} (numeri) 
-		      a se stanti, ovvero come dei valori statici, ma possono anche essere utilizzate come funzioni di altri argomenti. Con il seguente codice:
+		      a se stanti, ovvero come dei valori statici, ma possono anche essere utilizzate come funzioni di altri argomenti. Con il seguente codice frammento:
 				      \begin{verbatim}
 				      proba POW.
 				      \end{verbatim}
 si dichiara una probabilit\`a $\texttt{POW}$. 
- \item{\emph{Costante}.} Dichiarando una costante $\texttt{k}$ si comunica a CryptoVerif che quel dato, una volta inizializzato, non potr\`a cambiare di valore durante l'esecuzione del protocollo. Per esempio, con il seguente codice:
+ \item{\emph{Costante}.} Dichiarando una costante $\texttt{k}$ si comunica a CryptoVerif che quel dato, una volta inizializzato, non potr\`a cambiare di valore durante l'esecuzione del protocollo. Per esempio, con il seguente codice frammento:
 				      \begin{verbatim}
 				      const mark:bitstring.
 				      \end{verbatim}
 	Si dichiara una costante chiamata $\texttt{mark}$ di tipo $\texttt{bitstring}$.
- \item{\emph{Evento}.} Un evento permette di rappresentare alcune particolari situazioni nel flusso d'esecuzione di un protocollo. 
+ \item{\emph{Evento}.} Un evento permette di rappresentare alcune particolari situazioni nel flusso d'esecuzione del protocollo in esame. 
 		Per esempio: si potrebbe
 		pensare di dichiarare un evento \emph{forge} da \emph{sollevare} nel momento in cui un avversario riesca a \emph{forgiare} una firma
 		valida per un messaggio mediante il seguente frammento di codice:
@@ -437,7 +437,7 @@ si dichiara una probabilit\`a $\texttt{POW}$.
 nel ramo else viene sollevato l'evento forge. Infatti, come sar\`a meglio spiegato nel paragrafo relativo all'esempio FDH, il ramo else rappresenta la situazione in cui un avversario ha fornito
 una coppia $\texttt{(m,} $ $\sigma \texttt{)}$ tale che $\sigma$ \`e una firma valida per il messaggio $\texttt{m}$ e nessun oracolo ha mai rilasciato tale firma.
  \item{\emph{Equivalenza}.} La dichiarazione di un'equivalenza fra game permette di dare a CryptoVerif una regola di riscrittura che pu\`o valere
-		    a meno di una certa probabilit\`a. Affermando che un game \`e equivalente ad un altro a meno di una certa probabilit\`a, 
+		    a meno di una certa probabilit\`a (eventualmente nulla). Affermando che un game \`e equivalente ad un altro a meno di una certa probabilit\`a, 
 		    si d\`a la possibilit\`a al tool di sostituire espressioni che compaiono nel primo game con le equivalenti che compaiono nel secondo, 
 tenendo comunque conto della probabilit\`a in gioco.
 Per esempio, con il seguente frammento di codice:
@@ -460,7 +460,7 @@ equiv
               )
           )
  \end{verbatim}
-si definisce un'equivalenza fra game che permette di definire la funzione $\texttt{invf}$ come l'inversa di $\texttt{f}$. Poich\'e quest'affermazione non vale a meno di una probabilit\`a, ma \`e vera sempre,
+si definisce un'equivalenza fra game che permette di definire la funzione $\texttt{invf}$ come l'inversa di $\texttt{f}$. Poich\'e quest'equivalenza deve valere sempre e a meno di una probabilit\`a,
 la quantit\`a tra parentesi \`e zero (fra i due game). Si possono per\`o specificare, come si vedr\`a successivamente, delle equivalenze fra game che valgono a meno di una certa probabilit\`a diversa da 0.
  \item{\emph{Parametro}.} Un parametro (di cui si sa solo che assumer\`a valori polinomiali nel parametro di sicurezza) pu\`o essere utilizzato per vari scopi.
 		  Il pi\`u importante \`e sicuramente effettuare lookup in array che contengono un numero di oggetti pari al parametro.
@@ -470,7 +470,7 @@ param qS.
 \end{verbatim}
 si dichiara un parametro $\texttt{qS}$ di cui sappiamo che assumer\`a valori polinomiali nel parametro di sicurezza.	    
  \item{\emph{Oracolo}.} \`E possibile dichiarare oracoli aggiuntivi che successivamente possono essere richiamati durante l'esecuzione
-			  del protocollo crittografico. Un oracolo\footnote{Il concetto di oracolo qui non ha molto a che fare con gli oracoli che spesso si trovano in altri ambiti dell'informatica.}, in CryptoVerif, non \`e altro che un processo che pu\`o prendere
+			  del protocollo crittografico. Un oracolo\footnote{Il concetto di oracolo qui non ha molto a che fare con gli oracoli che spesso si trattano in altri ambiti dell'informatica.}, in CryptoVerif, non \`e altro che un processo che pu\`o prendere
 			  dei dati in input e restituirne in output. Un oracolo pu\`o, nel suo corpo, effettuare dei calcoli i quali devono
 			  essere considerati invisibili per un ipotetico attaccante. Per esempio, con il seguente frammento di codice:
  \begin{verbatim}
@@ -481,7 +481,7 @@ si dichiara un parametro $\texttt{qS}$ di cui sappiamo che assumer\`a valori pol
  \end{verbatim}
 si dichiara un processo $\texttt{processS}$ che non \`e altro che la replicazione, limitata polinomialmente dal parametro $\texttt{qS}$, dell'oracolo $\texttt{OS}$, il cui corpo \`e un'istruzione che ritorna un valore.
  \item{\emph{Query}.} Mediante un'istruzione di query \`e possibile istruire il tool su cosa si vuole venga dimostrato. Si potrebbe infatti richiedere
-		    al tool di dimostrare l'indistinguibilit\`a di una variabile da un oggetto casuale, provandone cos\`i la pseudocasualit\`a.	Per esempio, con il seguente frammento codice:
+		    al tool di dimostrare l'indistinguibilit\`a di una variabile da un oggetto casuale, provandone cos\`i la pseudocasualit\`a.	Per esempio, con il seguente frammento di codice:
 \begin{verbatim}
  query secret1 x.
 \end{verbatim}
@@ -513,8 +513,9 @@ la composizione di oracoli.\\
         | foreach <ident> <= <ident> do <odef>
         | <ident> (seq <pattern> ) := <obody>
 \end{verbatim} 
+Dove $\texttt{seq <X>}$ \`e una qualsiasi sequenza finita di $\texttt{X}$.
 Si noti la terza produzione in cui si specifica che l'oracolo \emph{nullo} (ovvero quello che non fa nulla) \`e un oracolo valido all'interno del calcolo. O ancora, un oracolo pu\`o essere la composizione parallela di
-pi\`u oracoli o la replica limitata da un polinomio (mediante il $\texttt{foreach}$) di un altro oracolo. Il fatto che un oracolo possa essere composto in maniera sequenziale con un altro oracolo
+pi\`u oracoli o la replica limitata da un valore un polinomiale\footnote{Ovviamente polinomiale nel parametro di sicurezza.} (mediante il $\texttt{foreach}$) di un altro oracolo. Il fatto che un oracolo possa essere composto in maniera sequenziale con un altro oracolo
 verr\`a spiegato meglio a breve.
 
 
@@ -545,6 +546,7 @@ obody ::= <ident>
                     [else <obody> ]
           | return(seq <term> )[; <odef> ]
 \end{verbatim}
+Dove $\texttt{[M]}$ signifca che $\texttt{M}$ \`e opzionale.
 Si noti come, dopo un $\texttt{return}$, mediante il simbolo di sequenzializzazione (il simbolo ``;``), sia possibile definire un oracolo che verr\`a eseguito dopo quello precedente.
 \`E importante notare il costrutto $\texttt{let}$ con il quale \`e possibile cercare di decomporre il valore a destra del simbolo di uguaglianza in un pattern specificato e, 
 a seconda che questa decomposizione abbia o meno successo, \`e possibile richiamare un oracolo o un altro. 
@@ -587,8 +589,8 @@ successivamente si assegna alla variabile $\texttt{x}$ il valore resitutito dall
 che \`e il risultato della composizione in parallelo dei processi $\texttt{Z}$, $\texttt{X}$ e $\texttt{Y}$. 
 
 
-Un costrutto fondamentale del linguaggio implementato da CryptoVerif \`e il costrutto $\texttt{find}$\footnote{come si afferma anche in \cite{BlanchetPointchevalCrypto06} \`e probabilmente il maggior apporto 
-fornito da questo tool rispetto ad altri linguaggi che lavorano invece su liste} 
+Un costrutto fondamentale del linguaggio implementato da CryptoVerif \`e il costrutto $\texttt{find}$\footnote{Come si afferma anche in \cite{BlanchetPointchevalCrypto06} \`e probabilmente il maggior apporto 
+fornito da questo tool rispetto ad altri linguaggi che lavorano invece su liste.} 
 che permette di effettuare un lookup su un array alla ricerca di elementi che soddisfino particolari propriet\`a. Inoltre, permette di compiere azioni diverse a seconda che 
 questi elementi vengano trovati o meno. Un tipico esempio di utilizzo del costrutto $\texttt{find}$ pu\`o essere analizzato nel seguente frammento di codice:
 \begin{verbatim}
@@ -602,7 +604,7 @@ questi elementi vengano trovati o meno. Un tipico esempio di utilizzo del costru
 \end{verbatim}
 in questo frammento viene definito un processo $\texttt{processT}$ come un oracolo $\texttt{OT}$ che prende in input degli argomenti e che, quando viene chiamato, effettua un test; se questo \`e positivo esegue il ramo
 $\texttt{then}$ dell'$\texttt{if}$. Nel ramo $\texttt{then}$ viene effettuata una ricerca nell'array $\texttt{m}$ mediante il contatore $\texttt{i}$. Se viene trovato un $\texttt{i}$ tale per cui l'iesimo elemento dell'array $\texttt{m}$ \`e definito (ovvero gli \`e stato
-precedentemente assegnato un valore) e tale per cui l'iesimo elemento dell'array ha un valore uguale al valore fornito in input, allora viene eseguito il ramo $\texttt{then}$ del $\texttt{find}$ che \`e semplicemente
+precedentemente assegnato un valore) e tale per cui l'iesimo elemento dell'array ha un valore uguale a quello fornito in input, allora viene eseguito il ramo $\texttt{then}$ del $\texttt{find}$ che \`e semplicemente
 la terminazione dell'oracolo.
 Il costrutto $\texttt{find}$ permette anche la scansione di diversi array, ovvero si pu\`o effettuare una ricerca all'interno di diversi array cercando elementi che verifichino diverse condizioni.
 Se diverse condizioni vengono verificate e quindi c'\`e la possibilit\`a che debbano essere eseguiti diversi rami $\texttt{then}$ allora CryptoVerif 
@@ -613,13 +615,12 @@ ne sceglie uno casualmente ed esegue quello.
 Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di game.
 CryptoVerif parte da un game iniziale fornito dall'utente 
 (in cui un evento negativo pu\`o accadere\footnote{In questo contesto con evento non si intende necessariamento un oggetto 
-dichiarato con il costrutto $\texttt{event}$ ma una qualsiasi situazione non prevista dal protocollo.}) e mediante equivalenze, 
+dichiarato con il costrutto $\texttt{event}$ ma una qualsiasi situazione \emph{negativa} per il protocollo.}) e mediante equivalenze, 
 che possono o meno
 introdurre differenze, cerca di modificare un game in un altro fino ad arrivare ad un game finale che soddisfi le richieste fatte dall'utente. Questa tecnica \`e basata innanzi tutto su una 
-particolare relazione di cui a breve si dar\`a una definizione. Prima di darla per\`o, si spieger\`a un po' di notazione necessaria a comprendere la
-definizione della relazione d'equivalenza che si dar\`a. \\Di solito indicheremo con la lettera $t$ dei tempi d'esecuzione di processi. Con i simboli $C[\cdot]$ e $C^{'}[\cdot]$ dei contesti.
-Un contesto \`e un processo con un $buco$, ovvero un processo che prende come argomento un altro processo e va in esaecuzione in parallelo a questo. Di solito un contesto \`e un attaccante che cerca di distinguere un processo che 
-gli viene passato in input. Sia $C[\cdot]$ un contesto e siano $Q$ e $Q^{'}$ dei processi, allora $C$ distingue i due processi se $C[Q]$ (ovvero $C|Q$) osserva un comportamento diverso da $C[Q^{'}]$.
+particolare relazione di cui a breve si dar\`a una definizione. Prima di dare questa definizione \`e opportuno fornire un po' di notazione. \\Di solito indicheremo con la lettera $t$ dei tempi d'esecuzione di processi. Con i simboli $C[\cdot]$ e $C^{'}[\cdot]$ dei contesti.
+Un contesto \`e un processo con un $buco$, ovvero un processo che ha come argomento un altro processo e va in esecuzione in parallelo a questo. Di solito un contesto \`e un attaccante che cerca di distinguere un processo che 
+gli viene passato in input. Sia $C[\cdot]$ un contesto e siano $Q$ e $Q^{'}$ dei processi, allora $C$ distingue i due processi se $C[Q]$ (ovvero $C|Q$) ha un comportamento diverso da $C[Q^{'}]$.
 Infatti se quando $C$ interagisce con il processo $Q$ osserva un comportamento diverso da quello che osserva quando interagisce con $Q^{'}$ allora $C$ pu\`o effettivamente distinguere i due processi.
 Se $a$ \`e una qualsiasia stringa (supponiamo binaria per semplicit\`a) e $Q$ un processo, allora con la notazione $Pr[Q \rightsquigarrow a]$ si intende la probabilit\`a
 che $Q$ abbia $a$ come output. \\
@@ -641,10 +642,10 @@ Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui l
 \end{enumerate}
 
 Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
-osservazionalmente equivalenti (secondo la definizione di cui prima) fra loro: $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_n} G_{p_{n}} $; data questa sequenza, 
+osservazionalmente equivalenti (secondo la definizione di prima): $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_n} G_{p_{n}} $; data questa sequenza, 
 attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{p=p_1}^{p_n}} G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
-$G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{p=p_1}^{p_n}} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.\\
-Come \`e stato spiegato precedentemente le regole di trasformazione da un game ad un altro sono date mediante delle equivalenze. 
+$G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{p=p_1}^{p_n}} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.
+Questo limite \`e $\sum_{p=p_1}^{p_n}$.\\Come \`e stato spiegato precedentemente le regole di trasformazione da un game ad un altro sono date mediante delle equivalenze. 
 Dato un game $G$, per utilizzare una generica regola di trasformazione  $L \approx_p R$, CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente 
 apportando delle modifiche sintattiche al game $G$, costruisce inoltre un game $G^{'}$ tale che $G^{'} \approx_0 C[R]$. Adesso CryptoVerif grazie alla propriet\`a 3 pu\`o dedurre che $G \approx_p G^{'}$. Con questa tecnica CryptoVerif riesce a costruire catene
 di game che permettono di provare delle propriet\`a di alcuni protocolli.
