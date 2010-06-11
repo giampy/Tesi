@@ -45,7 +45,7 @@ equiv
               	x <-R np1bits;
               	OGet():=return(x).
 
-query secret1 w.
+query secret w.
 
 process
         O():=
@@ -54,6 +54,5 @@ process
              let y' = getn(x') in
              let b' = getlast(x') in
              w:np2bits <-concatnp1(G'(y'), b');
-return
-
+return()
 
