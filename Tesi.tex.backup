@@ -11,7 +11,7 @@
 \usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs 
 \usepackage{float}
 \author{Gian Pietro Farina}
-\hyphenation{li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pseudo-ca-sua-le sem-bre-reb-be}
+\hyphenation{li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che}
 \floatstyle{boxed} 
 \restylefloat{figure}
 \newtheorem{definizione}{Definizione}[chapter]
@@ -340,7 +340,8 @@ Ora, in generale, si procede effettuando delle modifiche al game $G_i$ ottenendo
 tale che $G_i$ e $G_{i+1}$ siano computazionalmente indistinguibili. Le modifiche che si effettuano fra un game e un altro devono introdurre delle differenze computazionalmente irrilevanti.
 Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in gioco nei game.
 Se, per esempio, in un game $G_i$ un processo ha a che fare con un variabile casuale, e nel game $G_{i+1}$ questa viene sostituita con una variabile che invece \`e pseudocasuale, non vengono introdotte
-modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due game non sono distinguibili se non con probabilit\`a trascurabile.
+modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due game non sono distinguibili se non con probabilit\`a trascurabile\footnote{In teoria si pu\`o ammettere anche un passaggio da game a game che valga
+con probabilit\`a $p$ non trascurabile, ovvio che poi si giunger\`a ad un game finale che sar\`a distinguibile da quello iniziale per una probabilit\`a non trascurabile di valore almeno $p$.}.
 Alla fine si arriva ad un game $G_f$ in cui \emph{l'evento} non pu\`o accadere. Se l'evento non pu\`o accadere, l'attaccante non ha possibilit\`a di vincere. 
 Se, quindi, nel game finale l'attaccante non ha possibilit\`a di vincere e il game finale
 \`e computazionalmente indistinguibile dal penultimo, questo lo \`e dal terzultimo e cos\`i via fino a $G_0$, allora
@@ -612,7 +613,8 @@ ne sceglie uno casualmente ed esegue quello.
 
 
 \section{La Tecnica di Dimostrazione}
-Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di game.
+Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di game. Queste sequenze di game per\`o differiscono fra loro
+di probabilit\`a che non sono trattate asintoticamente infatti come spiegato pi\`u avanti CryptoVerif si basa sul modello esatto e non asintotico.
 CryptoVerif parte da un game iniziale fornito dall'utente 
 (in cui un evento negativo pu\`o accadere\footnote{In questo contesto con evento non si intende necessariamento un oggetto 
 dichiarato con il costrutto $\texttt{event}$ ma una qualsiasi situazione \emph{negativa} per il protocollo.}) e mediante equivalenze, 
@@ -630,7 +632,7 @@ Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equ
 $\lvert Pr[C[Q] \rightsquigarrow a] - Pr[C[Q^{'}]\rightsquigarrow a] \rvert \leq p(t)$ $\lvert Pr[C[Q] \rightsquigarrow \varepsilon] -  Pr[C[Q^{'}] \rightsquigarrow \varepsilon]\rvert \leq p(t)$ 
 \end{definizione}
 Questa definizione vuole catturare il concetto che due processi sono equivalenti a meno di una probabilit\`a $p$ se nessun avversario che ha tempo di esecuzione $t$ riesce
-a distinguerli con una probabilit\`a, funzione di $t$, maggiore di $p(t)$. Intendendo con quella scrittura che la probabilit\`a \`e funzione del tempo d'esecuzione di chi cerca di distinguere. 
+a distinguerli con una probabilit\`a maggiore di $p(t)$. Intendendo con quella scrittura che la probabilit\`a \`e funzione del tempo d'esecuzione di chi cerca di distinguere. 
 Si pu\`o dire che questa relazione sia un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che questa corrisponda all'indistinguibilit\`a del modello computazionale 
 (questo nel momento in cui la probabilit\`a che permette ai due processi di essere in relazione \`e trascurabile). Se due processi sono legati da questa relazione d'equivalenza allora sono equivalenti a meno di una certa probabilit\`a nel senso che, 
 qualsiasi attaccante (contesto) $C$ che va in esecuzione per un tempo $t$ ha una probabilit\`a di distinguere questi due processi al massimo $p(t)$.
@@ -643,7 +645,7 @@ Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui l
 
 Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
 osservazionalmente equivalenti (secondo la definizione di prima): $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_n} G_{p_{n}} $; data questa sequenza, 
-attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{p=p_1}^{p_n}} G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
+attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{i=1}^{n}}{p_i} G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
 $G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{p=p_1}^{p_n}} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.
 Questo limite \`e $\sum_{p=p_1}^{p_n}$.\\Come \`e stato spiegato precedentemente le regole di trasformazione da un game ad un altro sono date mediante delle equivalenze. 
 Dato un game $G$, per utilizzare una generica regola di trasformazione  $L \approx_p R$, CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente 
