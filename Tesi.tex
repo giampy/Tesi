@@ -728,7 +728,7 @@ trascurabile.
 \`E importante affermare ci\`o perch\'e tutta la crittografia moderna \`e fondata sull'ipotesi che esistano le funzioni one-way.
 Si parla di ipotesi perch\'e non \`e stata ancora dimostrata l'esistenza di funzioni di questo genere\footnote{Questo non toglie
 che esistano funzioni che si avvicinino all'idea che abbiamo di funzioni one-way, per esempio le funzioni hash SHA1, o MD5 oppure una funzione
-f che prende in input due primi $p$ e $q$ in base binaria e ne restituisce il prodotto.}.
+$f$ che prende in input due primi $p$ e $q$ in base binaria e ne restituisce il prodotto.}.
 La dimostrazione dell'esistenza di funzioni one-way comporterebbe, tra l'altro, anche la risoluzione della famosa questione riguardo agli insiemi
 $P$ e $NP$\footnote{$P$ \`e l'insieme dei problemi risolvibili, nel caso pessimo, in un numero di passi polinomiale nell'input. $NP$ invece, \`e l'insieme dei problemi per cui dato un certo valore, 
 si pu\`o verificare in tempo polinomiale se questo \`e o meno soluzione del problema (ovvero \`e l'insieme dei problemi con certificazione polinomiale). 
@@ -846,8 +846,14 @@ $n$ fungeranno da seme per una successiva applicazione di $\hat{G}$.
 una stringa pseudocasuale\footnote{E quindi anche una sua parte \`e pseudocasuale.} e quindi utilizzabile come seme di $\hat{G}$ tanto quanto 
 lo \`e una stringa effettivamente casuale.
 La dimostrazione procede poi estendendo questa iterazione ad un numero polinomiale di volte e dimostrando attraverso una tecnica \emph{ibrida}
-che il risultato di questa iterazione \`e comunque pseudocasuale. La tecnica ibrida in questione consiste nel considerare p'(n) distribuzioni generate
-dall'output di un ipotetico algoritmo G in cui...\\ \\ \\ \\ 
+che il risultato di questa iterazione \`e comunque una stringa pseudocasuale. Quella ibrida \`e una tecnica molto utilizzate per provare l'indistinguibilit\`a di due distribuzioni statistiche ed \`e 
+la naturale applicazione del concetto di sequenza di game a distribuzioni statistiche.
+La tecnica ibrida definisce una serie di distribuzioni che si situano fra due distribuzioni \emph{estreme} che sono quelle che si vogliono dimostrare indistinguibili.
+In particolare le distribuzioni estreme della dimostrazione sono la distribuzione $H_0$ definita dai possibili valori di $G(r)$ con $r$ estratto casualmente da $\{0,1\}^n$ e $H_{p(n)-n}$ definita dai valori di $n$ con $n$ scelto
+casualmente da $\{0, 1\}^{p(n)}$. 
+Alla fine dei calcoli la dimostrazione prova che se ci fosse una differenza sensibile fra le distribuzioni estreme allora necessariamente dovrebbe anche esserci una differenza
+sensibile fra due distribuzioni vicine. E poich\`e questo sarebbe assurdo, perch\`e negherebbe che $\hat{G}$ \`e un generatore pseudocasuale, giunge al risultato desiderato, ovvero che
+le distribuzioni estreme sono indistinguibili che equivale a dire che $G$ \`e un generatore pseudocasuale.
 
 
 Il risultato provato in questo lavoro \`e, come gia detto, molto meno generale del teorema classico ed \`e enunciato nel seguente:
@@ -944,7 +950,7 @@ $\texttt{w}$ quindi \`e il risultato di un duplice utilizzo del generatore pseud
 non fa altro che dimostrare la pseducasualit\`a di questa.
 \newpage
 \subsection{I Game della Prova}
-Il seguente \`e il game iniziale in cui si sfrutta due volte il generatore pseudocasuale $\texttt{G'}$; 
+Il seguente \`e il game iniziale in cui si utilizza due volte il generatore pseudocasuale $\texttt{G'}$; 
 la prima applicandolo ad un seme casuale $\texttt{r}$ e la seconda applicandolo a parte dell'output di $\texttt{G'(r)}$.
 \begin{verbatim}
 Game 1 is

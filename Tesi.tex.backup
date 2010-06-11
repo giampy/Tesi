@@ -340,8 +340,10 @@ Ora, in generale, si procede effettuando delle modifiche al game $G_i$ ottenendo
 tale che $G_i$ e $G_{i+1}$ siano computazionalmente indistinguibili. Le modifiche che si effettuano fra un game e un altro devono introdurre delle differenze computazionalmente irrilevanti.
 Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in gioco nei game.
 Se, per esempio, in un game $G_i$ un processo ha a che fare con un variabile casuale, e nel game $G_{i+1}$ questa viene sostituita con una variabile che invece \`e pseudocasuale, non vengono introdotte
-modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due game non sono distinguibili se non con probabilit\`a trascurabile\footnote{In teoria si pu\`o ammettere anche un passaggio da game a game che valga
-con probabilit\`a $p$ non trascurabile, ovvio che poi si giunger\`a ad un game finale che sar\`a distinguibile da quello iniziale per una probabilit\`a non trascurabile di valore almeno $p$.}.
+modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due game non sono distinguibili se non con 
+probabilit\`a trascurabile\footnote{In teoria si pu\`o ammettere anche un passaggio da game a game che valga
+con probabilit\`a $p$ non trascurabile, ovvio che poi si giunger\`a ad un game finale che sar\`a distinguibile 
+da quello iniziale per una probabilit\`a non trascurabile di valore almeno $p$.}.
 Alla fine si arriva ad un game $G_f$ in cui \emph{l'evento} non pu\`o accadere. Se l'evento non pu\`o accadere, l'attaccante non ha possibilit\`a di vincere. 
 Se, quindi, nel game finale l'attaccante non ha possibilit\`a di vincere e il game finale
 \`e computazionalmente indistinguibile dal penultimo, questo lo \`e dal terzultimo e cos\`i via fino a $G_0$, allora
@@ -645,9 +647,9 @@ Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui l
 
 Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
 osservazionalmente equivalenti (secondo la definizione di prima): $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_n} G_{p_{n}} $; data questa sequenza, 
-attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{i=1}^{n}}{p_i} G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
-$G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{p=p_1}^{p_n}} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.
-Questo limite \`e $\sum_{p=p_1}^{p_n}$.\\Come \`e stato spiegato precedentemente le regole di trasformazione da un game ad un altro sono date mediante delle equivalenze. 
+attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{i=1}^{n}}{p_i}$ $G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
+$G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{i=1}^{n}}{p_i} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.
+Questo limite \`e $\sum_{i=1}^{n}p_i$.\\Come \`e stato spiegato precedentemente le regole di trasformazione da un game ad un altro sono date mediante delle equivalenze. 
 Dato un game $G$, per utilizzare una generica regola di trasformazione  $L \approx_p R$, CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente 
 apportando delle modifiche sintattiche al game $G$, costruisce inoltre un game $G^{'}$ tale che $G^{'} \approx_0 C[R]$. Adesso CryptoVerif grazie alla propriet\`a 3 pu\`o dedurre che $G \approx_p G^{'}$. Con questa tecnica CryptoVerif riesce a costruire catene
 di game che permettono di provare delle propriet\`a di alcuni protocolli.
@@ -837,21 +839,26 @@ Si pu\`o trovare una dimostrazione \emph{classica}\footnote{Per classica qui si 
 Si intende cio\`e che il linguaggio con cui la dimostrazione \`e stata fatta utilizza anche un linguaggio che non \`e modellato
 attraverso un sistema formale. La dimostrazione \`e scritta infatti in un linguaggio naturale.} di questo teorema in \cite{1206501}. 
 La dimostrazione classica \`e di tipo costruttivo e procede in modo iterativo.
-La costruzione inizia applicando ad un seme casuale $r$ di lunghezza a $n+1$ il generatore pseudocasuale $\hat{G}$. 
+La costruzione inizia applicando ad un seme casuale $r$ di lunghezza $n$ il generatore pseudocasuale $\hat{G}$. 
 $\hat{G}(r)$ sar\`a una stringa pseudocasuale di $n+1$ bit, di questi uno andr\`a a costituire parte dell'output finale mentre gli altri 
 $n$ fungeranno da seme per una successiva applicazione di $\hat{G}$. 
 \`E lecito utilizzare $n$ bit dell'output di $\hat{G}$ come successivo input di questo, infatti il risultato di $\hat{G}$ \`e 
-una stringa pseudocasuale \footnote{E quindi anche una sua parte \`e pseudocasuale.} e quindi utilizzabile come seme di $\hat{G}$ tanto quanto 
+una stringa pseudocasuale\footnote{E quindi anche una sua parte \`e pseudocasuale.} e quindi utilizzabile come seme di $\hat{G}$ tanto quanto 
 lo \`e una stringa effettivamente casuale.
 La dimostrazione procede poi estendendo questa iterazione ad un numero polinomiale di volte e dimostrando attraverso una tecnica \emph{ibrida}
-che il risultato di questa iterazione \`e comunque pseudocasuale. La tecnica ibrida in questione consiste nel considerare p'(n) distribuzioni generate
-dall'output di un ipotetico algoritmo G in cui...\\ \\ \\ \\ 
+che il risultato di questa iterazione \`e comunque una stringa pseudocasuale. Quella ibrida \`e una tecnica molto utilizzate per provare l'indistinguibilit\`a di due distribuzioni statistiche ed \`e 
+la naturale applicazione del concetto di sequenza di game a distribuzioni statistiche.
+La tecnica ibrida definisce una serie di distribuzioni che si situano fra due distribuzioni \emph{estreme} che sono quelle che si vogliono dimostrare indistinguibili.
+In particolare le distribuzioni estreme della dimostrazione sono la distribuzione $H_0$ definita dai possibili valori di $G(r)$ con $r$ estratto casualmente da $\{0,1\}^n$ e $H_{p(n)-n}$ definita dai valori di $n$ con $n$ scelto
+casualmente da $\{0, 1\}^{p(n)}$. 
+Alla fine dei calcoli la dimostrazione prova che se ci fosse una differenza sensibile fra le distribuzioni estreme allora necessariamente dovrebbe anche esserci una differenza
+sensibile fra due distribuzioni vicine. E poich\`e questo sarebbe assurdo, perch\`e negherebbe che $\hat{G}$ \`e un generatore pseudocasuale, giunge al risultato desiderato.
 
 
-Il risultato provato in questo lavoro \`e come gia detto molto meno generale del teorema classico ed \`e enunciato nel seguente:
+Il risultato provato in questo lavoro \`e, come gia detto, molto meno generale del teorema classico ed \`e enunciato nel seguente:
 \begin{teorema}
 Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ 
-con fattore d'espansione $l\hat{l}(n)=n+1$ allora per ogni costante $k > 1$ esiste un generatore 
+con fattore d'espansione $\hat{l}(n)=n+1$ allora per ogni costante $k > 1$ esiste un generatore 
 pseudocasuale $G$ con coefficiente d'espansione $l(n)=n+k$
 \end{teorema}
 
@@ -881,11 +888,11 @@ Con la linea di codice seguente:
 \end{verbatim}
 Si dichiara un parametro $n1$. Questo parametro assumer\`a valori polinomiali nel parametro di sicurezza. 
 Sar\`a utilizzato principalmente per fornire al distinguitore un numero polinomiale di oracoli con cui interagire.
-Quelle che seguono sono delle dichiarazioni di simboli di funzioni con i relativi tipi di input e di output.
+Quella che segue \`e una dichiarazione di un simbolo funzionale con i relativi tipi di input e di output.
 \begin{verbatim}  
 7 fun concatnp1(np1bits, bool):np2bits.
 \end{verbatim}
-In particolare la funzione prende in input come argomenti una stringa di lunghezza $n+1$ e un bit quest'ultimo rappresentato attraverso
+In particolare la funzione prende in input come argomenti una stringa di lunghezza $n+1$ e un bit, quest'ultimo rappresentato attraverso
 un valore booleano. L'output sar\`a una stringa di lunghezza $n+2$.
 Come si pu\`o intuire dal nome della funzione, questa rappresenta la concatenazione di una stringa di lunghezza $n+1$ con un bit.
 Mediante le seguenti equivalenze non facciamo altro che implementare le funzioni dichiarate prima.
@@ -937,8 +944,8 @@ L'ultimo frammento di codice rappresenta una sorta di $protocollo$ che funge da 
 \end{verbatim}
 si noti come la variabile $\texttt{r}$ venga inizializzata con un valore casuale preso dall'insieme delle stringhe binarie di lunghezza $n$, successivamente si procede con l'assegnamento ad $\texttt{x'}$ della stringa pseudocasuale
 $\texttt{G'(r)}$. Dopo questo passaggio, i primi $n$ bit della stringa $\texttt{x'}$ vengono estratti e assegnati alla variabile $\texttt{y'}$ mentre l'$n+1$-esimo bit viene assegnato alla variabile 
-$\texttt{b'}$. Adesso \`e possibile utilizzare nuovamente $\texttt{G'}$ su input $\texttt{y'}$ e concatenare quindi $\texttt{G'(y')}$ con $\texttt{b'}$ ottenendo la strinag $\texttt{w}$.
-In questo modo si ottiene la stringa $\texttt{w}$ che \`e il risultato di un duplice utilizzo del generatore pseudocasuale $\texttt{G'}$. Dimostrando la propriet\`a di one-session secrecy per la stringa $\texttt{w}$ CryptoVerif
+$\texttt{b'}$. Adesso \`e possibile utilizzare nuovamente $\texttt{G'}$ su input $\texttt{y'}$ e concatenare quindi $\texttt{G'(y')}$ con $\texttt{b'}$ ottenendo la stringa $\texttt{w}$.
+$\texttt{w}$ quindi \`e il risultato di un duplice utilizzo del generatore pseudocasuale $\texttt{G'}$. Dimostrando la propriet\`a di one-session secrecy per la stringa $\texttt{w}$ CryptoVerif
 non fa altro che dimostrare la pseducasualit\`a di questa.
 \newpage
 \subsection{I Game della Prova}
@@ -956,7 +963,9 @@ O() :=
 \end{verbatim}
 CryptoVerif prova ad applicare le equivalenze che gli sono state fornite e trova che pu\`o applicare solo la definizione di $\texttt{G'}$.
 Si noti come CryptoVerif cambi alcuni nomi. Per esempio $\texttt{i1}$ diventa $\texttt{i1\_5}$ nel membro sinistro dell'equivalenza e $\texttt{i1\_6}$ nel membro destro.
-Questa ridenominazione avviene per evitare situazioni in cui si abbia uno stesso nome per due oggetti diversi. Si noti infine che l'equivalenza vale a meno della probabilit\`a $\texttt{POW}$.
+Questa ridenominazione avviene per evitare situazioni in cui si abbia uno stesso nome per due oggetti diversi. 
+Si noti infine che l'equivalenza vale a meno della probabilit\`a $\texttt{POW}$. Questa probabilit\`a \`e asintoticamente trascurabile (per definizione di pseudocasualit\`a)
+ma nel modello esatto se ne deve tener conto comunque.
 \begin{verbatim}
 Applying equivalence
 equiv foreach i1_5 <= n1 do 
@@ -969,7 +978,7 @@ equiv foreach i1_5 <= n1 do
 
 [Excluding set(dist 1->2, proba <= POW)] yields
 \end{verbatim}
-Quindi nel seguente game, ovvero il 2, viene inizializzata una nuova variabile $\texttt{x\_7}$ con un valore casuale dal dominio  $\texttt{np1bits}$, questa variabile viene poi assegnata a quella che prima
+Nel seguente game, ovvero il 2, viene inizializzata una nuova variabile $\texttt{x\_7}$ con un valore casuale dal dominio  $\texttt{np1bits}$, questa variabile viene poi assegnata a quella che prima
 conteneva il risultato di $\texttt{G'(r)}$ e cio\`e $\texttt{x'}$.
 \begin{verbatim} 
 Game 2 is
@@ -1069,7 +1078,7 @@ equiv foreach i1_1 <= n1 do
 yields
 \end{verbatim}
 in questo game CryptoVerif non fa altro che applicare la definizione di $\texttt{concatnp1}$ che afferma che la concatenazione di una stringa casuale di $n$ bit e di un bit casuale \`e una stringa casuale di $n+2$ bit.
-Otteniamo il game finale, ovvero il game 7:
+Otteniamo quindi il game finale, ovvero il game 7:
 \begin{verbatim}
 Game 7 is
 O() :=
@@ -1079,7 +1088,7 @@ O() :=
 \end{verbatim}
 In quest'ultimo game alla variabile $\texttt{w}$ \`e assegnato il valore di una stringa $\texttt{w\_11}$ che \`e scelta in maniera completamente casuale (con il costrutto $\texttt{<-R}$) dal dominio del tipo $\texttt{np2bits}$.
 Di conseguenza la stringa $\texttt{w}$ \`e in questo game un variabile casuale a tutti gli effetti.
-In questo game quindi l'attaccante non pu\`o distinguere la stringa $\texttt{w}$ da una stringa casuale infatti $\texttt{w}$ stessa \`e casuale, di conseguenza in questo game l'attaccante non pu\`o vincere.
+In questo game, quindi, l'attaccante non pu\`o distinguere la stringa $\texttt{w}$ da una stringa casuale perch\`e $\texttt{w}$ stessa \`e casuale, di conseguenza in questo game l'attaccante non pu\`o vincere.
 CryptoVerif ha quindi dimostrato l'asserto iniziale, ovvero che dato un generatore pseudocasuale con fattore d'espansione $n+1$ se ne pu\`o ottenere uno con coefficiente d'espansione $n+2$.
 Ecco che tutto ci\`o ci porta alla parte finale dell'output di CryptoVerif in cui questo ci dice per quali probabilit\`a vale la prova:
 \begin{verbatim} 
@@ -1092,8 +1101,10 @@ All queries proved.
 siccome nella catena di game la definizione basata su equivalenza di $\texttt{G'}$ \`e stata applicata due volte \`e ovvio che la catena di game sia valida a meno di $\texttt{2 * POW}$ dove $\texttt{POW}$ \`e la probabilit\`a
 per cui vale la definizione di $\texttt{G'}$.
 \section{Il passo induttivo}
-Avendo dimostrato che per $k=2$ CryptoVerif riesce a dimostrare che se si ha un generatore pseudocasuale $\texttt{G'}$ con coefficiente d'espansione $n+1$ allora si ha anche un generatore pseudocasuale con coefficiente d'espansione $n+k$, ora 
-bisogna effettuare il passo induttivo. Infatti bisogna provare che CryptoVerif riesce a dimostrare che: si ha un generatore con coefficiente d'espansione $n+i+1$ supponendo di avere un generatore pseudocasuale con coefficiente
+Avendo CryptoVerif dimostrato che, per $k=2$, se si ha un generatore pseudocasuale $\texttt{G'}$ con coefficiente d'espansione $n+1$ 
+allora si ha anche un generatore pseudocasuale con coefficiente d'espansione $n+k$, 
+bisogna anche effettuare il passo induttivo. 
+Infatti bisogna provare che CryptoVerif riesce a dimostrare che: si ha un generatore con coefficiente d'espansione $n+i+1$ supponendo di avere un generatore pseudocasuale con coefficiente
 $n+i$. Il tutto ovviamente con l'ipotesi di avere un generatore pseudocasuale con coefficiente d'espansione $n+1$, ovvero $\texttt{G'}$.
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
