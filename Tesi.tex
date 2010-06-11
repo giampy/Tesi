@@ -649,6 +649,17 @@ Questo limite \`e $\sum_{p=p_1}^{p_n}$.\\Come \`e stato spiegato precedentemente
 Dato un game $G$, per utilizzare una generica regola di trasformazione  $L \approx_p R$, CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente 
 apportando delle modifiche sintattiche al game $G$, costruisce inoltre un game $G^{'}$ tale che $G^{'} \approx_0 C[R]$. Adesso CryptoVerif grazie alla propriet\`a 3 pu\`o dedurre che $G \approx_p G^{'}$. Con questa tecnica CryptoVerif riesce a costruire catene
 di game che permettono di provare delle propriet\`a di alcuni protocolli.
+Le probabilit\`a utilizzate nelle sequenze di game create da CryptoVerif non sono trattate con la notazione asintotica, questo perch\`e
+CryptoVerif adotta l'\emph{exact security framework} questo permette al tool di calcolare in modo preciso le probabilit\`a, invece di 
+considerare l'andamento di queste quando il parametro di sicurezza tende ad infinito.
+Il fatto che CryptoVerif lavori nel modello esatto non significa che non pu\`o darci risultati estendibili a probabilit\`a trascurabili.
+Se per esempio alla fine di una prova CryptoVerif ha applicato $k$ volte un'equivalenza che vale a meno di una probabilit\`a $p$ allora
+in output sar\`a reso noto il fatto che la catena di game vale a meno della probabilit\`a $kt$. Ora se la probabilit\`a $t$ \`e noto essere
+trascurabile allora lo sar\`a anche $kt$ e quindi l'attaccante avr\`a una probabilit\`a trascurabile di distinguere il game finale da quello iniziale; 
+altrimenti significa che l'attaccante ha una probabilit\`a non trascurabile pari esattamente a $kt$ di vincere il game iniziale e quindi
+di distinguere questo dal game finale. 
+L'utilit\`a principale di CryptoVerif \`e infatti quella di \emph{fare bene i conti} delle dimostrazioni basate su game.
+
 \newpage
 
 \section{Un Esempio: FDH}
@@ -699,6 +710,7 @@ delle distribuzioni di probabilit\`a delle variabili in gioco.
 Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R}, possono essere valide incondizionatamente, 
 oppure possono valere a meno di una certa probabilit\`a.
 Nel secondo caso la riscrittura di un termine \emph{L} nell'equivalente \emph{R}, comporta l'introduzione di una differenza non nulla fra i due game.\\ 
+
 Prima di descrivere la seconda parte dell'input di CryptoVerif, \`e necessario fare una piccola digressione riguardo al concetto di funzione \emph{one-way}.
 Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente; cio\`e se, dato $y=f(x)$, \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 
 Si noti come non sia necessario, per invertire la funzione, trovare $x$ ma \`e sufficiente trovare un $x'$ qualsiasi tale che $f(x')=y$.
@@ -808,49 +820,55 @@ Nell'appendice A si pu\`o trovare l'input completo, mentre in \cite{BlanchetPoin
 pi\`u importanti dell'output di CryptoVerif e infine in \cite{fdhall} troviamo l'ouput completo di CryptoVerif sull'input descritto precedentemente.
 
 \chapter{Risultati Raggiunti}
-Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un caso particolare di un risultato classico della crittografia computazionale.
-Dopo un'attenta analisi si \`e giunti alla conclusione che, a causa dell'insufficiente sistema di tipi di CryptoVerif, non sarebbe stato
-possibile mediante questo dimostrare il risultato nella sua generalit\`a; ecco quindi che si \`e scelto di utilizzare il tool
-per dimostrare un caso particolare del teorema. La dimostrazione proceder\`a utilizzando CryptoVerif per dimostrare il caso base e il caso induttivo
+Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un caso particolare di un risultato classico della crittografia computazionale. 
+La dimostrazione proceder\`a utilizzando CryptoVerif per dimostrare il caso base 
 di una una prova che sar\`a in generale di tipo induttivo.
-\section{Teorema}
+\section{Il Teorema}
 Il risultato nella sua generalit\`a \`e il seguente teorema:
 \begin{teorema}
-Se esiste un generatore pseudocasuale $G^{'}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ con fattore 
-d'espansione $l^{'}(n)=n+1$ allora per ogni polinomio $p(n)$ (tale che $\forall n$ $p(n)>n$)
+Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ con fattore 
+d'espansione $\hat{l}(n)=n+1$ allora per ogni polinomio $p(n)$ (tale che $\forall n$ $p(n)>n$)
 esiste un generatore pseudocasuale $G$ con coefficiente d'espansione $l(n)=p(n)$.
 \end{teorema}
 
-Si pu\`o trovare una dimostrazione \emph{classica}\footnote{Per classica qui si intende che 
-il linguaggio con cui \`e espressa la dimostrazione non \`e formalizzato, ovvero \`e in inglese.} di questo teorema in \cite{1206501}. La dimostrazione classica \`e di tipo costruttivo e procede in modo iterativo.
-La costruzione procede nel partire da un seme casuale $r$ di lunghezza $n$ e applicando a  questo il generatore pseudocasuale $\hat{G}$. $\hat{G}(r)$ sar\`a una stringa pseudocasuale di $n+1$ bit,
-di questi uno andr\`a a costituire parte dell'output finale mentre gli altri $n$ fungeranno da seme per una successiva applicazione di $\hat{G}$. \`E lecito utilizzare $n$ bit dell'output di
-$\hat{G}$ come successivo input di questo perch\`e il risultato di $\hat{G}$ \`e una stringa pseudocasuale \footnote{E quindi anche una sua parte \`e pseudocasuale.} e quindi sostituibile ad una stringa casuale.
+Si pu\`o trovare una dimostrazione \emph{classica}\footnote{Per classica qui si intende \emph{non formale} nel senso informatico del termine.
+Si intende cio\`e che il linguaggio con cui la dimostrazione \`e stata fatta utilizza anche un linguaggio che non \`e modellato
+attraverso un sistema formale. La dimostrazione \`e scritta infatti in un linguaggio naturale.} di questo teorema in \cite{1206501}. 
+La dimostrazione classica \`e di tipo costruttivo e procede in modo iterativo.
+La costruzione inizia applicando ad un seme casuale $r$ di lunghezza a $n+1$ il generatore pseudocasuale $\hat{G}$. 
+$\hat{G}(r)$ sar\`a una stringa pseudocasuale di $n+1$ bit, di questi uno andr\`a a costituire parte dell'output finale mentre gli altri 
+$n$ fungeranno da seme per una successiva applicazione di $\hat{G}$. 
+\`E lecito utilizzare $n$ bit dell'output di $\hat{G}$ come successivo input di questo, infatti il risultato di $\hat{G}$ \`e 
+una stringa pseudocasuale \footnote{E quindi anche una sua parte \`e pseudocasuale.} e quindi utilizzabile come seme di $\hat{G}$ tanto quanto 
+lo \`e una stringa effettivamente casuale.
+La dimostrazione procede poi estendendo questa iterazione ad un numero polinomiale di volte e dimostrando attraverso una tecnica \emph{ibrida}
+che il risultato di questa iterazione \`e comunque pseudocasuale. La tecnica ibrida in questione consiste nel considerare p'(n) distribuzioni generate
+dall'output di un ipotetico algoritmo G in cui...\\ \\ \\ \\ 
 
 
-
-Si \`e invece provato il risultato con CryptoVerif per un numero $p^{'}(n)$ che \`e una costante. In particolare mediante CryptoVerif si \`e provato
-che:
+Il risultato provato in questo lavoro \`e come gia detto molto meno generale del teorema classico ed \`e enunciato nel seguente:
 \begin{teorema}
-Se esiste un generatore pseudocasuale $G^{'}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ 
-con fattore d'espansione $l^{'}(n)=n+1$ allora per ogni costante $k > 1$ esiste un generatore 
+Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ 
+con fattore d'espansione $l\hat{l}(n)=n+1$ allora per ogni costante $k > 1$ esiste un generatore 
 pseudocasuale $G$ con coefficiente d'espansione $l(n)=n+k$
 \end{teorema}
 
-Dimostrare automaticamente questo risultato $\forall k > 1$ richiede di utilizzare sia CryptoVerif che un procedimento induttivo. In particolare, si \`e proceduto dimostrando il caso
-base, ovvero per $k=2$, mediante CryptoVerif e poi si \`e dimostrato che CryptoVerif riesce a dimostrare il risultato per $k=i+1$ assumendo che sia riuscito a dimostrarlo per $k=i$. 
+Si dimostrer\`a il teorema attraverso un procedimento induttivo che sfrutta CryptoVerif. 
+In particolare, la dimostrazione si articoler\`a in due fasi come ogni prova induttiva:
+\begin{itemize}
+ \item \emph{Caso Base.} Mediante CryptoVerif si dimostrer\`a il teorema per $k=2$.
+ \item \emph{Caso Induttivo}. Si dimostrer\`a che CryptoVerif riesce a dimostrare il teorema per $k=i+1$ sfruttando il fatto che il teorema vale oer $k=i$.
+\end{itemize}
 
 
 \newpage
 \section{Dimostrazione del Caso Base}
-Il codice che verr\`a descritto permette a CryptoVerif di dimostrare che se si ha a disposizione un generatore pseudorandom con fattore
-di espansione $n+1$ allora si pu\`o avere un generatore pseudorandom con fattore di espansione $n+2$. 
-Si cercher\`a, ovvero, di dimostrare il caso base del procedimento induttivo prima accennato.
+Si cercher\`a ora di dimostrare il caso base del procedimento induttivo prima accennato.
 L'input che \`e stato fornito a CryptoVerif inizia con le seguenti dichiarazioni:
 \begin{verbatim}
-  1 type nbits 	 [fixed].     
-  2 type np1bits [fixed].   
-  3 type np2bits [fixed].   
+1 type nbits 	 [fixed].     
+2 type np1bits [fixed].   
+3 type np2bits [fixed].   
 \end{verbatim}
 Alla linea 1 definiamo il tipo \emph{nbits} ovvero il tipo delle stringhe di lunghezza n. Questo tipo rappresenter\`a l'insieme $\{0, 1\}^n$. Alla linea 2 invece viene dichiarato un tipo
 per rappresentare le stringhe appartenenti all'insieme $\{0, 1\}^{n+1}$, mentre nelle righe 3 lo stesso viene fatto per le stringhe
@@ -873,28 +891,28 @@ La funzione $\texttt{concatnp1}$ viene descritta mediante un'equivalenza che rap
 la concatenazione di una stringa casuale di $n+1$ bits con un bit casuale \`e una stringa casuale di
 $n+2$ bits. 
 \begin{verbatim}
- 10 equiv
- 11       foreach i1<=n1 do
- 12             r <-R np1bits;
- 13             b <-R bool;
- 14             OGet():=return (concatnp1(r,b))
- 15       <=(0)=>
- 16      foreach i1 <=n1 do
- 17             w <-R np2bits;
- 18             OGet():=return(w).
+10 equiv
+11       foreach i1<=n1 do
+12             r <-R np1bits;
+13             b <-R bool;
+14             OGet():=return (concatnp1(r,b))
+15       <=(0)=>
+16      foreach i1 <=n1 do
+17             w <-R np2bits;
+18             OGet():=return(w).
 \end{verbatim} 
 In questo caso l'equivalenza non vale a meno di una probabilit\`a ma sempre. Infatti \`e sempre vero che la concatenazione di una stringa casuale e di un bit casuale \`e una stringa casuale.
 Con il seguente frammento di codice:
 \begin{verbatim}
- 38 fun G'(nbits): np1bits.
- 39 equiv
- 40     foreach i1<=n1 do
- 41                 r <-R nbits;
- 42                 OGet():=return (G'(r))
- 43       <=(POW)=> 
- 44      foreach i1 <=n1 do
- 45                 x <-R np1bits;
- 46                 OGet():=return(x).
+38 fun G'(nbits): np1bits.
+39 equiv
+40     foreach i1<=n1 do
+41                 r <-R nbits;
+42                 OGet():=return (G'(r))
+43       <=(POW)=> 
+44      foreach i1 <=n1 do
+45                 x <-R np1bits;
+46                 OGet():=return(x).
 \end{verbatim}
 per prima cosa si dichiara un simbolo funzionale $\texttt{G'}$ che sta per il $\hat{G}$ della dimostrazione classica. La dichiarazione viene ovviamente con i tipi di input e output del generatore pseudocasuale.
 Si noti come l'equivalenza valga a meno di una certa probabilit\`a. Infatti una stringa casuale \`e, in generale, di natura diversa da una stringa pseudocasuale sebbene siano distinguibili solo per una probabilit\`a trascurabile
@@ -906,14 +924,14 @@ query secret1 w.
 infatti vogliamo che il tool provi che la stringa $\texttt{w}$ sia indistinguibile da una stringa casuale. Nell'ultimo frammento di codice si vedr\`a come sia definita questa stringa.
 L'ultimo frammento di codice rappresenta una sorta di $protocollo$ che funge da game iniziale:
 \begin{verbatim}
- 50 process
- 51         G():=
- 52              r<-R nbits;
- 53              let x' = G'(r) in
- 54              let y' = getn(x') in
- 55              let b' = getlast(x') in
- 56              w:np2bits <-concatnp1(G'(y'), b');
- 57              return
+50 process
+51         G():=
+52              r<-R nbits;
+53              let x' = G'(r) in
+54              let y' = getn(x') in
+55              let b' = getlast(x') in
+56              w:np2bits <-concatnp1(G'(y'), b');
+57              return
 \end{verbatim}
 si noti come la variabile $\texttt{r}$ venga inizializzata con un valore casuale preso dall'insieme delle stringhe binarie di lunghezza $n$, successivamente si procede con l'assegnamento ad $\texttt{x'}$ della stringa pseudocasuale
 $\texttt{G'(r)}$. Dopo questo passaggio, i primi $n$ bit della stringa $\texttt{x'}$ vengono estratti e assegnati alla variabile $\texttt{y'}$ mentre l'$n+1$-esimo bit viene assegnato alla variabile 
@@ -927,12 +945,12 @@ la prima applicandolo ad un seme casuale $\texttt{r}$ e la seconda applicandolo 
 \begin{verbatim}
 Game 1 is
 O() :=
-r <-R nbits;
-x': np1bits <- G'(r);
-y': nbits <- getn(x');
-b': bool <- getlast(x');
-w: np2bits <- concatnp1(G'(y'), b');
-return()
+    r <-R nbits;
+    x': np1bits <- G'(r);
+    y': nbits <- getn(x');
+    b': bool <- getlast(x');
+    w: np2bits <- concatnp1(G'(y'), b');
+    return()
 \end{verbatim}
 CryptoVerif prova ad applicare le equivalenze che gli sono state fornite e trova che pu\`o applicare solo la definizione di $\texttt{G'}$.
 Si noti come CryptoVerif cambi alcuni nomi. Per esempio $\texttt{i1}$ diventa $\texttt{i1\_5}$ nel membro sinistro dell'equivalenza e $\texttt{i1\_6}$ nel membro destro.
@@ -954,12 +972,12 @@ conteneva il risultato di $\texttt{G'(r)}$ e cio\`e $\texttt{x'}$.
 \begin{verbatim} 
 Game 2 is
 O() :=
-x_7 <-R np1bits;
-x': np1bits <- x_7;
-y': nbits <- getn(x');
-b': bool <- getlast(x');
-w: np2bits <- concatnp1(G'(y'), b');
-return()
+     x_7 <-R np1bits; 
+     x': np1bits <- x_7;
+     y': nbits <- getn(x');
+     b': bool <- getlast(x');
+     w: np2bits <- concatnp1(G'(y'), b');
+     return()
 \end{verbatim}
 Nel game 2 c'\`e un assegnamento che \`e inutile ovvero quello che coinvolge la variabile $\texttt{x'}$; infatti si pu\`o eliminare  $\texttt{x'}$ e sostituirla con  $\texttt{x\_7}$. 
 Il risultato di questa operazione lo si trova nel game 3:
@@ -968,11 +986,11 @@ Applying remove assignments of useless yields
 
 Game 3 is
 O() :=
-x_7 <-R np1bits;
-y': nbits <- getn(x_7);
-b': bool <- getlast(x_7);
-w: np2bits <- concatnp1(G'(y'), b');
-return()
+     x_7 <-R np1bits;
+     y': nbits <- getn(x_7);
+     b': bool <- getlast(x_7);
+     w: np2bits <- concatnp1(G'(y'), b');
+     return()
 \end{verbatim}
 Applicando ora la seguente equivalenza (che si ricordi vale sempre e non a meno di una probabilit\`a):
 \begin{verbatim} 
@@ -995,12 +1013,12 @@ $\texttt{nbits}$ ovvero dalle stringhe di lunghezza $n$.
 \begin{verbatim} 
 Game 4 is
 O() :=
-xl_9 <-R bool;
-x_8 <-R nbits;
-y': nbits <- x_8;
-b': bool <- xl_9;
-w: np2bits <- concatnp1(G'(y'), b');
-return()
+     xl_9 <-R bool;
+     x_8 <-R nbits;
+     y': nbits <- x_8;
+     b': bool <- xl_9;
+     w: np2bits <- concatnp1(G'(y'), b');
+     return()
 \end{verbatim}
 Si pu\`o vedere come anche nel game 4 si possono trovare degli assegnamenti inutili ovvero quelli che coinvolgono le variabili $\texttt{y'}$ e $\texttt{b'}$. \`E possibile infatti, eliminare queste variabili
 sostituendo ogni occorrenza di queste con le variabili $\texttt{xl\_9}$ e $\texttt{x\_8}$. Effettuando queste modifiche si ottiene il seguente game:
@@ -1030,10 +1048,10 @@ ottenendo il seguente game in cui sia $\texttt{xl\_9}$ che $\texttt{x\_10}$ sono
 \begin{verbatim}
 Game 6 is
 O() :=
-xl_9 <-R bool;
-x_10 <-R np1bits;
-w: np2bits <- concatnp1(x_10, xl_9);
-return()
+     xl_9 <-R bool;
+     x_10 <-R np1bits;
+     w: np2bits <- concatnp1(x_10, xl_9);
+     return()
 \end{verbatim}
 
 \begin{verbatim} 
@@ -1053,9 +1071,9 @@ Otteniamo il game finale, ovvero il game 7:
 \begin{verbatim}
 Game 7 is
 O() :=
-w_11 <-R np2bits;
-w: np2bits <- w_11;
-return()
+     w_11 <-R np2bits;
+     w: np2bits <- w_11;
+     return()
 \end{verbatim}
 In quest'ultimo game alla variabile $\texttt{w}$ \`e assegnato il valore di una stringa $\texttt{w\_11}$ che \`e scelta in maniera completamente casuale (con il costrutto $\texttt{<-R}$) dal dominio del tipo $\texttt{np2bits}$.
 Di conseguenza la stringa $\texttt{w}$ \`e in questo game un variabile casuale a tutti gli effetti.
