@@ -34,10 +34,10 @@ ReadWrite=true
 
 [item:Tesi.tex]
 archive=true
-column=0
+column=136
 encoding=UTF-8
 highlight=LaTeX
-line=1032
+line=1077
 mode=LaTeX
 open=true
 order=0
@@ -73,8 +73,8 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Tesi.tex]
-CursorColumn=0
-CursorLine=1032
+CursorColumn=136
+CursorLine=1077
 
 [view-settings,view=0,item:frontespizio.tex]
 CursorColumn=6

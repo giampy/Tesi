@@ -922,7 +922,7 @@ $\texttt{b'}$. Adesso \`e possibile utilizzare nuovamente $\texttt{G'}$ su input
 In questo modo si ottiene la stringa $\texttt{w}$ che \`e il risultato di un duplice utilizzo del generatore pseudocasuale $\texttt{G'}$. Dimostrando la propriet\`a di one-session secrecy per la stringa $\texttt{w}$ CryptoVerif
 non fa altro che dimostrare la pseducasualit\`a di questa.
 \newpage
-\section{I Game della Prova}
+\subsection{I Game della Prova}
 Il seguente \`e il game iniziale in cui si sfrutta due volte il generatore pseudocasuale $\texttt{G'}$; 
 la prima applicandolo ad un seme casuale $\texttt{r}$ e la seconda applicandolo a parte dell'output di $\texttt{G'(r)}$.
 \begin{verbatim}
@@ -1072,7 +1072,10 @@ All queries proved.
 \end{verbatim}
 siccome nella catena di game la definizione basata su equivalenza di $\texttt{G'}$ \`e stata applicata due volte \`e ovvio che la catena di game sia valida a meno di $\texttt{2 * POW}$ dove $\texttt{POW}$ \`e la probabilit\`a
 per cui vale la definizione di $\texttt{G'}$.
-
+\section{Il passo induttivo}
+Avendo dimostrato che per $k=2$ CryptoVerif riesce a dimostrare che se si ha un generatore pseudocasuale $\texttt{G'}$ con coefficiente d'espansione $n+1$ allora si ha anche un generatore pseudocasuale con coefficiente d'espansione $n+k$, ora 
+bisogna effettuare il passo induttivo. Infatti bisogna provare che CryptoVerif riesce a dimostrare che: si ha un generatore con coefficiente d'espansione $n+i+1$ supponendo di avere un generatore pseudocasuale con coefficiente
+$n+i$. Il tutto ovviamente con l'ipotesi di avere un generatore pseudocasuale con coefficiente d'espansione $n+1$, ovvero $\texttt{G'}$.
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
 \bibliographystyle{alpha}	
