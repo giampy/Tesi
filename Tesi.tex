@@ -322,9 +322,9 @@ al one-time pad che usa una chiave pseudocasuale. In generale i generatori pseud
 
 \section{Dimostrazioni Basate su Games}
 In questo paragrafo si cercher\`a di spiegare cosa siano, nell'ambito della crittografia, i \emph{games}\footnote{Che intenderemo letteralmente come "giochi".} e come siano strutturate la
-maggior parte delle dimostrazioni che utilizzano sequenze di games.\\Si possono trovare approfondimenti riguardo a questi concetti nel lavoro di Shoup \cite{shoup}.
+maggior parte delle dimostrazioni che utilizzano sequenze di game.\\Si possono trovare approfondimenti riguardo a questi concetti nel lavoro di Shoup \cite{shoup}.
 Quella basata sul concetto di game \`e una tecnica\footnote{Game hopping technique.} molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
-Questi games sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamata sfidante\footnote{Perch\'e \emph{sfida} l'attaccante a 
+Questi game sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamata sfidante\footnote{Perch\'e \emph{sfida} l'attaccante a 
 vincere questo gioco.}. 
 \`E difficile dare una definizione formale di game; infatti il concetto di game cambia, sebbene in maniera non considerevole, da situazione a situazione, da ambiente ad ambiente e 
 da dimostrazione a dimostrazione (sia che queste siano fatte manualmente, sia che queste siano automatiche e quindi dipendenti dal framework in cui vengono costruite).
@@ -338,9 +338,9 @@ Il primo passo che le dimostrazioni di sicurezza basate su sequenze di game fann
 In $G_0$ esiste la probabilit\`a non nulla che un evento \emph{negativo} possa accadere (immaginiamolo come una sorta di vittoria da parte dell'attaccante).
 Ora, in generale, si procede effettuando delle modifiche al game $G_i$ ottenendo un game $G_{i+1}$ 
 tale che $G_i$ e $G_{i+1}$ siano computazionalmente indistinguibili. Le modifiche che si effettuano fra un game e un altro devono introdurre delle differenze computazionalmente irrilevanti.
-Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in gioco nei games.
+Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in gioco nei game.
 Se, per esempio, in un game $G_i$ un processo ha a che fare con un variabile casuale, e nel game $G_{i+1}$ questa viene sostituita con una variabile che invece \`e pseudocasuale, non vengono introdotte
-modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due games non sono distinguibili se non con probabilit\`a trascurabile.
+modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due game non sono distinguibili se non con probabilit\`a trascurabile.
 Alla fine si arriva ad un game $G_f$ in cui \emph{l'evento} non pu\`o accadere. Se l'evento non pu\`o accadere, l'attaccante non ha possibilit\`a di vincere. 
 Se, quindi, nel game finale l'attaccante non ha possibilit\`a di vincere e il game finale
 \`e computazionalmente indistinguibile dal penultimo, questo lo \`e dal terzultimo e cos\`i via fino a $G_0$, allora
@@ -348,7 +348,7 @@ il game finale \`e computazionalmente indistinguibile dal primo\footnote{Ricordi
 Adesso, quindi, se nel game iniziale esiste la possibilit\`a che un evento avvenga, e nel game finale no,
 si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga nel game iniziale. Questo limite \`e la somma di tutte le probabilit\`a con cui un attaccante riesce a distinguere un game dal successivo all'interno della sequenza.
 
-\`E importante dire che anche nel modello formale si possono utilizzare le sequenze di game. La differenza \`e che due games successivi non sono computazionalmente indistinguibili, 
+\`E importante dire che anche nel modello formale si possono utilizzare le sequenze di game. La differenza \`e che due game successivi non sono computazionalmente indistinguibili, 
 ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che se in una sequenza di game $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
 allora i due game 
 devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di game sfrutta.
@@ -660,7 +660,7 @@ viene utilizzata per firmare messaggi, mentre la funzione $hash$ sar\`a la funzi
 L'input che si fornisce al CryptoVerif \`e costituito, fondamentalmente, da due parti: 
 \begin{itemize}
  \item Un game iniziale $G_0$, in cui si modella la sicurezza dello schema.
- \item Alcune equivalenze necessarie a CryptoVerif per effettuare le modifiche ai games. 
+ \item Alcune equivalenze necessarie a CryptoVerif per effettuare le modifiche ai game. 
 \end{itemize}
 La descrizione dello schema di firma FDH viene data al CryptoVerif attraverso il seguente game $G_0$:
 
@@ -698,10 +698,7 @@ Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze che p
 delle distribuzioni di probabilit\`a delle variabili in gioco.
 Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R}, possono essere valide incondizionatamente, 
 oppure possono valere a meno di una certa probabilit\`a.
-Nel secondo caso la riscrittura di un termine \emph{L} nell'equivalente \emph{R}, comporta l'introduzione di una differenza non nulla fra i due games; di solito per\`o
-questa differenza introdotta \`e rilevata dall'avversario solo con probabilit\`a trascurabile oppure con probabilit\`a trascurabilmente vicina a qualche costante come 
-per esempio $\frac{1}{2}$.
-\\ 
+Nel secondo caso la riscrittura di un termine \emph{L} nell'equivalente \emph{R}, comporta l'introduzione di una differenza non nulla fra i due game.\\ 
 Prima di descrivere la seconda parte dell'input di CryptoVerif, \`e necessario fare una piccola digressione riguardo al concetto di funzione \emph{one-way}.
 Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente; cio\`e se, dato $y=f(x)$, \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 
 Si noti come non sia necessario, per invertire la funzione, trovare $x$ ma \`e sufficiente trovare un $x'$ qualsiasi tale che $f(x')=y$.
@@ -713,8 +710,9 @@ trascurabile.
 
 \`E importante notare come la definizione valga per ogni $x$ del dominio; con questo si vuole sottolineare che invertire $f$ deve essere \emph{sempre} difficile e non per particolari $x$.
 \`E importante affermare ci\`o perch\'e tutta la crittografia moderna \`e fondata sull'ipotesi che esistano le funzioni one-way.
-Si parla di ipotesi perch\'e, sebbene la maggior parte degli informatici ne sia convinta, non \`e stata ancora dimostrata l'esistenza di funzioni di questo genere\footnote{Questo non toglie
-che esistano funzioni che si avvicinino all'idea che abbiamo di funzioni one-way, per esempio SHA1, o MD5.}.
+Si parla di ipotesi perch\'e non \`e stata ancora dimostrata l'esistenza di funzioni di questo genere\footnote{Questo non toglie
+che esistano funzioni che si avvicinino all'idea che abbiamo di funzioni one-way, per esempio le funzioni hash SHA1, o MD5 oppure una funzione
+f che prende in input due primi $p$ e $q$ in base binaria e ne restituisce il prodotto.}.
 La dimostrazione dell'esistenza di funzioni one-way comporterebbe, tra l'altro, anche la risoluzione della famosa questione riguardo agli insiemi
 $P$ e $NP$\footnote{$P$ \`e l'insieme dei problemi risolvibili, nel caso pessimo, in un numero di passi polinomiale nell'input. $NP$ invece, \`e l'insieme dei problemi per cui dato un certo valore, 
 si pu\`o verificare in tempo polinomiale se questo \`e o meno soluzione del problema (ovvero \`e l'insieme dei problemi con certificazione polinomiale). 
@@ -722,7 +720,7 @@ Non \`e ancora noto se questi insiemi siano o meno lo stesso insieme.}.
 Il fatto che però qualcuno un giorno possa dimostrare che $P \neq NP$ non dimostrerebbe affatto l'esistenza delle funzioni one-way. 
 Infatti una funzione one-way deve, come prima sottolineato, essere non invertibile in modo efficiente, sempre e non solo nel \emph{caso pessimo}. \\ 
 Siamo ora pronti per vedere come il concetto di funzione one-way venga modellato in CryptoVerif.
-Si tratta di dare una definzione di one-wayness per mezzo di un'equivalenza fra games.\\La definizione \`e la seguente:
+Si tratta di dare una definzione di one-wayness per mezzo di un'equivalenza fra game.\\La definizione \`e la seguente:
 
 \begin{verbatim}
 equiv 
@@ -746,8 +744,8 @@ equiv
                  else return(false) |
            Ox() := let k:bitstring = mark in return(x))).
  \end{verbatim}
-Per ora, non \`e interessante per quale probabilit\`a questi games siano equivalenti, ecco perch\`e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ senza specificare ulteriormente.
-Questa equivalenza fra games cattura e definisce il concetto di funzione one-way. La funzione $\texttt{f}$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
+Per ora, non \`e interessante per quale probabilit\`a questi game siano equivalenti, ecco perch\`e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ senza specificare ulteriormente.
+Questa equivalenza fra game cattura e definisce il concetto di funzione one-way. La funzione $\texttt{f}$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
 e quindi il game a sinistra e quello a destra del simbolo \textbf{$\approx _{pow}$} sono indistinguibili.
 Supponiamo infatti che la funzione $\texttt{f}$ non sia one-way, esister\`a dunque un avversario efficiente $A$ 
 che pu\`o invertire $\texttt{f}$. $A$ sar\`a dunque in grado di distinguere i due membri dell'equivalenza $L \approx_{pow} R$. 
@@ -770,8 +768,8 @@ Se invece,  $\texttt{Oeq()}$\`e chiamato da $L$ allora $\texttt{Oeq()}$ si compo
 (ovvero sia stata o meno definita da una precedente chiamata a $\texttt{Ox()}$). Se quindi $\texttt{k}$ \`e definita, allora $\texttt{Oeq()}$ si comporter\`a esattamente come si sarebbe comportato $\texttt{Oeq()}$  di $L$.
 Se invece $\texttt{k}$ non \`e stata definita allora siginifica che l'attaccante non ha richiamato $\texttt{Ox()}$, quindi \`e lecito supporre che non sia riuscito ad invertire $\texttt{f}$ e quindi $\texttt{Oeq()}$ ritorna false.\\
 \`E importante notare che l'attaccante avrebbe comunque la possibilit\`a di indovinare $\texttt{x}$ anche senza richiamare $\texttt{Ox()}$, ma questa \`e una probabilit\`a trascurabile per definizione di one-wayness. 
-Di questa probabilit\`a viene comunque tenuto conto nell'equivalenza. L'equivalenza infatti, vale a meno di una certa probabilit\`a $pow$ (trascurabile in questo caso).
-In questo modo i due games, sono effettivamente indistinguibili, perch\'e non presentano differenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
+Di questa probabilit\`a viene comunque tenuto conto nell'equivalenza. L'equivalenza infatti, vale a meno di una certa probabilit\`a $pow$.
+In questo modo i due game, sono effettivamente indistinguibili, perch\'e non presentano differenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
 Quindi $L$ e $R$ sono indistinguibili \emph{se e solo se} $\texttt{f}$ \`e one-way e di conseguenza la precedente equivalenza \`e una definizione ben posta di funzione one-way.
 Un'ulteriore definizione che viene fornita al CryptoVerif \`e quella di funzione hash. Questa definizione viene fornita al tool attraverso il seguente codice:
 \begin{verbatim}

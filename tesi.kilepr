@@ -34,10 +34,10 @@ ReadWrite=true
 
 [item:Tesi.tex]
 archive=true
-column=60
+column=81
 encoding=UTF-8
 highlight=LaTeX
-line=548
+line=326
 mode=LaTeX
 open=true
 order=0
