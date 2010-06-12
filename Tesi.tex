@@ -647,8 +647,8 @@ Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui l
 
 Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
 osservazionalmente equivalenti (secondo la definizione di prima): $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_n} G_{p_{n}} $; data questa sequenza, 
-attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{i=1}^{n}}{p_i}$ $G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
-$G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{i=1}^{n}}{p_i} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.
+attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{i=1}^{n}{p_i}}$ $G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
+$G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{i=1}^{n}{p_i}} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.
 Questo limite \`e $\sum_{i=1}^{n}p_i$.\\Come \`e stato spiegato precedentemente le regole di trasformazione da un game ad un altro sono date mediante delle equivalenze. 
 Dato un game $G$, per utilizzare una generica regola di trasformazione  $L \approx_p R$, CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente 
 apportando delle modifiche sintattiche al game $G$, costruisce inoltre un game $G^{'}$ tale che $G^{'} \approx_0 C[R]$. Adesso CryptoVerif grazie alla propriet\`a 3 pu\`o dedurre che $G \approx_p G^{'}$. Con questa tecnica CryptoVerif riesce a costruire catene

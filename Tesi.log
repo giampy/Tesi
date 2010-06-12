@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.6.10)  11 JUN 2010 20:50
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.6.10)  11 JUN 2010 20:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -540,4 +540,4 @@ Here is how much of TeX's memory you used:
  61 hyphenation exceptions out of 8191
  38i,14n,43p,416b,638s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (48 pages, 187472 bytes).
+Output written on Tesi.dvi (48 pages, 187488 bytes).
