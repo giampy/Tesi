@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.6.10)  11 JUN 2010 20:55
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2010.5.14)  12 JUN 2010 15:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,7 +6,7 @@ entering extended mode
 (./Tesi.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
-yphenation, italian, spanish, galician, catalan, loaded.
+yphenation, loaded.
 (/usr/share/texmf-texlive/tex/latex/base/report.cls
 Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texmf-texlive/tex/latex/base/size12.clo
@@ -55,9 +55,14 @@ File: babel.def 2008/07/06 v3.8l Babel common definitions
 \babel@savecnt=\count89
 \U@D=\dimen103
 )
+
+Package babel Warning: No hyphenation patterns were loaded for
+(babel)                the language `Italian'
+(babel)                I will use the patterns loaded for \language=0 instead.
+
+\l@italian = a dialect from \language0
 Package babel Info: Making " an active character on input line 94.
-))
-(/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
+)) (/usr/share/texmf-texlive/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip43
 \f@ncyO@elh=\skip44
 \f@ncyO@erh=\skip45
@@ -153,10 +158,11 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/etc/texmf/tex/latex/config/graphics.cfg
 File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: dvips.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 91.
 
-(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
-File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2009/08/25 v0.04m Graphics/color for pdfTeX
+\Gread@gobject=\count102
 ))
 \Gin@req@height=\dimen113
 \Gin@req@width=\dimen114
@@ -173,11 +179,8 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 (/etc/texmf/tex/latex/config/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: dvips.def on input line 130.
-
-(/usr/share/texmf-texlive/tex/latex/graphics/dvipsnam.def
-File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
-))
+Package color Info: Driver file: pdftex.def on input line 130.
+)
 (/usr/share/texmf-texlive/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigtopskip=\skip55
@@ -186,10 +189,10 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigbottomskip=\skip57
 \subfigcapmargin=\dimen116
 \subfiglabelskip=\skip58
-\c@subfigure=\count102
-\c@lofdepth=\count103
-\c@subtable=\count104
-\c@lotdepth=\count105
+\c@subfigure=\count103
+\c@lofdepth=\count104
+\c@subtable=\count105
+\c@lotdepth=\count106
 
 ****************************************
 * Local config file subfigure.cfg used *
@@ -203,7 +206,7 @@ Package: hyperref 2009/10/09 v6.79a Hypertext links for LaTeX
 
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in pdf mode not detected.
+Package ifpdf Info: pdfTeX in pdf mode detected.
 )
 (/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
 Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
@@ -220,8 +223,8 @@ O)
 Package: xcolor-patch 2009/10/02 xcolor patch
 ))
 \@linkdim=\dimen117
-\Hy@linkcounter=\count106
-\Hy@pagecounter=\count107
+\Hy@linkcounter=\count107
+\Hy@pagecounter=\count108
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2009/10/09 v6.79a Hyperref: PDFDocEncoding definition (HO)
@@ -237,7 +240,7 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )
-(/usr/share/texmf-texlive/tex/latex/latexconfig/hyperref.cfg
+(/etc/texmf/tex/latex/config/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
 (/usr/share/texmf-texlive/tex/latex/oberdiek/kvoptions.sty
@@ -286,7 +289,7 @@ Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 )))
-\Fld@menulength=\count108
+\Fld@menulength=\count109
 \Field@Width=\dimen118
 \Fld@charsize=\dimen119
 \Field@toks=\toks28
@@ -301,34 +304,27 @@ Package hyperref Info: PDF/A mode OFF on input line 4407.
 (/usr/share/texmf-texlive/tex/generic/oberdiek/atbegshi.sty
 Package: atbegshi 2008/07/31 v1.9 At begin shipout hook (HO)
 )
-\Hy@abspage=\count109
-\c@Item=\count110
-\c@Hfootnote=\count111
+\Hy@abspage=\count110
+\c@Item=\count111
+\c@Hfootnote=\count112
 )
-*hyperref using default driver hdvips*
-(/usr/share/texmf-texlive/tex/latex/hyperref/hdvips.def
-File: hdvips.def 2009/10/09 v6.79a Hyperref driver for dvips
-
-(/usr/share/texmf-texlive/tex/latex/hyperref/pdfmark.def
-File: pdfmark.def 2009/10/09 v6.79a Hyperref definitions for pdfmark specials
-\pdf@docset=\toks29
-\pdf@box=\box28
-\pdf@toks=\toks30
-\pdf@defaulttoks=\toks31
-\Fld@listcount=\count112
-))
+*hyperref using default driver hpdftex*
+(/usr/share/texmf-texlive/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2009/10/09 v6.79a Hyperref driver for pdfTeX
+\Fld@listcount=\count113
+)
 (/usr/share/texmf-texlive/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count113
-\float@exts=\toks32
-\float@box=\box29
-\@float@everytoks=\toks33
-\@floatcapt=\box30
+\c@float@type=\count114
+\float@exts=\toks29
+\float@box=\box28
+\@float@everytoks=\toks30
+\@floatcapt=\box29
 )
-\@float@every@figure=\toks34
-\c@definizione=\count114
-\c@proposizione=\count115
-\c@teorema=\count116
+\@float@every@figure=\toks31
+\c@definizione=\count115
+\c@proposizione=\count116
+\c@teorema=\count117
  (./Tesi.aux)
 \openout1 = `Tesi.aux'.
 
@@ -358,6 +354,18 @@ LaTeX Font Info:    ... okay on input line 50.
 File: ucsencs.def 2003/11/29 Fixes to fontencodings LGR, T3
 
 fontencoding LGR patched
+) (/usr/share/texmf/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count118
+\scratchdimen=\dimen120
+\scratchbox=\box30
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count121
+\MPscratchDim=\dimen121
+\MPnumerator=\count122
+\everyMPtoPDFconversion=\toks33
 )
 Package hyperref Info: Link coloring OFF on input line 50.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
@@ -366,7 +374,7 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count117
+\c@section@level=\count123
 )
 LaTeX Info: Redefining \ref on input line 50.
 LaTeX Info: Redefining \pageref on input line 50.
@@ -384,10 +392,16 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 60.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-) [1
+)
+Overfull \hbox (0.74455pt too wide) in paragraph at lines 53--107
+\OT1/cmr/m/n/12 Il mod-el-lo for-male pu^^Ro con-tare su un vastis-si-mo in-sie
+me di conoscen-ze teoriche
+ []
+
+[1
 
 
-]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 
 Package Fancyhdr Warning: \headheight is too small (12.5pt): 
  Make it at least 14.49998pt.
@@ -428,6 +442,12 @@ Overfull \hbox (3.32056pt too wide) in paragraph at lines 240--241
 []\OT1/cmr/m/it/12 Due en-sem-ble $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 =
  []
 
+
+Overfull \hbox (5.8709pt too wide) in paragraph at lines 249--253
+[]\OT1/cmr/m/n/12 La definizione di in-dis-tin-guibilit^^Ra com-putazionale cat
+-tura quin-di il seguente
+ []
+
 [10]
 Overfull \hbox (21.01001pt too wide) in paragraph at lines 271--273
 []\OT1/cmr/m/it/12 L'ensemble $\OML/cmm/m/it/12 X \OT1/cmr/m/n/12 = \OMS/cmsy/m
@@ -452,7 +472,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 382--383
 
  []
 
-[18] [19]
+[18]
+Overfull \hbox (10.14445pt too wide) in paragraph at lines 406--408
+\OT1/cmr/m/n/12 informiamo Cryp-toVerif che og-ni qual-vol-ta in-con-tra una do
+ppia negazione
+ []
+
+[19]
+Overfull \hbox (0.47466pt too wide) in paragraph at lines 425--429
+\OT1/cmr/m/n/12 nel flus-so d'ese-cuzione del pro-to-col-lo in esame. Per es-em
+-pio: si potrebbe
+ []
+
 
 LaTeX Warning: Characters dropped after `\end{verbatim}' on input line 431.
 
@@ -493,10 +524,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 699--717
 
 [29]
 Overfull \hbox (2.9133pt too wide) in paragraph at lines 723--725
-[]\OT1/cmr/m/it/12 Una fun-zio-ne $\OML/cmm/m/it/12 f \OT1/cmr/m/n/12 : \OMS/cm
-sy/m/n/12 f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OMS/cmsy/m/n/1
-2 g[] ! f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OMS/cmsy/m/n/12 
-g[]$
+[]\OT1/cmr/m/it/12 Una fun-zione $\OML/cmm/m/it/12 f \OT1/cmr/m/n/12 : \OMS/cms
+y/m/n/12 f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OMS/cmsy/m/n/12
+ g[] ! f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OMS/cmsy/m/n/12 g
+[]$
  []
 
 [30] [31] [32]
@@ -513,9 +544,9 @@ Capitolo 3.
 [35
 
 ] [36] [37] [38] [39] [40] [41] [42]
-Overfull \hbox (15.84778pt too wide) in paragraph at lines 1081--1083
-\OT1/cmr/m/n/12 in que-sto ga-me Cryp-to-Ve-rif non fa al-tro che ap-pli-ca-re 
-la de-fi-ni-zio-ne di $[]$
+Overfull \hbox (15.84778pt too wide) in paragraph at lines 1082--1084
+\OT1/cmr/m/n/12 in questo game Cryp-toVerif non fa al-tro che ap-pli-care la de
+finizione di $[]$
  []
 
 [43] [44]
@@ -526,18 +557,44 @@ Capitolo 4.
 
 ]
 Underfull \hbox (badness 4569) in paragraph at lines 9--13
-\OT1/cmr/m/n/12 of cryp-to-gra-phy (the com-pu-ta-tio-nal sound-ness of for-mal
+\OT1/cmr/m/n/12 of cryp-tog-ra-phy (the com-pu-ta-tion-al sound-ness of for-mal
 
  []
 
 [47]) [48] (./Tesi.aux) ) 
 Here is how much of TeX's memory you used:
- 7364 strings out of 494993
- 103333 string characters out of 1180536
- 185339 words of memory out of 3000000
- 10407 multiletter control sequences out of 15000+50000
+ 7670 strings out of 495061
+ 106517 string characters out of 1182621
+ 183839 words of memory out of 3000000
+ 10573 multiletter control sequences out of 15000+50000
  16621 words of font info for 66 fonts, out of 3000000 for 9000
- 61 hyphenation exceptions out of 8191
+ 35 hyphenation exceptions out of 8191
  38i,14n,43p,416b,638s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbxti10
+.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1/public/
+amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
+cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></
+usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/te
+xmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/p
+ublic/amsfonts/cm/cmr7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/
+type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmtt12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msa
+m10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msbm10.pf
+b>
+Output written on Tesi.pdf (48 pages, 426426 bytes).
+PDF statistics:
+ 527 PDF objects out of 1000 (max. 8388607)
+ 130 named destinations out of 1000 (max. 500000)
+ 137 words of extra memory for PDF output out of 10000 (max. 10000000)
 
-Output written on Tesi.dvi (48 pages, 187488 bytes).
