@@ -35,6 +35,12 @@ Bruno Blanchet and David Pointcheval.
   Lecture Notes on Computer Science}, pages 537--554, Santa Barbara, CA, August
   2006. Springer Verlag.
 
+\bibitem[BR96]{BellareR96}
+Mihir Bellare and Phillip Rogaway.
+\newblock The exact security of digital signatures - how to sign with rsa and
+  rabin.
+\newblock In {\em EUROCRYPT}, pages 399--416, 1996.
+
 \bibitem[Dwo06]{DBLP:conf/crypto/2006}
 Cynthia Dwork, editor.
 \newblock {\em Advances in Cryptology - CRYPTO 2006, 26th Annual International

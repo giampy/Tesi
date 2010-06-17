@@ -10,6 +10,7 @@
 \usepackage{subfigure}  % use for side-by-side figures
 \usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs 
 \usepackage{float}
+\usepackage{setspace}
 \author{Gian Pietro Farina}
 \hyphenation{li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che}
 \floatstyle{boxed} 
@@ -35,7 +36,6 @@
    \fancyhead{} % ignora, nello stile plain, le intestazioni
    \renewcommand{\headrulewidth}{0pt} % e la linea
 }
-
 \newcommand{\foreach}[2]{\textbf{foreach #1} $\leq$ \textbf{#2} \textbf{do}}
 \newcommand{\return}[1]{\textbf{return}(#1);}
 \renewcommand{\do}{\textbf{do}}
@@ -50,14 +50,14 @@
 \begin{document}
 \chapter*{Introduzione}
 \addcontentsline{toc}{chapter}{Introduzione}
-Negli anni anni '80 la crittografia ha cessato di essere un' arte per assurgere allo stato di scienza. \\Come scienza, la crittografia moderna
-si propone innanzi tutto di fornire definizioni rigorose dei concetti con cui ha a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
+Da quando negli anni anni '80  ha cessato di essere un'arte per assurgere al rango di scienza, la crittografia moderna
+si \`e proposta innanzi tutto di fornire definizioni rigorose dei concetti con cui aveva e ha a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
 su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\
 Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) provare \emph{incondizionatamente} dei risultati, la maggior parte delle prove di teoremi, nel campo 
 della crittografia moderna, sono basate su assunzioni che non sono ancora certe, ma che sono comunque ben formalizzate e inequivocabilmente descritte.\\La pi\`u importante \`e sicuramente
 l'ipotesi dell'esistenza di funzioni \emph{one-way}. Tutte le prove che sono basate su assunzioni non verificate sono sempre e comunque valide, sia che le assunzioni fatte vengano dimostrate,
-sia che vengano confutate; questo perch\'e ogni dimostrazione \`e del tipo: \emph{Se X allora Y} (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
-d'espansione polinomiale). Semplicemente, nel caso in cui le assunzioni dovessero essere confutate si renderebbero poco interessanti le dimostrazioni che si basano su queste\footnote{\`E ovvio che partendo da ipotesi false si possa
+sia che vengano confutate; ogni dimostrazione \`e infatti del tipo: \emph{Se X allora Y} dove \emph{X} contiene un quantificatore esistenziale (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
+d'espansione polinomiale). Quindi, semplicemente, nel caso in cui le assunzioni dovessero essere confutate si renderebbero poco interessanti le dimostrazioni\footnote{\`E ovvio infatti, che partendo da ipotesi false si possa
 dimostrare qualsiasi cosa.}.
 \`E per\`o giusto dire che le assunzioni che vengono fatte sono largamente ritenute vere; questo anche  grazie al fatto che alcune di esse si possono dedurre da altre ipotesi 
 anche queste ampiamente accettate sebbene non dimostrate.\\Lo studio di una congettura, infatti, pu\`o fornire evidenti prove della sua validit\`a mostrando che essa \`e la tesi di un teorema che assume come ipotesi
@@ -87,7 +87,7 @@ l'equivalenza formale implica l'indistinguibilit\`a computazionale.
 \`E quindi lecito affermare che un attaccante per il modello computazionale non \`e pi\`u potente di un attaccante nel modello formale. Questo risultato ha dato un'ulteriore spinta
 ai sostenitori del modello formale che potevano cos\`i dimostrare risultati, con tutti i benefici che il modello formale comportava, 
 e estendere questo risultato al modello computazionale senza troppi problemi.
-Un' altra strada, invece, \`e quella che prevede di lavorare direttamente nel modello computazionale senza preoccuparsi di rispettare le forti ipotesi che erano 
+Un'altra strada, invece, \`e quella che prevede di lavorare direttamente nel modello computazionale senza preoccuparsi di rispettare le forti ipotesi che erano 
 state usate per dimostrare il risultato raggiunto in \cite{DBLP:journals/joc/AbadiR07}.
 Rispetto al passato, oggi giorno, la crittografia non \`e utilizzata solo in ambiente militare. I suoi campi di utilizzo si estendono a molti aspetti della vita quotidiana.
 Questo fatto ha comportato anche un'estensione dei possibili utilizzi della crittografia. Se infatti, un tempo l'unico scopo che si proponeva la crittografia era quello di garantire
@@ -152,7 +152,7 @@ Questa probabilit\`a tende a 0 in modo esponenziale al crescere della lunghezza 
 \`E quindi pi\`u realistico cercare di rappresentare l'avversario come un algoritmo che, oltre a terminare in tempo polinomiale, ha
 anche la possibilit\`a di effettuare scelte casuali e di commettere errori (anche se con probabilit\`a limitata).
 La classe dei problemi risolti da questo tipo di algoritmi \`e indicata con la
-sigla \emph{BPP} (i.e. \emph{Bounded Probability Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
+sigla \emph{PPT} (i.e. \emph{Probabilistic Polynomial Time}).\\Un modo pi\`u formale di vedere questo tipo di algoritmi \`e il seguente: si suppone che la macchina di Turing che 
 esegue l'algoritmo, oltre a ricevere l'input, diciamo $x$, riceva anche un input ausiliario $r$. Questa stringa di bit $r$, rappresenta una possibile sequenza di lanci di moneta dove \`e stato associato al valore $0$ la croce e al valore $1$ la testa (o anche viceversa ovviamente).
 Qualora la macchina dovesse effettuare una scelta casuale, non dovr\`a far altro che prendere il successivo bit dalla stringa $r$, e prendere una decisione in base ad esso
 (\`e, in effetti, come se avesse preso una decisione lanciando una moneta). Ecco quindi che il nostro tipico avversario si configura come un algoritmo polinomiale probabilistico.
@@ -320,48 +320,48 @@ essere il valore con cui viene fatto lo $XOR$ del messaggio (anch'esso di lunghe
 Siccome una stringa pseudocasuale appare, ad un distinguitore efficiente $D$, come una stringa casuale, $D$ non ottiene un vantaggio sensibile nel passaggio dal vero one-time pad
 al one-time pad che usa una chiave pseudocasuale. In generale i generatori pseudocasuali sono molto utili in crittografia per creare schemi crittografici simmetrici.
 
-\section{Dimostrazioni Basate su Games}
-In questo paragrafo si cercher\`a di spiegare cosa siano, nell'ambito della crittografia, i \emph{games}\footnote{Che intenderemo letteralmente come "giochi".} e come siano strutturate la
-maggior parte delle dimostrazioni che utilizzano sequenze di game.\\Si possono trovare approfondimenti riguardo a questi concetti nel lavoro di Shoup \cite{shoup}.
-Quella basata sul concetto di game \`e una tecnica\footnote{Game hopping technique.} molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
-Questi game sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamata sfidante\footnote{Perch\'e \emph{sfida} l'attaccante a 
+\section{Dimostrazioni Basate su Game}
+In questo paragrafo si cercher\`a di spiegare cosa siano, nell'ambito della crittografia, i \emph{game}\footnote{Che intenderemo letteralmente come "giochi".} e come siano strutturate la
+maggior parte delle dimostrazioni che utilizzano sequenze di giochi.\\Si possono trovare approfondimenti riguardo a questi concetti nel lavoro di Shoup \cite{shoup}.
+Quella basata sul concetto di gioco \`e una tecnica\footnote{Game hopping technique.} molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
+Questi giochi sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamata sfidante\footnote{Perch\'e \emph{sfida} l'attaccante a 
 vincere questo gioco.}. 
-\`E difficile dare una definizione formale di game; infatti il concetto di game cambia, sebbene in maniera non considerevole, da situazione a situazione, da ambiente ad ambiente e 
+\`E difficile dare una definizione formale di gioco; infatti il concetto di gioco cambia, sebbene in maniera non considerevole, da situazione a situazione, da ambiente ad ambiente e 
 da dimostrazione a dimostrazione (sia che queste siano fatte manualmente, sia che queste siano automatiche e quindi dipendenti dal framework in cui vengono costruite).
-Intuitivamente per\`o, i game possono essere immaginati come un insieme di azioni, modellate in una particolare algebra di processi, 
+Intuitivamente per\`o, i giochi possono essere immaginati come un insieme di azioni, modellate in una particolare algebra di processi, 
 che servono a specificare il comportamento dei partecipanti al gioco, ovvero le entit\`a che partecipano come \emph{principals} al protocollo crittografico.\\
 Il lettore trover\`a utile pensarli, almeno nell'ambito di questa tesi, come insiemi di processi che, fra le altre cose, forniscono un'interfaccia all'attaccante attraverso degli 
 \emph{oracoli} che possono resitituire dei valori all'attaccante. Questi oracoli, prima di restituire il valore, possono effettuare calcoli, dichiarare ed utilizzare variabili che non saranno
 visibili all'esterno.\\Si deve pensare agli oracoli come a delle scatole nere inaccessibili dall'esterno. Questi oracoli, una volta interrogati, forniscono una risposta,
 e questo \`e il massimo livello di interazione che dall'esterno si pu\`o avere con queste entit\`a.\\ \\
-Il primo passo che le dimostrazioni di sicurezza basate su sequenze di game fanno, \`e quello di modellare il protocollo crittografico reale in un game iniziale $G_0$.
+Il primo passo che le dimostrazioni di sicurezza basate su sequenze di giochi fanno, \`e quello di modellare il protocollo crittografico reale in un gioco iniziale $G_0$.
 In $G_0$ esiste la probabilit\`a non nulla che un evento \emph{negativo} possa accadere (immaginiamolo come una sorta di vittoria da parte dell'attaccante).
-Ora, in generale, si procede effettuando delle modifiche al game $G_i$ ottenendo un game $G_{i+1}$ 
-tale che $G_i$ e $G_{i+1}$ siano computazionalmente indistinguibili. Le modifiche che si effettuano fra un game e un altro devono introdurre delle differenze computazionalmente irrilevanti.
-Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili in gioco nei game.
-Se, per esempio, in un game $G_i$ un processo ha a che fare con un variabile casuale, e nel game $G_{i+1}$ questa viene sostituita con una variabile che invece \`e pseudocasuale, non vengono introdotte
-modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due game non sono distinguibili se non con 
-probabilit\`a trascurabile\footnote{In teoria si pu\`o ammettere anche un passaggio da game a game che valga
-con probabilit\`a $p$ non trascurabile, ovvio che poi si giunger\`a ad un game finale che sar\`a distinguibile 
-da quello iniziale per una probabilit\`a non trascurabile di valore almeno $p$.}.
-Alla fine si arriva ad un game $G_f$ in cui \emph{l'evento} non pu\`o accadere. Se l'evento non pu\`o accadere, l'attaccante non ha possibilit\`a di vincere. 
-Se, quindi, nel game finale l'attaccante non ha possibilit\`a di vincere e il game finale
+Ora, in generale, si procede effettuando delle modifiche al gioco $G_i$ ottenendo un gioco $G_{i+1}$ 
+tale che $G_i$ e $G_{i+1}$ siano computazionalmente indistinguibili. Le modifiche che si effettuano fra un gioco e un altro devono introdurre delle differenze computazionalmente irrilevanti.
+Queste modifiche possono essere viste come regole di riscrittura delle distribuzioni di probabilit\`a delle variabili utilizzate nei giochi.
+Se, per esempio, in un gioco $G_i$ un processo ha a che fare con un variabile casuale, e nel gioco $G_{i+1}$ questa viene sostituita con una variabile che invece \`e pseudocasuale, non vengono introdotte
+modifiche computazionalmente rilevanti e quindi il passaggio \`e lecito, visto che i due giochi non sono distinguibili se non con 
+probabilit\`a trascurabile\footnote{In teoria si pu\`o ammettere anche un passaggio da gioco a gioco che valga
+con probabilit\`a $p$ non trascurabile, ovvio che poi si giunger\`a ad un gioco finale che sar\`a distinguibile 
+da quello iniziale per una probabilit\`a non trascurabile di valore almeno $p$. Quindi questo tipo di passaggio non \`e utile.}.
+Alla fine si arriva ad un gioco $G_f$ in cui \emph{l'evento} non pu\`o accadere. Se l'evento non pu\`o accadere, l'attaccante non ha possibilit\`a di vincere. 
+Se, quindi, nel gioco finale l'attaccante non ha possibilit\`a di vincere e il gioco finale
 \`e computazionalmente indistinguibile dal penultimo, questo lo \`e dal terzultimo e cos\`i via fino a $G_0$, allora
-il game finale \`e computazionalmente indistinguibile dal primo\footnote{Ricordiamo infatti che la somma di due probabilit\`a trascurabili rimane trascurabile.}. 
-Adesso, quindi, se nel game iniziale esiste la possibilit\`a che un evento avvenga, e nel game finale no,
-si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga nel game iniziale. Questo limite \`e la somma di tutte le probabilit\`a con cui un attaccante riesce a distinguere un game dal successivo all'interno della sequenza.
+il gioco finale \`e computazionalmente indistinguibile dal primo\footnote{Ricordiamo infatti che la somma di due probabilit\`a trascurabili rimane trascurabile.}. 
+Adesso, quindi, se nel gioco iniziale esiste la possibilit\`a che un evento avvenga, e nel gioco finale no,
+si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga nel gioco iniziale. Questo limite \`e la somma di tutte le probabilit\`a con cui un attaccante riesce a distinguere un gioco dal successivo all'interno della sequenza.
 
-\`E importante dire che anche nel modello formale si possono utilizzare le sequenze di game. La differenza \`e che due game successivi non sono computazionalmente indistinguibili, 
-ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che se in una sequenza di game $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
-allora i due game 
-devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di game sfrutta.
+\`E importante dire che anche nel modello formale si possono utilizzare le sequenze di gioco. La differenza \`e che due giochi successivi non sono computazionalmente indistinguibili, 
+ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che se in una sequenza di giochi $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
+allora i due giochi 
+devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di giochi sfrutta.
 Nel modello formale questa relazione sar\`a l'indistinguibilit\`a perfetta (meglio nota come equivalenza osservazionale) mentre in quello computazionale sar\`a 
 l'indistinguibilit\`a computazionale.
 \chapter{CryptoVerif}
 CryptoVerif \`e un \emph{dimostratore} automatico di sviluppo abbastanza recente\footnote{La sua prima release stabile risale al 2006.} che lavora direttamente nel modello computazionale.\\
 CryptoVerif \`e stato scritto da Bruno Blanchet\footnote{Ricercatore al LIENS (Computer Science Laboratory of Ecole Normale Supérieure)} nel linguaggio di programmazione OCaml. 
 Si possono trovare pi\`u informazioni riguardo al tool nella home page di Blanchet\footnote{\url{http://www.di.ens.fr/~blanchet/index-eng.html}}.
-Questo tool \`e utilizzato di solito per dimostrare propriet\`a di segretezza e autenticazione. Le prove in questione  si basano sulla tecnica delle sequenze di game.
+Questo tool \`e utilizzato di solito per dimostrare propriet\`a di segretezza e autenticazione. Le prove in questione  si basano sulla tecnica delle sequenze di giochi.
 Il tool \`e liberamente scaricabile\footnote{\url{http://www.cryptoverif.ens.fr/cryptoverif.html}} sotto la licenza CeCill\footnote{\url{http://www.cecill.info/licences/}}.
 CryptVerif \`e stato gi\`a utilizzato per dimostrare la correttezza di alcuni protocolli crittografici o schemi di firma, come per esempio: FDH \cite{BlanchetPointchevalCrypto06}, 
 Kerberos \cite{BlanchetJaggardScedrovTsayAsiaCCS08}.\\
@@ -371,11 +371,13 @@ da poter leggere il capitolo successivo con le conoscenze necessarie.
 Alla fine del capitolo verr\`a descritta brevemente l'implementazione dello schema di firma FDH nel linguaggio di CryptoVerif.
 \newpage
 \section{La Sintassi}
+Di seguito si cercher\`a di fornire maggiori spiegazioni senza per\`o, per ora, entrare troppo nel dettaglio.
 Un tipico file di input per CryptoVerif ha la seguente forma: \\
+\begin{center}
 \verb!<declaration>!$^{*}$\verb! process <odef>!.
-                                                       
-Si cercher\`a di fornire maggiori spiegazioni senza per\`o, per ora, entrare troppo nel dettaglio.
-Una dichiarazione (declaration) fornisce CryptoVerif delle informazioni su come comportarsi nella dimostrazione; 
+\end{center}
+\subsection{Dichiarazioni}
+Una dichiarazione (declaration) fornisce a CryptoVerif delle informazioni su come comportarsi nella dimostrazione; 
 spesso \`e la descrizione di una primitiva crittografica che CryptoVerif pu\`o assumere come vera per costruire le sue prove.
 In generale una dichiarazione pu\`o essere:
 \begin{description}
@@ -396,8 +398,8 @@ due valori identici \`e bassa.
     				      \begin{verbatim}
 				    forall x, y: myType; (f(x) = f(y)) = (y = x).
 				      \end{verbatim}
-definiamo l'iniettivit\`a della funzione $\texttt{f}$. Infatti possiamo sostituire il membro a sinistra dell'equazione con quello di destra solo se la funzione \`e $\texttt{f}$ iniettiva.
- \item{\emph{Regola di Riscrittura}.} La dichiarazione di una regola di riscrittura consiste in una coppia di espressioni. Ogni qualvolta CrytptoVerif incontra la prima
+definiamo l'iniettivit\`a della funzione $\texttt{f}$. Infatti possiamo sostituire il membro a sinistra dell'equazione con quello di destra solo se la funzione $\texttt{f}$ \`e iniettiva.
+ \item{\emph{Regola di Riscrittura}.} La dichiarazione di una regola di riscrittura consiste in una coppia di espressioni. Ogniqualvolta CrytptoVerif incontra la prima
 			      pu\`o decidere di sostituirla con la seconda. Per esempio, con il seguente frammento di codice:
       				      \begin{verbatim}
 				      not(not(true))=false.
@@ -409,7 +411,7 @@ Si badi: se si dessero, invece delle precedenti, queste regole di riscrittura:
 				      false=not(not(true)).
 				      true=not(not(false)).
 				      \end{verbatim}
-si andrebbe incontro ad un probabile loop infinito durante la fase di elaborazione di CryptoVerif. Infatti nel momento in cui il tool riconoscesse nel codice il valore $\texttt{true}$, 
+si andrebbe probabilmente incontro ad un loop infinito durante la fase di elaborazione di CryptoVerif. Infatti nel momento in cui il tool riconoscesse nel codice il valore $\texttt{true}$, 
 procederebbe con una riscrittura di questo nel frammento $\texttt{not(not(false))}$ il quale a sua volta sarebbe riscritto in $\texttt{not(not(not(not(true))))}$ e cosi via senza poter mai terminare.
  \item{\emph{Probabilit\`a}.} In CryptoVerif \`e possibile dichiarare delle probabilit\`a. Le probabilit\`a non solo possono essere trattate come \emph{oggetti} (numeri) 
 		      a se stanti, ovvero come dei valori statici, ma possono anche essere utilizzate come funzioni di altri argomenti. Con il seguente codice frammento:
@@ -417,7 +419,7 @@ procederebbe con una riscrittura di questo nel frammento $\texttt{not(not(false)
 				      proba POW.
 				      \end{verbatim}
 si dichiara una probabilit\`a $\texttt{POW}$. 
- \item{\emph{Costante}.} Dichiarando una costante $\texttt{k}$ si comunica a CryptoVerif che quel dato, una volta inizializzato, non potr\`a cambiare di valore durante l'esecuzione del protocollo. Per esempio, con il seguente codice frammento:
+ \item{\emph{Costante}.} Dichiarando una costante $\texttt{k}$ si comunica a CryptoVerif che quel dato, una volta inizializzato, non potr\`a cambiare valore durante l'esecuzione del protocollo. Per esempio, con il seguente frammento di codice:
 				      \begin{verbatim}
 				      const mark:bitstring.
 				      \end{verbatim}
@@ -435,16 +437,17 @@ si dichiara una probabilit\`a $\texttt{POW}$.
        end
    else      
       event forge.
-
 				      \end{verbatim}
-nel ramo else viene sollevato l'evento forge. Infatti, come sar\`a meglio spiegato nel paragrafo relativo all'esempio FDH, il ramo else rappresenta la situazione in cui un avversario ha fornito
+il costrutto $\texttt{find}$ verr\`a analizzato successivamente, per ora \`e sufficiente sapere che il costrutto $\texttt{find}$ ha un ramo che viene eseguito quando una particolare condizione \`e verificata (il ramo then) e un ramo che
+viene seguito quando la condizione del ramo then non si verifica. Nel frammento precedente non ci sono dichiarazioni, infatti il frammento serve per dare un esempio di come
+sollevare un evento. Nel ramo else, dunque, viene sollevato l'evento forge. Infatti, come sar\`a meglio spiegato nel paragrafo relativo all'esempio FDH, il ramo else rappresenta la situazione in cui un avversario ha fornito
 una coppia $\texttt{(m,} $ $\sigma \texttt{)}$ tale che $\sigma$ \`e una firma valida per il messaggio $\texttt{m}$ e nessun oracolo ha mai rilasciato tale firma.
- \item{\emph{Equivalenza}.} La dichiarazione di un'equivalenza fra game permette di dare a CryptoVerif una regola di riscrittura che pu\`o valere
-		    a meno di una certa probabilit\`a (eventualmente nulla). Affermando che un game \`e equivalente ad un altro a meno di una certa probabilit\`a, 
-		    si d\`a la possibilit\`a al tool di sostituire espressioni che compaiono nel primo game con le equivalenti che compaiono nel secondo, 
-tenendo comunque conto della probabilit\`a in gioco.
+ \item{\emph{Equivalenza}.} La dichiarazione di un'equivalenza fra giochi permette di dare a CryptoVerif una regola di riscrittura che pu\`o valere
+		    a meno di una certa probabilit\`a (eventualmente nulla). Affermando che un gioco \`e equivalente ad un altro a meno di una certa probabilit\`a, 
+		    si d\`a la possibilit\`a al tool di sostituire espressioni che compaiono nel primo gioco con le equivalenti che compaiono nel secondo, 
+tenendo comunque conto della probabilit\`a in gioco. Pi\`u in generale, quando si d\`a un'equivalenza fra giochi a meno di una certa probabilit\`a $\texttt{p}$ si comunica a CryptoVerif
+che i giochi in questione non possono essere distinti con una probabilit\`a maggiore di $\texttt{p}$. Ovviamente se la probabilit\`a \`e nulla allora i giochi non possono essere distinti.
 Per esempio, con il seguente frammento di codice:
-\newpage
 \begin{verbatim}
 equiv 
       foreach iK <= nK do r <-R seed; (
@@ -463,8 +466,8 @@ equiv
               )
           )
  \end{verbatim}
-si definisce un'equivalenza fra game che permette di definire la funzione $\texttt{invf}$ come l'inversa di $\texttt{f}$. Poich\'e quest'equivalenza deve valere sempre e a meno di una probabilit\`a,
-la quantit\`a tra parentesi \`e zero (fra i due game). Si possono per\`o specificare, come si vedr\`a successivamente, delle equivalenze fra game che valgono a meno di una certa probabilit\`a diversa da 0.
+si definisce un'equivalenza fra giochi che permette di definire $\texttt{invf}$ come funzione inversa di $\texttt{f}$. I giochi in questione sono rispettivamente quello a sinistra e quello a destra dei simboli $\texttt{<=(0)=>}$.
+Poich\'e quest'equivalenza deve valere sempre e non a meno di una probabilit\`a, la quantit\`a tra parentesi \`e zero (fra i due giochi). 
  \item{\emph{Parametro}.} Un parametro (di cui si sa solo che assumer\`a valori polinomiali nel parametro di sicurezza) pu\`o essere utilizzato per vari scopi.
 		  Il pi\`u importante \`e sicuramente effettuare lookup in array che contengono un numero di oggetti pari al parametro.
 Per esempio, con il seguente codice:
@@ -490,20 +493,17 @@ si dichiara un processo $\texttt{processS}$ che non \`e altro che la replicazion
 \end{verbatim}
 si chiede a CryptoVerif di cercare di dimostrare che $x$ \`e indistinguibile da una stringa casuale.
 \end{description}
-
-
-
-Di solito la maggior parte delle dichiarazioni (o comunque quelle pi\`u importanti e utilizzate) vengono fornite a CryptoVerif in un file separato (una sorta di libreria, specificata da linea di comando
-mediante l'opzione \\-lib\footnote{Per maggiori informazioni si pu\`o leggere il manuale del tool liberamente scaricabile dallo stesso url del tool.}). 
+Di solito la maggior parte delle dichiarazioni (o comunque quelle pi\`u importanti e utilizzate) vengono fornite a CryptoVerif in un file separato (una sorta di libreria). 
 Grazie a questa possibilit\`a \`e possibile dare una volta per tutte alcune definizioni molto utili in crittografia (e.g funzione one-way) e, 
-una volta fatto, \`e possibile utilizzarle in tutti gli schemi crittografici che le utilizzano semplicemente specificando il file di libreria corretto.\\
-Dopo una serie di dichiarazioni si procede inserendo la parola chiave $\texttt{process}$ e si continua specificando, mediante un oracolo, il protocollo di cui si desiderano dimostare delle propriet\`a. 
-In CryptoVerif, come gi\`a detto, un oracolo non \`e altro che un processo o un' opportuna composizione di processi. 
-I processi sono specificati mediante un calcolo di processi; questo mette a disposizioni vari operatori per comporre in vario modo dei processi di base, al fine di ottenere
+una volta fatto, \`e possibile utilizzarle in tutti gli schemi crittografici che le utilizzano semplicemente specificando il file di libreria corretto.
+\subsection{Definizione del protocollo}
+Dopo una serie di dichiarazioni, si procede inserendo la parola chiave $\texttt{process}$ e si continua specificando, mediante un oracolo, il protocollo di cui si desiderano dimostare delle propriet\`a. 
+In CryptoVerif, come gi\`a detto, un oracolo non \`e altro che un processo o un'opportuna composizione di processi. 
+I processi sono specificati mediante un calcolo di processi; questo mette a disposizione vari operatori per comporre in vario modo dei processi di base, al fine di ottenere
 ancora dei processi. Per esempio, dati due processi $A$ e $B$ \`e possibile ottenere un altro processo $A|B$ (leggasi $A$ parallelo $B$) in cui i due processi
 sono eseguiti in parallelo; oppure \`e possibile ottenere il processo $A;B$ che \`e un processo che esegue $A$ e poi esegue $B$. \`E possibile inoltre avere
 un particolare tipo di parallelismo in cui si crea un numero di copie, limitato polinomialmente, di un particolare processo (in questo CryptoVerif
-si \`e sicuramente ispirato al precedente calcolo di processi che si pu\`o trovare in \cite{MitchellRST06} quest'ultimo ispiratosi a sua volta
+si \`e sicuramente ispirato \cite{MitchellRST06}. Quest'ultimo lavoro si \`e ispirato a sua volta
 a \cite{AbadiG99} introducendo per\`o un'innovazione che \`e appunto la nozione di replicazione limitata polinomialmente). I processi nell'ambito della descrizione dei protocolli crittografici
 devono essere intesi come le entit\`a che nel mondo reale utilizzano il protocollo stesso. Se per esempio un protocollo prevede che un utente $A$ spedisca un messaggio cifrato ad un 
 utente $B$ si pu\`o pensare di modellare sia $A$ che $B$ attraverso due processi separati. Attraverso la grammatica in BNF che segue possiamo descrivere in modo pi\`u formale 
@@ -537,7 +537,7 @@ Le operazioni che pu\`o fare sono varie, infatti pu\`o:
 Il corpo di un oracolo pu\`o essere descritto in maniera pi\`u formale attraverso la seguente grammatica in BNF:
 
 \begin{verbatim}
-obody ::= <ident>
+<obody> ::= <ident>
           | ( <obody> )
           | end
           | event <ident> [(seq <term> )] [; <obody> ]
@@ -549,14 +549,15 @@ obody ::= <ident>
                     [else <obody> ]
           | return(seq <term> )[; <odef> ]
 \end{verbatim}
-Dove $\texttt{[M]}$ signifca che $\texttt{M}$ \`e opzionale.
-Si noti come, dopo un $\texttt{return}$, mediante il simbolo di sequenzializzazione (il simbolo ``;``), sia possibile definire un oracolo che verr\`a eseguito dopo quello precedente.
+
+Innanzi tutto si noti come nella grammatica precedente grazie all'ultima produzione sia possibile ritornare alla grammatica predecedentemente esposta il cui simbolo iniziale era $\texttt{<odef>}$; questo perch\`e deve
+essere possibile alla fine dell'implementazione di un oracolo definirne un altro in modo da avere un costrutto per la sequenzializzazione degli oracoli. 
+Infatti, dopo un $\texttt{return}$, mediante il simbolo di sequenzializzazione (il simbolo ``;``), \`e possibile definire un oracolo che verr\`a eseguito dopo quello precedente.
 \`E importante notare il costrutto $\texttt{let}$ con il quale \`e possibile cercare di decomporre il valore a destra del simbolo di uguaglianza in un pattern specificato e, 
 a seconda che questa decomposizione abbia o meno successo, \`e possibile richiamare un oracolo o un altro. 
 Un pattern pu\`o essere:
 \begin{itemize}
  \item una variabile.
- \item una funzione (eventualmente applicata a degli argomenti).
  \item una tupla di valori. 
 \end{itemize}
 Per esempio, il frammento di codice:
@@ -573,12 +574,12 @@ con la clausola $\texttt{fixed}$, allora il seguente codice:
 \begin{verbatim}
  x <-R D;
 \end{verbatim}
-assegna ad $\texttt{x}$ un valore scelto in maniera casuale da $\texttt{D}$. \\
+assegna ad $\texttt{x}$ un valore scelto in maniera casuale da $\texttt{D}$. In questo tipo di assegnamento a destra troviamo sempre un dominio di valori dichiarato precedentemente con la clausola $\texttt{fixed}$ \\
 L'assegnamento non casuale invece ha la seguente forma:
 \begin{verbatim}
-  x:Type <- G(r);
- \end{verbatim}
-con il codice precedente si dichiara $\texttt{x}$ come variabile di tipo $\texttt{Type}$ e si assegna a questa il valore ritornato dalla funzione $\texttt{G}$.
+ x:Type <- G(r);
+\end{verbatim}
+con il codice precedente si dichiara $\texttt{x}$ come variabile di tipo $\texttt{Type}$ e si assegna a questa il valore ritornato dalla funzione $\texttt{G}$. 
 Si osservi ora come nel seguente frammento di codice:
 \begin{verbatim}
 MyOracle() :=
@@ -595,7 +596,7 @@ che \`e il risultato della composizione in parallelo dei processi $\texttt{Z}$, 
 Un costrutto fondamentale del linguaggio implementato da CryptoVerif \`e il costrutto $\texttt{find}$\footnote{Come si afferma anche in \cite{BlanchetPointchevalCrypto06} \`e probabilmente il maggior apporto 
 fornito da questo tool rispetto ad altri linguaggi che lavorano invece su liste.} 
 che permette di effettuare un lookup su un array alla ricerca di elementi che soddisfino particolari propriet\`a. Inoltre, permette di compiere azioni diverse a seconda che 
-questi elementi vengano trovati o meno. Un tipico esempio di utilizzo del costrutto $\texttt{find}$ pu\`o essere analizzato nel seguente frammento di codice:
+questi elementi vengano trovati o meno. Un tipico esempio di utilizzo del costrutto $\texttt{find}$ pu\`o essere il seguente frammento di codice:
 \begin{verbatim}
  let processT =
       OT(m':bitstring, s:D) :=
@@ -605,7 +606,7 @@ questi elementi vengano trovati o meno. Un tipico esempio di utilizzo del costru
       else
           event forge.
 \end{verbatim}
-in questo frammento viene definito un processo $\texttt{processT}$ come un oracolo $\texttt{OT}$ che prende in input degli argomenti e che, quando viene chiamato, effettua un test; se questo \`e positivo esegue il ramo
+In questo frammento viene definito un processo $\texttt{processT}$ come un oracolo $\texttt{OT}$ che prende in input degli argomenti e che, quando viene chiamato, effettua un test; se questo \`e positivo esegue il ramo
 $\texttt{then}$ dell'$\texttt{if}$. Nel ramo $\texttt{then}$ viene effettuata una ricerca nell'array $\texttt{m}$ mediante il contatore $\texttt{i}$. Se viene trovato un $\texttt{i}$ tale per cui l'iesimo elemento dell'array $\texttt{m}$ \`e definito (ovvero gli \`e stato
 precedentemente assegnato un valore) e tale per cui l'iesimo elemento dell'array ha un valore uguale a quello fornito in input, allora viene eseguito il ramo $\texttt{then}$ del $\texttt{find}$ che \`e semplicemente
 la terminazione dell'oracolo.
@@ -615,69 +616,81 @@ ne sceglie uno casualmente ed esegue quello.
 
 
 \section{La Tecnica di Dimostrazione}
-Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di game. Queste sequenze di game per\`o differiscono fra loro
+Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di giochi. Questi giochi per\`o differiscono fra loro
 di probabilit\`a che non sono trattate asintoticamente infatti come spiegato pi\`u avanti CryptoVerif si basa sul modello esatto e non asintotico.
-CryptoVerif parte da un game iniziale fornito dall'utente 
+CryptoVerif parte da un gioco iniziale fornito dall'utente 
 (in cui un evento negativo pu\`o accadere\footnote{In questo contesto con evento non si intende necessariamento un oggetto 
 dichiarato con il costrutto $\texttt{event}$ ma una qualsiasi situazione \emph{negativa} per il protocollo.}) e mediante equivalenze, 
 che possono o meno
-introdurre differenze, cerca di modificare un game in un altro fino ad arrivare ad un game finale che soddisfi le richieste fatte dall'utente. Questa tecnica \`e basata innanzi tutto su una 
-particolare relazione di cui a breve si dar\`a una definizione. Prima di dare questa definizione \`e opportuno fornire un po' di notazione. \\Di solito indicheremo con la lettera $t$ dei tempi d'esecuzione di processi. Con i simboli $C[\cdot]$ e $C^{'}[\cdot]$ dei contesti.
+introdurre differenze, cerca di modificare un gioco in un altro fino ad arrivare ad un gioco finale che soddisfi le richieste fatte dall'utente. Questa tecnica \`e basata innanzi tutto su una 
+particolare relazione di cui a breve si dar\`a una definizione. Prima di dare questa definizione \`e opportuno spiegare prima la notazione che sar\`a utilizzata da qui in poi. \\Di solito indicheremo con la lettera $t$ dei tempi d'esecuzione di processi. 
+Se $A$ e $B$ sono due processi allora con la scrittura $A|B$ indichiamo un processo che \`e la composizione parallela di $A$ con $B$. Nella composizione parallela di due processi qusti possono procedere indipendentemente ma possono
+anche interagire attraverso operazioni di input e output. In questo modo se ha la composisione parallela di $A$ con $B$ allora un'operazione di output di $A$ pu\`o fornire l'input di un'operazione di input di $B$ e viceversa,
+ottenendo quindi una comunicazione fra processi.
+Con i simboli $C[\cdot]$ e $D[\cdot]$ si indicano dei contesti. 
 Un contesto \`e un processo con un $buco$, ovvero un processo che ha come argomento un altro processo e va in esecuzione in parallelo a questo. Di solito un contesto \`e un attaccante che cerca di distinguere un processo che 
-gli viene passato in input. Sia $C[\cdot]$ un contesto e siano $Q$ e $Q^{'}$ dei processi, allora $C$ distingue i due processi se $C[Q]$ (ovvero $C|Q$) ha un comportamento diverso da $C[Q^{'}]$.
-Infatti se quando $C$ interagisce con il processo $Q$ osserva un comportamento diverso da quello che osserva quando interagisce con $Q^{'}$ allora $C$ pu\`o effettivamente distinguere i due processi.
-Se $a$ \`e una qualsiasia stringa (supponiamo binaria per semplicit\`a) e $Q$ un processo, allora con la notazione $Pr[Q \rightsquigarrow a]$ si intende la probabilit\`a
+gli viene passato in input. Sia $C[\cdot]$ un contesto e siano $P$ e $Q$ dei processi, allora $C$ distingue i due processi se $C[P]$ (ovvero $C|P$) ha un comportamento diverso da $C[Q]$.
+Infatti se quando $C$ interagisce con il processo $P$ osserva un comportamento diverso da quello che osserva quando interagisce con $Q$ allora $C$ pu\`o effettivamente distinguere i due processi.
+Se $a$ \`e una qualsiasi stringa (supponiamo binaria per semplicit\`a) e $Q$ un processo, allora con la notazione $Pr[Q \rightsquigarrow a]$ si intende la probabilit\`a
 che $Q$ abbia $a$ come output. \\
-Se $Q$ \`e un processo e $\varepsilon$ \`e una sequenza ordinata di eventi allora con i simboli $Pr[Q \rightsquigarrow \varepsilon]$ si indica la probabilit\`a che $Q$ esegua la sequenza ordinata di eventi $\varepsilon$ . 
+Se $Q$ \`e un processo e $\mathcal{E}$ \`e una sequenza ordinata di eventi allora con i simboli $Pr[Q \rightsquigarrow \mathcal{E}]$ si indica la probabilit\`a che $Q$ esegua la sequenza ordinata di eventi $\mathcal{E}$ . 
 \begin{definizione}[Equivalenza Osservazionale Relativa alla Probabilit\`a $p$]
-Siano $Q$ e $Q^{'}$ due processi allora $Q$ e $Q{'}$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C, a, \varepsilon$
-$\lvert Pr[C[Q] \rightsquigarrow a] - Pr[C[Q^{'}]\rightsquigarrow a] \rvert \leq p(t)$ $\lvert Pr[C[Q] \rightsquigarrow \varepsilon] -  Pr[C[Q^{'}] \rightsquigarrow \varepsilon]\rvert \leq p(t)$ 
+Siano $P$ e $Q$ due processi allora $P$ e $Q$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C, a, \mathcal{E}$
+$\lvert Pr[C[P] \rightsquigarrow a] - Pr[C[Q]\rightsquigarrow a] \rvert \leq p(t)$ $\lvert Pr[C[P] \rightsquigarrow \mathcal{E}] -  Pr[C[Q] \rightsquigarrow \mathcal{E}]\rvert \leq p(t)$ 
 \end{definizione}
 Questa definizione vuole catturare il concetto che due processi sono equivalenti a meno di una probabilit\`a $p$ se nessun avversario che ha tempo di esecuzione $t$ riesce
-a distinguerli con una probabilit\`a maggiore di $p(t)$. Intendendo con quella scrittura che la probabilit\`a \`e funzione del tempo d'esecuzione di chi cerca di distinguere. 
-Si pu\`o dire che questa relazione sia un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che questa corrisponda all'indistinguibilit\`a del modello computazionale 
-(questo nel momento in cui la probabilit\`a che permette ai due processi di essere in relazione \`e trascurabile). Se due processi sono legati da questa relazione d'equivalenza allora sono equivalenti a meno di una certa probabilit\`a nel senso che, 
+a distinguerli con una probabilit\`a maggiore di $p(t)$. Intendendo con $p(t)$ che la probabilit\`a \`e funzione del tempo d'esecuzione di chi cerca di distinguere. 
+Si pu\`o dire che questa relazione sia un adattamento della nozione di equivalenza osservazionale (del modello formale) in modo che questa corrisponda all'indistinguibilit\`a 
+del modello computazionale 
+(questo nel momento in cui la probabilit\`a che permette ai due processi di essere in relazione \`e trascurabile). Se due processi sono legati da questa relazione d'equivalenza 
+allora sono equivalenti a meno di una certa probabilit\`a nel senso che, 
 qualsiasi attaccante (contesto) $C$ che va in esecuzione per un tempo $t$ ha una probabilit\`a di distinguere questi due processi al massimo $p(t)$.
 Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui le seguenti:
 \begin{enumerate}
- \item \emph{Se $Q \approx_p Q^{'}$ e $Q^{'} \approx_{p^{'}} Q^{''}$ allora $Q \approx_{p+p^{'}} Q^{''} $}
- \item \emph{Se $Q$ esegue un evento $\texttt{e}$ con probabilit\`a al massimo $p$ e $Q \approx_p Q^{'}$ allora $Q^{'}$ esegue l'evento $\texttt{e}$ con probabilit\`a al massimo $p+p^{'}$}
- \item \emph{Se $Q \approx_p Q^{'}$ e $C$ si esegue in tempo $t_C$ allora $C[Q] \approx_{p^{'}} C[Q^{'}]$ dove $p'(t)=p(t+t_C)$}
+ \item \emph{Se $P \approx_u Q$ e $Q \approx_{r} R$ allora $P \approx_{u+r} R$}
+ \item \emph{Se $Q$ esegue un evento $\texttt{e}$ con probabilit\`a al massimo $p$ e $Q \approx_r S$ allora $S$ esegue l'evento $\texttt{e}$ con probabilit\`a al massimo $p+r$}
+ \item \emph{Se $Q \approx_p S$ e $C$ si esegue in tempo $t_C$ allora $C[Q] \approx_{r} C[S]$ dove $r(t)=p(t+t_C)$}
 \end{enumerate}
 
-Quindi CryptoVerif, in generale, parte da una game $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di game 
-osservazionalmente equivalenti (secondo la definizione di prima): $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_n} G_{p_{n}} $; data questa sequenza, 
+Quindi CryptoVerif, in generale, parte da una gioco $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di giochi 
+osservazionalmente equivalenti (secondo la definizione 2.1): $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_n} G_{p_{n}} $; data questa sequenza, 
 attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{i=1}^{n}{p_i}}$ $G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
 $G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{i=1}^{n}{p_i}} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.
-Questo limite \`e $\sum_{i=1}^{n}p_i$.\\Come \`e stato spiegato precedentemente le regole di trasformazione da un game ad un altro sono date mediante delle equivalenze. 
-Dato un game $G$, per utilizzare una generica regola di trasformazione  $L \approx_p R$, CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente 
-apportando delle modifiche sintattiche al game $G$, costruisce inoltre un game $G^{'}$ tale che $G^{'} \approx_0 C[R]$. Adesso CryptoVerif grazie alla propriet\`a 3 pu\`o dedurre che $G \approx_p G^{'}$. Con questa tecnica CryptoVerif riesce a costruire catene
-di game che permettono di provare delle propriet\`a di alcuni protocolli.
-Le probabilit\`a utilizzate nelle sequenze di game create da CryptoVerif non sono trattate con la notazione asintotica, questo perch\`e
-CryptoVerif adotta l'\emph{exact security framework} questo permette al tool di calcolare in modo preciso le probabilit\`a, invece di 
+Questo limite \`e $\sum_{i=1}^{n}p_i$.\\Come \`e stato spiegato precedentemente le regole di trasformazione da un gioco ad un altro sono date mediante delle equivalenze. 
+Dato un gioco $G$, per utilizzare una generica regola di trasformazione  $L \approx_p R$, CryptoVerif trova un contesto $C$ tale che $G \approx_0 C[L] $ semplicemente 
+apportando delle modifiche sintattiche al gioco $G$, costruisce inoltre un gioco $G_s$ tale che $G_s \approx_0 C[R]$. CryptoVerif grazie alla Propriet\`a 3 pu\`o dedurre che $G \approx_p G_s$. 
+Con questa tecnica CryptoVerif riesce a costruire catene
+di giochi che permettono di provare delle propriet\`a di alcuni protocolli.
+Le probabilit\`a utilizzate nelle sequenze di giochi create da CryptoVerif non sono trattate con la notazione asintotica, questo perch\`e
+CryptoVerif adotta l'\emph{exact security framework} \cite{BellareR96}. Questo fatto permette al tool di calcolare in modo preciso le probabilit\`a, invece di 
 considerare l'andamento di queste quando il parametro di sicurezza tende ad infinito.
 Il fatto che CryptoVerif lavori nel modello esatto non significa che non pu\`o darci risultati estendibili a probabilit\`a trascurabili.
-Se per esempio alla fine di una prova CryptoVerif ha applicato $k$ volte un'equivalenza che vale a meno di una probabilit\`a $p$ allora
-in output sar\`a reso noto il fatto che la catena di game vale a meno della probabilit\`a $kt$. Ora se la probabilit\`a $t$ \`e noto essere
-trascurabile allora lo sar\`a anche $kt$ e quindi l'attaccante avr\`a una probabilit\`a trascurabile di distinguere il game finale da quello iniziale; 
-altrimenti significa che l'attaccante ha una probabilit\`a non trascurabile pari esattamente a $kt$ di vincere il game iniziale e quindi
-di distinguere questo dal game finale. 
-L'utilit\`a principale di CryptoVerif \`e infatti quella di \emph{fare bene i conti} delle dimostrazioni basate su game.
-
-\newpage
+Se per esempio alla fine di una prova CryptoVerif ha applicato $k$ volte un'equivalenza (con $k$ costante o valore polinomiale nel parametro di sicurezza) che vale a meno di una probabilit\`a $p$ allora
+in output sar\`a reso noto il fatto che la catena di giochi vale a meno della probabilit\`a $kt$. Ora se la probabilit\`a $t$ \`e noto essere
+trascurabile allora lo sar\`a anche $kt$ e quindi l'attaccante avr\`a una probabilit\`a trascurabile di distinguere il gioco finale da quello iniziale; 
+altrimenti significa che l'attaccante ha una probabilit\`a non trascurabile pari esattamente a $kt$ di vincere il gioco iniziale e quindi
+di distinguere questo dal gioco finale. 
+Il calcolo di processi che CryptoVerif implementa \`e fondamentalmente quello che si trova in \cite{BlanchetJaggardScedrovTsayAsiaCCS08} con per\`o delle differenze.
+Una fra le pi\`u importanti \`e appunto quella che CryptoVerif pu\`o trasformare un gioco in un altro quando questi appartengono ad una stessa classe d'equivalenza secondo la definizione 2.1, mentre 
+nel calcolo sviluppato in \cite{BlanchetJaggardScedrovTsayAsiaCCS08} la definizione di relazione d'equivalenza su cui si basano le trasformazioni \`e diversa.
+In \cite{BlanchetJaggardScedrovTsayAsiaCCS08} si considerano equivalenti giochi che sono distinguibili a meno di una probabilit\`a la cui unica peculiarit\`a \`e di essere trascurabile e nelle catene di giochi quindi la probabilit\`a di distnguere il gioco
+iniziale da quello finale \`e ovviamente trascurabile\footnote{Si sa infatti che la somma di funzioni valori trascurabili rimane tale.}. In CryptoVerif invece si considerano i valori precisi delle probabilit\`a in funzione
+di parametri dei giochi come per esempio numero di oracoli, lunghezza delle stringhe tempo d'esecuzione dell'attaccante ecc,ecc\dots Ecco quindi che CryptoVerif permette di calcolare in modo preciso le probablit\`a in 
+gioco, senza che queste vengano inglobate (e quindi perse) nella notazione asintotica. 
+L'utilit\`a principale di CryptoVerif \`e infatti quella di \emph{fare bene i conti} delle dimostrazioni basate su giochi. 
 
 \section{Un Esempio: FDH}
 \emph{Full Domain Hash} \`e uno schema di firma che segue il paradigma \emph{hash-and-sign}\footnote{Questo paradigma vuole che: dato un messaggio $m$ se ne ritorni 
 la firma di $hash(m)$ e non la firma di $m$, dove la funzione hash pu\`o essere istanziata con qualsiasi funzione hash collision resistant. 
 Si ottiene cos\`i una firma di lunghezza fissa e non dipendente dalla lunghezza del messaggio}. 
 Quella che a breve seguir\`a \`e la descrizione dello schema di firma FDH nel linguaggio di CryptoVerif. In quest'esempio la funzione $f$ sar\`a la funzione la cui inversa
-viene utilizzata per firmare messaggi, mentre la funzione $hash$ sar\`a la funzione utilizzata per ottenere un hash di una stringa di bit.\\
+viene utilizzata per firmare messaggi, mentre la funzione $hash$ sar\`a la funzione utilizzata per ottenere il valore hash di una stringa di bit.\\
 L'input che si fornisce al CryptoVerif \`e costituito, fondamentalmente, da due parti: 
 \begin{itemize}
- \item Un game iniziale $G_0$, in cui si modella la sicurezza dello schema.
- \item Alcune equivalenze necessarie a CryptoVerif per effettuare le modifiche ai game. 
+ \item Un gioco iniziale $G_0$, in cui si modella la sicurezza dello schema.
+ \item Alcune equivalenze necessarie a CryptoVerif per effettuare le modifiche ai giochi. 
 \end{itemize}
-La descrizione dello schema di firma FDH viene data al CryptoVerif attraverso il seguente game $G_0$:
+La descrizione dello schema di firma FDH viene data al CryptoVerif attraverso il seguente gioco $G_0$:
 
 \begin{verbatim}
 foreach iH <= qH do   
@@ -696,8 +709,8 @@ foreach iH <= qH do
 )         
 \end{verbatim}
 
-Procediamo adesso con una breve spiegazione di questo game.
-Possiamo vedere come in questo game si forniscano $\texttt{qH}$ copie dell' oracolo $\texttt{OH}$ le quali ritornano l'hash della stringa che gli si fornisce in input, ovvero $\texttt{x}$.\\
+Procediamo adesso con una breve spiegazione di questo gioco.
+Possiamo vedere come in questo gioco si forniscano $\texttt{qH}$ copie dell' oracolo $\texttt{OH}$ le quali ritornano il valore hash della stringa che gli si fornisce in input, ovvero $\texttt{x}$.\\
 Abbiamo poi l'oracolo $\texttt{Ogen()}$ che ritorna al contesto una chiave pubblica dopo aver creato, partendo da un seme casuale, una coppia costituita da una chiave privata e una chiave pubblica.\\
 Vengono fornite, mediante il costrutto $\texttt{foreach}$, $\texttt{qS}$ copie dell'oracolo $\texttt{OS}$ le quali si occupano di restituire in output una firma del messaggio che gli viene dato in input.
 La firma di un messaggio $\texttt{m}$, data una chiave privata $\texttt{sk}$ mediante la funzione $\texttt{f}$, viene effettuata restituendo il valore $\texttt{invf(sk, m)}$.\\ 
@@ -706,14 +719,14 @@ In particolare se $\texttt{hash(m1)}$ $\neq$ $\texttt{f(pk, s)}$ allora la firma
 l'oracolo si occupa di verificare se, per il messaggio $\texttt{m1}$, \`e stata mai rilasciata una firma dall'oracolo $\texttt{OS}$. In caso affermativo il processo termina, altrimenti significa che 
 l'attaccante, \`e stato in grado di forgiare una firma valida per il messaggio, e quindi \`e avvenuto l'evento \emph{forge}.\\
 Notiamo come l'attaccante non sia modellato esplicitamente, infatti non possiamo fare nessuna assunzione sul comportamento di questo.
-Possiamo immaginare un attaccante come un altro processo non meglio specificato messo in parallelo con questo game.\\ 
-Per poter trasformare un game in un altro, CryptoVerif ha bisogno di alcune definizioni di primitive crittografiche da poter utilizzare.
+Possiamo immaginare un attaccante come un altro processo non meglio specificato messo in parallelo con questo gioco.\\ 
+Per poter trasformare un gioco in un altro, CryptoVerif ha bisogno di alcune definizioni di primitive crittografiche da poter utilizzare.
 \\
 Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze che possono essere viste come regole di riscrittura 
 delle distribuzioni di probabilit\`a delle variabili in gioco.
 Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R}, possono essere valide incondizionatamente, 
 oppure possono valere a meno di una certa probabilit\`a.
-Nel secondo caso la riscrittura di un termine \emph{L} nell'equivalente \emph{R}, comporta l'introduzione di una differenza non nulla fra i due game.\\ 
+Nel secondo caso la riscrittura di un termine \emph{L} nell'equivalente \emph{R}, comporta l'introduzione di una differenza non nulla fra i due giochi.\\ 
 
 Prima di descrivere la seconda parte dell'input di CryptoVerif, \`e necessario fare una piccola digressione riguardo al concetto di funzione \emph{one-way}.
 Intuitivamente una funzione $f$ \`e one-way se non pu\`o essere invertita facilmente; cio\`e se, dato $y=f(x)$, \`e arduo riuscire a trovare un $x'$ tale che $f(x')=y$. 
@@ -736,7 +749,7 @@ Non \`e ancora noto se questi insiemi siano o meno lo stesso insieme.}.
 Il fatto che però qualcuno un giorno possa dimostrare che $P \neq NP$ non dimostrerebbe affatto l'esistenza delle funzioni one-way. 
 Infatti una funzione one-way deve, come prima sottolineato, essere non invertibile in modo efficiente, sempre e non solo nel \emph{caso pessimo}. \\ 
 Siamo ora pronti per vedere come il concetto di funzione one-way venga modellato in CryptoVerif.
-Si tratta di dare una definzione di one-wayness per mezzo di un'equivalenza fra game.\\La definizione \`e la seguente:
+Si tratta di dare una definzione di one-wayness per mezzo di un'equivalenza fra giochi.\\La definizione \`e la seguente:
 
 \begin{verbatim}
 equiv 
@@ -760,18 +773,19 @@ equiv
                  else return(false) |
            Ox() := let k:bitstring = mark in return(x))).
  \end{verbatim}
-Per ora, non \`e interessante per quale probabilit\`a questi game siano equivalenti, ecco perch\`e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ senza specificare ulteriormente.
-Questa equivalenza fra game cattura e definisce il concetto di funzione one-way. La funzione $\texttt{f}$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
-e quindi il game a sinistra e quello a destra del simbolo \textbf{$\approx _{pow}$} sono indistinguibili.
+Per ora, non \`e interessante per quale probabilit\`a questi giochi siano equivalenti, ecco perch\`e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ senza specificare ulteriormente.
+
+Questa equivalenza fra giochi cattura e definisce il concetto di funzione one-way. La funzione $\texttt{f}$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
+e quindi il gioco a sinistra e quello a destra del simbolo \textbf{$\approx _{pow}$} sono indistinguibili.
 Supponiamo infatti che la funzione $\texttt{f}$ non sia one-way, esister\`a dunque un avversario efficiente $A$ 
 che pu\`o invertire $\texttt{f}$. $A$ sar\`a dunque in grado di distinguere i due membri dell'equivalenza $L \approx_{pow} R$. 
-Questo perch\'e potendo invertire $\texttt{f}$, $A$ sar\`a in grado di osservare comportamenti diversi fra i game a seconda che $A$ chiami $\texttt{Oeq()}$ in $L$ o in $R$.
+Questo perch\'e potendo invertire $\texttt{f}$, $A$ sar\`a in grado di osservare comportamenti diversi fra i giochi a seconda che $A$ chiami $\texttt{Oeq()}$ in $L$ o in $R$.
 Procediamo con una sorta di esperimento mentale.\\ 
 Supponiamo che $A$ chiami $\texttt{Oy()}$ ottenendo l'immagine di un valore mediante $\texttt{f}$, sia questa $y$; poich\'e $\texttt{f}$ non \`e one-way, 
 $A$ inverte la funzione ottenendo un \verb!x'! tale che \verb!f(x')= y!.
 Adesso $A$ non deve far altro che richiamare $\texttt{Oeq()}$ passando a questo come argomento \verb!x'!. Se $\texttt{Oeq()}$ \`e richiamato dal primo membro dell'equivalenza, 
 allora $\texttt{Oeq()}$ ritorner\`a sempre true, mentre se appartiene al secondo ritorner\`a sempre false.\\
-In questo modo $A$ osserva dei comportamenti diversi fra i due game, e quindi pu\`o distinguerli. 
+In questo modo $A$ osserva dei comportamenti diversi fra i due giochi, e quindi pu\`o distinguerli. 
 Supponiamo, invece, che $\texttt{f}$ sia effettivamente one-way. Allora non esister\`a nessun attaccante efficiente che riesca ad invertire $\texttt{f}$.
 L'unico modo che ha quindi un attaccante $A$ per invertire la funzione \`e chiamare $\texttt{Ox()}$ e ottenere cos\`i una preimmagine valida. 
 Se però l'attaccante chiama $\texttt{Ox()}$ allora $L$ e $R$ sono effettivamente indistinguibili (a meno di una probabilit\`a trascurabile di cui parleremo dopo).
@@ -785,8 +799,9 @@ Se invece,  $\texttt{Oeq()}$\`e chiamato da $L$ allora $\texttt{Oeq()}$ si compo
 Se invece $\texttt{k}$ non \`e stata definita allora siginifica che l'attaccante non ha richiamato $\texttt{Ox()}$, quindi \`e lecito supporre che non sia riuscito ad invertire $\texttt{f}$ e quindi $\texttt{Oeq()}$ ritorna false.\\
 \`E importante notare che l'attaccante avrebbe comunque la possibilit\`a di indovinare $\texttt{x}$ anche senza richiamare $\texttt{Ox()}$, ma questa \`e una probabilit\`a trascurabile per definizione di one-wayness. 
 Di questa probabilit\`a viene comunque tenuto conto nell'equivalenza. L'equivalenza infatti, vale a meno di una certa probabilit\`a $pow$.
-In questo modo i due game, sono effettivamente indistinguibili, perch\'e non presentano differenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
+In questo modo i due giochi, sono effettivamente indistinguibili, perch\'e non presentano differenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
 Quindi $L$ e $R$ sono indistinguibili \emph{se e solo se} $\texttt{f}$ \`e one-way e di conseguenza la precedente equivalenza \`e una definizione ben posta di funzione one-way.
+
 Un'ulteriore definizione che viene fornita al CryptoVerif \`e quella di funzione hash. Questa definizione viene fornita al tool attraverso il seguente codice:
 \begin{verbatim}
 fun hash(hashinput):hashoutput.
@@ -847,7 +862,7 @@ una stringa pseudocasuale\footnote{E quindi anche una sua parte \`e pseudocasual
 lo \`e una stringa effettivamente casuale.
 La dimostrazione procede poi estendendo questa iterazione ad un numero polinomiale di volte e dimostrando attraverso una tecnica \emph{ibrida}
 che il risultato di questa iterazione \`e comunque una stringa pseudocasuale. Quella ibrida \`e una tecnica molto utilizzate per provare l'indistinguibilit\`a di due distribuzioni statistiche ed \`e 
-la naturale applicazione del concetto di sequenza di game a distribuzioni statistiche.
+la naturale applicazione del concetto di sequenza di giochi a distribuzioni statistiche.
 La tecnica ibrida definisce una serie di distribuzioni che si situano fra due distribuzioni \emph{estreme} che sono quelle che si vogliono dimostrare indistinguibili.
 In particolare le distribuzioni estreme della dimostrazione sono la distribuzione $H_0$ definita dai possibili valori di $G(r)$ con $r$ estratto casualmente da $\{0,1\}^n$ e 
 $H_{p(n)-n}$ definita dai valori di $\hat{G(r)}$ con $r$ scelto
@@ -933,7 +948,7 @@ Con il seguente frammento di codice non facciamo altro che istruire CryptoVerif 
 query secret1 w.
 \end{verbatim}
 infatti vogliamo che il tool provi che la stringa $\texttt{w}$ sia indistinguibile da una stringa casuale. Nell'ultimo frammento di codice si vedr\`a come sia definita questa stringa.
-L'ultimo frammento di codice rappresenta una sorta di $protocollo$ che funge da game iniziale:
+L'ultimo frammento di codice rappresenta una sorta di $protocollo$ che funge da gioco iniziale:
 \begin{verbatim}
 50 process
 51         G():=
@@ -950,8 +965,8 @@ $\texttt{b'}$. Adesso \`e possibile utilizzare nuovamente $\texttt{G'}$ su input
 $\texttt{w}$ quindi \`e il risultato di un duplice utilizzo del generatore pseudocasuale $\texttt{G'}$. Dimostrando la propriet\`a di one-session secrecy per la stringa $\texttt{w}$ CryptoVerif
 non fa altro che dimostrare la pseducasualit\`a di questa.
 \newpage
-\subsection{I Game della Prova}
-Il seguente \`e il game iniziale in cui si utilizza due volte il generatore pseudocasuale $\texttt{G'}$; 
+  \subsection{I Giochi della Prova}
+Il seguente \`e il gioco iniziale in cui si utilizza due volte il generatore pseudocasuale $\texttt{G'}$; 
 la prima applicandolo ad un seme casuale $\texttt{r}$ e la seconda applicandolo a parte dell'output di $\texttt{G'(r)}$.
 \begin{verbatim}
 Game 1 is
@@ -980,7 +995,7 @@ equiv foreach i1_5 <= n1 do
 
 [Excluding set(dist 1->2, proba <= POW)] yields
 \end{verbatim}
-Nel seguente game, ovvero il 2, viene inizializzata una nuova variabile $\texttt{x\_7}$ con un valore casuale dal dominio  $\texttt{np1bits}$, questa variabile viene poi assegnata a quella che prima
+Nel seguente gioco, ovvero il 2, viene inizializzata una nuova variabile $\texttt{x\_7}$ con un valore casuale dal dominio  $\texttt{np1bits}$, questa variabile viene poi assegnata a quella che prima
 conteneva il risultato di $\texttt{G'(r)}$ e cio\`e $\texttt{x'}$.
 \begin{verbatim} 
 Game 2 is
@@ -992,8 +1007,8 @@ O() :=
      w: np2bits <- concatnp1(G'(y'), b');
      return()
 \end{verbatim}
-Nel game 2 c'\`e un assegnamento che \`e inutile ovvero quello che coinvolge la variabile $\texttt{x'}$; infatti si pu\`o eliminare  $\texttt{x'}$ e sostituirla con  $\texttt{x\_7}$. 
-Il risultato di questa operazione lo si trova nel game 3:
+Nel gioco 2 c'\`e un assegnamento che \`e inutile ovvero quello che coinvolge la variabile $\texttt{x'}$; infatti si pu\`o eliminare  $\texttt{x'}$ e sostituirla con  $\texttt{x\_7}$. 
+Il risultato di questa operazione lo si trova nel gioco 3:
 \begin{verbatim} 
 Applying remove assignments of useless yields
 
@@ -1021,7 +1036,7 @@ equiv foreach i1_3 <= n1 do
 
 yields
 \end{verbatim}
-\`e possibile modificare il game 3 nel seguente game in cui le variabili $\texttt{xl\_9}$ e $\texttt{x\_8}$ sono inizializzate con dei valori casuali estratti rispettivamente dal dominio dei booleani e dal dominio
+\`e possibile modificare il gioco 3 nel seguente gioco in cui le variabili $\texttt{xl\_9}$ e $\texttt{x\_8}$ sono inizializzate con dei valori casuali estratti rispettivamente dal dominio dei booleani e dal dominio
 $\texttt{nbits}$ ovvero dalle stringhe di lunghezza $n$.
 \begin{verbatim} 
 Game 4 is
@@ -1033,8 +1048,8 @@ O() :=
      w: np2bits <- concatnp1(G'(y'), b');
      return()
 \end{verbatim}
-Si pu\`o vedere come anche nel game 4 si possono trovare degli assegnamenti inutili ovvero quelli che coinvolgono le variabili $\texttt{y'}$ e $\texttt{b'}$. \`E possibile infatti, eliminare queste variabili
-sostituendo ogni occorrenza di queste con le variabili $\texttt{xl\_9}$ e $\texttt{x\_8}$. Effettuando queste modifiche si ottiene il seguente game:
+Si pu\`o vedere come anche nel gioco 4 si possono trovare degli assegnamenti inutili ovvero quelli che coinvolgono le variabili $\texttt{y'}$ e $\texttt{b'}$. \`E possibile infatti, eliminare queste variabili
+sostituendo ogni occorrenza di queste con le variabili $\texttt{xl\_9}$ e $\texttt{x\_8}$. Effettuando queste modifiche si ottiene il seguente gioco:
 \begin{verbatim} 
 Applying remove assignments of useless yields
 
@@ -1045,7 +1060,7 @@ x_8 <-R nbits;
 w: np2bits <- concatnp1(G'(x_8), xl_9);
 return()
 \end{verbatim}
-Nel game 5 l'unica cosa che CryptoVerif pu\`o fare \`e quella di applicare nuovamente la definizione di $\texttt{G'}$:
+Nel gioco 5 l'unica cosa che CryptoVerif pu\`o fare \`e quella di applicare nuovamente la definizione di $\texttt{G'}$:
 \begin{verbatim}
 Applying equivalence
 equiv foreach i1_5 <= n1 do 
@@ -1057,7 +1072,7 @@ equiv foreach i1_5 <= n1 do
               OGet() := return(x)
 [Excluding set(dist 5->6, proba <= POW)] yields
 \end{verbatim}
-ottenendo il seguente game in cui sia $\texttt{xl\_9}$ che $\texttt{x\_10}$ sono stringhe casuali estratte rispettivamente dal dominio dei booleani e dal dominio delle stringhe di lunhezaz $n+1$. Si ottiene quindi il game 6:
+ottenendo il seguente gioco in cui sia $\texttt{xl\_9}$ che $\texttt{x\_10}$ sono stringhe casuali estratte rispettivamente dal dominio dei booleani e dal dominio delle stringhe di lunhezaz $n+1$. Si ottiene quindi il gioco 6:
 \begin{verbatim}
 Game 6 is
 O() :=
@@ -1079,8 +1094,8 @@ equiv foreach i1_1 <= n1 do
       OGet() := return(w)
 yields
 \end{verbatim}
-in questo game CryptoVerif non fa altro che applicare la definizione di $\texttt{concatnp1}$ che afferma che la concatenazione di una stringa casuale di $n$ bit e di un bit casuale \`e una stringa casuale di $n+2$ bit.
-Otteniamo quindi il game finale, ovvero il game 7:
+in questo gioco CryptoVerif non fa altro che applicare la definizione di $\texttt{concatnp1}$ che afferma che la concatenazione di una stringa casuale di $n$ bit e di un bit casuale \`e una stringa casuale di $n+2$ bit.
+Otteniamo quindi il gioco finale, ovvero il gioco 7:
 \begin{verbatim}
 Game 7 is
 O() :=
@@ -1088,9 +1103,9 @@ O() :=
      w: np2bits <- w_11;
      return()
 \end{verbatim}
-In quest'ultimo game alla variabile $\texttt{w}$ \`e assegnato il valore di una stringa $\texttt{w\_11}$ che \`e scelta in maniera completamente casuale (con il costrutto $\texttt{<-R}$) dal dominio del tipo $\texttt{np2bits}$.
-Di conseguenza la stringa $\texttt{w}$ \`e in questo game un variabile casuale a tutti gli effetti.
-In questo game, quindi, l'attaccante non pu\`o distinguere la stringa $\texttt{w}$ da una stringa casuale perch\`e $\texttt{w}$ stessa \`e casuale, di conseguenza in questo game l'attaccante non pu\`o vincere.
+In quest'ultimo gioco alla variabile $\texttt{w}$ \`e assegnato il valore di una stringa $\texttt{w\_11}$ che \`e scelta in maniera completamente casuale (con il costrutto $\texttt{<-R}$) dal dominio del tipo $\texttt{np2bits}$.
+Di conseguenza la stringa $\texttt{w}$ \`e in questo gioco un variabile casuale a tutti gli effetti.
+In questo gioco, quindi, l'attaccante non pu\`o distinguere la stringa $\texttt{w}$ da una stringa casuale perch\`e $\texttt{w}$ stessa \`e casuale, di conseguenza in questo gioco l'attaccante non pu\`o vincere.
 CryptoVerif ha quindi dimostrato l'asserto iniziale, ovvero che dato un generatore pseudocasuale con fattore d'espansione $n+1$ se ne pu\`o ottenere uno con coefficiente d'espansione $n+2$.
 Ecco che tutto ci\`o ci porta alla parte finale dell'output di CryptoVerif in cui questo ci dice per quali probabilit\`a vale la prova:
 \begin{verbatim} 
@@ -1100,14 +1115,118 @@ set(dist 5->6, proba <= POW)
 RESULT Proved secrecy of w with probability 2. * POW
 All queries proved.
 \end{verbatim}
-siccome nella catena di game la definizione basata su equivalenza di $\texttt{G'}$ \`e stata applicata due volte \`e ovvio che la catena di game sia valida a meno di $\texttt{2 * POW}$ dove $\texttt{POW}$ \`e la probabilit\`a
+siccome nella catena di giochi la definizione basata su equivalenza di $\texttt{G'}$ \`e stata applicata due volte \`e ovvio che la catena di giochi sia valida a meno di $\texttt{2 * POW}$ dove $\texttt{POW}$ \`e la probabilit\`a
 per cui vale la definizione di $\texttt{G'}$.
 \section{Il passo induttivo}
-Avendo CryptoVerif dimostrato che, per $k=2$, se si ha un generatore pseudocasuale $\texttt{G'}$ con coefficiente d'espansione $n+1$ 
-allora si ha anche un generatore pseudocasuale con coefficiente d'espansione $n+k$, 
-bisogna anche effettuare il passo induttivo. 
+Si \`e dimostrato che CryptoVerif pu\`o provare che, per $k=2$, se si ha un generatore pseudocasuale $\texttt{G'}$ con coefficiente d'espansione $n+1$ 
+allora si ha anche un generatore pseudocasuale con coefficiente d'espansione $n+k$. Adesso bisogna anche effettuare il passo induttivo. 
 Infatti bisogna provare che CryptoVerif riesce a dimostrare che: si ha un generatore con coefficiente d'espansione $n+i+1$ supponendo di avere un generatore pseudocasuale con coefficiente
 $n+i$. Il tutto ovviamente con l'ipotesi di avere un generatore pseudocasuale con coefficiente d'espansione $n+1$, ovvero $\texttt{G'}$.
+\\
+
+Questa dimostrazione proceder\`a fornendo uno scheletro di un gioco iniziale che serve a dimostrare l'asserto per $n+i+1$ e provando che questo gioco si riduce in un numero di passi costante 
+al gioco che sarebbe servito per dimostrare
+l'asserto per $n+i$ che si suppone corretto per ipotesi induttiva.
+Il gioco iniziale per sar\`a caratterizzato da:
+\begin{itemize}
+ \item dichiarazione del tipo di base: $\texttt{type npbits [fixed].}$
+ \item $i$ dichiarazioni di tipo: \begin{itemize}
+                                       \item $\texttt{type np1bits [fixed].}$
+                                       \item $\texttt{type np2bits [fixed].}$
+				       \item \dots
+				       \item $\texttt{type npibits [fixed].}$
+                                      \end{itemize}
+  \item $i$ dichiarazioni di simobli funzionali del tipo:\begin{itemize}
+                                                          \item $\texttt{fun concatnp1(np1bits,bool):np2bits.}$
+							  \item $\texttt{fun concatnp2(np2bits, bool):np3bits.}$
+							  \item \dots
+							  \item $\texttt{fun concatnpi(npibits, bool):npi+1bits.}$    
+                                                         \end{itemize}
+ 
+  \item  $n+i+1$ equivalenze del tipo:
+				\begin{itemize}
+				 \item \begin{verbatim}
+equiv
+     foreach i1<=n1 do
+             r<-R np(i)bits;
+             b<-R bool;
+             Oget():=return(concatnpi(r, b))
+     <=(0)=>
+      foreach i1<=n1 do
+             w<-R np(i+1)bits;
+             Oget():=return(w).
+				\end{verbatim}
+  Quando $i=0$ il tipo da cui viene estratto il valore assegnato ad r \`e $\texttt{nbits}$
+\end{itemize}
+
+\item le dichiarazioni dei seguenti simboli funzionali:
+      \begin{itemize}
+       \item $\texttt{fun getn(np1bits):nbits.}$
+       \item $\texttt{fun getlast(np1bits):bool.}$
+      \end{itemize}		
+\item la definizione dei simoboli funzionali precedenti:
+      \begin{itemize}
+       \item \begin{verbatim}
+              equiv
+         foreach i1<=n1 do
+               r <-R np1bits;(
+               OGetn():=return (getn(r)) |
+               OGetlast():=return (getlast(r)))
+         <=(0)=>
+        foreach i1 <=n1 do
+                (
+                OGetn():= x <-R nbits;return(x) |
+                OGetlast():= xl <-R bool;return(xl)
+                ).
+             \end{verbatim}
+      \end{itemize}
+\item la dichiarazione del generatore pseudocasuale con coefficiente d'espansione $n+1$:
+\begin{itemize}
+ \item \begin{verbatim}
+        fun G'(nbits): np1bits.
+       \end{verbatim}
+\end{itemize}
+\item la definizione, mediante equivalenza, del generatore pseudocasuale con coefficiente d'espansione $n+1$:
+\begin{itemize}
+ \item \begin{verbatim}
+      equiv
+      foreach i1<=n1 do
+                  r <-R nbits;
+                  OGet():=return (G'(r))
+        <=(POW)=> 
+       foreach i1 <=n1 do
+                  x <-R np1bits;
+                  OGet():=return(x).
+       \end{verbatim}
+\item la clausola: $\texttt{query secret w.}$
+\item la definizione del protocollo iniziale, mediante un gioco, in cui si descrive il generatore pseudocasuale con coefficiente d'espansione $n+i+1$:
+\begin{itemize}
+ \item \begin{verbatim}
+ process
+        O():=
+              r<-R nbits;
+	      let x1 = G'(r) in
+              let y1 = getn(x') in
+              let b1 = getlast(x') in
+              let x2=G'(y') in
+              let y2=getn(x'') in
+              let b2=getlast(x'') in
+	      ...
+              ...
+              ...
+              ...
+	      let xi=G'(y(i-1)) in
+              let yi=getn(x(i-1) in
+              let bi=getlast(x(i-1)) in
+              w:np(i+1)bits <-concatnpi(concatnpi-1....(concatnp1(G'(yi), b1), b2), .....)bi);
+return()
+       \end{verbatim}
+\end{itemize}
+Questo \`e uno scheletro di ogni input necessario a dimostrare la validit\`a dell'asserto per qualche $k=n+i+1$ mediante CryptoVerif. Se si analizzano le ultime 5 righe si vede che la linea: 
+\begin{verbatim}
+ let xi=G'(y(i-1)) in
+\end{verbatim}
+
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
 \bibliographystyle{alpha}	
