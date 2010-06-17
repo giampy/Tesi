@@ -45,7 +45,7 @@ archive=true
 column=0
 encoding=UTF-8
 highlight=LaTeX
-line=1228
+line=1222
 mode=LaTeX
 open=true
 order=2
@@ -82,7 +82,7 @@ order=-1
 
 [view-settings,view=0,item:Tesi.tex]
 CursorColumn=0
-CursorLine=1228
+CursorLine=1222
 
 [view-settings,view=0,item:frontespizio.tex]
 CursorColumn=18

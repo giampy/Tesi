@@ -1198,6 +1198,8 @@ equiv
                   x <-R np1bits;
                   OGet():=return(x).
        \end{verbatim}
+\end{itemize}
+
 \item la clausola: $\texttt{query secret w.}$
 \item la definizione del protocollo iniziale, mediante un gioco, in cui si descrive il generatore pseudocasuale con coefficiente d'espansione $n+i+1$:
 \begin{itemize}
@@ -1205,28 +1207,39 @@ equiv
  process
         O():=
               r<-R nbits;
-	      let x1 = G'(r) in
+              let x1 = G'(r) in
               let y1 = getn(x') in
               let b1 = getlast(x') in
               let x2=G'(y') in
               let y2=getn(x'') in
               let b2=getlast(x'') in
-	      ...
+              ...
               ...
               ...
               ...
 	      let xi=G'(y(i-1)) in
               let yi=getn(x(i-1) in
               let bi=getlast(x(i-1)) in
-              w:np(i+1)bits <-concatnpi(concatnpi-1....(concatnp1(G'(yi), b1), b2), .....)bi);
+w:np(i+1)bits <-concatnpi(concatnpi-1....(concatnp1(G'(yi), b1), b2), .....)bi);
 return()
        \end{verbatim}
 \end{itemize}
+\end{itemize}
+
 Questo \`e uno scheletro di ogni input necessario a dimostrare la validit\`a dell'asserto per qualche $k=n+i+1$ mediante CryptoVerif. Se si analizzano le ultime 5 righe si vede che la linea: 
 \begin{verbatim}
  let xi=G'(y(i-1)) in
 \end{verbatim}
 
+attraverso le trasformazioni dettate dalle definizioni di equivalenza sopra citate si arriva ad una situazione del genere:
+\begin{verbatim}
+w: np4bits <- concatnp(n+i)(concatnp(n+i-1)(w_21, xl_16), xl_19);
+\end{verbatim}
+il primo argomento all'interno della funzione \`e semplicemente il risultato della dimostrazione per $n+i$. Che \`e vera per per ipotesi induzione e quindi arriviamo a questa situazione:
+\begin{verbatim}
+w: np4bits <- concatnp(n+i)(w_1, xl_19);
+\end{verbatim}
+ora grazie al fatto che la concatenazione di due stringhe random \`e una stringa random si ha la tesi.
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
 \bibliographystyle{alpha}	
