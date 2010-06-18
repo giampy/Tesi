@@ -23,11 +23,6 @@ Bruno Blanchet, Aaron~D. Jaggard, Andre Scedrov, and Joe-Kai Tsay.
 \newblock In {\em ACM Symposium on Information, Computer and Communications
   Security (ASIACCS'08)}, pages 87--99, Tokyo, Japan, March 2008. ACM.
 
-\bibitem[BP]{fdhall}
-Bruno Blanchet and David Pointcheval.
-\newblock sequences of games of fdh.
-\newblock \url{http://www.cryptoverif.ens.fr/FDH/fdh.pdf}.
-
 \bibitem[BP06]{BlanchetPointchevalCrypto06}
 Bruno Blanchet and David Pointcheval.
 \newblock Automated security proofs with sequences of games.

@@ -845,8 +845,8 @@ di una una prova che sar\`a in generale di tipo induttivo.
 \section{Il Teorema}
 Il risultato nella sua generalit\`a \`e il seguente teorema:
 \begin{teorema}
-Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ con fattore 
-d'espansione $\hat{l}(n)=n+1$ allora per ogni polinomio $p(n)$ (tale che $\forall n$ $p(n)>n$)
+Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ (con fattore 
+d'espansione $\hat{l}(n)=n+1$) allora per ogni polinomio $p(n)$ (tale che $\forall n$ $p(n)>n$)
 esiste un generatore pseudocasuale $G$ con coefficiente d'espansione $l(n)=p(n)$.
 \end{teorema}
 
@@ -865,7 +865,7 @@ che il risultato di questa iterazione \`e comunque una stringa pseudocasuale. Qu
 la naturale applicazione del concetto di sequenza di giochi a distribuzioni statistiche.
 La tecnica ibrida definisce una serie di distribuzioni che si situano fra due distribuzioni \emph{estreme} che sono quelle che si vogliono dimostrare indistinguibili.
 In particolare le distribuzioni estreme della dimostrazione sono la distribuzione $H_0$ definita dai possibili valori di $G(r)$ con $r$ estratto casualmente da $\{0,1\}^n$ e 
-$H_{p(n)-n}$ definita dai valori di $\hat{G(r)}$ con $r$ scelto
+$H_{p(n)-n}$ definita dai valori di $r$ con $r$ scelto
 casualmente da $\{0, 1\}^{p(n)}$. 
 Alla fine dei calcoli la dimostrazione prova che se ci fosse una differenza sensibile fra le distribuzioni estreme allora necessariamente dovrebbe anche esserci una differenza
 sensibile fra due distribuzioni vicine. E poich\`e questo sarebbe assurdo, perch\`e negherebbe che $\hat{G}$ \`e un generatore pseudocasuale, giunge al risultato desiderato, ovvero che
@@ -875,21 +875,27 @@ le distribuzioni estreme sono indistinguibili che equivale a dire che $G$ \`e un
 Il risultato provato in questo lavoro \`e, come gia detto, molto meno generale del teorema classico ed \`e enunciato nel seguente:
 \begin{teorema}
 Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ 
-con fattore d'espansione $\hat{l}(n)=n+1$ allora per ogni costante $k > 1$ esiste un generatore 
-pseudocasuale $G$ con coefficiente d'espansione $l(n)=n+k$
+(con fattore d'espansione $\hat{l}(n)=n+1$) allora per ogni costante $k > 1$ esiste un generatore 
+pseudocasuale $G$ con coefficiente d'espansione $l(n)=n+k$.
 \end{teorema}
 
 Si dimostrer\`a il teorema attraverso un procedimento induttivo che sfrutta CryptoVerif. 
 In particolare, la dimostrazione si articoler\`a in due fasi come ogni prova induttiva:
 \begin{itemize}
  \item \emph{Caso Base.} Mediante CryptoVerif si dimostrer\`a il teorema per $k=2$.
- \item \emph{Caso Induttivo}. Si dimostrer\`a che CryptoVerif riesce a dimostrare il teorema per $k=i+1$ sfruttando il fatto che il teorema vale oer $k=i$.
+ \item \emph{Caso Induttivo}. Si dimostrer\`a che CryptoVerif riesce a dimostrare il teorema per $k=i+1$ assumendo di essere riuscito a dimostrarlo per $k=i$.
 \end{itemize}
 
 
+Quando d'ora in poi si user\`a l'espressione \emph{essere riuscito a dimostrare} riferendoci a CrytoVerif si intender\`a che CryptoVerif ha fornito una sequenza di giochi 
+nell'ultimo della quale l'asserto vale.
+
 \newpage
 \section{Dimostrazione del Caso Base}
-Si cercher\`a ora di dimostrare il caso base del procedimento induttivo prima accennato.
+Si cercher\`a ora di dimostrare il caso base del procedimento induttivo prima accennato. Ovvero si descriver\`a un fil di input per CryptoVerif che permette a questo di provare che:
+Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ 
+(con fattore d'espansione $\hat{l}(n)=n+1$) allora, per $k=2$, esiste un generatore 
+pseudocasuale $G$ con coefficiente d'espansione $l(n)=n+k$.
 L'input che \`e stato fornito a CryptoVerif inizia con le seguenti dichiarazioni:
 \begin{verbatim}
 1 type nbits 	 [fixed].     
@@ -912,10 +918,10 @@ Quella che segue \`e una dichiarazione di un simbolo funzionale con i relativi t
 In particolare la funzione prende in input come argomenti una stringa di lunghezza $n+1$ e un bit, quest'ultimo rappresentato attraverso
 un valore booleano. L'output sar\`a una stringa di lunghezza $n+2$.
 Come si pu\`o intuire dal nome della funzione, questa rappresenta la concatenazione di una stringa di lunghezza $n+1$ con un bit.
-Mediante le seguenti equivalenze non facciamo altro che implementare le funzioni dichiarate prima.
+Mediante la seguente equivalenza non facciamo altro che implementare la funzione dichiarata prima.
 La funzione $\texttt{concatnp1}$ viene descritta mediante un'equivalenza che rappresenta il seguente asserto:
-la concatenazione di una stringa casuale di $n+1$ bits con un bit casuale \`e una stringa casuale di
-$n+2$ bits. 
+\emph{la concatenazione di una stringa casuale di $n+1$ bit con un bit casuale \`e una stringa casuale di
+$n+2$ bit. }. L'equivalenza \`e la seguente:
 \begin{verbatim}
 10 equiv
 11       foreach i1<=n1 do
@@ -942,12 +948,13 @@ Con il seguente frammento di codice:
 \end{verbatim}
 per prima cosa si dichiara un simbolo funzionale $\texttt{G'}$ che sta per il $\hat{G}$ della dimostrazione classica. La dichiarazione viene ovviamente con i tipi di input e output del generatore pseudocasuale.
 Si noti come l'equivalenza valga a meno di una certa probabilit\`a. Infatti una stringa casuale \`e, in generale, di natura diversa da una stringa pseudocasuale sebbene siano distinguibili solo per una probabilit\`a trascurabile
-che \`e rappresentata appunto da $\texttt{POW}$.
+che \`e rappresentata appunto da $\texttt{POW}$. La probabilit\`a $\texttt{POW}$ \`e la probabilit\`a che un attaccante efficiente riesca a distinguere una stringa casuale da una pseudocasuale. La probabilit\`a $\texttt{POW}$  \`e
+trascurabile per definizione di pseudocasualit\`a.
 Con il seguente frammento di codice non facciamo altro che istruire CryptoVerif su cosa vogliamo che venga dimostrato.
 \begin{verbatim}
 query secret1 w.
 \end{verbatim}
-infatti vogliamo che il tool provi che la stringa $\texttt{w}$ sia indistinguibile da una stringa casuale. Nell'ultimo frammento di codice si vedr\`a come sia definita questa stringa.
+Il precedente frammento \`e lecito perch\`e ci\`o che si vuole \`e che il tool provi che la stringa $\texttt{w}$ sia indistinguibile da una stringa casuale. Nell'ultimo frammento di codice si vedr\`a come sia definita questa stringa.
 L'ultimo frammento di codice rappresenta una sorta di $protocollo$ che funge da gioco iniziale:
 \begin{verbatim}
 50 process
@@ -959,7 +966,9 @@ L'ultimo frammento di codice rappresenta una sorta di $protocollo$ che funge da 
 56              w:np2bits <-concatnp1(G'(y'), b');
 57              return
 \end{verbatim}
-si noti come la variabile $\texttt{r}$ venga inizializzata con un valore casuale preso dall'insieme delle stringhe binarie di lunghezza $n$, successivamente si procede con l'assegnamento ad $\texttt{x'}$ della stringa pseudocasuale
+in questo gioco si applica due volte il generatore pseudocasuale $\texttt{G'}$ la prima volta alla stringa $\texttt{r}$ e la seconda al risultato fornito dalla prima applicazione di $\texttt{G'}$.
+In particolare si noti come la variabile $\texttt{r}$ venga inizializzata con un valore casuale preso dall'insieme delle stringhe binarie di lunghezza $n$, e come
+successivamente si proceda con l'assegnamento ad $\texttt{x'}$ della stringa pseudocasuale
 $\texttt{G'(r)}$. Dopo questo passaggio, i primi $n$ bit della stringa $\texttt{x'}$ vengono estratti e assegnati alla variabile $\texttt{y'}$ mentre l'$n+1$-esimo bit viene assegnato alla variabile 
 $\texttt{b'}$. Adesso \`e possibile utilizzare nuovamente $\texttt{G'}$ su input $\texttt{y'}$ e concatenare quindi $\texttt{G'(y')}$ con $\texttt{b'}$ ottenendo la stringa $\texttt{w}$.
 $\texttt{w}$ quindi \`e il risultato di un duplice utilizzo del generatore pseudocasuale $\texttt{G'}$. Dimostrando la propriet\`a di one-session secrecy per la stringa $\texttt{w}$ CryptoVerif
@@ -1117,57 +1126,63 @@ All queries proved.
 \end{verbatim}
 siccome nella catena di giochi la definizione basata su equivalenza di $\texttt{G'}$ \`e stata applicata due volte \`e ovvio che la catena di giochi sia valida a meno di $\texttt{2 * POW}$ dove $\texttt{POW}$ \`e la probabilit\`a
 per cui vale la definizione di $\texttt{G'}$.
-\section{Il passo induttivo}
-Si \`e dimostrato che CryptoVerif pu\`o provare che, per $k=2$, se si ha un generatore pseudocasuale $\texttt{G'}$ con coefficiente d'espansione $n+1$ 
-allora si ha anche un generatore pseudocasuale con coefficiente d'espansione $n+k$. Adesso bisogna anche effettuare il passo induttivo. 
-Infatti bisogna provare che CryptoVerif riesce a dimostrare che: si ha un generatore con coefficiente d'espansione $n+i+1$ supponendo di avere un generatore pseudocasuale con coefficiente
-$n+i$. Il tutto ovviamente con l'ipotesi di avere un generatore pseudocasuale con coefficiente d'espansione $n+1$, ovvero $\texttt{G'}$.
-\\
 
-Questa dimostrazione proceder\`a fornendo uno scheletro di un gioco iniziale che serve a dimostrare l'asserto per $n+i+1$ e provando che questo gioco si riduce in un numero di passi costante 
-al gioco che sarebbe servito per dimostrare
-l'asserto per $n+i$ che si suppone corretto per ipotesi induttiva.
-Il gioco iniziale per sar\`a caratterizzato da:
-\begin{itemize}
- \item dichiarazione del tipo di base: $\texttt{type npbits [fixed].}$
- \item $i$ dichiarazioni di tipo: \begin{itemize}
-                                       \item $\texttt{type np1bits [fixed].}$
+
+
+
+\section{Il passo induttivo}
+Quello che si cercher\`a ora di fare \`e di provare che CryptoVerif riesce a dimostrare il teorema per $k=i+1$ sfruttando l'ipotesi che riesca a dimostrarlo per $k=i$.
+Per poter dimostrare l'asserto per $k=i+1$ CryptoVerif, in generale, partir\`a da un file di input che contiene delle dichiarazioni e un gioco iniziale. Qui di seguito
+si dar\`a uno schema di questo file. Nell'input i valori $i$ e $i+1$ stanno al posto degli effettivi valori di $i$. Cos\`i il tipo: $\texttt{type npibits}$ dovr\`a essere inteso
+come un tipo nel cui nome la lettera $i$ \`e stata sostituita con un particolare valore.
+
+In particolare il file dovr\`a avere:
+\begin{enumerate}
+ \item la dichiarazione $\texttt{type npbits [fixed].}$. Questo tipo si trova in ogni file di input per ogni $k$.
+ \item $i+1$ dichiarazioni: \begin{itemize}
+                                       \item $\texttt{type np1bits [fixed].}$ Questo tipo si trova in ogni file di input per ogni $k$.
                                        \item $\texttt{type np2bits [fixed].}$
 				       \item \dots
+				       \item \dots
 				       \item $\texttt{type npibits [fixed].}$
-                                      \end{itemize}
-  \item $i$ dichiarazioni di simobli funzionali del tipo:\begin{itemize}
+				       \item $\texttt{type npi+1bits [fixed].}$	
+	                               \end{itemize}
+La lettera $i$ sar\`a sostituita dal particolare valore numerico che assume, stessa cosa per $i+1$
+allora si avr\`a $\texttt{type np5bits [fixed].}$ e $\texttt{type np6bits [fixed].}$
+       
+  \item $i$ dichiarazioni di simboli funzionali:\begin{itemize}
                                                           \item $\texttt{fun concatnp1(np1bits,bool):np2bits.}$
 							  \item $\texttt{fun concatnp2(np2bits, bool):np3bits.}$
+							  \item \dots
 							  \item \dots
 							  \item $\texttt{fun concatnpi(npibits, bool):npi+1bits.}$    
                                                          \end{itemize}
  
-  \item  $n+i+1$ equivalenze del tipo:
+  \item  $i+1$ equivalenze del tipo:
 				\begin{itemize}
 				 \item \begin{verbatim}
 equiv
      foreach i1<=n1 do
-             r<-R np(i)bits;
+             r<-R npibits;
              b<-R bool;
              Oget():=return(concatnpi(r, b))
      <=(0)=>
       foreach i1<=n1 do
-             w<-R np(i+1)bits;
+             w<-R npi+1bits;
              Oget():=return(w).
 				\end{verbatim}
-  Quando $i=0$ il tipo da cui viene estratto il valore assegnato ad r \`e $\texttt{nbits}$
 \end{itemize}
+Anche in questa equivalenza $i$ va sostituita con il valore che questa assume.
 
 \item le dichiarazioni dei seguenti simboli funzionali:
       \begin{itemize}
-       \item $\texttt{fun getn(np1bits):nbits.}$
-       \item $\texttt{fun getlast(np1bits):bool.}$
+       \item $\texttt{fun getn(np1bits):nbits.}$. Questo simbolo si trova in ogni file di input per ogni $k$.
+       \item $\texttt{fun getlast(np1bits):bool.}$. Questo simbolo si trova in ogni file di input per ogni $k$.
       \end{itemize}		
 \item la definizione dei simoboli funzionali precedenti:
       \begin{itemize}
        \item \begin{verbatim}
-              equiv
+         equiv
          foreach i1<=n1 do
                r <-R np1bits;(
                OGetn():=return (getn(r)) |
@@ -1180,7 +1195,7 @@ equiv
                 ).
              \end{verbatim}
       \end{itemize}
-\item la dichiarazione del generatore pseudocasuale con coefficiente d'espansione $n+1$:
+\item la dichiarazione del generatore pseudocasuale con coefficiente d'espansione $n+1$. Questo simbolo si trova in ogni file di input per ogni $k$.
 \begin{itemize}
  \item \begin{verbatim}
         fun G'(nbits): np1bits.
@@ -1198,31 +1213,204 @@ equiv
                   x <-R np1bits;
                   OGet():=return(x).
        \end{verbatim}
-\item la clausola: $\texttt{query secret w.}$
+\end{itemize}
+
+\item la clausola: $\texttt{query secret w.}$. Questa clausola si trova in ogni file di input per ogni $k$.
 \item la definizione del protocollo iniziale, mediante un gioco, in cui si descrive il generatore pseudocasuale con coefficiente d'espansione $n+i+1$:
 \begin{itemize}
  \item \begin{verbatim}
  process
         O():=
               r<-R nbits;
-	      let x1 = G'(r) in
-              let y1 = getn(x') in
-              let b1 = getlast(x') in
-              let x2=G'(y') in
-              let y2=getn(x'') in
-              let b2=getlast(x'') in
-	      ...
+              let x1 = G'(r) in
+              let y1 = getn(x1) in
+              let b1 = getlast(x1) in
+              let x2=G'(y1) in
+              let y2=getn(x2) in
+              let b2=getlast(x2) in
               ...
               ...
               ...
-	      let xi=G'(y(i-1)) in
-              let yi=getn(x(i-1) in
-              let bi=getlast(x(i-1)) in
-              w:np(i+1)bits <-concatnpi(concatnpi-1....(concatnp1(G'(yi), b1), b2), .....)bi);
+              let xi=G'(yi-1) in
+              let yi=getn(xi-1) in
+              let bi=getlast(xi-1) in
+w:npi+1bits<-concatnpi(
+            concatnpi-1(...concatnp1(G'(yi), b1), b2),... bi);
 return()
-       \end{verbatim}
+\end{verbatim}
 \end{itemize}
-Questo \`e lo scheletro di ogni input necessario a dimostrare la validit\`a dell'asserto per qualche $k=n+i+1$. Se si analizzano le ultime 5 righe si vede che 
+\end{enumerate}
+
+Vediamo un esempio: se $k=i+1=4$, allora il file di input per provare l'asserto \`e il seguente:
+
+\begin{verbatim}
+  1 type nbits [fixed].      (* stringhe di lunghezza  n *)
+  2 type np1bits [fixed].   (* stringhe di lunghezza  n+1 *)
+  3 type np2bits [fixed].   (* stringhe di lunghezza  n+2 *)
+  4 
+  5 type np3bits [fixed].   (* stringhe di lunghezza  n+3 *)
+  6 type np4bits [fixed].   (* stringhe di lunghezza  n+4 *)
+  7 
+  8 param n1.
+  9 
+ 10 (* La concatenazione di una stringa random di n+1 bits 
+      e un bit random è una stringa random di n+2 bits. *)
+ 11 fun concatnp1(np1bits,bool):np2bits.
+ 12 fun concatnp2(np2bits, bool):np3bits.
+ 13 fun concatnp3(np3bits, bool):np4bits.
+ 14 
+ 15 (* La concatenzione di stringhe random è una stringa random*)
+ 16 equiv
+ 17       foreach i1<=n1 do
+ 18             r <-R np1bits;
+ 19             b <-R bool;
+ 20             OGet():=return (concatnp1(r,b))
+ 21       <=(0)=>
+ 22      foreach i1 <=n1 do
+ 23             w <-R np2bits;
+ 24             OGet():=return(w).
+ 25 
+ 26 equiv
+ 27     foreach i1<=n1 do
+ 28         r<-R np2bits;
+ 29         b2<-R bool;
+ 30         Oget():=return(concatnp2(r, b2))
+ 31         <=(0)=>
+ 32     foreach i1<=n1 do
+ 33         w<-R np3bits;
+ 34         Oget():=return(w).
+ 35 
+ 36 equiv
+ 37     foreach i1<=n1 do
+ 38         r<-R np3bits;
+ 39         b3<-R bool;
+ 40         Oget():=return (concatnp3(r, b3))
+ 41         <=(0)=>
+ 42     foreach i1<=n1 do
+ 43         w<-R np4bits;
+ 44         Oget():=return (w).
+ 45 
+ 46 
+ 47 
+ 48 
+ 49 (* Estrae i primi n bits da una stringa di n+1 bits *)
+ 50 fun getn(np1bits):nbits.
+ 51 (* Estrae l'ultimo bit da una stringa di n+1 bits *)
+ 52 fun getlast(np1bits):bool.
+ 53 equiv
+ 54        foreach i1<=n1 do
+ 55              r <-R np1bits;(
+ 56              OGetn():=return (getn(r)) |
+ 57              OGetlast():=return (getlast(r)))
+ 58        <=(0)=>
+ 59       foreach i1 <=n1 do
+ 60               (
+ 61               OGetn():= x <-R nbits;return(x) |
+ 62               OGetlast():= xl <-R bool;return(xl)
+ 63               ).
+ 64 proba POW.
+ 65 (* Generatore pseudorandom con fattore n+1 *)
+ 66 fun G'(nbits): np1bits.
+ 67 equiv
+ 68     foreach i1<=n1 do
+ 69                 r <-R nbits;
+ 70                 OGet():=return (G'(r))
+ 71       <=(POW)=> (* da definire *)
+ 72      foreach i1 <=n1 do
+ 73                 x <-R np1bits;
+ 74                 OGet():=return(x).
+ 75 
+ 76 query secret w.
+ 77 
+ 78 process
+ 79         O():=
+ 80              r<-R nbits;
+ 81              let x1 = G'(r) in
+ 82              let y1 = getn(x1) in
+ 83              let b1 = getlast(x1) in
+ 84              let x2=G'(y1) in
+ 85              let y2=getn(x2) in
+ 86              let b2=getlast(x2) in
+ 87              let x3=G'(y2) in
+ 88              let y3=getn(x3) in
+ 89              let b3=getlast(x3) in
+ 90 w:np4bits <-concatnp3(concatnp2(concatnp1(G'(y3), b1), b2), b3);
+ 91 return()
+\end{verbatim}
+
+\subsection{L'Ipotesi Induttiva}
+Prima di procedere \`e bene precisare che l'espressione: \emph{per $k=i$ CryptoVerif riesca a dimostrare l'asserto}\footnote{Che \`e l'ipotesi induttiva che verr\`a sfruttata.}
+significa che: per $k=i$ CryptoVerif partendo da un gioco iniziale\footnote{Che si pu\`o ottenere analizzando lo scheletro fornito 
+precedentemente per $k=i+1$ ed applicandolo ad $k=i$.} $G_0(i)$, descritto nel seguente frammento di codice:
+\begin{verbatim}
+O():=
+  r<-R nbits;
+  let x' = G'(r) in
+  let y' = getn(x') in
+  let b' = getlast(x') in
+  let x''=G'(y') in
+  let y''=getn(x'') in
+  let b''=getlast(x'') in
+  ...
+  ...
+  ...
+w:npibits<-concatnpi-1(
+            concatnpi-2(...concatnp1(G'(yi), b1), b2),... bi);
+return()
+\end{verbatim}
+riesce a giungere al seguente game finale $G_n(i)$:
+\begin{verbatim}
+O():=
+  w_i <-R npibits;
+  w <- w_i;
+return ();
+\end{verbatim}
+Dove la stringa $\texttt{w}$ non pu\`o essere distinta da una stringa casuale.
+Si noti che, proprio per costruzione dell'input, le istruzioni di $G_0(i)$ sono un sottoinsieme delle istruzioni del gioco iniziale per $k=i+1$, sia questo $G_0(i+1)$.
+Infatti $G_0(i+1)$ ha il seguente aspetto:
+\begin{verbatim}
+O():=
+  r<-R nbits;
+  let x' = G'(r) in
+  let y' = getn(x') in
+  let b' = getlast(x') in
+  let x''=G'(y') in
+  let y''=getn(x'') in
+  let b''=getlast(x'') in
+  ...
+  ...
+  ...
+w:npi+1bits<-concatnpi(
+            concatnpi-1(...concatnp1(G'(yi), b1), b2),... bi);
+return()
+\end{verbatim}
+Inoltre il file di input per $k=i+1$ avr\`a sempre un'equivalenza in pi\`u rispetto al file per $k=i$. Questa equivalenza \`e quella che serve a concatenare una stringa casuale di $n+i$ bit e un bit casuale, in una stringa
+casuale di $n+i+1$ bit; si sta parlando dell'equivalenza relativa al simbolo funzionale $concatnpi$.
+Quindi CryptoVerif partendo da $G_0(i+1)$ e utilizzando \emph{solo} le regole di riscrittura relative a $k=i$ giunge al gioco $G_{n-1}(i+1)$\footnote{Il penultimo della sequenza. Si vedr\`a infatti che con un ultima
+applicazione di una regola si giunger\`a al gioco finale}:
+\begin{verbatim}
+Game n-1 is
+O() :=
+xl <-R bool;
+w_z <-R npibits;
+w: npi+1bits <- concatnpi(w_i, xl);
+return()
+\end{verbatim}
+in cui tutte le stringhe che, oltre ad appartenere al gioco $G_0(i+1)$, appartenevano anche a $G_0(i)$ sono confluite, grazie alle equivalenze, in $w_z$.
+Ora utilizzando la sola regola di riscrittura $concatnpi$, l'unica in pi\`u rispetto al file per $k=i$, CryptoVerif pu\`o passare al seguente gioco:
+\begin{verbatim}
+Game n is
+O() :=
+w_a <-R npi+1bits;
+w: npi+1bits <- w_a
+return()
+\end{verbatim}
+Dove la variabile $w$ \`e effettivamente casuale.
+
+
+
+
+
 \chapter{Conclusioni}
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
 \bibliographystyle{alpha}	

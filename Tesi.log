@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.6.10)  17 JUN 2010 11:10
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2010.6.10)  18 JUN 2010 10:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -496,12 +496,12 @@ u]) then[]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 712--730
+Underfull \hbox (badness 10000) in paragraph at lines 712--729
 
  []
 
 [30]
-Overfull \hbox (2.9133pt too wide) in paragraph at lines 736--738
+Overfull \hbox (2.9133pt too wide) in paragraph at lines 735--737
 []\OT1/cmr/m/it/12 Una fun-zio-ne $\OML/cmm/m/it/12 f \OT1/cmr/m/n/12 : \OMS/cm
 sy/m/n/12 f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OMS/cmsy/m/n/1
 2 g[] ! f\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1\OMS/cmsy/m/n/12 
@@ -522,33 +522,34 @@ Capitolo 3.
 [35
 
 ] [36] [37] [38] [39] [40] [41] [42]
-Overfull \hbox (15.5214pt too wide) in paragraph at lines 1097--1099
+Overfull \hbox (15.5214pt too wide) in paragraph at lines 1106--1108
 \OT1/cmr/m/n/12 in que-sto gio-co Cryp-to-Ve-rif non fa al-tro che ap-pli-ca-re
  la de-fi-ni-zio-ne di $[]$
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1121--1126
-
- []
-
 [43] [44] [45]
-Overfull \hbox (159.22462pt too wide) in paragraph at lines 1223--1223
- []\OT1/cmtt/m/n/12 w:np(i+1)bits <-concatnpi(concatnpi-1....(concatnp1(G'(yi),
- b1), b2), .....)bi);[] 
- []
-
-
-Overfull \hbox (11.3752pt too wide) in paragraph at lines 1236--1236
-[]\OT1/cmtt/m/n/12 w: np4bits <- concatnp(n+i)(concatnp(n+i-1)(w_21, xl_16), xl
-_19);[] 
+Overfull \hbox (48.07457pt too wide) in paragraph at lines 1238--1238
+ []            \OT1/cmtt/m/n/12 concatnpi-1(...concatnp1(G'(yi), b1), b2),... b
+i);[] 
  []
 
 [46]
-Capitolo 4.
-(./Tesi.bbl [47
+Overfull \hbox (11.3752pt too wide) in paragraph at lines 1262--1262
+[] \OT1/cmtt/m/n/12 15 (* La concatenzione di stringhe random ^^Re una stringa 
+random*)[] 
+ []
 
-] [48
+[47] [48]
+Overfull \hbox (29.9002pt too wide) in paragraph at lines 1337--1337
+[] \OT1/cmtt/m/n/12 90 w:np4bits <-concatnp3(concatnp2(concatnp1(G'(y3), b1), b
+2), b3);[] 
+ []
+
+[49] [50] [51] [52
+
+]
+Capitolo 4.
+(./Tesi.bbl [53] [54
 
 ]
 Underfull \hbox (badness 4569) in paragraph at lines 9--13
@@ -556,14 +557,14 @@ Underfull \hbox (badness 4569) in paragraph at lines 9--13
 
  []
 
-[49]) [50] (./Tesi.aux) ) 
+[55]) [56] (./Tesi.aux) ) 
 Here is how much of TeX's memory you used:
- 7402 strings out of 494993
- 103980 string characters out of 1180536
+ 7403 strings out of 494993
+ 103998 string characters out of 1180536
  185339 words of memory out of 3000000
- 10441 multiletter control sequences out of 15000+50000
+ 10442 multiletter control sequences out of 15000+50000
  16621 words of font info for 66 fonts, out of 3000000 for 9000
  61 hyphenation exceptions out of 8191
  38i,14n,43p,416b,640s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on Tesi.dvi (50 pages, 194940 bytes).
+Output written on Tesi.dvi (56 pages, 209160 bytes).
