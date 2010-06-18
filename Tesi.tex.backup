@@ -685,7 +685,7 @@ la firma di $hash(m)$ e non la firma di $m$, dove la funzione hash pu\`o essere 
 Si ottiene cos\`i una firma di lunghezza fissa e non dipendente dalla lunghezza del messaggio}. 
 Quella che a breve seguir\`a \`e la descrizione dello schema di firma FDH nel linguaggio di CryptoVerif. In quest'esempio la funzione $f$ sar\`a la funzione la cui inversa
 viene utilizzata per firmare messaggi, mentre la funzione $hash$ sar\`a la funzione utilizzata per ottenere il valore hash di una stringa di bit.\\
-L'input che si fornisce al CryptoVerif \`e costituito, fondamentalmente, da due parti: 
+L'input fornito a CryptoVerif \`e costituito, fondamentalmente, da due parti: 
 \begin{itemize}
  \item Un gioco iniziale $G_0$, in cui si modella la sicurezza dello schema.
  \item Alcune equivalenze necessarie a CryptoVerif per effettuare le modifiche ai giochi. 
@@ -709,21 +709,20 @@ foreach iH <= qH do
 )         
 \end{verbatim}
 
-Procediamo adesso con una breve spiegazione di questo gioco.
+Quella che segue \`e una breve spiegazione di questo gioco.
 Possiamo vedere come in questo gioco si forniscano $\texttt{qH}$ copie dell' oracolo $\texttt{OH}$ le quali ritornano il valore hash della stringa che gli si fornisce in input, ovvero $\texttt{x}$.\\
 Abbiamo poi l'oracolo $\texttt{Ogen()}$ che ritorna al contesto una chiave pubblica dopo aver creato, partendo da un seme casuale, una coppia costituita da una chiave privata e una chiave pubblica.\\
 Vengono fornite, mediante il costrutto $\texttt{foreach}$, $\texttt{qS}$ copie dell'oracolo $\texttt{OS}$ le quali si occupano di restituire in output una firma del messaggio che gli viene dato in input.
 La firma di un messaggio $\texttt{m}$, data una chiave privata $\texttt{sk}$ mediante la funzione $\texttt{f}$, viene effettuata restituendo il valore $\texttt{invf(sk, m)}$.\\ 
 Infine viene fornito un oracolo $\texttt{OT}$ che si occupa di verificare se la firma $\texttt{s}$ \`e valida per il messaggio $\texttt{m1}$. \\
 In particolare se $\texttt{hash(m1)}$ $\neq$ $\texttt{f(pk, s)}$ allora la firma non \`e valida per il messaggio. Se invece $\texttt{hash(m1) = f(pk, s)}$,
-l'oracolo si occupa di verificare se, per il messaggio $\texttt{m1}$, \`e stata mai rilasciata una firma dall'oracolo $\texttt{OS}$. In caso affermativo il processo termina, altrimenti significa che 
+l'oracolo si occupa di verificare se, per il messaggio $\texttt{m1}$, sia stata mai rilasciata una firma dall'oracolo $\texttt{OS}$. In caso affermativo il processo termina, altrimenti significa che 
 l'attaccante, \`e stato in grado di forgiare una firma valida per il messaggio, e quindi \`e avvenuto l'evento \emph{forge}.\\
 Notiamo come l'attaccante non sia modellato esplicitamente, infatti non possiamo fare nessuna assunzione sul comportamento di questo.
 Possiamo immaginare un attaccante come un altro processo non meglio specificato messo in parallelo con questo gioco.\\ 
 Per poter trasformare un gioco in un altro, CryptoVerif ha bisogno di alcune definizioni di primitive crittografiche da poter utilizzare.
 \\
-Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze che possono essere viste come regole di riscrittura 
-delle distribuzioni di probabilit\`a delle variabili in gioco.
+Le definizioni in CryptoVerif vengono fornite attraverso delle equivalenze che rappresentano regole di riscrittura sui processi e che possono valere a meno di una certa probabilit\`a.
 Queste regole di riscrittura di un generico elemento \emph{L} in un generico elemento \emph{R}, possono essere valide incondizionatamente, 
 oppure possono valere a meno di una certa probabilit\`a.
 Nel secondo caso la riscrittura di un termine \emph{L} nell'equivalente \emph{R}, comporta l'introduzione di una differenza non nulla fra i due giochi.\\ 
@@ -734,7 +733,7 @@ Si noti come non sia necessario, per invertire la funzione, trovare $x$ ma \`e s
 \\Possiamo ora dare la seguente:
 \begin{definizione}[Funzione One-Way]
 Una funzione $f: \{0,1\}^*\rightarrow \{0,1\}^*$ \`e one-way se e solo se $\forall x \in  \{0,1\}^* \hbox{,} \forall A \in PPT$:  $\lvert Pr[A(f(x)) \in f^{-1}(f(x))]\rvert$ \`e una funzione 
-trascurabile.
+trascurabile nell'input.
 \end{definizione}
 
 \`E importante notare come la definizione valga per ogni $x$ del dominio; con questo si vuole sottolineare che invertire $f$ deve essere \emph{sempre} difficile e non per particolari $x$.
@@ -773,7 +772,8 @@ equiv
                  else return(false) |
            Ox() := let k:bitstring = mark in return(x))).
  \end{verbatim}
-Per ora, non \`e interessante per quale probabilit\`a questi giochi siano equivalenti, ecco perch\`e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ senza specificare ulteriormente.
+Per ora, non \`e interessante per quale probabilit\`a questi giochi siano equivalenti, ecco perch\`e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ pedice al simbolo $\approx$ 
+senza specificare ulteriormente.
 
 Questa equivalenza fra giochi cattura e definisce il concetto di funzione one-way. La funzione $\texttt{f}$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
 e quindi il gioco a sinistra e quello a destra del simbolo \textbf{$\approx _{pow}$} sono indistinguibili.
@@ -802,7 +802,7 @@ Di questa probabilit\`a viene comunque tenuto conto nell'equivalenza. L'equivale
 In questo modo i due giochi, sono effettivamente indistinguibili, perch\'e non presentano differenze di comportamento che $A$ possa notare, e quindi ai suoi occhi sono indistinguibili.
 Quindi $L$ e $R$ sono indistinguibili \emph{se e solo se} $\texttt{f}$ \`e one-way e di conseguenza la precedente equivalenza \`e una definizione ben posta di funzione one-way.
 
-Un'ulteriore definizione che viene fornita al CryptoVerif \`e quella di funzione hash. Questa definizione viene fornita al tool attraverso il seguente codice:
+Un'ulteriore definizione che viene fornita a CryptoVerif \`e quella di funzione hash. Questa definizione viene fornita al tool attraverso il seguente codice:
 \begin{verbatim}
 fun hash(hashinput):hashoutput.
 equiv foreach iH <= nH do 
@@ -836,7 +836,7 @@ forall k:pkey, x:D, x':D; (f'(k,x) = f'(k,x')) = (x = x).
 \end{verbatim}\\
 modellano l'iniettivit\`a delle funzioni $\texttt{invf}$, \verb!f'!, $\texttt{f}$\footnote{Non serve ai fini della dimostrazione modellare l'iniettivit\`a della funzione $\texttt{invf'}$. }.
 Nell'appendice A si pu\`o trovare l'input completo, mentre in \cite{BlanchetPointchevalCrypto06} possiamo trovare una spiegazione delle fasi 
-pi\`u importanti dell'output di CryptoVerif e infine in \cite{fdhall} troviamo l'ouput completo di CryptoVerif sull'input descritto precedentemente.
+pi\`u importanti dell'output di CryptoVerif e infine all'url \url{http://www.cryptoverif.ens.fr/FDH/fdh.pdf} troviamo l'ouput completo di CryptoVerif sull'input descritto precedentemente.
 
 \chapter{Risultati Raggiunti}
 Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un caso particolare di un risultato classico della crittografia computazionale. 
@@ -1393,10 +1393,11 @@ Game n-1 is
 O() :=
 xl <-R bool;
 w_z <-R npibits;
-w: npi+1bits <- concatnpi(w_i, xl);
+w: npi+1bits <- concatnpi(w_z, xl);
 return()
 \end{verbatim}
 in cui tutte le stringhe che, oltre ad appartenere al gioco $G_0(i+1)$, appartenevano anche a $G_0(i)$ sono confluite, grazie alle equivalenze, in $w_z$.
+Si osservi, tra l'altro che questo gioco, penultimo nella sequenza per $k=i+1$, \`e un sovrainsieme dell'ultimo gioco per $k=i$.
 Ora utilizzando la sola regola di riscrittura $concatnpi$, l'unica in pi\`u rispetto al file per $k=i$, CryptoVerif pu\`o passare al seguente gioco:
 \begin{verbatim}
 Game n is
@@ -1407,7 +1408,8 @@ return()
 \end{verbatim}
 Dove la variabile $w$ \`e effettivamente casuale.
 
-
+Non si mostra la sequenza di giochi per $k=i$ perch\`e per ipotesi induttiva si suppone che esista.
+Di questa sequenza per\`o si conosce il gioco iniziale, che per costruzione \`e un sottoinsieme del gioco iniziale per $k=i+1$.
 
 
 
