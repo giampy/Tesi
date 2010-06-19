@@ -2,44 +2,44 @@ This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
 The top-level auxiliary file: Tesi.aux
 The style file: alpha.bst
 Database file #1: myrefs.bib
-You've used 14 entries,
+You've used 15 entries,
             2543 wiz_defined-function locations,
-            661 strings with 6840 characters,
-and the built_in function-call counts, 5689 in all, are:
-= -- 563
-> -- 235
+            668 strings with 6956 characters,
+and the built_in function-call counts, 6093 in all, are:
+= -- 604
+> -- 254
 < -- 12
-+ -- 81
-- -- 76
-* -- 394
-:= -- 910
-add.period$ -- 44
-call.type$ -- 14
-change.case$ -- 80
-chr.to.int$ -- 14
-cite$ -- 14
-duplicate$ -- 248
-empty$ -- 443
-format.name$ -- 96
-if$ -- 1201
++ -- 87
+- -- 82
+* -- 426
+:= -- 977
+add.period$ -- 47
+call.type$ -- 15
+change.case$ -- 86
+chr.to.int$ -- 15
+cite$ -- 15
+duplicate$ -- 262
+empty$ -- 473
+format.name$ -- 103
+if$ -- 1284
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 14
-newline$ -- 72
-num.names$ -- 45
-pop$ -- 86
+missing$ -- 15
+newline$ -- 77
+num.names$ -- 48
+pop$ -- 89
 preamble$ -- 1
-purify$ -- 97
+purify$ -- 104
 quote$ -- 0
-skip$ -- 206
+skip$ -- 219
 stack$ -- 0
-substring$ -- 311
-swap$ -- 55
+substring$ -- 339
+swap$ -- 56
 text.length$ -- 12
 text.prefix$ -- 6
 top$ -- 0
-type$ -- 102
+type$ -- 110
 warning$ -- 0
-while$ -- 53
-width$ -- 18
-write$ -- 185
+while$ -- 57
+width$ -- 19
+write$ -- 198

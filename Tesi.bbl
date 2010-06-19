@@ -43,6 +43,11 @@ Cynthia Dwork, editor.
   Proceedings}, volume 4117 of {\em Lecture Notes in Computer Science}.
   Springer, 2006.
 
+\bibitem[GM84]{GoldwasserM84}
+Shafi Goldwasser and Silvio Micali.
+\newblock Probabilistic encryption.
+\newblock {\em J. Comput. Syst. Sci.}, 28(2):270--299, 1984.
+
 \bibitem[Gol00]{519078}
 Oded Goldreich.
 \newblock {\em Foundations of Cryptography: Basic Tools}.
