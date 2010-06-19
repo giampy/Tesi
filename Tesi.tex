@@ -12,7 +12,7 @@
 \usepackage{float}
 \usepackage{setspace}
 \author{Gian Pietro Farina}
-\hyphenation{li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che}
+\hyphenation{e-si-ste li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che e-qui-va-len-za}
 \floatstyle{boxed} 
 \restylefloat{figure}
 \newtheorem{definizione}{Definizione}[chapter]
@@ -43,36 +43,36 @@
 %\addcontentsline{toc}{chapter}{Introduzione}
 %\section*{La Crittografia Moderna}
 \section{La Crittografia Moderna}
-Da quando, verso la fine del 20° secolo, ha cessato di essere un'arte per assurgere al rango di scienza, la crittografia moderna
-si \`e proposta innanzi tutto di fornire definizioni rigorose dei concetti con cui aveva a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
+Da quando, verso la fine del 20° secolo, ha cessato di essere un'arte per assurgere al rango di scienza, la crittografia si \`e proposta innanzi tutto di fornire definizioni rigorose dei concetti con cui aveva a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
 su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\ Infatti, si pu\`o affermare che mentre prima
-con la crittografia classica si costruivano dei cifrari crittografici \emph{ad-hoc} che sembravano sicuri in una particolare situazione ma che poi successivamente
+con la crittografia classica si costruivano dei cifrari crittografici \emph{ad-hoc} che sembravano sicuri in una particolare situazione ma che poi successivamente in altri contesti
 non si dimostravano tali, con la crittografia moderna si ha un atteggiamento profondamente diverso: si parte da delle definizioni e poi
 si \emph{dimostra} che gli schemi costruiti rispettano queste definizioni, dando quindi dei risultati pi\`u oggettivi e universali.
 Prima dell'avvento della crittografia moderna la costruzione di un cifrario \emph{valido} si basava soprattutto sulla creativit\`a 
 dei crittografi. Oggi giorno prima di provare che un cifrario sia valido bisogna dare una definizione di cifrario valido, inoltre il fatto
-che il cifrario sia valido deve essere provato con una dimostrazione.
+che il cifrario rispetti questa definizine deve essere provato con una dimostrazione.
 In passato la crittografia aveva come ambiente naturale quello militare e come scopo ultimo la segretezza di un messaggio.
-Oggi giorno, la crittografia non \`e utilizzata solo in ambiente militare. I suoi campi di utilizzo si estendono a molti aspetti della vita quotidiana.
-Questo fatto ha comportato anche un'estensione dei possibili utilizzi della crittografia. Se infatti, un tempo l'unico scopo che si proponeva la crittografia era quello di garantire
-la segretezza oggi giorno deve poter fornire molte altre garanzie fra le quali: autenticazione e integrit\`a dei messaggi scambiati fra due parti. Ecco, quindi, che la nascita di queste esigenze
-ha portato allo studio di schemi crittografici come per esempio \emph{message authentication code} oppure schemi crittografici asimmetrici.
+Oggi giorno, la crittografia non \`e pi\`u utilizzata solo in ambiente militare. I suoi campi di utilizzo si estendono a molti aspetti 
+della vita quotidiana: e-mail, connessioni sicure oppure codici bancari ecc, ecc\dots
+Questo fatto ha comportato anche un'estensione dei possibili scopi della crittografia. Se infatti, un tempo l'unico obiettivo che si proponeva la crittografia era quello di garantire
+la segretezza di un messaggio oggi giorno deve poter fornire molte altre garanzie fra le quali: autenticazione e integrit\`a dei messaggi scambiati fra due parti. Ecco, quindi, che la nascita di queste esigenze
+ha portato allo studio di schemi crittografici come per esempio \emph{message authentication codes} (meglio noti come MAC) oppure schemi crittografici asimmetrici.
 Quando si parla di segretezza, \`e importante, come gi\`a accennato, dare prima una definizione di cosa si intenda con questo termine.
 Se per esempio si intende che nessun attaccante possa mai venire a conoscenza della chiave allora si ottiene qualcosa che non \`e quello che si vorrebbe. La segretezza, infatti, riguarda un messaggio, 
 la chiave \`e solo un mezzo che si utilizza per ottenere questo fine. 
 Se invece si intende che un attaccante non riesca mai a decifrare il messaggio si \`e alla ricerca di una chimera. Come si vedr\`a nel proseguo infatti, posto che si abbia sufficiente tempo 
-a disposizione si pu\`o sempre riuscire a decifrare con \emph{certezza} il messaggio; inoltre esiste sempre la possiblit\`a che un attaccante riesca ad indovinare il messaggio
+a disposizione, si pu\`o sempre riuscire a decifrare con \emph{certezza} il messaggio; inoltre esiste sempre la possiblit\`a che un attaccante riesca ad indovinare il messaggio
 semplicemente \emph{tirando ad indovinare}. Se infine, si intende che ogni attaccante con determinate caratteristiche riesca difficilmente ad indovinare il messaggio cifrato, allora esiste la 
-possibilit\`a di ottenere schemi che rispettano questo tipo di definizione. Ovviamente \`e necessario prima formalizzare in modo 
+possibilit\`a di ottenere schemi che rispettino questo tipo di definizione. Ovviamente \`e necessario prima formalizzare in modo 
 corretto il concetto di \emph{difficolt\`a}.
 
 
 Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) provare \emph{incondizionatamente} dei risultati, la maggior parte dei teoremi, nel campo 
 della crittografia moderna, si basano su assunzioni che non sono ancora certe, ma che sono comunque ben formalizzate e inequivocabilmente descritte.\\La pi\`u importante \`e sicuramente
 l'ipotesi dell'esistenza di funzioni \emph{one-way}, che possono essere viste come funzioni \emph{facilmente} calcolabili
- ma difficilmente invertibili\footnote{Si dar\`a pi\`u avanti una definizione rigorosa.}. 
-Tale ipotesi \`e alla base di tutta la crittografia moderna. Se infatti un giorno questa venisse confutata probabilmente
-tutta la teoria riguardante la crittografia moderna perderebbe d'interesse. Il fatto che per\`o le dimostrazione in questo campo possano perdere d'interesse
+ ma \emph{difficilmente} invertibili\footnote{Si dar\`a pi\`u avanti una definizione rigorosa.}. 
+Tale ipotesi \`e alla base di tutta la crittografia moderna. Se infatti un giorno questa ipotesi venisse confutata probabilmente
+tutta la teoria riguardante la crittografia moderna perderebbe d'interesse. Il fatto che per\`o le dimostrazioni in questo campo possano perdere d'interesse
 non significa che queste siano errate. Infatti tutte le prove che sono basate su assunzioni non verificate sono sempre e comunque valide, sia che le assunzioni fatte vengano dimostrate,
 sia che vengano confutate; ogni dimostrazione \`e infatti del tipo: \emph{Se X allora Y} dove \emph{X} contiene un quantificatore esistenziale (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
 d'espansione polinomiale). Quindi, semplicemente, nel caso in cui le assunzioni dovessero essere confutate si renderebbero poco interessanti le dimostrazioni\footnote{\`E ovvio infatti, che partendo da ipotesi false si possa
@@ -82,35 +82,41 @@ anche queste ampiamente accettate sebbene non dimostrate.\\Lo studio di una cong
 un'altra congettura largamente ritenuta valida.
 Quando si parla di crittografia bisogna distinguere fra primitive crittografiche e protocolli crittografici.
 Una primitiva crittografica pu\`o essere vista come un'algoritmo crittografico con lo scopo 
-di prendere un messaggio e mediante una chiave ottenere un messaggio cifrato. 
+di prendere un messaggio e, mediante una chiave, ottenere un messaggio cifrato. 
 I protocolli sono invece un insieme di azioni che si basano sulle primitive crittografiche al fine di fornire
 servizi pi\`u vasti rispetto alla semplice cifratura (e.g. la condivisione di una chiave di sessione a partire
-da un'altra chiave segreta).
+da un'altra chiave segreta condivisa a priori fra due parti).
 
 %\section*{Il Due Modelli}
 \section{Il Due Modelli}
 Da quando la crittografia si \`e guadagnata una validit\`a scientifica, sono nati almeno due modi profondamente
  diversi fra loro di studiare i protocolli crittografici.\\In uno di questi, il modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
 Nell'altro, il modello \emph{computazionale}, le operazioni crittografiche sono viste come funzioni su stringhe di bit che hanno una semantica probabilistica.
-Il primo modello, chiamato anche modello di \emph{Dolev-Yao} dal nome degli autori dei primi articoli che lo trattavano,
+Il primo modello, chiamato anche modello di \emph{Dolev-Yao} dal nome degli autori dei primi articoli in cui venne formalizzato,
 \`e stato ampiamente trattato in \cite{AbadiG99, BurrowsAN90, Kemmerer87, Paulson98}. 
 Il secondo modello trova le basi in lavori di altrettanto illustri studiosi come per esempio Goldwasser e Micali in \cite{GoldwasserM84}.\\
 Il modello formale pu\`o contare su un vastissimo insieme di conoscenze teoriche derivanti da altri rami dell'informatica, in particolare la teoria dei linguaggi formali e della logica;
 anche per questo il modello formale \`e stato sicuramente trattato in modo pi\`u approfondito, almeno fino ad ora. 
-Nel modello formale i protocolli crittografici sono spesso rappresentati come programmi, o meglio, come processi scritti
-in una particolare algebra di processi. O ancora, nel modello formale le 
-primitive crittografiche sono trattate spesso come dei semplici simboli funzionali.
+Nel modello formale i protocolli crittografici sono spesso rappresentati come programmi, o meglio, come processi elaborati
+in un particolare calcolo di processi. O ancora, nel modello formale le 
+primitive crittografiche sono trattate spesso come dei semplici simboli funzionali. 
 In questo modo \`e possibile applicare molta della teoria gi\`a esistente, 
 che riguarda la verifica formale della correttezza dei programmi, al caso particolare dei protocolli crittografici.
+Per fare questo si considerano particolari relazioni d'equivalenza (per esempio l'equivalenza per test, o la 
+bisimulazione \cite{AbadiG99}) fra processi e si cerca di dimostrare che un particolare protocollo \`e equivalente ad un programma considerato sicuro.
 
-Questo ha fatto s\`i che lo stato dell'arte veda molti pi\`u tool di
+
+Tutto ci\`o ha fatto s\`i che lo stato dell'arte veda molti pi\`u tool di
 verifica automatica che lavorano nel modello formale rispetto a tool che lavorano nel modello computazionale. 
-Uno tra i pi\`u famosi tool che lavora nel modello formale \`e sicuramente \emph{ProVerif}\footnote{Per informazioni pi\`u dettagliate su questo tool si visiti il seguente sito web: 
+Uno tra i pi\`u famosi tool che lavora nel modello formale \`e sicuramente \emph{ProVerif}. 
+ProVerif \`e un verificatore automatico di protocolli crittografici che lavora nel modello formale e permette di provare
+propriet\`a quali: segretezza, segretezza forte e autenticazione. \`E stato gi\`a applicato a $Plutus FileSystem$ e 
+al protocollo $JFK$ e a molti altri protocolli\footnote{Per informazioni pi\`u dettagliate su questo tool si visiti il seguente sito web: 
 \url{http://www.proverif.ens.fr/}}.
 I sostenitori del modello formale affermano che \`e molto conveniente ignorare i dettagli di una funzione crittografica 
 e lavorare con una descrizione 
-di pi\`u alto livello di questa che non includa dettagli riguardanti la funzione crittografica. 
-I sostenitori del modello crittografico computazionale, invece, affermano che la visione
+di pi\`u alto livello di questa che non includa dettagli riguardanti la funzione. 
+I sostenitori del modello crittografico computazionale invece, affermano che la visione
 del modello formale non \`e molto realistica e che le funzioni crittografiche non devono essere viste come espressioni 
 formali, ma come algoritmi deterministici e/o probabilistici. Una delle pi\`u grandi critiche mosse dai sostenitori del modello
 computazionale a quelli del modello formale \`e che trattando le primitive crittografiche come dei simboli impenetrabili (ovvero come delle espressioni formali), 
@@ -119,12 +125,18 @@ del tutto esatto. Per esempio, nel modello formale, un messaggio cifrato utilizz
 potrebbe essere rappresentato dall'espressione $\{M\}_k$ con $k$ appartenente allo spazio delle chiavi
 e $M$ allo spazio dei messaggi. Un \emph{qualsiasi}\footnote{Qulsiasi capacit\`a di calcolo esso abbia.} 
 attaccante che interecetta il messaggio $\{M\}_k$ non pu\`o dedurre $M$ a meno
-che non abbia intercettato anche $k$.
-D'altra parte, il modello formale ha molti vantaggi come quello precedentemente accennato che riguarda la semplicit\`a 
+che non abbia intercettato anche $k$. Nel modello computazionale invece, si considera anche il fatto
+che $M$, $k$ come anche $\{M\}_k$ non sono altro che sequenze finite di bit e che quindi esiste sempre la possibilit\`a
+che un attaccante riesca a decifrare il messaggio. Inoltre una differenza importante che si ha \`e che mentre nel modello
+formale non si considera la potenza di calcolo di un attaccante che quindi pu\`o anche essere infinita, nel modello computazionale
+gli attaccanti considerati sono solo quelli che appartengono a una determinata classe di complessit\`a computazionale.
+Come si vede, nel modello computazionale entrano in gioco altre branche dell'informatica e della matematica come per esempio
+la teoria della complessit\`a computazionale e la teoria della statistica e delle probabilit\`a.
+Il modello formale ha comunque molti vantaggi come quello precedentemente accennato che riguarda la semplicit\`a 
 con cui vengono costruiti strumenti automatici per la verifica di protocolli in questo modello.
 Sembrerebbe quindi, che esista un divario molto ampio fra i due modelli. In effetti cos\`i \`e, ma non sono mancati i tentativi di unificare le due teorie, o comunque di cercare una linea
 di collegamento che li congiunga.
-In \cite{DBLP:journals/joc/AbadiR07} gli autori cercano per la prima volta di porre le basi per iniziare a collegare questi due modelli.
+In \cite{DBLP:journals/joc/AbadiR07}, per esempio, gli autori cercano per la prima volta di porre le basi per iniziare a collegare questi due modelli.
 In particolare il principale risultato di questo lavoro afferma che se due espressioni nel modello formale sono equivalenti, una volta dotate di un'opportuna semantica probabilistica,
 vengono mappate in \emph{ensemble} computazionalmente indistinguibili; quindi, sotto forti ma accettabili ipotesi\footnote{Un'importante ipotesi usata nella dimostrazione del risultato in questione
 \`e che non devono esserci cicli crittografici, ovvero si considerano solo schemi crittografici in cui una chiave $k$, non \`e mai \emph{cifrata} attraverso $k$ stessa.}, 
@@ -134,10 +146,10 @@ ai sostenitori del modello formale che potevano cos\`i dimostrare risultati, con
 e estenderli poi al modello computazionale senza troppi problemi.
 Un'altra strada invece, \`e quella che prevede di lavorare direttamente nel modello computazionale senza preoccuparsi di rispettare le forti ipotesi che erano 
 state usate per dimostrare il risultato raggiunto in \cite{DBLP:journals/joc/AbadiR07}.
-Una tenica molto utilizzata per provare dei risultati nell'ambito della crittografia computazionale, in particolare
-la sicurezza di primitive crittografiche, \`e la cosidetta ``tecnica per riduzione''. 
-Le dimostrazioni basate su questa tecnica consistono nel cercare di ridurre il problema crittografico ad
-un altro problema. Si cerca cio\`e di utilizzare una soluzione che risolve un problema crittografico
+Una tecnica molto utilizzata per provare dei risultati nell'ambito della crittografia computazionale, 
+\`e la cosidetta ``tecnica per riduzione''. 
+Le dimostrazioni basate su questa tecnica consistono nel cercare di ridurre un problema al problema crittografico in esame. 
+Si cerca cio\`e di utilizzare una soluzione che risolve un problema crittografico
 per risolvere un altro problema. Quindi un algortimo che risolve il problema crittografico diventa
 una parte dell'algoritmo che risolve un altro problema.
 Nella maggior parte dei casi si cerca di ridurre dei problemi che si sa essere \emph{difficili}. 
@@ -147,10 +159,10 @@ sia sicuro. Si faccia ora l'assurda assunzione che il problema $S$ sia facilment
 Se ora si \`e in grado di ridurre facilmente il problema $T$ al problema $S$ si ha che anche il problema $T$ \`e facilmente risolvibile.
 Negando un'ipotesi iniziale si \`e quindi giunti ad una contraddizione che prova che $S$ \`e in realt\`a sicuro.
 Si noti che fino a questo punto non si \`e data una definizione di cosa significhino in questo contesto gli aggettivi $facile$ e $difficile$ e gli avverbi che ne derivano; 
-questo \`e stato fatto per non rendere pesante la lettura di questo primo capitolo, ma pi\`u avanti verranno definiti
+questo \`e stato fatto per non rendere pesante la lettura di questo primo capitolo, pi\`u avanti per\`o verranno definiti
 in modo chiaro tutti i termini utilizzati.
 Altre tecniche utilizzate nel mondo della crittografia computazionale sono la tecnica ibrida spesso utilizzata
-per provare che due diverse distribuzioni statistiche sono in realt\`a indistinguibili e la tecnica basata su\emph{sequenze di giochi} di cui parleremo
+per provare che due diverse distribuzioni statistiche sono in realt\`a indistinguibili e la tecnica delle \emph{sequenze di giochi} di cui parleremo
 in modo intensivo pi\`u avanti.
 \section{Una visione d'insieme}
 Nel capitolo successivo ci si propone innanzi tutto di descrivere a grandi linee il modello computazionale, 
@@ -158,8 +170,11 @@ in modo che il lettore possa leggere il terzo capitolo e comprendere il quarto g
 nozioni teoriche trattate. Nel terzo capitolo infatti, si cercher\`a di descrivere un tool di verifica 
 automatica di protocolli crittografici che lavora direttamente nel modello computazionale. Infine nel quarto capitolo
 si tenter\`a di utilizzare questo tool per provare in modo automatico un risultato classico della crittografia
-computazionale. Si tenter\`a quindi di dare una dimostrazione automatica di un teorema che \`e gia stato
-dimostrato in modo non automatizzato.
+computazionale che riguarda i generatori pseudocasuali. Si tenter\`a quindi di dare una dimostrazione automatica di un teorema che \`e gia stato
+dimostrato in modo non automatico e che riguarda i generatori di numeri pseudocasuali. L'utilizzo che si far\`a del tool \`e anomalo 
+nel senso che il tool \`e stato progettato
+per provare risultati relativi a concetti quali autenticazione e segretezza di protocolli e non teoremi riguardanti
+i generatori pseudocasuali.
 Infine nelle conclusioni si cercher\`a di \emph{tirare le somme} di questo lavoro descrivendo le difficolt\`a incontrate,
 i vantaggi e gli svantaggi riscontrati nel tool.
 \chapter{Il Modello Computazionale}
