@@ -41,11 +41,6 @@
 \chapter*{} 
 \thispagestyle{empty} 
 \addtocounter{page}{-1} 
-\vspace{2.5in} 
-\begin{center} 
-\begin{flushright} \emph{Gin ch'è bulo...} 
-\end{flushright}
-\end{center}
 \tableofcontents
 \chapter*{Introduzione}
 \chaptermark{Introduzione}
@@ -169,7 +164,7 @@ Supponiamo inoltre che si voglia dimostrare che lo schema crittografico $S$
 sia sicuro. Si faccia ora l'assurda assunzione che il problema $S$ sia facilmente risolvibile. 
 Se ora si \`e in grado di ridurre facilmente il problema $T$ al problema $S$, si ha che anche il problema $T$ \`e facilmente risolvibile.
 Negando un'ipotesi iniziale si \`e quindi giunti ad una contraddizione che prova che $S$ \`e in realt\`a sicuro.
-Si noti che fino a questo punto non si \`e data una definizione di cosa significhino in questo contesto gli aggettivi $facile$ e $difficile$ e gli avverbi che ne derivano; 
+Si noti che fino a questo punto non si \`e data, in questo contesto, una definizione degli aggettivi $facile$ e $difficile$ e degli avverbi che ne derivano; 
 questo \`e stato fatto per non rendere pesante la lettura di questa breve introduzione, pi\`u avanti per\`o, si daranno definizioni
 di tutti i termini utilizzati.
 Altre tecniche sfruttate nel mondo della crittografia computazionale sono la tecnica ibrida, spesso usata
@@ -1297,8 +1292,7 @@ Anche in questa equivalenza $i$ va sostituita con il valore che questa assume.
         foreach i1 <=n1 do
                 (
                 OGetn():= x <-R nbits;return(x) |
-                OGetlast():= xl <-R bool;return(xl)
-                ).
+                OGetlast():= xl <-R bool;return(xl)).
              \end{verbatim}
       \end{itemize}
 \item la dichiarazione del generatore pseudocasuale con fattore d'espansione $n+1$. Questo simbolo si trova in ogni file di input per ogni $k$:
