@@ -12,7 +12,7 @@
 \usepackage{float}
 \usepackage{setspace}
 \author{Gian Pietro Farina}
-\hyphenation{e-si-ste li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che e-qui-va-len-za}
+\hyphenation{e-sem-pio na-tu-ra-le de-ter-mi-ni-sti-ci quo-ti-dia-na e-si-ste li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che e-qui-va-len-za}
 \floatstyle{boxed} 
 \restylefloat{figure}
 \newtheorem{definizione}{Definizione}[chapter]
@@ -38,30 +38,41 @@
 }
 
 \begin{document}
-%\chapter*{Introduzione}
-\chapter{Introduzione}
-%\addcontentsline{toc}{chapter}{Introduzione}
-%\section*{La Crittografia Moderna}
-\section{La Crittografia Moderna}
-Da quando, verso la fine del 20° secolo, ha cessato di essere un'arte per assurgere al rango di scienza, la crittografia si \`e proposta innanzi tutto di fornire definizioni rigorose dei concetti con cui aveva a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
-su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\ Infatti, si pu\`o affermare che mentre prima
-con la crittografia classica si costruivano dei cifrari crittografici \emph{ad-hoc} che sembravano sicuri in una particolare situazione ma che poi successivamente in altri contesti
+\chapter*{} 
+\thispagestyle{empty} 
+\addtocounter{page}{-1} 
+\vspace{2.5in} 
+\begin{center} 
+\begin{flushright} \emph{Gin ch'è bulo...} 
+\end{flushright}
+\end{center}
+\tableofcontents
+\chapter*{Introduzione}
+\chaptermark{Introduzione}
+\addcontentsline{toc}{chapter}{Introduzione}
+\section*{La Crittografia Moderna}
+Da quando, la crittografia verso la fine del XX° secolo, ha cessato di essere un'arte per assurgere al rango di scienza, 
+si \`e proposta, innanzitutto, di fornire definizioni rigorose dei concetti con cui aveva a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
+su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\ Infatti, si pu\`o affermare che mentre prima,
+con la crittografia classica si costruivano dei cifrari crittografici \emph{ad-hoc} che sembravano sicuri in una particolare situazione, ma che poi successivamente in altri contesti
 non si dimostravano tali, con la crittografia moderna si ha un atteggiamento profondamente diverso: si parte da delle definizioni e poi
 si \emph{dimostra} che gli schemi costruiti rispettano queste definizioni, dando quindi dei risultati pi\`u oggettivi e universali.
 Prima dell'avvento della crittografia moderna la costruzione di un cifrario \emph{valido} si basava soprattutto sulla creativit\`a 
-dei crittografi. Oggi giorno prima di provare che un cifrario sia valido bisogna dare una definizione di cifrario valido, inoltre il fatto
-che il cifrario rispetti questa definizine deve essere provato con una dimostrazione.
+dei crittografi. Oggigiorno, prima di provare che un cifrario sia valido, bisogna dare una definizione di cifrario valido, 
+inoltre il fatto
+che il cifrario rispetti questa definizione deve essere provato con una dimostrazione.
 In passato la crittografia aveva come ambiente naturale quello militare e come scopo ultimo la segretezza di un messaggio.
-Oggi giorno, la crittografia non \`e pi\`u utilizzata solo in ambiente militare. I suoi campi di utilizzo si estendono a molti aspetti 
+Oggigiorno, la crittografia non \`e pi\`u utilizzata solo in ambiente militare. I suoi campi di utilizzo si estendono a molti aspetti 
 della vita quotidiana: e-mail, connessioni sicure oppure codici bancari ecc, ecc\dots
-Questo fatto ha comportato anche un'estensione dei possibili scopi della crittografia. Se infatti, un tempo l'unico obiettivo che si proponeva la crittografia era quello di garantire
-la segretezza di un messaggio oggi giorno deve poter fornire molte altre garanzie fra le quali: autenticazione e integrit\`a dei messaggi scambiati fra due parti. Ecco, quindi, che la nascita di queste esigenze
+Questo fatto ha comportato anche un'estensione dei possibili scopi della crittografia. Se infatti, un tempo, l'unico obiettivo che si proponeva la crittografia era quello di garantire
+la segretezza di un messaggio oggigiorno deve poter fornire molte altre garanzie fra le quali: autenticazione e integrit\`a dei messaggi scambiati fra due parti. Ecco, quindi, che la nascita di queste esigenze
 ha portato allo studio di schemi crittografici come per esempio \emph{message authentication codes} (meglio noti come MAC) oppure schemi crittografici asimmetrici.
 Quando si parla di segretezza, \`e importante, come gi\`a accennato, dare prima una definizione di cosa si intenda con questo termine.
-Se per esempio si intende che nessun attaccante possa mai venire a conoscenza della chiave allora si ottiene qualcosa che non \`e quello che si vorrebbe. La segretezza, infatti, riguarda un messaggio, 
+Se per esempio si intende che nessun attaccante possa mai venire a conoscenza della chiave, 
+allora si ottiene qualcosa che non \`e quello che si vorrebbe. La segretezza, infatti, riguarda un messaggio:
 la chiave \`e solo un mezzo che si utilizza per ottenere questo fine. 
 Se invece si intende che un attaccante non riesca mai a decifrare il messaggio si \`e alla ricerca di una chimera. Come si vedr\`a nel proseguo infatti, posto che si abbia sufficiente tempo 
-a disposizione, si pu\`o sempre riuscire a decifrare con \emph{certezza} il messaggio; inoltre esiste sempre la possiblit\`a che un attaccante riesca ad indovinare il messaggio
+a disposizione, si pu\`o sempre riuscire a decifrare con \emph{certezza} il messaggio; inoltre esiste sempre la possibilit\`a che un attaccante riesca ad indovinare il messaggio
 semplicemente \emph{tirando ad indovinare}. Se infine, si intende che ogni attaccante con determinate caratteristiche riesca difficilmente ad indovinare il messaggio cifrato, allora esiste la 
 possibilit\`a di ottenere schemi che rispettino questo tipo di definizione. Ovviamente \`e necessario prima formalizzare in modo 
 corretto il concetto di \emph{difficolt\`a}.
@@ -71,34 +82,34 @@ Sebbene in alcuni casi sia possibile (ed \`e stato fatto, i.e ~\cite{Shannon}) p
 della crittografia moderna, si basano su assunzioni che non sono ancora certe, ma che sono comunque ben formalizzate e inequivocabilmente descritte.\\La pi\`u importante \`e sicuramente
 l'ipotesi dell'esistenza di funzioni \emph{one-way}, che possono essere viste come funzioni \emph{facilmente} calcolabili
  ma \emph{difficilmente} invertibili\footnote{Si dar\`a pi\`u avanti una definizione rigorosa.}. 
-Tale ipotesi \`e alla base di tutta la crittografia moderna. Se infatti un giorno questa ipotesi venisse confutata probabilmente
+Tale ipotesi \`e alla base di tutta la crittografia moderna. Se infatti, un giorno questa ipotesi venisse confutata, probabilmente
 tutta la teoria riguardante la crittografia moderna perderebbe d'interesse. Il fatto che per\`o le dimostrazioni in questo campo possano perdere d'interesse
 non significa che queste siano errate. Infatti tutte le prove che sono basate su assunzioni non verificate sono sempre e comunque valide, sia che le assunzioni fatte vengano dimostrate,
-sia che vengano confutate; ogni dimostrazione \`e infatti del tipo: \emph{Se X allora Y} dove \emph{X} contiene un quantificatore esistenziale (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
+sia che vengano confutate. Ogni dimostrazione \`e infatti del tipo: \emph{Se X allora Y} dove \emph{X} contiene un quantificatore esistenziale (e.g. se esiste una funzione one-way allora esiste un generatore pseudocasuale con fattore
 d'espansione polinomiale). Quindi, semplicemente, nel caso in cui le assunzioni dovessero essere confutate si renderebbero poco interessanti le dimostrazioni\footnote{\`E ovvio infatti, che partendo da ipotesi false si possa
 dimostrare qualsiasi cosa.}.
-\`E per\`o giusto dire che le assunzioni che vengono fatte sono largamente ritenute vere; questo anche  grazie al fatto che alcune di esse si possono dedurre da altre ipotesi 
+\`E per\`o giusto dire che le assunzioni che vengono fatte sono largamente ritenute vere; questo anche  grazie al fatto che alcune di esse si possono dedurre da altre ipotesi, 
 anche queste ampiamente accettate sebbene non dimostrate.\\Lo studio di una congettura, infatti, pu\`o fornire evidenti prove della sua validit\`a mostrando che essa \`e la tesi di un teorema che assume come ipotesi
 un'altra congettura largamente ritenuta valida.
-Quando si parla di crittografia bisogna distinguere fra primitive crittografiche e protocolli crittografici.
-Una primitiva crittografica pu\`o essere vista come un'algoritmo crittografico con lo scopo 
+Quando si parla di crittografia, bisogna distinguere fra primitive crittografiche e protocolli crittografici.
+Una primitiva crittografica pu\`o essere vista come un algoritmo crittografico con lo scopo 
 di prendere un messaggio e, mediante una chiave, ottenere un messaggio cifrato. 
 I protocolli sono invece un insieme di azioni che si basano sulle primitive crittografiche al fine di fornire
 servizi pi\`u vasti rispetto alla semplice cifratura (e.g. la condivisione di una chiave di sessione a partire
 da un'altra chiave segreta condivisa a priori fra due parti).
 
-%\section*{Il Due Modelli}
-\section{Il Due Modelli}
+\section*{I Due Modelli}
+%\section{Il Due Modelli}
 Da quando la crittografia si \`e guadagnata una validit\`a scientifica, sono nati almeno due modi profondamente
- diversi fra loro di studiare i protocolli crittografici.\\In uno di questi, il modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
-Nell'altro, il modello \emph{computazionale}, le operazioni crittografiche sono viste come funzioni su stringhe di bit che hanno una semantica probabilistica.
+ diversi fra loro di studiare i protocolli crittografici.\\Nel modello \emph{formale}, le operazioni crittografiche sono rappresentate da espressioni simboliche, formali.
+Nel modello \emph{computazionale}, le operazioni crittografiche sono viste come funzioni su stringhe di bit che hanno una semantica probabilistica.
 Il primo modello, chiamato anche modello di \emph{Dolev-Yao} dal nome degli autori dei primi articoli in cui venne formalizzato,
 \`e stato ampiamente trattato in \cite{AbadiG99, BurrowsAN90, Kemmerer87, Paulson98}. 
 Il secondo modello trova le basi in lavori di altrettanto illustri studiosi come per esempio Goldwasser e Micali in \cite{GoldwasserM84}.\\
-Il modello formale pu\`o contare su un vastissimo insieme di conoscenze teoriche derivanti da altri rami dell'informatica, in particolare la teoria dei linguaggi formali e della logica;
+Il modello formale pu\`o contare su un vastissimo insieme di conoscenze teoriche derivanti da altri rami dell'informatica, in particolare: la teoria dei linguaggi formali e della logica;
 anche per questo il modello formale \`e stato sicuramente trattato in modo pi\`u approfondito, almeno fino ad ora. 
 Nel modello formale i protocolli crittografici sono spesso rappresentati come programmi, o meglio, come processi elaborati
-in un particolare calcolo di processi. O ancora, nel modello formale le 
+in un particolare calcolo di processi. O ancora, nel modello formale, le 
 primitive crittografiche sono trattate spesso come dei semplici simboli funzionali. 
 In questo modo \`e possibile applicare molta della teoria gi\`a esistente, 
 che riguarda la verifica formale della correttezza dei programmi, al caso particolare dei protocolli crittografici.
@@ -116,18 +127,18 @@ al protocollo $JFK$ e a molti altri protocolli\footnote{Per informazioni pi\`u d
 I sostenitori del modello formale affermano che \`e molto conveniente ignorare i dettagli di una funzione crittografica 
 e lavorare con una descrizione 
 di pi\`u alto livello di questa che non includa dettagli riguardanti la funzione. 
-I sostenitori del modello crittografico computazionale invece, affermano che la visione
-del modello formale non \`e molto realistica e che le funzioni crittografiche non devono essere viste come espressioni 
+I sostenitori del modello crittografico computazionale, invece, affermano che la visione
+del modello formale non \`e molto realistica e che le funzioni crittografiche non debbano essere viste come espressioni 
 formali, ma come algoritmi deterministici e/o probabilistici. Una delle pi\`u grandi critiche mosse dai sostenitori del modello
 computazionale a quelli del modello formale \`e che trattando le primitive crittografiche come dei simboli impenetrabili (ovvero come delle espressioni formali), 
-assumono implicitamente che siano corrette e inviolabili ma questa non \`e
-del tutto esatto. Per esempio, nel modello formale, un messaggio cifrato utilizzato in un protocollo  
+assumono, implicitamente, che siano corrette e inviolabili, ma questo non \`e
+del tutto esatto. Per esempio, nel modello formale, un messaggio cifrato utilizzato in un protocollo,  
 potrebbe essere rappresentato dall'espressione $\{M\}_k$ con $k$ appartenente allo spazio delle chiavi
 e $M$ allo spazio dei messaggi. Un \emph{qualsiasi}\footnote{Qulsiasi capacit\`a di calcolo esso abbia.} 
 attaccante che interecetta il messaggio $\{M\}_k$ non pu\`o dedurre $M$ a meno
 che non abbia intercettato anche $k$. Nel modello computazionale invece, si considera anche il fatto
 che $M$, $k$ come anche $\{M\}_k$ non sono altro che sequenze finite di bit e che quindi esiste sempre la possibilit\`a
-che un attaccante riesca a decifrare il messaggio. Inoltre una differenza importante che si ha \`e che mentre nel modello
+che un attaccante riesca a decifrare il messaggio. Inoltre, una differenza importante che si ha, \`e che mentre nel modello
 formale non si considera la potenza di calcolo di un attaccante che quindi pu\`o anche essere infinita, nel modello computazionale
 gli attaccanti considerati sono solo quelli che appartengono a una determinata classe di complessit\`a computazionale.
 Come si vede, nel modello computazionale entrano in gioco altre branche dell'informatica e della matematica come per esempio
@@ -135,10 +146,10 @@ la teoria della complessit\`a computazionale e la teoria della statistica e dell
 Il modello formale ha comunque molti vantaggi come quello precedentemente accennato che riguarda la semplicit\`a 
 con cui vengono costruiti strumenti automatici per la verifica di protocolli in questo modello.
 Sembrerebbe quindi, che esista un divario molto ampio fra i due modelli. In effetti cos\`i \`e, ma non sono mancati i tentativi di unificare le due teorie, o comunque di cercare una linea
-di collegamento che li congiunga.
-In \cite{DBLP:journals/joc/AbadiR07}, per esempio, gli autori cercano per la prima volta di porre le basi per iniziare a collegare questi due modelli.
+di collegamento che le congiunga.
+In \cite{DBLP:journals/joc/AbadiR07}, per esempio, gli autori cercano, per la prima volta, di porre le basi per iniziare a collegare questi due modelli.
 In particolare il principale risultato di questo lavoro afferma che se due espressioni nel modello formale sono equivalenti, una volta dotate di un'opportuna semantica probabilistica,
-vengono mappate in \emph{ensemble} computazionalmente indistinguibili; quindi, sotto forti ma accettabili ipotesi\footnote{Un'importante ipotesi usata nella dimostrazione del risultato in questione
+vengono mappate in \emph{ensemble} computazionalmente indistinguibili; quindi, sotto forti, ma accettabili ipotesi\footnote{Un'importante ipotesi usata nella dimostrazione del risultato in questione
 \`e che non devono esserci cicli crittografici, ovvero si considerano solo schemi crittografici in cui una chiave $k$, non \`e mai \emph{cifrata} attraverso $k$ stessa.}, 
 l'equivalenza formale implica l'indistinguibilit\`a computazionale.
 \`E quindi lecito affermare che un attaccante per il modello computazionale non \`e pi\`u potente di un attaccante nel modello formale. Questo risultato ha dato un'ulteriore spinta
@@ -149,28 +160,28 @@ state usate per dimostrare il risultato raggiunto in \cite{DBLP:journals/joc/Aba
 Una tecnica molto utilizzata per provare dei risultati nell'ambito della crittografia computazionale, 
 \`e la cosidetta ``tecnica per riduzione''. 
 Le dimostrazioni basate su questa tecnica consistono nel cercare di ridurre un problema al problema crittografico in esame. 
-Si cerca cio\`e di utilizzare una soluzione che risolve un problema crittografico
+Si cerca cio\`e di utilizzare una soluzione che risolva un problema crittografico
 per risolvere un altro problema. Quindi un algortimo che risolve il problema crittografico diventa
 una parte dell'algoritmo che risolve un altro problema.
 Nella maggior parte dei casi si cerca di ridurre dei problemi che si sa essere \emph{difficili}. 
 Supponiamo di sapere per certo che il problema $T$ \`e difficile. 
 Supponiamo inoltre che si voglia dimostrare che lo schema crittografico $S$
 sia sicuro. Si faccia ora l'assurda assunzione che il problema $S$ sia facilmente risolvibile. 
-Se ora si \`e in grado di ridurre facilmente il problema $T$ al problema $S$ si ha che anche il problema $T$ \`e facilmente risolvibile.
+Se ora si \`e in grado di ridurre facilmente il problema $T$ al problema $S$, si ha che anche il problema $T$ \`e facilmente risolvibile.
 Negando un'ipotesi iniziale si \`e quindi giunti ad una contraddizione che prova che $S$ \`e in realt\`a sicuro.
 Si noti che fino a questo punto non si \`e data una definizione di cosa significhino in questo contesto gli aggettivi $facile$ e $difficile$ e gli avverbi che ne derivano; 
-questo \`e stato fatto per non rendere pesante la lettura di questo primo capitolo, pi\`u avanti per\`o verranno definiti
-in modo chiaro tutti i termini utilizzati.
-Altre tecniche utilizzate nel mondo della crittografia computazionale sono la tecnica ibrida spesso utilizzata
-per provare che due diverse distribuzioni statistiche sono in realt\`a indistinguibili e la tecnica delle \emph{sequenze di giochi} di cui parleremo
+questo \`e stato fatto per non rendere pesante la lettura di questa breve introduzione, pi\`u avanti per\`o, si daranno definizioni
+di tutti i termini utilizzati.
+Altre tecniche sfruttate nel mondo della crittografia computazionale sono la tecnica ibrida, spesso usata
+per provare che due diverse distribuzioni statistiche sono in realt\`a indistinguibili, e la tecnica delle \emph{sequenze di giochi} di cui parleremo
 in modo intensivo pi\`u avanti.
-\section{Una visione d'insieme}
+\section*{Una visione d'insieme}
 Nel capitolo successivo ci si propone innanzi tutto di descrivere a grandi linee il modello computazionale, 
-in modo che il lettore possa leggere il terzo capitolo e comprendere il quarto grazie alla necessarie
-nozioni teoriche trattate. Nel terzo capitolo infatti, si cercher\`a di descrivere un tool di verifica 
-automatica di protocolli crittografici che lavora direttamente nel modello computazionale. Infine nel quarto capitolo
+in modo che il lettore possa leggere il secondo capitolo e comprendere il terzo grazie alla necessarie
+nozioni teoriche trattate. Nel secondo capitolo infatti, si cercher\`a di descrivere un tool di verifica 
+automatica di protocolli crittografici che lavora direttamente nel modello computazionale. Infine, nel terzo capitolo,
 si tenter\`a di utilizzare questo tool per provare in modo automatico un risultato classico della crittografia
-computazionale che riguarda i generatori pseudocasuali. Si tenter\`a quindi di dare una dimostrazione automatica di un teorema che \`e gia stato
+computazionale che riguarda i generatori pseudocasuali. Si tenter\`a, quindi, di dare una dimostrazione automatica di un teorema che \`e gi\`a stato
 dimostrato in modo non automatico e che riguarda i generatori di numeri pseudocasuali. L'utilizzo che si far\`a del tool \`e anomalo 
 nel senso che il tool \`e stato progettato
 per provare risultati relativi a concetti quali autenticazione e segretezza di protocolli e non teoremi riguardanti
@@ -622,7 +633,7 @@ Il corpo di un oracolo pu\`o essere descritto in maniera pi\`u formale attravers
           | return(seq <term> )[; <odef> ]
 \end{verbatim}
 
-Innanzi tutto si noti come nella grammatica precedente grazie all'ultima produzione sia possibile ritornare alla grammatica predecedentemente esposta il cui simbolo iniziale era $\texttt{<odef>}$; questo perch\`e deve
+Innanzi tutto si noti come nella grammatica precedente grazie all'ultima produzione sia possibile ritornare alla grammatica predecedentemente esposta il cui simbolo iniziale era $\texttt{<odef>}$; questo perch\'e deve
 essere possibile alla fine dell'implementazione di un oracolo definirne un altro in modo da avere un costrutto per la sequenzializzazione degli oracoli. 
 Infatti, dopo un $\texttt{return}$, mediante il simbolo di sequenzializzazione (il simbolo ``;``), \`e possibile definire un oracolo che verr\`a eseguito dopo quello precedente.
 \`E importante notare il costrutto $\texttt{let}$ con il quale \`e possibile cercare di decomporre il valore a destra del simbolo di uguaglianza in un pattern specificato e, 
@@ -708,7 +719,7 @@ che $Q$ abbia $a$ come output. \\
 Se $Q$ \`e un processo e $\mathcal{E}$ \`e una sequenza ordinata di eventi allora con i simboli $Pr[Q \rightsquigarrow \mathcal{E}]$ si indica la probabilit\`a che $Q$ esegua la sequenza ordinata di eventi $\mathcal{E}$ . 
 \begin{definizione}[Equivalenza Osservazionale Relativa alla Probabilit\`a $p$]
 Siano $P$ e $Q$ due processi allora $P$ e $Q$ sono osservazionalmente equivalenti relativamente a $p$ (indicheremo la relazione con il simbolo $\approx_p$) se e solo se $\forall t, C, a, \mathcal{E}$
-$\lvert Pr[C[P] \rightsquigarrow a] - Pr[C[Q]\rightsquigarrow a] \rvert \leq p(t)$ $\lvert Pr[C[P] \rightsquigarrow \mathcal{E}] -  Pr[C[Q] \rightsquigarrow \mathcal{E}]\rvert \leq p(t)$ 
+$\lvert Pr[C[P] \rightsquigarrow a] - Pr[C[Q]\rightsquigarrow a] \rvert \leq p(t)$ e $\lvert Pr[C[P] \rightsquigarrow \mathcal{E}] -  Pr[C[Q] \rightsquigarrow \mathcal{E}]\rvert \leq p(t)$ 
 \end{definizione}
 Questa definizione vuole catturare il concetto che due processi sono equivalenti a meno di una probabilit\`a $p$ se nessun avversario che ha tempo di esecuzione $t$ riesce
 a distinguerli con una probabilit\`a maggiore di $p(t)$. Intendendo con $p(t)$ che la probabilit\`a \`e funzione del tempo d'esecuzione di chi cerca di distinguere. 
@@ -733,7 +744,7 @@ Dato un gioco $G$, per utilizzare una generica regola di trasformazione  $L \app
 apportando delle modifiche sintattiche al gioco $G$, costruisce inoltre un gioco $G_s$ tale che $G_s \approx_0 C[R]$. CryptoVerif grazie alla Propriet\`a 3 pu\`o dedurre che $G \approx_p G_s$. 
 Con questa tecnica CryptoVerif riesce a costruire catene
 di giochi che permettono di provare delle propriet\`a di alcuni protocolli.
-Le probabilit\`a utilizzate nelle sequenze di giochi create da CryptoVerif non sono trattate con la notazione asintotica, questo perch\`e
+Le probabilit\`a utilizzate nelle sequenze di giochi create da CryptoVerif non sono trattate con la notazione asintotica, questo perch\'e
 CryptoVerif adotta l'\emph{exact security framework} \cite{BellareR96}. Questo fatto permette al tool di calcolare in modo preciso le probabilit\`a, invece di 
 considerare l'andamento di queste quando il parametro di sicurezza tende ad infinito.
 Il fatto che CryptoVerif lavori nel modello esatto non significa che non pu\`o darci risultati estendibili a probabilit\`a trascurabili.
@@ -844,7 +855,7 @@ equiv
                  else return(false) |
            Ox() := let k:bitstring = mark in return(x))).
  \end{verbatim}
-Per ora, non \`e interessante per quale probabilit\`a questi giochi siano equivalenti, ecco perch\`e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ pedice al simbolo $\approx$ 
+Per ora, non \`e interessante per quale probabilit\`a questi giochi siano equivalenti, ecco perch\'e si \`e semplicemente indicato il valore della probabilit\`a con $pow$ pedice al simbolo $\approx$ 
 senza specificare ulteriormente.
 
 Questa equivalenza fra giochi cattura e definisce il concetto di funzione one-way. La funzione $\texttt{f}$ infatti, \`e one-way se e solo se vale l'equivalenza di cui sopra, 
@@ -907,67 +918,77 @@ forall k:pkey, x:D, x':D; (f(k,x) = f(k,x')) = (x = x').
 forall k:pkey, x:D, x':D; (f'(k,x) = f'(k,x')) = (x = x).
 \end{verbatim}\\
 modellano l'iniettivit\`a delle funzioni $\texttt{invf}$, \verb!f'!, $\texttt{f}$\footnote{Non serve ai fini della dimostrazione modellare l'iniettivit\`a della funzione $\texttt{invf'}$. }.
-Nell'appendice A si pu\`o trovare l'input completo, mentre in \cite{BlanchetPointchevalCrypto06} possiamo trovare una spiegazione delle fasi 
-pi\`u importanti dell'output di CryptoVerif e infine all'url \url{http://www.cryptoverif.ens.fr/FDH/fdh.pdf} troviamo l'ouput completo di CryptoVerif sull'input descritto precedentemente.
+In \cite{BlanchetPointchevalCrypto06} possiamo trovare una spiegazione delle fasi pi\`u importanti dell'output di CryptoVerif, e infine all'url \url{http://www.cryptoverif.ens.fr/FDH/fdh.pdf} troviamo l'ouput completo di CryptoVerif sull'input descritto precedentemente.
+
+Nell'homepage di Blanchett si pu\`o trovare l'input completo in versione pdf, mentre in  \cite{BlanchetPointchevalCrypto06} si pu\`o 
+trovare una spiegazione delle fasi pi\`u importanti dell'output di CryptoVerif, e infine 
+all'url \url{http://www.cryptoverif.ens.fr/FDH/fdh.pdf} si ha l'ouput completo di CryptoVerif sull'input descritto precedentemente.
 
 \chapter{Risultati Raggiunti}
-Scopo principale di questo lavoro \`e la dimostrazione mediante CryptoVerif di un caso particolare di un risultato classico della crittografia computazionale. 
+Scopo principale di questo lavoro \`e la dimostrazione, mediante CryptoVerif, di un caso particolare di un risultato classico della crittografia computazionale. 
 La dimostrazione proceder\`a utilizzando CryptoVerif per dimostrare il caso base 
 di una una prova che sar\`a in generale di tipo induttivo.
 \section{Il Teorema}
-Il risultato nella sua generalit\`a \`e il seguente teorema:
+Il risultato nella sua generalit\`a \`e il seguente:
 \begin{teorema}
 Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ (con fattore 
 d'espansione $\hat{l}(n)=n+1$) allora per ogni polinomio $p(n)$ (tale che $\forall n$ $p(n)>n$)
-esiste un generatore pseudocasuale $G$ con coefficiente d'espansione $l(n)=p(n)$.
+esiste un generatore pseudocasuale $G$ con fattore d'espansione $l(n)=p(n)$.
 \end{teorema}
 
 Si pu\`o trovare una dimostrazione \emph{classica}\footnote{Per classica qui si intende \emph{non formale} nel senso informatico del termine.
 Si intende cio\`e che il linguaggio con cui la dimostrazione \`e stata fatta utilizza anche un linguaggio che non \`e modellato
-attraverso un sistema formale. La dimostrazione \`e scritta infatti in un linguaggio naturale.} di questo teorema in \cite{1206501}. 
+attraverso un sistema formale. La dimostrazione classica \`e scritta infatti in un linguaggio naturale.} di questo teorema in \cite{1206501}. 
 La dimostrazione classica \`e di tipo costruttivo e procede in modo iterativo.
-La costruzione inizia applicando ad un seme casuale $r$ di lunghezza $n$ il generatore pseudocasuale $\hat{G}$. 
+La costruzione inizia applicando il generatore pseudocasuale $\hat{G}$ ad un seme casuale $r$ di lunghezza $n$. 
 $\hat{G}(r)$ sar\`a una stringa pseudocasuale di $n+1$ bit, di questi uno andr\`a a costituire parte dell'output finale mentre gli altri 
 $n$ fungeranno da seme per una successiva applicazione di $\hat{G}$. 
 \`E lecito utilizzare $n$ bit dell'output di $\hat{G}$ come successivo input di questo, infatti il risultato di $\hat{G}$ \`e 
 una stringa pseudocasuale\footnote{E quindi anche una sua parte \`e pseudocasuale.} e quindi utilizzabile come seme di $\hat{G}$ tanto quanto 
 lo \`e una stringa effettivamente casuale.
-La dimostrazione procede poi estendendo questa iterazione ad un numero polinomiale di volte e dimostrando attraverso una tecnica \emph{ibrida}
-che il risultato di questa iterazione \`e comunque una stringa pseudocasuale. Quella ibrida \`e una tecnica molto utilizzate per provare l'indistinguibilit\`a di due distribuzioni statistiche ed \`e 
+La dimostrazione procede poi estendendo questa iterazione ad un numero polinomiale di volte nel parametro di sicurezza e dimostrando, attraverso una tecnica \emph{ibrida},
+che il risultato di questa iterazione \`e comunque una stringa pseudocasuale. Quella ibrida \`e una tecnica molto utilizzata per provare l'indistinguibilit\`a di due distribuzioni statistiche ed \`e 
 la naturale applicazione del concetto di sequenza di giochi a distribuzioni statistiche.
-La tecnica ibrida definisce una serie di distribuzioni che si situano fra due distribuzioni \emph{estreme} che sono quelle che si vogliono dimostrare indistinguibili.
-In particolare le distribuzioni estreme della dimostrazione sono la distribuzione $H_0$ definita dai possibili valori di $G(r)$ con $r$ estratto casualmente da $\{0,1\}^n$ e 
-$H_{p(n)-n}$ definita dai valori di $r$ con $r$ scelto
-casualmente da $\{0, 1\}^{p(n)}$. 
-Alla fine dei calcoli la dimostrazione prova che se ci fosse una differenza sensibile fra le distribuzioni estreme allora necessariamente dovrebbe anche esserci una differenza
-sensibile fra due distribuzioni vicine. E poich\`e questo sarebbe assurdo, perch\`e negherebbe che $\hat{G}$ \`e un generatore pseudocasuale, giunge al risultato desiderato, ovvero che
-le distribuzioni estreme sono indistinguibili che equivale a dire che $G$ \`e un generatore pseudocasuale.
+La tecnica ibrida definisce una serie di distribuzioni che si situano fra due distribuzioni \emph{estreme} che sono quelle che si vogliono dimostrare essere indistinguibili.
+In particolare, le distribuzioni estreme della dimostrazione sono la distribuzione $H_0$, definita dai possibili valori di $G(r)$ con 
+$r$ estratto casualmente da $\{0,1\}^n$ e $H_{p(n)-n}$ definita dai valori di $w$ con $w$ scelto casualmente da $\{0, 1\}^{p(n)}$. 
+Le distribuzioni situate fra $H_0$ e $H_{p(n)-n}$, sono le distribuzioni $H_j$ con $0<j<p(n)-n$, le quali sono definite dal valore di 
+$G(r)$ con $r \in \{0, 1\}^{n+j}$. Ovvero la distribuzione j-esima \`e definita dal valore in output che il generatore pseudocasuale $G$ otterrebbe
+se questo prendesse in input un valore appartenente a $\{0, 1\}^{n+j}$. Per la dimostrazione completa si consulti \cite{1206501}.
+
+Alla fine dei calcoli viene provato che, se ci fosse una differenza sensibile fra le distribuzioni estreme, allora 
+necessariamente, dovrebbe anche esserci una differenza
+sensibile fra due distribuzioni vicine. Si prova infatti che, se $H_0$ \`e distinguibile in modo efficiente da $H_{p(n)-n}$, allora
+dovrebbe esistere un $j$ ($0<j<p(n)-n$) tale che $H_j$ \`e distingubile da $H_{j+1}$.
+Poich\'e quest'ultimo fatto sarebbe assurdo, perch\'e implicherebbe il fatto che $\hat{G}$ non \`e un generatore pseudocasuale, si
+giunge al risultato desiderato, ovvero che le distribuzioni estreme sono indistinguibili. Quindi si giunge alla conclusione che $G$ 
+\`e un generatore pseudocasuale.
 
 
-Il risultato provato in questo lavoro \`e, come gia detto, molto meno generale del teorema classico ed \`e enunciato nel seguente:
+Il risultato provato in questo lavoro \`e, come gi\`a detto, molto meno generale del teorema classico ed \`e enunciato nel seguente:
 \begin{teorema}
 Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ 
 (con fattore d'espansione $\hat{l}(n)=n+1$) allora per ogni costante $k > 1$ esiste un generatore 
-pseudocasuale $G$ con coefficiente d'espansione $l(n)=n+k$.
+pseudocasuale $G$ con fattore d'espansione $l(n)=n+k$.
 \end{teorema}
 
 Si dimostrer\`a il teorema attraverso un procedimento induttivo che sfrutta CryptoVerif. 
-In particolare, la dimostrazione si articoler\`a in due fasi come ogni prova induttiva:
+In particolare la dimostrazione si articoler\`a in due fasi come ogni prova induttiva:
 \begin{itemize}
  \item \emph{Caso Base.} Mediante CryptoVerif si dimostrer\`a il teorema per $k=2$.
  \item \emph{Caso Induttivo}. Si dimostrer\`a che CryptoVerif riesce a dimostrare il teorema per $k=i+1$ assumendo di essere riuscito a dimostrarlo per $k=i$.
 \end{itemize}
 
 
-Quando d'ora in poi si user\`a l'espressione \emph{essere riuscito a dimostrare} riferendoci a CrytoVerif si intender\`a che CryptoVerif ha fornito una sequenza di giochi 
-nell'ultimo della quale l'asserto vale.
+Quando d'ora in poi si user\`a l'espressione ''\emph{essere riuscito a dimostrare}'' riferendoci a CrytoVerif, si intender\`a che CryptoVerif ha fornito una sequenza di giochi 
+nell'ultimo della quale vale l'asserto che si desidera provare.
 
 \newpage
 \section{Dimostrazione del Caso Base}
-Si cercher\`a ora di dimostrare il caso base del procedimento induttivo prima accennato. Ovvero si descriver\`a un fil di input per CryptoVerif che permette a questo di provare che:
-Se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ 
+Si cercher\`a ora di dimostrare il caso base del procedimento induttivo prima accennato. Ovvero si descriver\`a un file di input per CryptoVerif che permette a questo di provare che:
+se esiste un generatore pseudocasuale $\hat{G}:$ $\{0, 1\}^n \rightarrow \{0, 1\}^{n+1}$ 
 (con fattore d'espansione $\hat{l}(n)=n+1$) allora, per $k=2$, esiste un generatore 
-pseudocasuale $G$ con coefficiente d'espansione $l(n)=n+k$.
+pseudocasuale $G$ con fattore d'espansione $l(n)=n+k$.
 L'input che \`e stato fornito a CryptoVerif inizia con le seguenti dichiarazioni:
 \begin{verbatim}
 1 type nbits 	 [fixed].     
@@ -975,14 +996,15 @@ L'input che \`e stato fornito a CryptoVerif inizia con le seguenti dichiarazioni
 3 type np2bits [fixed].   
 \end{verbatim}
 Alla linea 1 definiamo il tipo \emph{nbits} ovvero il tipo delle stringhe di lunghezza n. Questo tipo rappresenter\`a l'insieme $\{0, 1\}^n$. Alla linea 2 invece viene dichiarato un tipo
-per rappresentare le stringhe appartenenti all'insieme $\{0, 1\}^{n+1}$, mentre nelle righe 3 lo stesso viene fatto per le stringhe
-appartenenti all' insieme $\{0, 1\}^{n+2}$. Si noti come ogni tipo sia dichiarato con il modificatore $fixed$ al fine di poter estrarre elementi casuali dai domini di quei tipi.
+per rappresentare le stringhe appartenenti all'insieme $\{0, 1\}^{n+1}$, mentre alla riga 3 lo stesso viene fatto per le stringhe
+appartenenti all'insieme $\{0, 1\}^{n+2}$. Si noti come ogni tipo sia dichiarato con il modificatore $\texttt{fixed}$ al fine di poter estrarre elementi casuali dai domini di quei tipi.
 Con la linea di codice seguente:
 \begin{verbatim}
 5 param n1.
 \end{verbatim}
-Si dichiara un parametro $n1$. Questo parametro assumer\`a valori polinomiali nel parametro di sicurezza. 
-Sar\`a utilizzato principalmente per fornire al distinguitore un numero polinomiale di oracoli con cui interagire.
+Si dichiara un parametro $\texttt{n1}$. Questo parametro assumer\`a valori polinomiali nel parametro di sicurezza. 
+Sar\`a utilizzato principalmente per fornire al distinguitore\footnote{L'attaccante modellato dal tool, in questo caso, 
+cerca di distinguere l'output di $\texttt{G}$ da una stringa casuale.} un numero polinomiale di oracoli con cui interagire.
 Quella che segue \`e una dichiarazione di un simbolo funzionale con i relativi tipi di input e di output.
 \begin{verbatim}  
 7 fun concatnp1(np1bits, bool):np2bits.
@@ -991,9 +1013,9 @@ In particolare la funzione prende in input come argomenti una stringa di lunghez
 un valore booleano. L'output sar\`a una stringa di lunghezza $n+2$.
 Come si pu\`o intuire dal nome della funzione, questa rappresenta la concatenazione di una stringa di lunghezza $n+1$ con un bit.
 Mediante la seguente equivalenza non facciamo altro che implementare la funzione dichiarata prima.
-La funzione $\texttt{concatnp1}$ viene descritta mediante un'equivalenza che rappresenta il seguente asserto:
+La funzione $\texttt{concatnp1}$ viene implementata mediante un'equivalenza che rappresenta il seguente asserto:
 \emph{la concatenazione di una stringa casuale di $n+1$ bit con un bit casuale \`e una stringa casuale di
-$n+2$ bit. }. L'equivalenza \`e la seguente:
+$n+2$ bit}. L'equivalenza \`e la seguente:
 \begin{verbatim}
 10 equiv
 11       foreach i1<=n1 do
@@ -1005,7 +1027,7 @@ $n+2$ bit. }. L'equivalenza \`e la seguente:
 17             w <-R np2bits;
 18             OGet():=return(w).
 \end{verbatim} 
-In questo caso l'equivalenza non vale a meno di una probabilit\`a ma sempre. Infatti \`e sempre vero che la concatenazione di una stringa casuale e di un bit casuale \`e una stringa casuale.
+In questo caso l'equivalenza non vale a meno di una probabilit\`a, ma sempre. Infatti \`e sempre vero che la concatenazione di una stringa casuale e di un bit casuale \`e una stringa casuale.
 Con il seguente frammento di codice:
 \begin{verbatim}
 38 fun G'(nbits): np1bits.
@@ -1018,15 +1040,15 @@ Con il seguente frammento di codice:
 45                 x <-R np1bits;
 46                 OGet():=return(x).
 \end{verbatim}
-per prima cosa si dichiara un simbolo funzionale $\texttt{G'}$ che sta per il $\hat{G}$ della dimostrazione classica. La dichiarazione viene ovviamente con i tipi di input e output del generatore pseudocasuale.
+per prima cosa si dichiara un simbolo funzionale $\texttt{G'}$ che sta per il $\hat{G}$ della dimostrazione classica. La dichiarazione viene ovviamente con i tipi di input e output del generatore pseudocasuale: linea 38.
 Si noti come l'equivalenza valga a meno di una certa probabilit\`a. Infatti una stringa casuale \`e, in generale, di natura diversa da una stringa pseudocasuale sebbene siano distinguibili solo per una probabilit\`a trascurabile
-che \`e rappresentata appunto da $\texttt{POW}$. La probabilit\`a $\texttt{POW}$ \`e la probabilit\`a che un attaccante efficiente riesca a distinguere una stringa casuale da una pseudocasuale. La probabilit\`a $\texttt{POW}$  \`e
-trascurabile per definizione di pseudocasualit\`a.
+che \`e rappresentata appunto da $\texttt{POW}$. La probabilit\`a $\texttt{POW}$ \`e la probabilit\`a che un attaccante efficiente 
+riesca a distinguere una stringa casuale da una pseudocasuale. $\texttt{POW}$ \`e trascurabile per definizione di pseudocasualit\`a.
 Con il seguente frammento di codice non facciamo altro che istruire CryptoVerif su cosa vogliamo che venga dimostrato.
 \begin{verbatim}
 query secret1 w.
 \end{verbatim}
-Il precedente frammento \`e lecito perch\`e ci\`o che si vuole \`e che il tool provi che la stringa $\texttt{w}$ sia indistinguibile da una stringa casuale. Nell'ultimo frammento di codice si vedr\`a come sia definita questa stringa.
+Il precedente frammento \`e lecito perch\'e ci\`o che si vuole \`e che il tool provi che la stringa $\texttt{w}$ sia indistinguibile da una stringa casuale. Nell'ultimo frammento di codice si vedr\`a come sia definita questa stringa.
 L'ultimo frammento di codice rappresenta una sorta di $protocollo$ che funge da gioco iniziale:
 \begin{verbatim}
 50 process
@@ -1038,13 +1060,13 @@ L'ultimo frammento di codice rappresenta una sorta di $protocollo$ che funge da 
 56              w:np2bits <-concatnp1(G'(y'), b');
 57              return
 \end{verbatim}
-in questo gioco si applica due volte il generatore pseudocasuale $\texttt{G'}$ la prima volta alla stringa $\texttt{r}$ e la seconda al risultato fornito dalla prima applicazione di $\texttt{G'}$.
+in questo gioco si applica due volte il generatore pseudocasuale $\texttt{G'}$. La prima volta alla stringa $\texttt{r}$ e la seconda al risultato fornito dalla prima applicazione di $\texttt{G'}$.
 In particolare si noti come la variabile $\texttt{r}$ venga inizializzata con un valore casuale preso dall'insieme delle stringhe binarie di lunghezza $n$, e come
 successivamente si proceda con l'assegnamento ad $\texttt{x'}$ della stringa pseudocasuale
-$\texttt{G'(r)}$. Dopo questo passaggio, i primi $n$ bit della stringa $\texttt{x'}$ vengono estratti e assegnati alla variabile $\texttt{y'}$ mentre l'$n+1$-esimo bit viene assegnato alla variabile 
+$\texttt{G'(r)}$. Dopo questo passaggio, i primi $n$ bit della stringa $\texttt{x'}$ vengono estratti e assegnati alla variabile $\texttt{y'}$, mentre l'$n+1$-esimo bit viene assegnato alla variabile 
 $\texttt{b'}$. Adesso \`e possibile utilizzare nuovamente $\texttt{G'}$ su input $\texttt{y'}$ e concatenare quindi $\texttt{G'(y')}$ con $\texttt{b'}$ ottenendo la stringa $\texttt{w}$.
 $\texttt{w}$ quindi \`e il risultato di un duplice utilizzo del generatore pseudocasuale $\texttt{G'}$. Dimostrando la propriet\`a di one-session secrecy per la stringa $\texttt{w}$ CryptoVerif
-non fa altro che dimostrare la pseducasualit\`a di questa.
+non fa altro che dimostrare la pseudocasualit\`a di questa.
 \newpage
   \subsection{I Giochi della Prova}
 Il seguente \`e il gioco iniziale in cui si utilizza due volte il generatore pseudocasuale $\texttt{G'}$; 
@@ -1117,7 +1139,7 @@ equiv foreach i1_3 <= n1 do
 
 yields
 \end{verbatim}
-\`e possibile modificare il gioco 3 nel seguente gioco in cui le variabili $\texttt{xl\_9}$ e $\texttt{x\_8}$ sono inizializzate con dei valori casuali estratti rispettivamente dal dominio dei booleani e dal dominio
+\`e possibile modificare il gioco 3 nel seguente gioco, in cui le variabili $\texttt{xl\_9}$ e $\texttt{x\_8}$ sono inizializzate con dei valori casuali estratti rispettivamente dal dominio dei booleani e dal dominio
 $\texttt{nbits}$ ovvero dalle stringhe di lunghezza $n$.
 \begin{verbatim} 
 Game 4 is
@@ -1129,7 +1151,7 @@ O() :=
      w: np2bits <- concatnp1(G'(y'), b');
      return()
 \end{verbatim}
-Si pu\`o vedere come anche nel gioco 4 si possono trovare degli assegnamenti inutili ovvero quelli che coinvolgono le variabili $\texttt{y'}$ e $\texttt{b'}$. \`E possibile infatti, eliminare queste variabili
+Si pu\`o vedere come anche nel gioco 4 si possano trovare degli assegnamenti inutili, ovvero quelli che coinvolgono le variabili $\texttt{y'}$ e $\texttt{b'}$. \`E possibile infatti eliminare queste variabili
 sostituendo ogni occorrenza di queste con le variabili $\texttt{xl\_9}$ e $\texttt{x\_8}$. Effettuando queste modifiche si ottiene il seguente gioco:
 \begin{verbatim} 
 Applying remove assignments of useless yields
@@ -1153,7 +1175,9 @@ equiv foreach i1_5 <= n1 do
               OGet() := return(x)
 [Excluding set(dist 5->6, proba <= POW)] yields
 \end{verbatim}
-ottenendo il seguente gioco in cui sia $\texttt{xl\_9}$ che $\texttt{x\_10}$ sono stringhe casuali estratte rispettivamente dal dominio dei booleani e dal dominio delle stringhe di lunhezaz $n+1$. Si ottiene quindi il gioco 6:
+ottenendo il seguente gioco in cui sia $\texttt{xl\_9}$ che $\texttt{x\_10}$ 
+sono stringhe casuali estratte rispettivamente dal dominio dei booleani e dal dominio delle stringhe di lunghezza $n+1$. 
+Si ottiene quindi il gioco 6:
 \begin{verbatim}
 Game 6 is
 O() :=
@@ -1175,7 +1199,8 @@ equiv foreach i1_1 <= n1 do
       OGet() := return(w)
 yields
 \end{verbatim}
-in questo gioco CryptoVerif non fa altro che applicare la definizione di $\texttt{concatnp1}$ che afferma che la concatenazione di una stringa casuale di $n$ bit e di un bit casuale \`e una stringa casuale di $n+2$ bit.
+in questo gioco CryptoVerif non fa altro che applicare la definizione di $\texttt{concatnp1}$ che afferma che 
+la concatenazione di una stringa casuale di $n$ bit e di un bit casuale \`e una stringa casuale di $n+2$ bit.
 Otteniamo quindi il gioco finale, ovvero il gioco 7:
 \begin{verbatim}
 Game 7 is
@@ -1184,10 +1209,12 @@ O() :=
      w: np2bits <- w_11;
      return()
 \end{verbatim}
-In quest'ultimo gioco alla variabile $\texttt{w}$ \`e assegnato il valore di una stringa $\texttt{w\_11}$ che \`e scelta in maniera completamente casuale (con il costrutto $\texttt{<-R}$) dal dominio del tipo $\texttt{np2bits}$.
-Di conseguenza la stringa $\texttt{w}$ \`e in questo gioco un variabile casuale a tutti gli effetti.
-In questo gioco, quindi, l'attaccante non pu\`o distinguere la stringa $\texttt{w}$ da una stringa casuale perch\`e $\texttt{w}$ stessa \`e casuale, di conseguenza in questo gioco l'attaccante non pu\`o vincere.
-CryptoVerif ha quindi dimostrato l'asserto iniziale, ovvero che dato un generatore pseudocasuale con fattore d'espansione $n+1$ se ne pu\`o ottenere uno con coefficiente d'espansione $n+2$.
+In quest'ultimo gioco alla variabile $\texttt{w}$ \`e assegnato il valore di una stringa $\texttt{w\_11}$ 
+che \`e scelta in maniera completamente casuale (con il costrutto $\texttt{<-R}$) dal dominio del tipo $\texttt{np2bits}$.
+Di conseguenza la stringa $\texttt{w}$ \`e, in questo gioco, una variabile casuale a tutti gli effetti.
+In questo gioco, quindi, l'attaccante non pu\`o distinguere la stringa $\texttt{w}$ da una stringa casuale perch\'e $\texttt{w}$ stessa \`e casuale. 
+Di conseguenza nel gioco finale l'attaccante non pu\`o vincere.
+CryptoVerif ha quindi dimostrato l'asserto iniziale, ovvero che dato un generatore pseudocasuale con fattore d'espansione $n+1$ se ne pu\`o ottenere uno con fattore d'espansione $n+2$.
 Ecco che tutto ci\`o ci porta alla parte finale dell'output di CryptoVerif in cui questo ci dice per quali probabilit\`a vale la prova:
 \begin{verbatim} 
 RESULT Proved secrecy of w excluding 
@@ -1196,21 +1223,26 @@ set(dist 5->6, proba <= POW)
 RESULT Proved secrecy of w with probability 2. * POW
 All queries proved.
 \end{verbatim}
-siccome nella catena di giochi la definizione basata su equivalenza di $\texttt{G'}$ \`e stata applicata due volte \`e ovvio che la catena di giochi sia valida a meno di $\texttt{2 * POW}$ dove $\texttt{POW}$ \`e la probabilit\`a
-per cui vale la definizione di $\texttt{G'}$.
+Siccome nella catena di giochi la definizione basata su equivalenza di $\texttt{G'}$ \`e stata applicata due volte \`e,
+ovvio che la catena di giochi sia valida a meno di $\texttt{2 * POW}$ dove $\texttt{POW}$ \`e la probabilit\`a
+per cui vale la definizione di $\texttt{G'}$. Ovvio che per definizione $\texttt{POW}$ sia una probabilit\`a trascurabile, e quindi
+anche $\texttt{2*POW}$, ma grazie a CryptoVerif non perdiamo di vista questo valore. CryptoVerif infatti ci dice
+che la sequenza di giochi vale a meno di $\texttt{2*POW}$, e non semplicemente a meno di una probabilit\`a trascurabile.
 
 
 
 
-\section{Il passo induttivo}
-Quello che si cercher\`a ora di fare \`e di provare che CryptoVerif riesce a dimostrare il teorema per $k=i+1$ sfruttando l'ipotesi che riesca a dimostrarlo per $k=i$.
-Per poter dimostrare l'asserto per $k=i+1$ CryptoVerif, in generale, partir\`a da un file di input che contiene delle dichiarazioni e un gioco iniziale. Qui di seguito
-si dar\`a uno schema di questo file. Nell'input i valori $i$ e $i+1$ stanno al posto degli effettivi valori di $i$. Cos\`i il tipo: $\texttt{type npibits}$ dovr\`a essere inteso
-come un tipo nel cui nome la lettera $i$ \`e stata sostituita con un particolare valore.
-
-In particolare il file dovr\`a avere:
+\section{Il Passo Induttivo}
+Quello che si cercher\`a ora di fare \`e di provare che CryptoVerif riesce a dimostrare il teorema per $k=i+1$ sfruttando l'ipotesi 
+che riesca a dimostrarlo per $k=i$.
+Per poter dimostrare l'asserto per $k=i+1$ CryptoVerif, in generale, partir\`a da un file di input che contiene 
+delle dichiarazioni e un gioco iniziale. \`E scontato che non avendo a disposizione infinito spazio, non si possa descrivere
+un'infinit\`a di file di input (uno per ogni valore di $i$) per CryptoVerif; quindi, qui di seguito, si dar\`a uno schema generale della composizione di questi file. 
+Prima di procedere \`e bene notare che nell'input le espressioni $i$ e $i+1$ stanno al posto degli effettivi valori di $i$. 
+Cos\`i la dichiarazione del tipo $\texttt{type npibits}$ dovr\`a essere intesa come la dichiarazione di un tipo, nel cui nome, la lettera $i$ 
+\`e stata sostituita con un particolare valore appartenente ai numeri naturali. I file dovranno avere:
 \begin{enumerate}
- \item la dichiarazione $\texttt{type npbits [fixed].}$. Questo tipo si trova in ogni file di input per ogni $k$.
+ \item la dichiarazione $\texttt{type npbits [fixed].}$ Questo tipo si trova in ogni file di input per ogni $k$.
  \item $i+1$ dichiarazioni: \begin{itemize}
                                        \item $\texttt{type np1bits [fixed].}$ Questo tipo si trova in ogni file di input per ogni $k$.
                                        \item $\texttt{type np2bits [fixed].}$
@@ -1219,9 +1251,11 @@ In particolare il file dovr\`a avere:
 				       \item $\texttt{type npibits [fixed].}$
 				       \item $\texttt{type npi+1bits [fixed].}$	
 	                               \end{itemize}
-La lettera $i$ sar\`a sostituita dal particolare valore numerico che assume, stessa cosa per $i+1$
-allora si avr\`a $\texttt{type np5bits [fixed].}$ e $\texttt{type np6bits [fixed].}$
-       
+La lettera $i$ sar\`a sostituita dal particolare valore numerico che assume, stessa cosa per $i+1$.
+Per esempio per $k=i+1=6$ si avr\`a: $\texttt{type np5bits [fixed].}$ e $\texttt{type np6bits [fixed].}$
+\\
+\\
+\\
   \item $i$ dichiarazioni di simboli funzionali:\begin{itemize}
                                                           \item $\texttt{fun concatnp1(np1bits,bool):np2bits.}$
 							  \item $\texttt{fun concatnp2(np2bits, bool):np3bits.}$
@@ -1246,12 +1280,12 @@ equiv
 \end{itemize}
 Anche in questa equivalenza $i$ va sostituita con il valore che questa assume.
 
-\item le dichiarazioni dei seguenti simboli funzionali:
+\item i seguenti simboli funzionali:
       \begin{itemize}
-       \item $\texttt{fun getn(np1bits):nbits.}$. Questo simbolo si trova in ogni file di input per ogni $k$.
-       \item $\texttt{fun getlast(np1bits):bool.}$. Questo simbolo si trova in ogni file di input per ogni $k$.
+       \item $\texttt{fun getn(np1bits):nbits.}$ Questo simbolo si trova in ogni file di input per ogni $k$.
+       \item $\texttt{fun getlast(np1bits):bool.}$ Questo simbolo si trova in ogni file di input per ogni $k$.
       \end{itemize}		
-\item la definizione dei simoboli funzionali precedenti:
+\item la definizione dei simboli funzionali precedenti:
       \begin{itemize}
        \item \begin{verbatim}
          equiv
@@ -1267,13 +1301,13 @@ Anche in questa equivalenza $i$ va sostituita con il valore che questa assume.
                 ).
              \end{verbatim}
       \end{itemize}
-\item la dichiarazione del generatore pseudocasuale con coefficiente d'espansione $n+1$. Questo simbolo si trova in ogni file di input per ogni $k$.
+\item la dichiarazione del generatore pseudocasuale con fattore d'espansione $n+1$. Questo simbolo si trova in ogni file di input per ogni $k$:
 \begin{itemize}
  \item \begin{verbatim}
         fun G'(nbits): np1bits.
        \end{verbatim}
 \end{itemize}
-\item la definizione, mediante equivalenza, del generatore pseudocasuale con coefficiente d'espansione $n+1$:
+\item la definizione, mediante equivalenza, del generatore pseudocasuale con fattore d'espansione $n+1$:
 \begin{itemize}
  \item \begin{verbatim}
       equiv
@@ -1287,8 +1321,12 @@ Anche in questa equivalenza $i$ va sostituita con il valore che questa assume.
        \end{verbatim}
 \end{itemize}
 
-\item la clausola: $\texttt{query secret w.}$. Questa clausola si trova in ogni file di input per ogni $k$.
-\item la definizione del protocollo iniziale, mediante un gioco, in cui si descrive il generatore pseudocasuale con coefficiente d'espansione $n+i+1$:
+\item la clausola: $\texttt{query secret w.}$ Questa clausola si trova in ogni file di input per ogni $k$.
+\item la definizione del protocollo iniziale. Descriviamo il protocollo iniziale mediante un gioco in cui si 
+ottiene una stringa pseudocasuale di $n+i+1$ bit attraverso l'applicazione di $\texttt{G'}$ $i+1$ volte:
+
+
+
 \begin{itemize}
  \item \begin{verbatim}
  process
@@ -1325,8 +1363,7 @@ Vediamo un esempio: se $k=i+1=4$, allora il file di input per provare l'asserto 
   7 
   8 param n1.
   9 
- 10 (* La concatenazione di una stringa random di n+1 bits 
-      e un bit random è una stringa random di n+2 bits. *)
+ 10 
  11 fun concatnp1(np1bits,bool):np2bits.
  12 fun concatnp2(np2bits, bool):np3bits.
  13 fun concatnp3(np3bits, bool):np4bits.
@@ -1381,7 +1418,7 @@ Vediamo un esempio: se $k=i+1=4$, allora il file di input per provare l'asserto 
  62               OGetlast():= xl <-R bool;return(xl)
  63               ).
  64 proba POW.
- 65 (* Generatore pseudorandom con fattore n+1 *)
+ 65 (* Generatore pseudocasuale con fattore n+1 *)
  66 fun G'(nbits): np1bits.
  67 equiv
  68     foreach i1<=n1 do
@@ -1411,9 +1448,9 @@ Vediamo un esempio: se $k=i+1=4$, allora il file di input per provare l'asserto 
 \end{verbatim}
 
 \subsection{L'Ipotesi Induttiva}
-Prima di procedere \`e bene precisare che l'espressione: \emph{per $k=i$ CryptoVerif riesce a dimostrare l'asserto}\footnote{Che \`e l'ipotesi induttiva che verr\`a sfruttata.}
-significa che: per $k=i$ CryptoVerif partendo da un gioco iniziale\footnote{Che si pu\`o ottenere analizzando lo scheletro fornito 
-precedentemente per $k=i+1$ ed applicandolo ad $k=i$.} $G_0(i)$, descritto nel seguente frammento di codice:
+Si ricordi ancora una volta che l'espressione: \emph{per $k=i$ CryptoVerif riesce a dimostrare l'asserto}\footnote{Che \`e l'ipotesi induttiva che verr\`a sfruttata.}
+significa che, per $k=i$ CryptoVerif partendo da un gioco iniziale\footnote{Che si pu\`o ottenere analizzando lo scheletro fornito 
+precedentemente per $k=i+1$ ed applicandolo a $k=i$.} $G_0(i)$, descritto nel seguente frammento di codice:
 \begin{verbatim}
 O():=
   r<-R nbits;
@@ -1437,7 +1474,7 @@ O():=
   w <- w_i;
 return ();
 \end{verbatim}
-Dove la stringa $\texttt{w}$ non pu\`o essere distinta da una stringa casuale.
+dove la stringa $\texttt{w}$ non pu\`o essere distinta da una stringa casuale.
 Si noti che, proprio per costruzione dell'input, le istruzioni di $G_0(i)$ sono un sottoinsieme delle istruzioni del gioco iniziale per $k=i+1$, sia questo $G_0(i+1)$.
 Infatti $G_0(i+1)$ ha il seguente aspetto:
 \begin{verbatim}
@@ -1456,10 +1493,11 @@ w:npi+1bits<-concatnpi(
             concatnpi-1(...concatnp1(G'(yi), b1), b2),... bi);
 return()
 \end{verbatim}
-Inoltre il file di input per $k=i+1$ avr\`a sempre un'equivalenza in pi\`u rispetto al file per $k=i$. Questa equivalenza \`e quella che serve a concatenare una stringa casuale di $n+i$ bit e un bit casuale, in una stringa
+Inoltre, sempre per costruzione, il file di input per $k=i+1$ avr\`a sempre un'equivalenza in pi\`u rispetto al file per $k=i$. Questa equivalenza \`e quella che serve a concatenare una stringa casuale di $n+i$ bit e un bit casuale, in una stringa
 casuale di $n+i+1$ bit; si sta parlando dell'equivalenza relativa al simbolo funzionale $concatnpi$.
-Quindi CryptoVerif partendo da $G_0(i+1)$ e utilizzando \emph{solo} le regole di riscrittura relative a $k=i$ giunge al gioco $G_{n-1}(i+1)$\footnote{Il penultimo della sequenza. Si vedr\`a infatti che con un ultima
-applicazione di una regola si giunger\`a al gioco finale}:
+Quindi CryptoVerif, partendo da $G_0(i+1)$ e applicando le \emph{sole} regole di riscrittura relative a $k=i$ 
+al sottoinsieme di istruzioni $G_0(i)$, \emph{per ipotesi induttiva}, riesce ad arrivare al gioco $G_{n-1}(i+1)$\footnote{Il penultimo della sequenza. 
+Si vedr\`a infatti che con un'ultima applicazione di una regola si giunger\`a al gioco finale.}:
 \begin{verbatim}
 Game n-1 is
 O() :=
@@ -1468,9 +1506,11 @@ w_z <-R npibits;
 w: npi+1bits <- concatnpi(w_z, xl);
 return()
 \end{verbatim}
-in cui tutte le stringhe che, oltre ad appartenere al gioco $G_0(i+1)$, appartenevano anche a $G_0(i)$ sono confluite, grazie alle equivalenze, in $w_z$.
-Si osservi, tra l'altro che questo gioco, penultimo nella sequenza per $k=i+1$, \`e un sovrainsieme dell'ultimo gioco per $k=i$.
-Ora utilizzando la sola regola di riscrittura $concatnpi$, l'unica in pi\`u rispetto al file per $k=i$, CryptoVerif pu\`o passare al seguente gioco:
+in cui tutte le stringhe che, oltre ad appartenere al gioco $G_0(i+1)$, appartenevano anche a $G_0(i)$ sono confluite, 
+grazie alle equivalenze relative a $k=i$, in $\texttt{w\_z}$. Si osservi, tra l'altro, che questo gioco, penultimo nella sequenza per $k=i+1$, 
+\`e un sovrainsieme dell'ultimo gioco per $k=i$.
+Ora, utilizzando la sola regola di riscrittura $concatnpi$, l'unica in pi\`u rispetto al file per $k=i$, 
+CryptoVerif pu\`o passare al seguente gioco:
 \begin{verbatim}
 Game n is
 O() :=
@@ -1478,14 +1518,91 @@ w_a <-R npi+1bits;
 w: npi+1bits <- w_a
 return()
 \end{verbatim}
-Dove la variabile $w$ \`e effettivamente casuale.
-
-Non si mostra la sequenza di giochi per $k=i$ perch\`e per ipotesi induttiva si suppone che esista.
-Di questa sequenza per\`o si conosce il gioco iniziale, che per costruzione \`e un sottoinsieme del gioco iniziale per $k=i+1$.
+dove la variabile $\texttt{w}$ \`e effettivamente casuale, essendo essa estratta con il costrutto $\texttt{<-R}$ dal dominio a cui
+appartiene.
 
 
+Procediamo ora con una breve ricapitolazione di come la dimostrazione \`e avvenuta.
+La dimostrazione \`e di tipo induttivo, di conseguenza si articola in due fasi: il caso base e il passo induttivo.
+Per quanto riguarda il caso base si \`e scelto di mostrare come CryptoVerif dimostri l'asserto per $k=2$. Utilizzando qualsiasi altra costante 
+$k > 1$ il risultato sarebbe stato ugualmente corretto, ma si avrebbe avuto a che fare con un file di input, e quindi una sequenza di giochi, di 
+lunghezza necessariamente maggiore. Si noti che una dimostrazione per $k=1$ non avrebbe senso, infatti un generatore pseudocasuale con
+fattore d'espansione $n+k=n+1$ \`e gi\`a in nostro possesso per ipotesi, visto che $\texttt{G'}$ accresce l'input casuale di un bit.
+Una volta provato il caso base si procede con il caso induttivo.
+Ovvero assumendo che CryptoVerif abbia gi\`a fornito una sequenza di giochi che prova che:
+\begin{center}
+\emph{Se esiste un generatore pseudocasuale con fattore d'espansione $n+1$ allora $\forall i$ esiste un generatore pseudocasuale con fattore d'espansione $n+i$}.
+\end{center}
+
+si dimostra che:
+\begin{center}
+\emph{Se esiste un generatore pseudocasuale con fattore d'espansione $n+1$ allora $\forall i$ esiste un generatore pseudocasuale con fattore d'espansione $n+i+1$}. 
+\end{center}
+
+L'ipotesi induttiva permette di assumere che esiste una sequenza di giochi che parte da un gioco iniziale di cui conosciamo la forma
+e arriva ad un gioco finale che deve necessariamente essere di una forma particolare (altrimenti non proverebbe l'asserto).
+Si noti che per come i file di input sono costruiti, abbiamo che $\forall i$ $G_0(i) \subset G_0(i+1)$. 
+Infine si nota che poich\'e per ipotesi induttiva CryptoVerif prova l'asserto per $k=i$, allora 
+l'ultimo gioco della sequenza per $k=i$ deve necessariamente avere una stringa di $n+i$ estratta casualmente dal dominio $\texttt{npibits}$. 
+Quindi partendo dal gioco $G_0(i+1)$, CryptoVerif applica tutte le equivalenze relative a $k=i$ e arriva
+ad un gioco $G_{n-1}(i+1) \supset G_{n}(i)$. Applicando ora l'unica regola in pi\`u che il file di input relativo 
+a $k=i+1$ ha rispetto al file per $k=i$, si giunge al gioco finale $G_n(i+1)$ in cui vale l'asserto, ovvero
+si arriva ad un gioco in cui l'output di $\texttt{G}$ \`e effettivamente casuale.
+
+\section{Limiti di CryptoVerif}
+Il lettore potrebbe domandarsi perché non si sia cercato di provare il teorema 3.1 in tutta la sua generalit\`a e 
+perch\'e, anche per provare un caso particolare del teorema, sia stato necessario utilizzare un procedimento induttivo.
+\subsection{Definizione Iterativa}
+Per quanto riguarda la prima parte della questione, la conclusione a cui lo studente \`e giunto \`e che fondamentalmente il sistema di 
+tipi di CryptoVerif non \`e abbastanza potente. La prima idea che si \`e cercato di implementare infatti, era di definire in 
+maniera iterativa $\texttt{G}$ in funzione di $\texttt{G'}$. Si \`e tentato cio\`e di definire $\texttt{G}$ richiamando $\texttt{G'}$ 
+un numero di volte pari ad un parametro dichiarato con la clausola $\texttt{param}$.
+Si \`e per\`o riscontrato che i parametri, dichiarati con $\texttt{param}$ e che viaggiano su valori polinomiali nel parametro di sicurezza,
+non sono fatti per essere utilizzati in questa maniera, ma per fornire un numero di oracoli pari al parametro, o ancora per
+eseguire dei lookup su degli array grandi quanto il parametro.
+Si potrebbe ancora obiettare che almeno per $k=2$ fosse possibile utilizzare una semplice regola di riscrittura che sfruttasse 
+l'uso delle \emph{coppie}. Ovvero, si potrebbe pensare di definire $\texttt{G}$ mediante la seguente regola di riscrittura:
+\begin{verbatim}
+ forall x:nbits; G(x)=(G'(getn(G'(x))), getlast(G'(x))).
+\end{verbatim}
+In particolare quindi si definisce $\texttt{G}$ su input $\texttt{x
+}$ $\in$ $\texttt{nbits}$ come una coppia che ha come primo elemento 
+$\texttt{G'(getn(x))}$ e come secondo elemento $\texttt{getlast(G'(x))}$. I tipi che riguardano $\texttt{G'}$ sono corretti in quanto 
+gli viene fornito in input sempre una stringa di lunghezza $n$. Il problema risiede in $\texttt{G}$, che deve essere dichiarato come una 
+funzione che mappa stringhe di $n$ bit in stringhe di $n+2$ bit. \`E necessario definire $\texttt{G}$ cos\`i per essere fedeli 
+alla definizione classica di generatore pseudocasuale.
+
+
+Ma a causa di ci\`o, il problema si riduce al fatto che CryptoVerif non accetta un'equivalenza di tipo fra una coppia costituita da una stringa
+di $n+1$ bit e un singolo bit, con una stringa di $n+2$ bit. Di conseguenza CryptoVerif non accetta un input come quello sopra descritto,
+affermando che il tipo di output di $\texttt{G}$ non \`e rispettato.
+\subsection{Necessit\`a dell'Induzione}
+Secondo l'opinione dello studente \`e stato necessario dimostrare l'asserto in modo induttivo in quanto non \`e possibile mediante un unico file di input
+dimostrare il teorema 3.2. Dimostrare senza induzione l'asserto comporterebbe l'analisi di un'infinit\`a di file di input, il che non \`e
+ovviamente proponibile. Questo perch\`e, secondo la strada che si \`e cercato di seguire per dimostrare il teorema 3.2 per
+un \emph{particolare} $k=i$, \`e necessario definire un file il cui contenuto
+ \`e funzione del particolare valore di $i$; per esempio: un file di input per CryptoVerif
+relativo a $k=i$, avr\`a $i+1$ definizioni $concatnpj$ con $0<j<=i+1$. Invece un file relativo ad un fattore d'espansione
+pari a $i+1$ avr\`a un'equivalenza in pi\`u. Ecco quindi che non \`e possibile ottenere una sequenza di giochi che provi il teorema
+3.2 per ogni numero naturale maggiore di zero. \`E per\`o naturale, come si \`e visto, procedere per induzione visto che
+un file relativo ad un particolare valore di $i$ \`e molto simile ad un file per il valore $i+1$. 
 
 \chapter{Conclusioni}
+Questo lavoro \`e iniziato ponendosi come obiettivo quello di dimostrare in modo automatico un risultato che era gi\`a presente in
+letteratura. Durante lo svolgimento di questa tesi si sono rilevate alcune difficolt\`a. Come per esempio la 
+quasi totale assenza di documentazione riguardo al tool utilizzato e all'analisi di protocolli crittografici nel modello computazionale
+in generale. In effetti questo lavoro, oltre ad essere servito allo studente per approfondire alcuni aspetti della sicurezza informatica
+teorica, potrebbe servire in generale come punto di partenza per iniziare ad usare il tool.
+Questo lavoro, essendo una via di mezzo fra una tesi compilativa e una sperimentale, non \`e ovviamente completa e non lo sar\`a mai.
+\`E interessante per\`o, far notare al lettore che esistono alcune direzioni in cui questo lavoro potrebbe essere esteso.
+Per esempio potrebbe essere ampliato il sottoinsieme del linguaggio implementato da CryptoVerif che viene trattato nel capitolo due.
+In questo lavoro infatti ci si \`e dedicati solamente ad una piccola parte del linguaggio di CryptoVerif, quella utile a capire come avviene
+la dimostrazione del teorema. 
+Si potrebbe inoltre pensare di cercare di dimostrare altri risultati della crittografia computazionale. Si potrebbe per esempio verificare
+se CryptoVerif \`e in grado di provare un famoso teorema che lega l'esistenza delle funzioni one-way ai generatori pseudocasuali. Inoltre si potrebbe pensare di analizzare
+dei protocolli crittografici utilizzati quotidianamente che non siano gi\`a stati analizzati. In questo modo, si
+proverebbe o confuterebbe la sicurezza nel modello computazionale dei protocolli in questione; inoltre si contribuirebbe anche ad aumentare il numero di casi di studio disponibili per chi
+volesse avvicinarsi a questo argomento. 
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
 \bibliographystyle{alpha}	
 \bibliography{myrefs}		

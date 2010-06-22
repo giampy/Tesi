@@ -1,23 +1,23 @@
-\BOOKMARK [0][-]{chapter.1}{Introduzione}{}
-\BOOKMARK [1][-]{section.1.1}{La Crittografia Moderna}{chapter.1}
-\BOOKMARK [1][-]{section.1.2}{Il Due Modelli}{chapter.1}
-\BOOKMARK [1][-]{section.1.3}{Una visione d'insieme}{chapter.1}
-\BOOKMARK [0][-]{chapter.2}{Il Modello Computazionale}{}
-\BOOKMARK [1][-]{section.2.1}{L'Avversario}{chapter.2}
-\BOOKMARK [1][-]{section.2.2}{Funzioni Trascurabili e non \203}{chapter.2}
-\BOOKMARK [1][-]{section.2.3}{Indistinguibilit\340 Computazionale}{chapter.2}
-\BOOKMARK [1][-]{section.2.4}{Pseudocasualit\340 e Generatori Pseudocasuali}{chapter.2}
-\BOOKMARK [1][-]{section.2.5}{Dimostrazioni Basate su Game}{chapter.2}
-\BOOKMARK [0][-]{chapter.3}{CryptoVerif}{}
-\BOOKMARK [1][-]{section.3.1}{La Sintassi}{chapter.3}
-\BOOKMARK [2][-]{subsection.3.1.1}{Dichiarazioni}{section.3.1}
-\BOOKMARK [2][-]{subsection.3.1.2}{Definizione del protocollo}{section.3.1}
-\BOOKMARK [1][-]{section.3.2}{La Tecnica di Dimostrazione}{chapter.3}
-\BOOKMARK [1][-]{section.3.3}{Un Esempio: FDH}{chapter.3}
-\BOOKMARK [0][-]{chapter.4}{Risultati Raggiunti}{}
-\BOOKMARK [1][-]{section.4.1}{Il Teorema}{chapter.4}
-\BOOKMARK [1][-]{section.4.2}{Dimostrazione del Caso Base}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.2.1}{I Giochi della Prova}{section.4.2}
-\BOOKMARK [1][-]{section.4.3}{Il passo induttivo}{chapter.4}
-\BOOKMARK [2][-]{subsection.4.3.1}{L'Ipotesi Induttiva}{section.4.3}
-\BOOKMARK [0][-]{chapter.5}{Conclusioni}{}
+\BOOKMARK [0][-]{chapter*.3}{Introduzione}{}
+\BOOKMARK [0][-]{chapter.1}{Il Modello Computazionale}{}
+\BOOKMARK [1][-]{section.1.1}{L'Avversario}{chapter.1}
+\BOOKMARK [1][-]{section.1.2}{Funzioni Trascurabili e non \203}{chapter.1}
+\BOOKMARK [1][-]{section.1.3}{Indistinguibilit\340 Computazionale}{chapter.1}
+\BOOKMARK [1][-]{section.1.4}{Pseudocasualit\340 e Generatori Pseudocasuali}{chapter.1}
+\BOOKMARK [1][-]{section.1.5}{Dimostrazioni Basate su Game}{chapter.1}
+\BOOKMARK [0][-]{chapter.2}{CryptoVerif}{}
+\BOOKMARK [1][-]{section.2.1}{La Sintassi}{chapter.2}
+\BOOKMARK [2][-]{subsection.2.1.1}{Dichiarazioni}{section.2.1}
+\BOOKMARK [2][-]{subsection.2.1.2}{Definizione del protocollo}{section.2.1}
+\BOOKMARK [1][-]{section.2.2}{La Tecnica di Dimostrazione}{chapter.2}
+\BOOKMARK [1][-]{section.2.3}{Un Esempio: FDH}{chapter.2}
+\BOOKMARK [0][-]{chapter.3}{Risultati Raggiunti}{}
+\BOOKMARK [1][-]{section.3.1}{Il Teorema}{chapter.3}
+\BOOKMARK [1][-]{section.3.2}{Dimostrazione del Caso Base}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.2.1}{I Giochi della Prova}{section.3.2}
+\BOOKMARK [1][-]{section.3.3}{Il Passo Induttivo}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.3.1}{L'Ipotesi Induttiva}{section.3.3}
+\BOOKMARK [1][-]{section.3.4}{Limiti di CryptoVerif}{chapter.3}
+\BOOKMARK [2][-]{subsection.3.4.1}{Definizione Iterativa}{section.3.4}
+\BOOKMARK [2][-]{subsection.3.4.2}{Necessit\340 dell'Induzione}{section.3.4}
+\BOOKMARK [0][-]{chapter.4}{Conclusioni}{}

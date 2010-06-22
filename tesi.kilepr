@@ -42,33 +42,33 @@ ReadWrite=true
 
 [item:Tesi.tex]
 archive=true
-column=91
+column=25
 encoding=UTF-8
 highlight=LaTeX
-line=1341
-mode=LaTeX
-open=true
-order=2
-
-[item:frontespizio.tex]
-archive=true
-column=20
-encoding=UTF-8
-highlight=LaTeX
-line=35
+line=50
 mode=LaTeX
 open=true
 order=0
 
-[item:myrefs.bib]
+[item:frontespizio.tex]
 archive=true
 column=14
 encoding=UTF-8
-highlight=BibTeX
-line=90
-mode=BibTeX
+highlight=LaTeX
+line=31
+mode=LaTeX
 open=true
 order=1
+
+[item:myrefs.bib]
+archive=true
+column=6
+encoding=UTF-8
+highlight=BibTeX
+line=0
+mode=BibTeX
+open=true
+order=2
 
 [item:tesi.kilepr]
 archive=true
@@ -81,13 +81,13 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Tesi.tex]
-CursorColumn=91
-CursorLine=1341
+CursorColumn=25
+CursorLine=50
 
 [view-settings,view=0,item:frontespizio.tex]
-CursorColumn=20
-CursorLine=35
+CursorColumn=14
+CursorLine=31
 
 [view-settings,view=0,item:myrefs.bib]
-CursorColumn=14
-CursorLine=90
+CursorColumn=6
+CursorLine=0
