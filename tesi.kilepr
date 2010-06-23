@@ -42,10 +42,10 @@ ReadWrite=true
 
 [item:Tesi.tex]
 archive=true
-column=57
+column=65
 encoding=UTF-8
 highlight=LaTeX
-line=48
+line=1591
 mode=LaTeX
 open=true
 order=0
@@ -81,8 +81,8 @@ open=false
 order=-1
 
 [view-settings,view=0,item:Tesi.tex]
-CursorColumn=57
-CursorLine=48
+CursorColumn=65
+CursorLine=1591
 
 [view-settings,view=0,item:frontespizio.tex]
 CursorColumn=14
