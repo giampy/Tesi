@@ -11,8 +11,11 @@
 \usepackage{hyperref}   % use for hypertext links, including those to external documents and URLs 
 \usepackage{float}
 \usepackage{setspace}
+\usepackage[T1]{fontenc}
 \author{Gian Pietro Farina}
-\hyphenation{e-sem-pio na-tu-ra-le de-ter-mi-ni-sti-ci quo-ti-dia-na e-si-ste li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che e-qui-va-len-za}
+\hyphenation{va-li-di-t\`a pro-ba-bi-li-t\`a ge-ne-ra-le se-con-do e-sem-pio na-tu-ra-le 
+de-ter-mi-ni-sti-ci quo-ti-dia-na e-si-ste li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te 
+pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che e-qui-va-len-za}
 \floatstyle{boxed} 
 \restylefloat{figure}
 \newtheorem{definizione}{Definizione}[chapter]
@@ -46,7 +49,7 @@
 \chaptermark{Introduzione}
 \addcontentsline{toc}{chapter}{Introduzione}
 \section*{La Crittografia Moderna}
-Da quando, la crittografia verso la fine del XX° secolo, ha cessato di essere un'arte per assurgere al rango di scienza, 
+Da quando, verso la fine del XX° secolo, la crittografia ha cessato di essere un'arte per assurgere al rango di scienza, 
 si \`e proposta, innanzitutto, di fornire definizioni rigorose dei concetti con cui aveva a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
 su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\ Infatti, si pu\`o affermare che mentre prima,
 con la crittografia classica si costruivano dei cifrari crittografici \emph{ad-hoc} che sembravano sicuri in una particolare situazione, ma che poi successivamente in altri contesti
@@ -171,9 +174,9 @@ Altre tecniche sfruttate nel mondo della crittografia computazionale sono la tec
 per provare che due diverse distribuzioni statistiche sono in realt\`a indistinguibili, e la tecnica delle \emph{sequenze di giochi} di cui parleremo
 in modo intensivo pi\`u avanti.
 \section*{Una visione d'insieme}
-Nel capitolo successivo ci si propone innanzi tutto di descrivere a grandi linee il modello computazionale, 
-in modo che il lettore possa leggere il secondo capitolo e comprendere il terzo grazie alla necessarie
-nozioni teoriche trattate. Nel secondo capitolo infatti, si cercher\`a di descrivere un tool di verifica 
+Nel capitolo successivo ci si propone innanzitutto di descrivere a grandi linee il modello computazionale, 
+in modo che si possa leggere il secondo capitolo e comprendere il terzo grazie alle necessarie
+nozioni teoriche acquisite. Nel secondo capitolo infatti, si cercher\`a di descrivere un tool di verifica 
 automatica di protocolli crittografici che lavora direttamente nel modello computazionale. Infine, nel terzo capitolo,
 si tenter\`a di utilizzare questo tool per provare in modo automatico un risultato classico della crittografia
 computazionale che riguarda i generatori pseudocasuali. Si tenter\`a, quindi, di dare una dimostrazione automatica di un teorema che \`e gi\`a stato
@@ -402,7 +405,7 @@ al one-time pad che usa una chiave pseudocasuale. In generale i generatori pseud
 In questo paragrafo si cercher\`a di spiegare cosa siano, nell'ambito della crittografia, i \emph{game}\footnote{Che intenderemo letteralmente come "giochi".} e come siano strutturate la
 maggior parte delle dimostrazioni che utilizzano sequenze di giochi.\\Si possono trovare approfondimenti riguardo a questi concetti nel lavoro di Shoup \cite{shoup}.
 Quella basata sul concetto di gioco \`e una tecnica\footnote{Game hopping technique.} molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
-Questi giochi sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamata sfidante\footnote{Perch\'e \emph{sfida} l'attaccante a 
+Questi game sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamata sfidante\footnote{Perch\'e \emph{sfida} l'attaccante a 
 vincere questo gioco.}. 
 \`E difficile dare una definizione formale di gioco; infatti il concetto di gioco cambia, sebbene in maniera non considerevole, da situazione a situazione, da ambiente ad ambiente e 
 da dimostrazione a dimostrazione (sia che queste siano fatte manualmente, sia che queste siano automatiche e quindi dipendenti dal framework in cui vengono costruite).
@@ -429,7 +432,7 @@ il gioco finale \`e computazionalmente indistinguibile dal primo\footnote{Ricord
 Adesso, quindi, se nel gioco iniziale esiste la possibilit\`a che un evento avvenga, e nel gioco finale no,
 si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga nel gioco iniziale. Questo limite \`e la somma di tutte le probabilit\`a con cui un attaccante riesce a distinguere un gioco dal successivo all'interno della sequenza.
 
-\`E importante dire che anche nel modello formale si possono utilizzare le sequenze di gioco. La differenza \`e che due giochi successivi non sono computazionalmente indistinguibili, 
+\`E importante dire che anche nel modello formale si possono utilizzare le sequenze di giochi. La differenza \`e che due giochi successivi non sono computazionalmente indistinguibili, 
 ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che se in una sequenza di giochi $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
 allora i due giochi 
 devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di giochi sfrutta.
@@ -998,7 +1001,7 @@ Con la linea di codice seguente:
 5 param n1.
 \end{verbatim}
 Si dichiara un parametro $\texttt{n1}$. Questo parametro assumer\`a valori polinomiali nel parametro di sicurezza. 
-Sar\`a utilizzato principalmente per fornire al distinguitore\footnote{L'attaccante modellato dal tool, in questo caso, 
+Sar\`a utilizzato, principalmente, per fornire al distinguitore\footnote{L'attaccante modellato dal tool, in questo caso, 
 cerca di distinguere l'output di $\texttt{G}$ da una stringa casuale.} un numero polinomiale di oracoli con cui interagire.
 Quella che segue \`e una dichiarazione di un simbolo funzionale con i relativi tipi di input e di output.
 \begin{verbatim}  
@@ -1523,7 +1526,7 @@ $k > 1$ il risultato sarebbe stato ugualmente corretto, ma si avrebbe avuto a ch
 lunghezza necessariamente maggiore. Si noti che una dimostrazione per $k=1$ non avrebbe senso, infatti un generatore pseudocasuale con
 fattore d'espansione $n+k=n+1$ \`e gi\`a in nostro possesso per ipotesi, visto che $\texttt{G'}$ accresce l'input casuale di un bit.
 Una volta provato il caso base si procede con il caso induttivo.
-Ovvero assumendo che CryptoVerif abbia gi\`a fornito una sequenza di giochi che prova che:
+Assumendo che CryptoVerif abbia gi\`a fornito una sequenza di giochi che prova che:
 \begin{center}
 \emph{Se esiste un generatore pseudocasuale con fattore d'espansione $n+1$ allora $\forall i$ esiste un generatore pseudocasuale con fattore d'espansione $n+i$}.
 \end{center}
@@ -1571,9 +1574,10 @@ Ma a causa di ci\`o, il problema si riduce al fatto che CryptoVerif non accetta 
 di $n+1$ bit e un singolo bit, con una stringa di $n+2$ bit. Di conseguenza CryptoVerif non accetta un input come quello sopra descritto,
 affermando che il tipo di output di $\texttt{G}$ non \`e rispettato.
 \subsection{Necessit\`a dell'Induzione}
-Secondo l'opinione dello studente \`e stato necessario dimostrare l'asserto in modo induttivo in quanto non \`e possibile mediante un unico file di input
-dimostrare il teorema 3.2. Dimostrare senza induzione l'asserto comporterebbe l'analisi di un'infinit\`a di file di input, il che non \`e
-ovviamente proponibile. Questo perch\`e, secondo la strada che si \`e cercato di seguire per dimostrare il teorema 3.2 per
+\`E stato necessario dimostrare l'asserto in modo induttivo in quanto non \`e possibile mediante un unico file di input
+dimostrare il teorema 3.2. Dimostrare senza induzione l'asserto comporterebbe l'analisi di un'infinit\`a di file di input, 
+il che non \`e
+ovviamente proponibile. Questo perch\'e, secondo la strada che si \`e cercato di seguire per dimostrare il teorema 3.2 per
 un \emph{particolare} $k=i$, \`e necessario definire un file il cui contenuto
  \`e funzione del particolare valore di $i$; per esempio: un file di input per CryptoVerif
 relativo a $k=i$, avr\`a $i+1$ definizioni $concatnpj$ con $0<j<=i+1$. Invece un file relativo ad un fattore d'espansione
@@ -1583,19 +1587,27 @@ un file relativo ad un particolare valore di $i$ \`e molto simile ad un file per
 
 \chapter{Conclusioni}
 Questo lavoro \`e iniziato ponendosi come obiettivo quello di dimostrare in modo automatico un risultato che era gi\`a presente in
-letteratura. Durante lo svolgimento di questa tesi si sono rilevate alcune difficolt\`a. Come per esempio la 
+letteratura \cite{1206501}. Si \`e cercato di fornire, prima di tutto, le basi teoriche necessarie a capire concetti centrali
+in questa tesi, come per esempio il concetto di casualit\`a e di generatore pseudocasuale. Dopo aver fornito le basi teoriche si
+\`e ritenuto utile, ai fini della comprensione del terzo capitolo, dare una spiegazione del linguaggio che CryptoVerif implementa.
+Infine, nell'ultimo capitolo, si \`e dimostrato automaticamente, un caso particolare di un famoso teorema
+della crittografia computazionale. Si \`e infine cercato di spiegare il perch\'e non fosse possibile dimostrare direttamente,
+ovvero con un unico file di input, il teorema in tutta la sua generalit\`a.
+
+Durante lo svolgimento di questa tesi si sono rilevate alcune difficolt\`a. Come per esempio la 
 quasi totale assenza di documentazione riguardo al tool utilizzato e all'analisi di protocolli crittografici nel modello computazionale
-in generale. In effetti questo lavoro, oltre ad essere servito allo studente per approfondire alcuni aspetti della sicurezza informatica
-teorica, potrebbe servire in generale come punto di partenza per iniziare ad usare il tool.
+in generale. In effetti questo lavoro, oltre ad essere servito ad approfondire alcuni aspetti della sicurezza informatica
+teorica, potrebbe in futuro servire come punto di partenza per iniziare ad usare il tool.
 Questo lavoro, essendo una via di mezzo fra una tesi compilativa e una sperimentale, non \`e ovviamente completa e non lo sar\`a mai.
 \`E interessante per\`o, far notare al lettore che esistono alcune direzioni in cui questo lavoro potrebbe essere esteso.
 Per esempio potrebbe essere ampliato il sottoinsieme del linguaggio implementato da CryptoVerif che viene trattato nel capitolo due.
-In questo lavoro infatti ci si \`e dedicati solamente ad una piccola parte del linguaggio di CryptoVerif, quella utile a capire come avviene
-la dimostrazione del teorema. 
-Si potrebbe inoltre pensare di cercare di dimostrare altri risultati della crittografia computazionale. Si potrebbe per esempio verificare
-se CryptoVerif \`e in grado di provare un famoso teorema che lega l'esistenza delle funzioni one-way ai generatori pseudocasuali. Inoltre si potrebbe pensare di analizzare
-dei protocolli crittografici utilizzati quotidianamente che non siano gi\`a stati analizzati. In questo modo, si
-proverebbe o confuterebbe la sicurezza nel modello computazionale dei protocolli in questione; inoltre si contribuirebbe anche ad aumentare il numero di casi di studio disponibili per chi
+In questo lavoro infatti ci si \`e dedicati solamente ad una piccola parte del linguaggio di CryptoVerif, 
+quella utile a capire come avviene la dimostrazione del teorema. 
+Si potrebbe inoltre pensare di cercare di dimostrare altri risultati della crittografia computazionale. 
+Si potrebbe per esempio verificare se CryptoVerif \`e in grado di provare un famoso teorema che lega l'esistenza delle funzioni 
+one-way ai generatori pseudocasuali. Inoltre si potrebbe pensare di analizzare dei protocolli crittografici utilizzati 
+quotidianamente che non siano gi\`a stati analizzati. In questo modo, si proverebbe o confuterebbe la sicurezza nel modello 
+computazionale dei protocolli in questione; inoltre si contribuirebbe anche ad aumentare il numero di casi di studio disponibili per chi
 volesse avvicinarsi a questo argomento. 
 \lhead[\fancyplain{}{\bfseries\thepage}]{\fancyplain{}{\bfseries\rightmark}}
 \bibliographystyle{alpha}	

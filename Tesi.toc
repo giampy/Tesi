@@ -1,0 +1,24 @@
+\select@language {italian}
+\contentsline {chapter}{Introduzione}{3}{chapter*.3}
+\contentsline {chapter}{\numberline {1}Il Modello Computazionale}{9}{chapter.1}
+\contentsline {section}{\numberline {1.1}L'Avversario}{9}{section.1.1}
+\contentsline {section}{\numberline {1.2}Funzioni Trascurabili e non $\dots $}{11}{section.1.2}
+\contentsline {section}{\numberline {1.3}Indistinguibilit\`a Computazionale}{13}{section.1.3}
+\contentsline {section}{\numberline {1.4}Pseudocasualit\`a e Generatori Pseudocasuali}{15}{section.1.4}
+\contentsline {section}{\numberline {1.5}Dimostrazioni Basate su Game}{17}{section.1.5}
+\contentsline {chapter}{\numberline {2}CryptoVerif}{21}{chapter.2}
+\contentsline {section}{\numberline {2.1}La Sintassi}{22}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Dichiarazioni}{22}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Definizione del protocollo}{27}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}La Tecnica di Dimostrazione}{30}{section.2.2}
+\contentsline {section}{\numberline {2.3}Un Esempio: FDH}{33}{section.2.3}
+\contentsline {chapter}{\numberline {3}Risultati Raggiunti}{39}{chapter.3}
+\contentsline {section}{\numberline {3.1}Il Teorema}{39}{section.3.1}
+\contentsline {section}{\numberline {3.2}Dimostrazione del Caso Base}{41}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}I Giochi della Prova}{44}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}Il Passo Induttivo}{48}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}L'Ipotesi Induttiva}{53}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Limiti di CryptoVerif}{56}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Definizione Iterativa}{56}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Necessit\`a dell'Induzione}{57}{subsection.3.4.2}
+\contentsline {chapter}{\numberline {4}Conclusioni}{59}{chapter.4}

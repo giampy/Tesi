@@ -405,7 +405,7 @@ al one-time pad che usa una chiave pseudocasuale. In generale i generatori pseud
 In questo paragrafo si cercher\`a di spiegare cosa siano, nell'ambito della crittografia, i \emph{game}\footnote{Che intenderemo letteralmente come "giochi".} e come siano strutturate la
 maggior parte delle dimostrazioni che utilizzano sequenze di giochi.\\Si possono trovare approfondimenti riguardo a questi concetti nel lavoro di Shoup \cite{shoup}.
 Quella basata sul concetto di gioco \`e una tecnica\footnote{Game hopping technique.} molto utilizzata per provare la sicurezza di primitive crittografiche o di protocolli crittografici.
-Questi giochi sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamata sfidante\footnote{Perch\'e \emph{sfida} l'attaccante a 
+Questi game sono giocati da un' ipotetica entit\`a maligna, l'attaccante, e da un'ipotetica parte benigna di solito chiamata sfidante\footnote{Perch\'e \emph{sfida} l'attaccante a 
 vincere questo gioco.}. 
 \`E difficile dare una definizione formale di gioco; infatti il concetto di gioco cambia, sebbene in maniera non considerevole, da situazione a situazione, da ambiente ad ambiente e 
 da dimostrazione a dimostrazione (sia che queste siano fatte manualmente, sia che queste siano automatiche e quindi dipendenti dal framework in cui vengono costruite).
@@ -432,7 +432,7 @@ il gioco finale \`e computazionalmente indistinguibile dal primo\footnote{Ricord
 Adesso, quindi, se nel gioco iniziale esiste la possibilit\`a che un evento avvenga, e nel gioco finale no,
 si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga nel gioco iniziale. Questo limite \`e la somma di tutte le probabilit\`a con cui un attaccante riesce a distinguere un gioco dal successivo all'interno della sequenza.
 
-\`E importante dire che anche nel modello formale si possono utilizzare le sequenze di gioco. La differenza \`e che due giochi successivi non sono computazionalmente indistinguibili, 
+\`E importante dire che anche nel modello formale si possono utilizzare le sequenze di giochi. La differenza \`e che due giochi successivi non sono computazionalmente indistinguibili, 
 ma sono perfettamente indistinguibili. In particolare quello che si vuole sottolineare \`e che se in una sequenza di giochi $G_b$ e $G_a$ sono l'uno il successore dell'altro, 
 allora i due giochi 
 devono appartenere ad una stessa classe di equivalenza che \`e indotta dalla particolare relazione di equivalenza che il modello in cui si sta costruendo la catena di giochi sfrutta.
@@ -1526,7 +1526,7 @@ $k > 1$ il risultato sarebbe stato ugualmente corretto, ma si avrebbe avuto a ch
 lunghezza necessariamente maggiore. Si noti che una dimostrazione per $k=1$ non avrebbe senso, infatti un generatore pseudocasuale con
 fattore d'espansione $n+k=n+1$ \`e gi\`a in nostro possesso per ipotesi, visto che $\texttt{G'}$ accresce l'input casuale di un bit.
 Una volta provato il caso base si procede con il caso induttivo.
-Ovvero assumendo che CryptoVerif abbia gi\`a fornito una sequenza di giochi che prova che:
+Assumendo che CryptoVerif abbia gi\`a fornito una sequenza di giochi che prova che:
 \begin{center}
 \emph{Se esiste un generatore pseudocasuale con fattore d'espansione $n+1$ allora $\forall i$ esiste un generatore pseudocasuale con fattore d'espansione $n+i$}.
 \end{center}

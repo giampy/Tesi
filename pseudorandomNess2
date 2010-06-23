@@ -1,0 +1,87 @@
+type nbits [fixed].     (* stringhe di lunghezza  n *)
+type np1bits [fixed].   (* stringhe di lunghezza  n+1 *)
+type np2bits [fixed].   (* stringhe di lunghezza  n+2 *)
+
+param n1.
+
+fun concatnp1(np1bits,bool):np2bits.
+fun concatnp2(np2bits, bool):np3bits.
+fun concatnp3(np3bits, bool):np4bits.
+
+(* La concatenzione di stringhe random è una stringa random*)
+equiv 
+      foreach i1<=n1 do
+            r <-R np1bits;
+		    b <-R bool;
+            OGet():=return (concatnp1(r,b))
+      <=(0)=> 
+     foreach i1 <=n1 do
+            w <-R np2bits;
+            OGet():=return(w).
+
+equiv
+	foreach i1<=n1 do
+		r<-R np2bits;
+		b2<-R bool;
+		Oget():=return(concatnp2(r, b2))
+		<=(0)=>
+	foreach i1<=n1 do
+		w<-R np3bits;
+		Oget():=return(w).
+		
+equiv 
+	foreach i1<=n1 do
+		r<-R np3bits;
+		b3<-R bool;
+		Oget():=return (concatnp3(r, b3))
+		<=(0)=>
+	foreach i1<=n1 do
+		w<-R np4bits;
+		Oget():=return (w).
+		
+
+
+(* Estrae i primi n bits da una stringa di n+1 bits *)
+fun getn(np1bits):nbits.
+(* Estrae l'ultimo bit da una stringa di n+1 bits *)
+fun getlast(np1bits):bool.
+equiv
+       foreach i1<=n1 do
+             r <-R np1bits;(
+             OGetn():=return (getn(r)) |
+             OGetlast():=return (getlast(r)))
+       <=(0)=>
+      foreach i1 <=n1 do
+              (
+              OGetn():= x <-R nbits;return(x) |
+              OGetlast():= xl <-R bool;return(xl)
+              ).
+proba POW.
+(* Generatore pseudorandom con fattore n+1 *)
+fun G'(nbits): np1bits.
+equiv
+    foreach i1<=n1 do
+            	r <-R nbits;
+            	OGet():=return (G'(r))
+      <=(POW)=> (* da definire *)
+     foreach i1 <=n1 do
+              	x <-R np1bits;
+              	OGet():=return(x).
+
+query secret w.
+forall x:nbits; G(x)=(G'(getn(G'(x))),getlast(G'(x))).
+process
+        O():=
+             r<-R nbits;
+             let x' = G'(r) in
+             let y' = getn(x') in
+             let b' = getlast(x') in
+			 let x''=G'(y') in
+			 let y''=getn(x'') in
+			 let b''=getlast(x'') in
+			 let x'''=G'(y'') in
+			 let y'''=getn(x''') in
+			 let b'''=getlast(x''') in	
+             w:np4bits <-concatnp3(concatnp2(concatnp1(G'(y'''), b'), b''), b''');
+return()
+
