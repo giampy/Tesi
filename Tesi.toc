@@ -14,11 +14,11 @@
 \contentsline {section}{\numberline {2.3}Un Esempio: FDH}{33}{section.2.3}
 \contentsline {chapter}{\numberline {3}Risultati Raggiunti}{39}{chapter.3}
 \contentsline {section}{\numberline {3.1}Il Teorema}{39}{section.3.1}
-\contentsline {section}{\numberline {3.2}Dimostrazione del Caso Base}{41}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}I Giochi della Prova}{44}{subsection.3.2.1}
-\contentsline {section}{\numberline {3.3}Il Passo Induttivo}{48}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}L'Ipotesi Induttiva}{53}{subsection.3.3.1}
-\contentsline {section}{\numberline {3.4}Limiti di CryptoVerif}{56}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Definizione Iterativa}{56}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Necessit\`a dell'Induzione}{57}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.2}Dimostrazione del Caso Base}{42}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}I Giochi della Prova}{45}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}Il Passo Induttivo}{49}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}L'Ipotesi Induttiva}{54}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Limiti di CryptoVerif}{57}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Definizione Iterativa}{57}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Necessit\`a dell'Induzione}{58}{subsection.3.4.2}
 \contentsline {chapter}{\numberline {4}Conclusioni}{59}{chapter.4}
