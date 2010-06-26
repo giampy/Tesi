@@ -15,8 +15,7 @@
 \author{Gian Pietro Farina}
 \hyphenation{va-li-di-t\`a pro-ba-bi-li-t\`a ge-ne-ra-le se-con-do e-sem-pio na-tu-ra-le 
 de-ter-mi-ni-sti-ci quo-ti-dia-na e-si-ste li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te 
-pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che e-qui-va-len-za ge-ne-ra-to-re po-ter va-lo-ri de-si-de-ra-no
-d'e-qui-va-len-za Que-sta}
+pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che e-qui-va-len-za ge-ne-ra-to-re po-ter va-lo-ri de-si-de-ra-no  Que-sta}
 \floatstyle{boxed} 
 \restylefloat{figure}
 \newtheorem{definizione}{Definizione}[chapter]
@@ -53,13 +52,11 @@ d'e-qui-va-len-za Que-sta}
 Da quando, verso la fine del XX° secolo, la crittografia ha cessato di essere un'arte per assurgere al rango di scienza, 
 si \`e proposta, innanzitutto, di fornire definizioni rigorose dei concetti con cui aveva a che fare (e.g. \emph{segretezza}) per poi apportare prove dei propri asserti basandosi 
 su argomentazioni di carattere logico-matematico, ovvero di dimostrazioni. \\ Infatti, si pu\`o affermare che mentre prima,
-con la crittografia classica si costruivano dei cifrari crittografici \emph{ad-hoc} che sembravano sicuri in una particolare situazione, ma che successivamente
+con la crittografia classica si costruivano dei cifrari \emph{ad-hoc} che sembravano sicuri in una particolare situazione, ma che successivamente
 non si dimostravano tali, con la crittografia moderna si ha un atteggiamento profondamente diverso: si parte da delle definizioni e poi
 si \emph{dimostra} che gli schemi costruiti rispettano queste definizioni, dando quindi dei risultati pi\`u oggettivi e universali.
-Prima dell'avvento della crittografia moderna la costruzione di un cifrario \emph{valido} si basava soprattutto sulla creativit\`a 
-dei crittografi. Oggigiorno, prima di provare che un cifrario sia valido, bisogna dare una definizione di cifrario valido, 
-inoltre il fatto
-che il cifrario rispetti questa definizione deve essere provato con una dimostrazione.
+Prima dell'avvento della crittografia moderna la costruzione di un cifrario che potesse essere difficilmente violato si basava soprattutto sulla creativit\`a 
+dei crittografi. Oggigiorno, prima di provare che un cifrario sia violabile, bisogna dare una definizione di cosa sia una violazione.
 In passato la crittografia aveva come ambiente naturale quello militare e come scopo ultimo la segretezza di un messaggio.
 Oggi la crittografia non \`e pi\`u utilizzata solo in ambiente militare. I suoi campi di utilizzo si estendono a molti aspetti 
 della vita quotidiana: e-mail, connessioni sicure codici bancari ecc, ecc\dots
@@ -101,8 +98,7 @@ servizi pi\`u vasti rispetto alla semplice cifratura (e.g. la condivisione di un
 da un'altra chiave segreta condivisa a priori fra due parti).
 
 \section*{I Due Modelli}
-%\section{Il Due Modelli}
-Da quando la crittografia si \`e guadagnata una validit\`a scientifica, sono nati almeno due modi profondamente
+Da quando la crittografia \`e diventata una scienza, sono nati almeno due modi profondamente
  diversi fra loro di studiare i protocolli crittografici.\\Nel modello \emph{formale}, le operazioni crittografiche sono rappresentate da 
 espressioni simboliche, formali appunto.
 Nel modello \emph{computazionale}, le operazioni crittografiche sono viste come funzioni su stringhe di bit che hanno una semantica probabilistica.
@@ -110,7 +106,7 @@ Il primo modello, chiamato anche modello di \emph{Dolev-Yao} dal nome degli auto
 \`e stato ampiamente trattato in \cite{AbadiG99, BurrowsAN90, Kemmerer87, Paulson98}. 
 Il secondo modello trova le basi in lavori di altrettanto illustri studiosi come per esempio Goldwasser e Micali in \cite{GoldwasserM84}.\\
 Il modello formale pu\`o contare su un vastissimo insieme di conoscenze teoriche derivanti da altri rami dell'informatica, in particolare: la teoria dei linguaggi formali e della logica;
-anche per questo il modello formale \`e stato sicuramente trattato in modo pi\`u approfondito, almeno fino ad ora. 
+anche per questo il modello formale ha avuto sicuramente pi\`u applicazioni nel campo della verifica automatica. 
 Nel modello formale i protocolli crittografici sono spesso rappresentati come programmi, o meglio, come processi elaborati
 in un particolare calcolo di processi. O ancora, nel modello formale, le 
 primitive crittografiche sono trattate spesso come dei semplici simboli funzionali. 
@@ -164,17 +160,13 @@ Una tecnica molto utilizzata per provare dei risultati nell'ambito della crittog
 \`e la cosidetta \emph{tecnica per riduzione}. 
 Le dimostrazioni basate su questa tecnica consistono nel cercare di ridurre un problema al problema crittografico in esame. 
 Si cerca cio\`e di utilizzare una soluzione che risolva un problema crittografico
-per risolvere un altro problema. Quindi un algortimo che risolve il problema crittografico diventa
-una parte dell'algoritmo che risolve un altro problema.
+per risolvere un altro problema. 
 Nella maggior parte dei casi si cerca di ridurre dei problemi che si sa essere \emph{difficili}. 
 Supponiamo di sapere per certo che il problema $T$ \`e difficile. 
 Supponiamo inoltre che si voglia dimostrare che lo schema crittografico $S$
 sia sicuro. Si faccia ora l'assurda assunzione che il problema $S$ sia facilmente risolvibile, ovvero facilmente violabile. 
 Se ora si \`e in grado di ridurre facilmente il problema $T$ al problema $S$, si ha che anche il problema $T$ \`e facilmente risolvibile.
 Negando un'ipotesi iniziale si \`e quindi giunti ad una contraddizione che prova che $S$ \`e in realt\`a sicuro.
-Si noti che fino a questo punto non si \`e data, in questo contesto, una definizione degli aggettivi $facile$ e $difficile$ e degli avverbi che ne derivano; 
-questo \`e stato fatto per non rendere pesante la lettura di questa breve introduzione, pi\`u avanti per\`o, si daranno definizioni
-di tutti i termini utilizzati.
 Altre tecniche sfruttate nel mondo della crittografia computazionale sono la tecnica ibrida, spesso usata
 per provare che due diverse distribuzioni statistiche sono in realt\`a indistinguibili, e la tecnica delle \emph{sequenze di giochi} di cui parleremo
 in modo pi\`u approfondito pi\`u avanti.
@@ -1202,7 +1194,7 @@ equiv foreach i1_1 <= n1 do
       OGet() := return(w)
 yields
 \end{verbatim}
-in questo gioco CryptoVerif non fa altro che applicare la definizione di $\texttt{concatnp1}$ che afferma che 
+In questo gioco CryptoVerif non fa altro che applicare la definizione di $\texttt{concatnp1}$ che afferma che 
 la concatenazione di una stringa casuale di $n$ bit e di un bit casuale \`e una stringa casuale di $n+2$ bit.
 Otteniamo quindi il gioco finale, ovvero il gioco 7:
 \begin{verbatim}
@@ -1236,7 +1228,7 @@ che la sequenza di giochi vale a meno di $\texttt{2*POW}$, e non, semplicemente,
 
 
 \section{Il Passo Induttivo}
-Quello che si cercher\`a di fare ora, \`e di provare che CryptoVerif riesce a dimostrare il teorema per $k=i+1$ sfruttando l'ipotesi 
+Quello che si cercher\`a di fare ora, \`e provare che CryptoVerif riesce a dimostrare il teorema per $k=i+1$ sfruttando l'ipotesi 
 che riesca a dimostrarlo per $k=i$.
 Per poter dimostrare l'asserto per $k=i+1$ CryptoVerif, in generale, partir\`a da un file di input che contiene 
 delle dichiarazioni e un gioco iniziale. \`E scontato che non avendo a disposizione infinito spazio, non si possa descrivere
@@ -1524,7 +1516,7 @@ dove la variabile $\texttt{w}$ \`e effettivamente casuale, essendo essa estratta
 appartiene.
 
 
-Procediamo ora con una breve ricapitolazione di come la dimostrazione \`e avvenuta.
+Procediamo ora con una breve ricapitolazione di come la dimostrazione procede.
 La dimostrazione \`e di tipo induttivo, di conseguenza si articola in due fasi: il caso base e il passo induttivo.
 Per quanto riguarda il caso base si \`e scelto di mostrare come CryptoVerif dimostri l'asserto per $k=2$. Utilizzando qualsiasi altra costante 
 $k > 1$ il risultato sarebbe stato ugualmente corretto, ma si avrebbe avuto a che fare con un file di input, e quindi una sequenza di giochi, di 
@@ -1592,7 +1584,9 @@ pari a $i+1$ avr\`a un'equivalenza in pi\`u. Ecco quindi che non \`e possibile o
 3.2 per ogni numero naturale maggiore di zero. \`E per\`o naturale, come si \`e visto, procedere per induzione visto che
 un file relativo ad un particolare valore di $i$ \`e molto simile ad un file per il valore $i+1$. 
 
-\chapter{Conclusioni}
+\chapter*{Conclusioni}
+\chaptermark{Conclusioni}
+\addcontentsline{toc}{chapter}{Conclusioni}
 Questo lavoro \`e iniziato ponendosi come obiettivo quello di dimostrare in modo automatico un risultato che era gi\`a presente in
 letteratura \cite{1206501}. Si \`e cercato di fornire, prima di tutto, le basi teoriche necessarie a capire concetti centrali
 in questa tesi, come per esempio il concetto di casualit\`a e di generatore pseudocasuale. Dopo aver fornito le basi teoriche si
@@ -1605,14 +1599,14 @@ Durante lo svolgimento di questa tesi si sono rilevate alcune difficolt\`a. Come
 quasi totale assenza di documentazione riguardo al tool utilizzato e all'analisi di protocolli crittografici nel modello computazionale
 in generale. In effetti questo lavoro, oltre ad essere servito ad approfondire alcuni aspetti della sicurezza informatica
 teorica, potrebbe in futuro servire come punto di partenza per iniziare ad usare il tool.
-Questo lavoro, essendo una via di mezzo fra una tesi compilativa e una sperimentale, non \`e ovviamente completa e non lo sar\`a mai.
+Questo lavoro, essendo una via di mezzo fra una tesi compilativa e una sperimentale, non \`e ovviamente completo e non lo sar\`a mai.
 \`E interessante per\`o, far notare al lettore che esistono alcune direzioni in cui questo lavoro potrebbe essere esteso.
 Per esempio potrebbe essere ampliato il sottoinsieme del linguaggio implementato da CryptoVerif che viene trattato nel capitolo due.
 In questo lavoro infatti ci si \`e dedicati solamente ad una piccola parte del linguaggio di CryptoVerif, 
 quella utile a capire come avviene la dimostrazione del teorema. 
 Si potrebbe inoltre pensare di cercare di dimostrare altri risultati della crittografia computazionale. 
 Si potrebbe per esempio verificare se CryptoVerif \`e in grado di provare un famoso teorema che lega l'esistenza delle funzioni 
-one-way ai generatori pseudocasuali. Inoltre si potrebbe pensare di analizzare dei protocolli crittografici utilizzati 
+one-way all'esistenza generatori pseudocasuali. Inoltre si potrebbe pensare di analizzare dei protocolli crittografici utilizzati 
 quotidianamente che non siano gi\`a stati analizzati. In questo modo, si proverebbe o confuterebbe la sicurezza nel modello 
 computazionale dei protocolli in questione; inoltre si contribuirebbe anche ad aumentare il numero di casi di studio disponibili per chi
 volesse avvicinarsi a questo argomento. 

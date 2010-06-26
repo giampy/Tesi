@@ -15,7 +15,8 @@
 \author{Gian Pietro Farina}
 \hyphenation{va-li-di-t\`a pro-ba-bi-li-t\`a ge-ne-ra-le se-con-do e-sem-pio na-tu-ra-le 
 de-ter-mi-ni-sti-ci quo-ti-dia-na e-si-ste li-mi-ta-te li-mi-ta-ti e-qui-va-len-ti ov-via-men-te 
-pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che e-qui-va-len-za ge-ne-ra-to-re po-ter va-lo-ri}
+pseudo-ca-sua-le sem-bre-reb-be mo-di-fi-che e-qui-va-len-za ge-ne-ra-to-re po-ter va-lo-ri de-si-de-ra-no
+d'e-qui-va-len-za Que-sta}
 \floatstyle{boxed} 
 \restylefloat{figure}
 \newtheorem{definizione}{Definizione}[chapter]
@@ -498,7 +499,7 @@ Si badi: se si dessero, invece delle precedenti, queste regole di riscrittura:
 si andrebbe probabilmente incontro ad un loop infinito durante la fase di elaborazione di CryptoVerif. Infatti nel momento in cui il tool riconoscesse nel codice il valore $\texttt{true}$, 
 procederebbe con una riscrittura di questo nel frammento $\texttt{not(not(false))}$ il quale a sua volta sarebbe riscritto in $\texttt{not(not(not(not(true))))}$ e cos\`i via senza poter mai terminare.
  \item{\emph{Probabilit\`a}.} In CryptoVerif \`e possibile dichiarare delle probabilit\`a. Le probabilit\`a non solo possono essere trattate come \emph{oggetti} (numeri) 
-		      a se stanti, ovvero come dei valori statici, ma possono anche essere utilizzate come funzioni di altri argomenti. Con il seguente codice frammento:
+		      a se stanti, ovvero come dei valori statici, ma possono anche essere utilizzate come funzioni di altri argomenti. Con il seguente frammento di codice:
 				      \begin{verbatim}
 				      proba POW.
 				      \end{verbatim}
@@ -523,7 +524,7 @@ si dichiara una probabilit\`a $\texttt{POW}$.
       event forge.
 				      \end{verbatim}
 il costrutto $\texttt{find}$ verr\`a analizzato successivamente, per ora \`e sufficiente sapere che il costrutto $\texttt{find}$ ha un ramo che viene eseguito quando una particolare condizione \`e verificata (il ramo then) e un ramo che
-viene seguito quando la condizione del ramo then non si verifica. Nel frammento precedente non ci sono dichiarazioni, infatti il frammento serve per dare un esempio di come
+viene seguito quando la condizione del ramo then non si verifica (ramo else). Nel frammento precedente non ci sono dichiarazioni, infatti il frammento serve per dare un esempio di come
 sollevare un evento. Nel ramo else, dunque, viene sollevato l'evento forge. Infatti, come sar\`a meglio spiegato nel paragrafo relativo all'esempio FDH, il ramo else rappresenta la situazione in cui un avversario ha fornito
 una coppia $\texttt{(m,} $ $\sigma \texttt{)}$ tale che $\sigma$ \`e una firma valida per il messaggio $\texttt{m}$ e nessun oracolo ha mai rilasciato tale firma.
  \item{\emph{Equivalenza}.} La dichiarazione di un'equivalenza fra giochi permette di dare a CryptoVerif una regola di riscrittura che pu\`o valere
@@ -634,7 +635,7 @@ Il corpo di un oracolo pu\`o essere descritto in maniera pi\`u formale attravers
           | return(seq <term> )[; <odef> ]
 \end{verbatim}
 
-Innanzi tutto si noti come nella grammatica precedente grazie all'ultima produzione sia possibile ritornare alla grammatica predecedentemente esposta il cui simbolo iniziale era $\texttt{<odef>}$; questo perch\'e deve
+Innanzi tutto si noti come in questa grammatica, grazie all'ultima produzione, sia possibile ritornare alla grammatica predecedentemente esposta il cui simbolo iniziale era $\texttt{<odef>}$; questo perch\'e deve
 essere possibile alla fine dell'implementazione di un oracolo definirne un altro in modo da avere un costrutto per la sequenzializzazione degli oracoli. 
 Infatti, dopo un $\texttt{return}$, mediante il simbolo di sequenzializzazione (il simbolo ``;``), \`e possibile definire un oracolo che verr\`a eseguito dopo quello precedente.
 \`E importante notare il costrutto $\texttt{let}$ con il quale \`e possibile cercare di decomporre il valore a destra del simbolo di uguaglianza in un pattern specificato e, 
@@ -649,7 +650,7 @@ Per esempio, il frammento di codice:
  let x = A(r) in
  return(x) 
 \end{verbatim}
-non fa altro che assegnare ad $\texttt{x}$ (che pu\`o anche non essere dichiarata e il cui tipo viene inferito dal tipo di ritorno di $\texttt{A}$) il valore che la funzione $\texttt{A}$ ritorna su input $\texttt{r}$, e poi ritorna il valore di $\texttt{x}$.
+non fa altro che assegnare ad $\texttt{x}$ (che pu\`o anche non essere dichiarata e il cui tipo viene inferito dal tipo di ritorno di $\texttt{A}$) il valore che $\texttt{A}$ ritorna su input $\texttt{r}$, e poi ritorna il valore di $\texttt{x}$.
 Si noti che se, come nel caso precedente, il pattern \`e una variabile, l'effetto, da un punto di vista pratico, \`e un semplice assegnamento di un valore ad una variabile.
 Questo assegnamento ha sempre successo, e degenera quindi in una dichiarazione e inizializzazione di una variabile il cui \emph{scope} \`e l'oracolo che si trova dopo la parola chiave $\texttt{in}$; 
 se il pattern \`e una variabile quindi, il ramo $\texttt{else}$ non viene mai eseguito.
@@ -663,7 +664,7 @@ L'assegnamento non casuale invece ha la seguente forma:
 \begin{verbatim}
  x:Type <- G(r);
 \end{verbatim}
-con il codice precedente si dichiara $\texttt{x}$ come variabile di tipo $\texttt{Type}$ e si assegna a questa il valore ritornato dalla funzione $\texttt{G}$. 
+con il codice precedente si dichiara $\texttt{x}$ come variabile di tipo $\texttt{Type}$ e si assegna a questa il valore ritornato da $\texttt{G}$. 
 Si osservi ora come nel seguente frammento di codice:
 \begin{verbatim}
 MyOracle() :=
@@ -701,15 +702,15 @@ ne sceglie uno casualmente ed esegue quello.
 
 \section{La Tecnica di Dimostrazione}
 Come gi\`a detto in precedenza CryptoVerif basa le sue prove sulla tecnica delle sequenze di giochi. Questi giochi per\`o differiscono fra loro
-di probabilit\`a che non sono trattate asintoticamente infatti come spiegato pi\`u avanti CryptoVerif si basa sul modello esatto e non asintotico.
+di probabilit\`a che non sono trattate asintoticamente. Infatti, come spiegato pi\`u avanti CryptoVerif si basa sul modello delle probabilit\`a esatto e non asintotico.
 CryptoVerif parte da un gioco iniziale fornito dall'utente 
 (in cui un evento negativo pu\`o accadere\footnote{In questo contesto con evento non si intende necessariamento un oggetto 
 dichiarato con il costrutto $\texttt{event}$ ma una qualsiasi situazione \emph{negativa} per il protocollo.}) e mediante equivalenze, 
 che possono o meno
 introdurre differenze, cerca di modificare un gioco in un altro fino ad arrivare ad un gioco finale che soddisfi le richieste fatte dall'utente. Questa tecnica \`e basata innanzi tutto su una 
-particolare relazione di cui a breve si dar\`a una definizione. Prima di dare questa definizione \`e opportuno spiegare prima la notazione che sar\`a utilizzata da qui in poi. \\Di solito indicheremo con la lettera $t$ dei tempi d'esecuzione di processi. 
+particolare relazione di cui a breve si dar\`a una definizione. Prima di dare questa definizione \`e opportuno spiegare la notazione che sar\`a utilizzata da qui in poi. \\Di solito indicheremo con la lettera $t$ dei tempi d'esecuzione di processi. 
 Se $A$ e $B$ sono due processi allora con la scrittura $A|B$ indichiamo un processo che \`e la composizione parallela di $A$ con $B$. Nella composizione parallela di due processi qusti possono procedere indipendentemente ma possono
-anche interagire attraverso operazioni di input e output. In questo modo se ha la composisione parallela di $A$ con $B$ allora un'operazione di output di $A$ pu\`o fornire l'input di un'operazione di input di $B$ e viceversa,
+anche interagire attraverso operazioni di input e output. In questo modo se si ha la composizione parallela di $A$ con $B$ allora un'operazione di output di $A$ pu\`o fornire l'input di un'operazione di input di $B$ e viceversa,
 ottenendo quindi una comunicazione fra processi.
 Con i simboli $C[\cdot]$ e $D[\cdot]$ si indicano dei contesti. 
 Un contesto \`e un processo con un $buco$, ovvero un processo che ha come argomento un altro processo e va in esecuzione in parallelo a questo. Di solito un contesto \`e un attaccante che cerca di distinguere un processo che 
@@ -736,7 +737,7 @@ Questa relazione d'equivalenza gode di alcune propriet\`a interessanti fra cui l
  \item \emph{Se $Q \approx_p S$ e $C$ si esegue in tempo $t_C$ allora $C[Q] \approx_{r} C[S]$ dove $r(t)=p(t+t_C)$}
 \end{enumerate}
 
-Quindi CryptoVerif, in generale, parte da una gioco $G_0$ che corrisponde ad un protocollo reale (di cui si vuole provare qualche propriet\`a) e costruisce una sequenza di giochi 
+Quindi CryptoVerif, in generale, parte da una gioco $G_0$ che corrisponde ad un protocollo reale (di cui si vogliono provare delle propriet\`a) e costruisce una sequenza di giochi 
 osservazionalmente equivalenti (secondo la definizione 2.1): $G_0 \approx_{p_1} G_1 \approx_{p_2} G_2 \dots \approx_{p_n} G_{p_{n}} $; data questa sequenza, 
 attraverso le propriet\`a 1 e 2, conclude che $G_0  \approx_{\sum_{i=1}^{n}{p_i}}$ $G_{p_{n}} $, riuscendo cos\`i a dare un limite alla probabilit\`a che un attaccante riesca a distinguere
 $G_0$ da $G_{p_{n}}$. Ora se in $G_{p_{n}}$ non esiste la possibilit\`a che un evento negativo possa accadere, visto che $G_0  \approx_{\sum_{i=1}^{n}{p_i}} G_{p_{n}} $, si pu\`o dare un limite superiore alla probabilit\`a che l'evento avvenga in $G_0$.
@@ -748,17 +749,17 @@ di giochi che permettono di provare delle propriet\`a di alcuni protocolli.
 Le probabilit\`a utilizzate nelle sequenze di giochi create da CryptoVerif non sono trattate con la notazione asintotica, questo perch\'e
 CryptoVerif adotta l'\emph{exact security framework} \cite{BellareR96}. Questo fatto permette al tool di calcolare in modo preciso le probabilit\`a, invece di 
 considerare l'andamento di queste quando il parametro di sicurezza tende ad infinito.
-Il fatto che CryptoVerif lavori nel modello esatto non significa che non pu\`o darci risultati estendibili a probabilit\`a trascurabili.
+Il fatto che CryptoVerif lavori nel modello esatto non significa che non possa darci risultati estendibili a probabilit\`a trascurabili.
 Se per esempio alla fine di una prova CryptoVerif ha applicato $k$ volte un'equivalenza (con $k$ costante o valore polinomiale nel parametro di sicurezza) che vale a meno di una probabilit\`a $p$ allora
-in output sar\`a reso noto il fatto che la catena di giochi vale a meno della probabilit\`a $kt$. Ora se la probabilit\`a $t$ \`e noto essere
-trascurabile allora lo sar\`a anche $kt$ e quindi l'attaccante avr\`a una probabilit\`a trascurabile di distinguere il gioco finale da quello iniziale; 
+in output sar\`a reso noto il fatto che la catena di giochi vale a meno della probabilit\`a $kt$. Ora, se la probabilit\`a $t$ \`e noto essere
+trascurabile, allora lo sar\`a anche $kt$ e quindi l'attaccante avr\`a una probabilit\`a trascurabile di distinguere il gioco finale da quello iniziale; 
 altrimenti significa che l'attaccante ha una probabilit\`a non trascurabile pari esattamente a $kt$ di vincere il gioco iniziale e quindi
 di distinguere questo dal gioco finale. 
 Il calcolo di processi che CryptoVerif implementa \`e fondamentalmente quello che si trova in \cite{BlanchetJaggardScedrovTsayAsiaCCS08} con per\`o delle differenze.
 Una fra le pi\`u importanti \`e appunto quella che CryptoVerif pu\`o trasformare un gioco in un altro quando questi appartengono ad una stessa classe d'equivalenza secondo la definizione 2.1, mentre 
 nel calcolo sviluppato in \cite{BlanchetJaggardScedrovTsayAsiaCCS08} la definizione di relazione d'equivalenza su cui si basano le trasformazioni \`e diversa.
 In \cite{BlanchetJaggardScedrovTsayAsiaCCS08} si considerano equivalenti giochi che sono distinguibili a meno di una probabilit\`a la cui unica peculiarit\`a \`e di essere trascurabile e nelle catene di giochi quindi la probabilit\`a di distnguere il gioco
-iniziale da quello finale \`e ovviamente trascurabile\footnote{Si sa infatti che la somma di funzioni valori trascurabili rimane tale.}. In CryptoVerif invece si considerano i valori precisi delle probabilit\`a in funzione
+iniziale da quello finale \`e ovviamente trascurabile\footnote{Si sa infatti che la somma di funzioni trascurabili rimane tale.}. In CryptoVerif invece si considerano i valori precisi delle probabilit\`a in funzione
 di parametri dei giochi come per esempio numero di oracoli, lunghezza delle stringhe tempo d'esecuzione dell'attaccante ecc,ecc\dots Ecco quindi che CryptoVerif permette di calcolare in modo preciso le probablit\`a in 
 gioco, senza che queste vengano inglobate (e quindi perse) nella notazione asintotica. 
 L'utilit\`a principale di CryptoVerif \`e infatti quella di \emph{fare bene i conti} delle dimostrazioni basate su giochi. 
